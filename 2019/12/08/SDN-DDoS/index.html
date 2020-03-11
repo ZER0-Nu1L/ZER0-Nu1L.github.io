@@ -1,0 +1,331 @@
+<!DOCTYPE html><html class="theme-next pisces use-motion" lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><script src="/lib/pace/pace.min.js?v=1.0.2"></script><link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="google-site-verification" content="QvPZ3tgcDy_FQ1Ivu9CLCAEPdzhAyW8GzyQ1APQgiVg"><meta name="baidu-site-verification" content="ueLXt8dSC9"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-crypto.png?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-crypto.png?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><meta name="keywords" content="DDoS,"><link rel="alternate" href="/atom.xml" title="ZER0-Nu1L" type="application/atom+xml"><meta name="description" content="由于某些原因，文章加密，邮箱联系，或在评论区交流。"><meta name="keywords" content="DDoS"><meta property="og:type" content="article"><meta property="og:title" content="SDN-DDoS Question &amp; Consult"><meta property="og:url" content="https:&#x2F;&#x2F;zer0-nu1l.github.io&#x2F;2019&#x2F;12&#x2F;08&#x2F;SDN-DDoS&#x2F;index.html"><meta property="og:site_name" content="ZER0-Nu1L"><meta property="og:description" content="由于某些原因，文章加密，邮箱联系，或在评论区交流。"><meta property="og:locale" content="en"><meta property="og:updated_time" content="2020-01-25T09:13:32.301Z"><meta name="twitter:card" content="summary"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Pisces",version:"5.1.4",sidebar:{position:"left",display:"post",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},duoshuo:{userId:"0",author:"Author"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="https://zer0-nu1l.github.io/2019/12/08/SDN-DDoS/"><title>SDN-DDoS Question & Consult | ZER0-Nu1L</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="en"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">ZER0-Nu1L</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">In me the tiger sniffs the rose.</p></div><div class="site-nav-toggle"> <button><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br> Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br> Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br> Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br> Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br> About</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br> Search</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://zer0-nu1l.github.io/2019/12/08/SDN-DDoS/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Andy Wu"><meta itemprop="description" content=""><meta itemprop="image" content="/uploads/Profile.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="ZER0-Nu1L"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">SDN-DDoS Question & Consult</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-08T16:18:26+08:00">2019-12-08</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span> , <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web/SDN/" itemprop="url" rel="index"><span itemprop="name">SDN</span></a></span> , <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web/SDN/DDoS/" itemprop="url" rel="index"><span itemprop="name">DDoS</span></a></span></span><div class="post-wordcount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span> <span class="post-meta-item-text">Words count in article&#58;</span> <span title="Words count in article">9</span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-clock-o"></i></span> <span class="post-meta-item-text">Reading time &asymp;</span> <span title="Reading time">1</span></div></div></header><div class="post-body" itemprop="articleBody"><div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look."><div class="hbe-input-container"> <input type="password" id="hbePass" placeholder=""> <label for="hbePass">输入密码，查看文章</label><div class="bottom-line"></div></div><script id="hbeData" type="hbeData" data-hmacdigest="b30ac1cb228034968461e17cabfeb285dc6c695eb6cc7adcc0d7260fcfb95030">c54ef91cce081c6f61e5353cd8bb7033a3a4a4b1fe8abe1b1454f387adbd37348102c6722f4de38abc5e5e7d11e33fb607922e0136851a98202d2c2b9a9b8a4ae5c7908e0d2ec37060e38f7f1217d5781d9f66f930a254506f89c0f90a17be7355fcf26b1e8c3609d466f7df9a2969c9d58a0c3380e6d3e8f87b9ab586c999d4880bd42265233c6cd8b2a026ab3781e30f807c895d127e9b393a71022ac14285953ef63e9348dd40f36d88037e6c2c1b4862924b06f35195f1b51a3333d6e1c318404e0f6a5cd03135e6670161381323c586d2bc95f98afab5350fcaac50ba1d28016418ec73854a93c9a7b43efad3fa49f27aef618045463187c6cfa6e5fbd216b104cccfbc70be79d441c6a30b686c77d4acc3277520686733121015b7a7d429c55004a668dde07877d6676594439fc0feaa056b824d3e9df8708d9e598c8171b72a7d583731487787f192d3e2813be84291edee4e40b939a3deca89df3e6c43e43467d11750e6be778426bd899efce463b6660acba0f23f4567ef5640f3e41acdf17b11fdd72690a36153955ddc7369dc9b119186315ade21e07c9a63dc905e02247821f94e7d394460c3ec13ccfe1a191d13bc72925bc810dccbe3ee6da4a47616127a1b76d0b9ac9893203a47262424cc8a505a796edf640611141d82f22208e6533c28b7bef743ab0b33d93ed6f1b250189961623f73b1658c267c945bf516c339d4fb6576e6da22bf5a66cf4f1b2d11def69cd85376ccef41b6c34b2a27f493f4ad96a3c181c2fb214def70847082241e7b29dd146b88a262388ffa8199092053ecabab51abe6a2d2cfdc893e6221970f4bad1717d1dae9350ea8f001ee90196264136e76dcbe5213d0d0727ddf47407381f0a4f2c1b52650802db59ad035cb3e9648f8350ff4a87bb797f7909ef4a272fcdd243e35f331a0850764ae63352a2be25143468e15781804f84895824bb37858f4a5d14dc8a98fbb3b2687389e64d8ccefc53d2f84e840392c317bee20f4a5a8f5aac2ed65f0d7acf9ffce370ed55c45739de2e608ef72fbbf64d0a7048fabb59b52441c5d2383e8caf60d18b1134a54657c6592f681743f71d0115e6e00c620358065f59e3b61ebcd5823922239522ac56793eb15fa38c35c5fded0eef718a786372636fd57dbe20f6ae88696da0d8f49dc91cbfe65f98c367ede1d5b3c3e6b5b9253a39666c2aa1a141fd286e73760157eb2342ed82833732266de9d25410a6ee48f62ba4306793a5e350cc01a90b11ea7a4e40674d836380cdb4d9a10d455950610f814c77d92d3a03119ca2a249f42b2d47f2fc6d429865477061e0818a19322dfff648f5ed3b0cb33d34439e8302112a2e2e1ca129288ac9b145f79c4259e8fdb80d992f4df477629d21d5812b63969ad8bab195ebb976c3e56cb1ae3c7d398e134c93d327554ac4a9628290ea233b2f905b9c9f4aa2885ac0dee51100074bcc316e796729bf6beece69430b1e6160f6aa145d7f5f110960bb34648f96574161ad5af5ed5aa4bf8cc6fa8fc2980ed6d1dc6aaaf79d2295c80b0bc82dab1bff490026bf57467fafa314b378195ad3b9647793f2208fd1cdf4dcd51d7bde2e6e66cd27b0ff1af3c8536fecf6c97478e1c6d9dfb91f57d70cad375cbe9e62014dba0c77ddfde51a50192f6d9960dc929cbb9b72898a6a03af5039648f5b2d634e38be750f73e9e874cc99025961b0aa2e01f803beecfbb99139f2e154af46f55f6d55d56ccb22a02790ba1f38afb3e5e449dac9217c069bb5976bda7f4eb01ed7374cf079f20b0f712fdd02c71d5d277015a4edbfbc35a254ab18eaf28e11e04f6f22919df14c72d7f0922ad9c32adbb0a74774fca62758f34938a3789e9b50d5e1c49b3d5c45d8c1bba059ddf49965184a19e0fd2ade1887b185ab106fb704c2eef66551d5c31a54af2a8053f60c7a8f43b9c075e3ad5f4b49a54163b3648a509c56a23307a31b5825a8f53beca1a802edff82f6bf5db5600a55183852b2e902ef8176088e0e4bf6c350d5d6b665b6b6132bcacbaeb5ea73179e8d617982a61f950b2f111213965ea7f0c9a371896bd910b9ca69e38582fc2f4d97daab86a82c3da43e46810a38ee846e0f93194d1cef88bca748c44dcc05c2882ef643012a4fffac2c1c87e5a084a7abd90235ef204f612eb7058eb531d4e8485302e3d8c545c5f8d382194d32d999f85c5943a310efedcf24450f9a6276cfac111eaadd496411115e51278518b1cc8d756354074b16547c2fee612e45d5446a2ce89d1a963d2018df3996a3eb2831a6a3d20bd727ac5a7eac9453781d3084f7639ebe6bd6cfe0682d65283d49e5972350178c6c370ec9819d222c62e1bcf0e0c2e57c48052f9a34a0dad4d6c11d2ce4b8db32276503455c60dec21ca51ec59cc67c07b08ec90d016b4687b20575f1141521dbfb15a703caaacf26d911b07961440cc59463b734246dc1b3940c992d5031817c8cba48430392b817600e3f49d6187e1e02aa9daec1290059b2c6a1dbfa077b5054433e2e84a516f86cab562de6b810a5a48a264e1237f5658ca620f72d951f9571c51f0eab6e9154eaf4473554b5dd603342c5c709da69bacda7ae49403913824633ce1fd830a4990006a1e921d1d26f1e5cf47a03efa61bf640bbf8bd71b72f0e50512ce6264b07b7326d3df09b028759d9826fabb35222800dd0d478446ce4a8fd105f2606056aeca7c32a8dcd4d9b2ae1fe436c7e65227f0ab27ad0df4d5722e9a0a997ca248092d5442921f1f79e32dd0540e75331736624cf691c394ee37244c1c51defecfd64614b6d88ab15a585dc56f9877fe9452afe3561810a25aa20faf154c730077f32b3bdbebf1295a3a8e7e1dfd11c88dd048bc832e26fcf883bdc24034f3c1104032c84d77e4631b7ccb84a446bba8d828e9e44cd759740a098965022ed82bf73caf4a3c4d9de551036ad829e425349543294990a21b538608abde83fe1f8151a9200dc7aa1cbf2bbd4206d911b2e65f5b5df092a858f9c2388df2a786db08e7416ab13cd10432b9704de4cc3d2d183f593c470c57e4e23d260dc2f35194e4279537d1ce22666e7f717d85563c2cca19e0b089058c301367b01bd7ed688ca03d8c8956856b9545e1dc02f1c785b3651f3daddf10d1e0ba9641480b15622bde939be92780629836fce24e788204ef15c128fc30940b66e515ca0bc2f8727d14abb69623f7c2d7100374d8505239a98561eabf3c4b7e2dc3245d28ac32494e1dbae83a8be749a75af43d2c8945e1372ef00a183f521ea85405d69be49d1bd280e658912c61455535bc0381d849ebf6ad90907c0bb4bb10816a5177c49bf42baa7a11ed76745e5139575c76b2ff77c82c11f9fac429d5ff1c18fc3281cb2c085172b24d7395cbe420db8ee00768af06f45347f06b5e4295a2afd6659fcae2bc6ec80ab16c22448c8b4b93a8019326843267aac4488c2ada5b9fdab517bfe3d0f915370f41e4400733d6672a27b2f9185efd5bc779fddd4699d4b11d05f774b5c3b9a172cc9d7f718fe03ea9fd455503302b39ce3a5869f9e5bce7085614c9eea21ceeffd0f05f120f05b069dc5bf983e9f77b11ecb6d687dd9aebe9cd9f8bc52c3e5e8f988ab2c24afbf76997cf9167fb6aeddced428d1bf66ebdccc6f79d2a022e9228d7a79885712ef6785a5ef7556527a3be95abf1a99e8d5142c0736d9ca16996896797aaf8d10198527e12fb35608d5e4c747bbd3352e38179960f7b28a5c45f3b539633e76173f69fc0389853f883ec32243a1cf3af8164db63e37761ade068ebe604fe7e49663dd21340f0eeafecfe420727b819211cb8697f4922f99a3db4a348ef7335cea29f13f37cbe334613c84b521420ea2cff12050747cf2a433bb2fbe03c1a22674450689ff4855cbda0e2dd3a435c03dd92cba1b1bf7d09c6bce503ed3ffce6e9ec69ff1bb92e5bedd6c3c3cd41b17e17962a32d52edc9afa817b2042c08c13632433046ea620984e65ea6b4aa2f4fac5d220438600601bfcf2146c1bd941966030267eede66a3ed3d292038c11f6d55c01a8fd38392c3a0fb829df06cc036d6362137671e3be7d2010f720dda9a7f61cd3d4555cb57a3d42d44db6031f847577f9f00e460ee1a74e3f03b15910caa96d8bbbefea71f5656712bbef5a3494717391dcd53dfff3e79e42cac639671b36b13a7178d00fa0c7aabb97631edc63b5383ddb643bdf662363e1e3b3b34d0ae7518582e19824a29a2abbf01b6ae8709e662879a662f3915cd2bd33080d85cdb4514eb3fca8ade71c36341e1704851a2d4d16f6d617b414b5215eed94d40040e0ed89ae7ce8ae59a75ea6706bb095f886ca57a52a9378f0a95d315c08f05072757ec73035f1e3e0ce50153f283aef637fa7a4bea40ddc7f9de2f487136b96a4325252eacea0b58fd9840e77a940145492514c8b5a8247cec716a4503286efbdac7c96a5e1eb2fad07a81b97add0e3bff3f95ba572961978a29362526cc0bc3fd714211503f700fc6d540ae856b13c4c039e2f5e0bc56df067985c0ea4c91a09645433ccfd55d1415bd56bc0ea928b36976d47a0ef0f9ab033fedfe732559f4eb47daf5b269a50d75f7d038371379da0743427f20a3ba519fabf6351f4cf5c0a6b83e077372c1d06e282ad801e2e76cf7130f0eb6ff6a0e12bf9f9d6ddbc2037b815d4aadc0789d30600077090e4f3bc400fafa00d86915e5f98a707504e19bee0c30676f90c5c2c40e2df6ab443f8e3cc0d604eba58da9b0cd3b01fd5e7b1966a8c5b2ecbbbba75eb37cf87743f3a0c268a7340dd7794db21347b2a6e6a96297da261624b24aec1ec38eecb2d233b26fc84b96ce0b3b4f403c6770007af51c0d5517ae602aa27e289bea4f0f592bf6a9587ccd1678623efe4284c1ac1e53f7a3487f3a89196f4466ad206c00ff4f389ad5e690cda1426f9e9035abad284fdc09c351fe61060adf0d4964c33d98f0db4e2466daaf88889b40d3597a5e1a146c2ea8661e1b1289a97766691152e4386a11e4d33e08174a3783b36b11712ed90532de6811ba8610942e184d28cbbdf83a9b15193d6f62ab20147b70cd48e4cf536be08d0ec1e353194b36a198ef3a0d2c2dd96be49140a7cbf4579717674ecf2f58c5fbd3db29a71c54b24ef135760ebf29937353846102d72de55e1c1d3b547c423f36429d1853e288ce99b8491c6d84720e44a7743f09efd5ec84bfe39c00cbfa319804da6b33ae00ec67e8b308b153a4cb996d85f9a523e7b5d2572c3cb180bbd16ebd60cca2991934b008a139228510da564064c7d41522677e660a0e138f01734bcebacbe6cbda89cd443a72c9778ce57d70817a3fc0049451cb3f1d48b2bd0ae175c2cf2e5bb49151a2d5a85f477bad67acd05e27cfc81c125287e0f551b42a3d4c236f200ccaa7b0f76854f0dc0b24536c013f3dc54e2913b8aab875392ad195f26a71fc8007be5b1a7bc9793f286d0e1a53f02dfdb6565245027898dd1e48c67042aabd2f437de5892a739b5c3759f797609589972d12db9f04ba926ed1a1906f88c79382db3696f37e6b7255aa59bdfde5948c1998d6a2c5936198fba77093a6d84cea5cf847474c490f1ed007c706b8bdb803690046086e5e432bb47be122e5395a921d678558e3a40333613964b4ce9884da06cd43e9f7e6ae9eaa3617728a332a5aa4392ca0c02e1691c74</script></div><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css"></div><div><div><div style="text-align:center;color:#ccc;font-size:14px">------ The end ------</div></div></div><div><div class="my_post_copyright"><script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script><script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><p><span>本文标题:</span><a href="/2019/12/08/SDN-DDoS/">SDN-DDoS Question & Consult</a></p><p><span>文章作者:</span><a href="/" title="访问 Andy Wu 的个人博客">Andy Wu</a></p><p><span>发布时间:</span>2019年12月08日 - 16:12</p><p><span>最后更新:</span>2020年01月25日 - 17:01</p><p><span>原始链接:</span><a href="/2019/12/08/SDN-DDoS/" title="SDN-DDoS Question & Consult">https://zer0-nu1l.github.io/2019/12/08/SDN-DDoS/</a><span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://zer0-nu1l.github.io/2019/12/08/SDN-DDoS/" aria-label="复制成功！"></i></span></p><p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p></div><script>var clipboard=new Clipboard(".fa-clipboard");$(".fa-clipboard").click(function(){clipboard.on("success",function(){swal({title:"",text:"复制成功",icon:"success",showConfirmButton:!0})})})</script></div><footer class="post-footer"><div class="post-tags"><a href="/tags/DDoS/" rel="tag"><i class="fa fa-tag"></i> DDoS</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/11/18/Joyeat/" rel="next" title="【NUS】基于互联网思维缓解新加坡的排队现象"><i class="fa fa-chevron-left"></i> 【NUS】基于互联网思维缓解新加坡的排队现象</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2019/12/16/Lagrange/" rel="prev" title="【深入浅出】基于拉格朗日松弛法的多约束 QoS 路由算法">【深入浅出】基于拉格朗日松弛法的多约束 QoS 路由算法<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"></div></div></div><div id="gitalk-container"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><section class="site-overview-wrap sidebar-panel sidebar-panel-active"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/uploads/Profile.jpg" alt="Andy Wu"><p class="site-author-name" itemprop="name">Andy Wu</p><p class="site-description motion-element" itemprop="description">Cover the face and straight ahead.</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/%7C%7C%20archive"><span class="site-state-item-count">15</span> <span class="site-state-item-name">posts</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/index.html"><span class="site-state-item-count">14</span> <span class="site-state-item-name">categories</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">19</span> <span class="site-state-item-name">tags</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/ZER0-Nu1L" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="mailto:wcb534813346@126.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i> E-Mail</a></span></div><div class="links-of-blogroll motion-element links-of-blogroll-block"><div class="links-of-blogroll-title"><i class="fa fa-fw fa-link"></i> Blogroll</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"> <a href="https://ff-0xff.github.io/" title="ff-0xff" target="_blank">ff-0xff</a></li><li class="links-of-blogroll-item"> <a href="http://fitz.hasentu.com/" title="五维生物" target="_blank">五维生物</a></li><li class="links-of-blogroll-item"> <a href="https://gemini-lin.github.io/" title="Gemini-Lin" target="_blank">Gemini-Lin</a></li></ul></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2020</span><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="with-love"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">Andy Wu &nbsp | &nbsp</span><div class="powered-by"><i class="fa fa-user-md"></i> <span id="busuanzi_container_site_pv">Number of visitors:<span id="busuanzi_value_site_pv"></span></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-area-chart"></i></span> <span class="post-meta-item-text">Site words total count&#58;</span> <span title="Site words total count">42.7k</span></div></div><div class="theme-info"><div class="powered-by"></div><span class="post-count"></span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><div id="gitalk-container"></div><script src="/js/src/md5.min.js"></script><script type="text/javascript">var gitalk=new Gitalk({clientID:"b559026a8469cfafb7e3",clientSecret:"68757dba62da9ddd3078e0b24c9c146b555deecc",repo:"ZER0-Nu1L.github.io",owner:"ZER0-Nu1L",admin:["ZER0-Nu1L"],id:md5(location.pathname),distractionFreeMode:"true"});gitalk.render("gitalk-container")</script><script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script><script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script><script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>
