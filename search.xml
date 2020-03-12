@@ -1,6 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Jupyter server crashed | VSCode + WLS</title>
+    <url>/2020/03/12/VSCode_Jupyter_bug/</url>
+    <content><![CDATA[<h1>情况分析</h1>
+<p>和往常一样，风平浪静☁️的一天，笔者打开 VSCode Remote WSL 之后，打开 Jupyter notebook，按下 <kbd>ctrl</kbd>+ <kbd>Enter</kbd> 运行代码，却得到了以下不寻常的通知和报错：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015261571.png" style="zoom:80%;">
+<center> 图 1</center>
+<p><img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015274950.png" alt></p>
+<center> 图 2</center>
+<a id="more"></a>
+<h1>搜索引擎解决法</h1>
+<p>如果是往常，复制保存信息，扔到 Google 应该很快就能得到解决方案，遗憾的是，笔者这个奇葩罕见的 VSCode 的用法，注定了不能直接得到解决的方案。<br>
+VSCode GitHub 相关的 issue 看遍了，google 的基本看遍了、百度的可以看遍了，并没有可以直接的解决它的方法。😭</p>
+<h1>重新分析</h1>
+<h2 id="反思">反思</h2>
+<p>仔细看报错信息！！每个人的情况各异，搜索引擎不可能涵盖所有情况，你已经是个成熟的萌新了🌟 。<br>
+作为程序员，搜索引擎只是辅助手段，仅仅是收集信息中的一种手段。</p>
+<h2 id="波利亚解题法的启发">波利亚解题法的启发</h2>
+<blockquote>
+<p>参考自 <a href="https://www.jianshu.com/p/b55ec8de5968" target="_blank" rel="noopener">波利亚四步解题法</a></p>
+<p>波利亚的《怎样解题：数学思维的新方法》（How to Solve it: A New Aspect  of Mathematical Method)<br>
+1、彻底理解问题：为了确保真正理解问题，你最好把问题用自已的话换成各种形式反复重新表达，但另忘了指出问题的主干：要求解的是什么？已知什么？要满足哪些条件？但凡能画图，一定要画出来。<br>
+2、形成解题思路：要专注，用过往经验，已撑握的知识，并调整适用性来形成思路。如果不行，就改变这个问题的各个组件：已知、未知、条件，先构造简单一点的，引入辅助，条件是否用足，甚至改变求解的未知数，看能否找到解题线索？直到找到与之相似而你又解决过的问题。<br>
+3、执行：一要有耐心，二需要及时的检查每一步，可凭直觉或证明（两个都有用，但是两回事），要问自已每一步都检查了吗？能看出来这一步是对的吗？能证明这一步是对的吗？<br>
+4、总结：巩固与提升的关键，多想想，再论证，尝试另外的解法，找更明快简捷的方法，还要问，这次的解法还能用在什么地方？总结是最好的启法时刻。</p>
+</blockquote>
+<p>⭐️ 那我也简述一下自己一直以来的经验：</p>
+<ol>
+<li>遇到问题(bug)，要先尽可能收集信息，找出发生错误的各种可能的原因；</li>
+<li>把可能的原因序列，根据优先级排序，然后逐个尝试；</li>
+<li>总结归纳；</li>
+</ol>
+<h2 id="收集信息">收集信息</h2>
+<h3 id="信息一">信息一</h3>
+<p>运行时的报错信息：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204521370.png" alt="image-20200312204521370" style="zoom:80%;">
+<p>仔细看报错信息，…/extensions/ms-python.python-2020.2.64367/…<br>
+应该是一个 ID 为 <code>ms-python.python</code> 的扩展<br>
+ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展的信息中发现 Python 拓展 的 Extension-id 确实是 ms-python python</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204442296.png" alt="image-20200312204442296" style="zoom:50%;">
+<h3 id="信息二">信息二</h3>
+<p>一个月前这个插件还是能正常使用的，为什么这次就不行了？<br>
+可能的原因：</p>
+<ol>
+<li>本次开启的方式和期间有更改一些东西，后台有运行其他的什么等等</li>
+<li>版本不兼容问题（这个版本的）</li>
+</ol>
+<p>原因 1 探索的代价高、难度大，但是解决之后能始终使用最新的版本；<br>
+原因 2 操作简单，能够迅速应对现在的情景，并且我个人使用 WSL 对 Python 的插件的要求不高，更新也不太需要。</p>
+<h2 id="尝试">尝试</h2>
+<p>先尝试版本回退。</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image003.png" style="zoom:80%;">
+<p>很幸运的是，回退到一个月前的之后，Jupyter notebook 可以正常使用了。</p>
+<p>至于探索原因…… 综合考虑种种因素，不去触碰啦~（其实是大失败了）</p>
+<h2 id="后续">后续</h2>
+<p>为了防止 Python 扩展再次更新，取消 WSL 下的扩展的自动更新。<br>
+可以看到 defaultSettign.json （只读文件）中默认是自动更新的。</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image004.png" style="zoom: 50%;">
+<p>我们可以在设置中关闭它：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201607696.png" alt="image-20200312201607696" style="zoom: 50%;">
+<p>或者在 <code>setting.json</code> 中添加一条 <code>“extensions.autoUpdate”: false</code></p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201631390.png" alt="image-20200312201631390" style="zoom:67%;">
+<blockquote>
+<p>也许你会奇怪为什么 setting.json 中只有这么一点设置，而设置里面可以找到很多。<br>
+这是因为设置中的默认部分在 settign.json 里面不需要补充，只有用户需要额外添加的设置需要写在 setting.json 里面。</p>
+</blockquote>
+<blockquote>
+<p>最后感谢让我发现自己轻视 VSCode 扩展自动更新问题的 <code>syj</code> 😘</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Development</category>
+        <category>bug</category>
+      </categories>
+      <tags>
+        <tag>VSCode</tag>
+        <tag>Error</tag>
+        <tag>IDE</tag>
+        <tag>WSL</tag>
+        <tag>Jupyternote book</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【飞蛾扑火】PowerShell 终端美化踩坑</title>
     <url>/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/</url>
     <content><![CDATA[<blockquote>
