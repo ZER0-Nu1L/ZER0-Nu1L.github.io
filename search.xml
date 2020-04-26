@@ -1,105 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>招新：Crypto方向介绍</title>
-    <url>/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h1>Crypto 方向基础</h1>
-<h2 id="入门基础">入门基础:</h2>
-<ol>
-<li>C语言<br>
-// 很多代码审计都是以 C语言形式呈现</li>
-<li>Python3:
-<ol>
-<li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li>
-<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li>
-<li>gmpy2库、Crypto库的使用</li>
-</ol>
-</li>
-<li><strong>数学基础</strong> (重中之重)<br>
-可以参考《信息安全数学基础》（初等数论、近世代数）</li>
-<li>linux的常见使用<br>
-基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>
-其余的遇到问题看需要再去学。</li>
-</ol>
-<a id="more"></a>
-<p>注意事项：</p>
-<blockquote>
-<ol>
-<li>密码学的要求是两点：算法编程能力，数学推理能力。</li>
-<li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li>
-<li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>
-参见题目：<br>
-DEF CON CTF Qualifier 2018 SAG?<br>
-DEF CON CTF Qualifier 2018 smcauth<br>
-DEF CON CTF Qualifier 2018 Easy Pisy<br>
-codegate2018 miro</li>
-</ol>
-</blockquote>
-<h2 id="涵盖基本知识">涵盖基本知识</h2>
-<ol>
-<li>常见编码方式<br>
-base家族、Uuencode、Xxencode 等等等等。</li>
-<li>古典密码<br>
-凯撒密码、栅栏密码、维基利亚密码 等等等等。</li>
-<li>分组密码<br>
-DES、AES 等。</li>
-<li>非对称密码<br>
-RSA、Elgamal、ECC等。</li>
-<li>哈希函数<br>
-经常出现在 Web 题目中</li>
-</ol>
-<h2 id="资源推荐">资源推荐</h2>
-<ol>
-<li>学习方式推荐：<br>
-看书+看ctfwiki或者自己找一些blog+做题</li>
-<li>密码学书籍：<br>
-《信息安全数学基础》（各个学校都有自己的版本）<br>
-<a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li>
-<li>密码学学习网站推荐：<br>
-<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>
-（主要是面向ctf解题以及算法编程）</li>
-<li>做题网站：<br>
-<a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br>
-<a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li>
-</ol>
-<h2 id="题目类型">题目类型</h2>
-<table>
-<thead>
-<tr>
-<th>攻击方式</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>唯密文攻击</td>
-<td>只拥有密文</td>
-</tr>
-<tr>
-<td>选择明文攻击</td>
-<td>拥有加密权限，能够对明文加密后获得相应密文</td>
-</tr>
-<tr>
-<td>已知明文攻击</td>
-<td>拥有密文与对应的明文。</td>
-</tr>
-<tr>
-<td>选择密文攻击</td>
-<td>拥有解密权限，能够对密文解密后获得相应明文</td>
-</tr>
-</tbody>
-</table>
-<p>Crypto 方向负责人：ZER0-Nu1L</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
-      <tags>
-        <tag>Studio</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ARP 欺骗的实现和防御</title>
     <url>/2019/10/26/ARP/</url>
     <content><![CDATA[<h1>VMWare 网络基础知识</h1>
@@ -277,6 +178,258 @@ fping指令来扫描当前网段内的所有IP</p>
       </tags>
   </entry>
   <entry>
+    <title>Jupyter server crashed | VSCode + WLS</title>
+    <url>/2020/03/12/VSCode_Jupyter_bug/</url>
+    <content><![CDATA[<h1>情况分析</h1>
+<p>和往常一样，风平浪静☁️的一天，笔者打开 VSCode Remote WSL 之后，打开 Jupyter notebook，按下 <kbd>ctrl</kbd>+ <kbd>Enter</kbd> 运行代码，却得到了以下不寻常的通知和报错：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015261571.png" style="zoom:80%;">
+<center> 图 1</center>
+<p><img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015274950.png" alt></p>
+<center> 图 2</center>
+<a id="more"></a>
+<h1>搜索引擎解决法</h1>
+<p>如果是往常，复制保存信息，扔到 Google 应该很快就能得到解决方案，遗憾的是，笔者这个奇葩罕见的 VSCode 的用法，注定了不能直接得到解决的方案。<br>
+VSCode GitHub 相关的 issue 看遍了，google 的基本看遍了、百度的可以看遍了，并没有可以直接的解决它的方法。😭</p>
+<h1>重新分析</h1>
+<h2 id="反思">反思</h2>
+<p>仔细看报错信息！！每个人的情况各异，搜索引擎不可能涵盖所有情况，你已经是个成熟的萌新了🌟 。<br>
+作为程序员，搜索引擎只是辅助手段，仅仅是收集信息中的一种手段。</p>
+<h2 id="波利亚解题法的启发">波利亚解题法的启发</h2>
+<blockquote>
+<p>参考自 <a href="https://www.jianshu.com/p/b55ec8de5968" target="_blank" rel="noopener">波利亚四步解题法</a></p>
+<p>波利亚的《怎样解题：数学思维的新方法》（How to Solve it: A New Aspect  of Mathematical Method)<br>
+1、彻底理解问题：为了确保真正理解问题，你最好把问题用自已的话换成各种形式反复重新表达，但另忘了指出问题的主干：要求解的是什么？已知什么？要满足哪些条件？但凡能画图，一定要画出来。<br>
+2、形成解题思路：要专注，用过往经验，已撑握的知识，并调整适用性来形成思路。如果不行，就改变这个问题的各个组件：已知、未知、条件，先构造简单一点的，引入辅助，条件是否用足，甚至改变求解的未知数，看能否找到解题线索？直到找到与之相似而你又解决过的问题。<br>
+3、执行：一要有耐心，二需要及时的检查每一步，可凭直觉或证明（两个都有用，但是两回事），要问自已每一步都检查了吗？能看出来这一步是对的吗？能证明这一步是对的吗？<br>
+4、总结：巩固与提升的关键，多想想，再论证，尝试另外的解法，找更明快简捷的方法，还要问，这次的解法还能用在什么地方？总结是最好的启法时刻。</p>
+</blockquote>
+<p>⭐️ 那我也简述一下自己一直以来的经验：</p>
+<ol>
+<li>遇到问题(bug)，要先尽可能收集信息，找出发生错误的各种可能的原因；</li>
+<li>把可能的原因序列，根据优先级排序，然后逐个尝试；</li>
+<li>总结归纳；</li>
+</ol>
+<h2 id="收集信息">收集信息</h2>
+<h3 id="信息一">信息一</h3>
+<p>运行时的报错信息：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204521370.png" alt="image-20200312204521370" style="zoom:80%;">
+<p>仔细看报错信息，…/extensions/ms-python.python-2020.2.64367/…<br>
+应该是一个 ID 为 <code>ms-python.python</code> 的扩展<br>
+ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展的信息中发现 Python 拓展 的 Extension-id 确实是 ms-python python</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204442296.png" alt="image-20200312204442296" style="zoom:50%;">
+<h3 id="信息二">信息二</h3>
+<p>一个月前这个插件还是能正常使用的，为什么这次就不行了？<br>
+可能的原因：</p>
+<ol>
+<li>本次开启的方式和期间有更改一些东西，后台有运行其他的什么等等</li>
+<li>版本不兼容问题（这个版本的）</li>
+</ol>
+<p>原因 1 探索的代价高、难度大，但是解决之后能始终使用最新的版本；<br>
+原因 2 操作简单，能够迅速应对现在的情景，并且我个人使用 WSL 对 Python 的插件的要求不高，更新也不太需要。</p>
+<h2 id="尝试">尝试</h2>
+<p>先尝试版本回退。</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image003.png" style="zoom:80%;">
+<p>很幸运的是，回退到一个月前的之后，Jupyter notebook 可以正常使用了。</p>
+<p>至于探索原因…… 综合考虑种种因素，不去触碰啦~（其实是大失败了）</p>
+<h2 id="后续">后续</h2>
+<p>为了防止 Python 扩展再次更新，取消 WSL 下的扩展的自动更新。<br>
+可以看到 defaultSettign.json （只读文件）中默认是自动更新的。</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image004.png" style="zoom: 50%;">
+<p>我们可以在设置中关闭它：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201607696.png" alt="image-20200312201607696" style="zoom: 50%;">
+<p>或者在 <code>setting.json</code> 中添加一条 <code>“extensions.autoUpdate”: false</code></p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201631390.png" alt="image-20200312201631390" style="zoom:67%;">
+<blockquote>
+<p>也许你会奇怪为什么 setting.json 中只有这么一点设置，而设置里面可以找到很多。<br>
+这是因为设置中的默认部分在 settign.json 里面不需要补充，只有用户需要额外添加的设置需要写在 setting.json 里面。</p>
+</blockquote>
+<blockquote>
+<p>最后感谢让我发现自己轻视 VSCode 扩展自动更新问题的 <code>syj</code> 😘</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Development</category>
+        <category>bug</category>
+      </categories>
+      <tags>
+        <tag>VSCode</tag>
+        <tag>Error</tag>
+        <tag>IDE</tag>
+        <tag>WSL</tag>
+        <tag>Jupyter notebook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>招新：Crypto方向介绍</title>
+    <url>/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h1>Crypto 方向基础</h1>
+<h2 id="入门基础">入门基础:</h2>
+<ol>
+<li>C语言<br>
+// 很多代码审计都是以 C语言形式呈现</li>
+<li>Python3:
+<ol>
+<li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li>
+<li>gmpy2库、Crypto库的使用</li>
+</ol>
+</li>
+<li><strong>数学基础</strong> (重中之重)<br>
+可以参考《信息安全数学基础》（初等数论、近世代数）</li>
+<li>linux的常见使用<br>
+基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>
+其余的遇到问题看需要再去学。</li>
+</ol>
+<a id="more"></a>
+<p>注意事项：</p>
+<blockquote>
+<ol>
+<li>密码学的要求是两点：算法编程能力，数学推理能力。</li>
+<li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li>
+<li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>
+参见题目：<br>
+DEF CON CTF Qualifier 2018 SAG?<br>
+DEF CON CTF Qualifier 2018 smcauth<br>
+DEF CON CTF Qualifier 2018 Easy Pisy<br>
+codegate2018 miro</li>
+</ol>
+</blockquote>
+<h2 id="涵盖基本知识">涵盖基本知识</h2>
+<ol>
+<li>常见编码方式<br>
+base家族、Uuencode、Xxencode 等等等等。</li>
+<li>古典密码<br>
+凯撒密码、栅栏密码、维基利亚密码 等等等等。</li>
+<li>分组密码<br>
+DES、AES 等。</li>
+<li>非对称密码<br>
+RSA、Elgamal、ECC等。</li>
+<li>哈希函数<br>
+经常出现在 Web 题目中</li>
+</ol>
+<h2 id="资源推荐">资源推荐</h2>
+<ol>
+<li>学习方式推荐：<br>
+看书+看ctfwiki或者自己找一些blog+做题</li>
+<li>密码学书籍：<br>
+《信息安全数学基础》（各个学校都有自己的版本）<br>
+<a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li>
+<li>密码学学习网站推荐：<br>
+<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>
+（主要是面向ctf解题以及算法编程）</li>
+<li>做题网站：<br>
+<a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br>
+<a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li>
+</ol>
+<h2 id="题目类型">题目类型</h2>
+<table>
+<thead>
+<tr>
+<th>攻击方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>唯密文攻击</td>
+<td>只拥有密文</td>
+</tr>
+<tr>
+<td>选择明文攻击</td>
+<td>拥有加密权限，能够对明文加密后获得相应密文</td>
+</tr>
+<tr>
+<td>已知明文攻击</td>
+<td>拥有密文与对应的明文。</td>
+</tr>
+<tr>
+<td>选择密文攻击</td>
+<td>拥有解密权限，能够对密文解密后获得相应明文</td>
+</tr>
+</tbody>
+</table>
+<p>Crypto 方向负责人：ZER0-Nu1L</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
+      <tags>
+        <tag>Studio</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SDN-DDoS Question &amp; Consult</title>
+    <url>/2019/12/08/SDN-DDoS/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">输入密码，查看文章</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="b30ac1cb228034968461e17cabfeb285dc6c695eb6cc7adcc0d7260fcfb95030">c54ef91cce081c6f61e5353cd8bb7033a3a4a4b1fe8abe1b1454f387adbd37348102c6722f4de38abc5e5e7d11e33fb607922e0136851a98202d2c2b9a9b8a4ae5c7908e0d2ec37060e38f7f1217d5781d9f66f930a254506f89c0f90a17be7355fcf26b1e8c3609d466f7df9a2969c9d58a0c3380e6d3e8f87b9ab586c999d4880bd42265233c6cd8b2a026ab3781e30f807c895d127e9b393a71022ac14285953ef63e9348dd40f36d88037e6c2c1b4862924b06f35195f1b51a3333d6e1c318404e0f6a5cd03135e6670161381323c586d2bc95f98afab5350fcaac50ba1d28016418ec73854a93c9a7b43efad3fa49f27aef618045463187c6cfa6e5fbd216b104cccfbc70be79d441c6a30b686c77d4acc3277520686733121015b7a7d429c55004a668dde07877d6676594439fc0feaa056b824d3e9df8708d9e598c8171b72a7d583731487787f192d3e2813be84291edee4e40b939a3deca89df3e6c43e43467d11750e6be778426bd899efce463b6660acba0f23f4567ef5640f3e41acdf17b11fdd72690a36153955ddc7369dc9b119186315ade21e07c9a63dc905e02247821f94e7d394460c3ec13ccfe1a191d13bc72925bc810dccbe3ee6da4a47616127a1b76d0b9ac9893203a47262424cc8a505a796edf640611141d82f22208e6533c28b7bef743ab0b33d93ed6f1b250189961623f73b1658c267c945bf516c339d4fb6576e6da22bf5a66cf4f1b2d11def69cd85376ccef41b6c34b2a27f493f4ad96a3c181c2fb214def70847082241e7b29dd146b88a262388ffa8199092053ecabab51abe6a2d2cfdc893e6221970f4bad1717d1dae9350ea8f001ee90196264136e76dcbe5213d0d0727ddf47407381f0a4f2c1b52650802db59ad035cb3e9648f8350ff4a87bb797f7909ef4a272fcdd243e35f331a0850764ae63352a2be25143468e15781804f84895824bb37858f4a5d14dc8a98fbb3b2687389e64d8ccefc53d2f84e840392c317bee20f4a5a8f5aac2ed65f0d7acf9ffce370ed55c45739de2e608ef72fbbf64d0a7048fabb59b52441c5d2383e8caf60d18b1134a54657c6592f681743f71d0115e6e00c620358065f59e3b61ebcd5823922239522ac56793eb15fa38c35c5fded0eef718a786372636fd57dbe20f6ae88696da0d8f49dc91cbfe65f98c367ede1d5b3c3e6b5b9253a39666c2aa1a141fd286e73760157eb2342ed82833732266de9d25410a6ee48f62ba4306793a5e350cc01a90b11ea7a4e40674d836380cdb4d9a10d455950610f814c77d92d3a03119ca2a249f42b2d47f2fc6d429865477061e0818a19322dfff648f5ed3b0cb33d34439e8302112a2e2e1ca129288ac9b145f79c4259e8fdb80d992f4df477629d21d5812b63969ad8bab195ebb976c3e56cb1ae3c7d398e134c93d327554ac4a9628290ea233b2f905b9c9f4aa2885ac0dee51100074bcc316e796729bf6beece69430b1e6160f6aa145d7f5f110960bb34648f96574161ad5af5ed5aa4bf8cc6fa8fc2980ed6d1dc6aaaf79d2295c80b0bc82dab1bff490026bf57467fafa314b378195ad3b9647793f2208fd1cdf4dcd51d7bde2e6e66cd27b0ff1af3c8536fecf6c97478e1c6d9dfb91f57d70cad375cbe9e62014dba0c77ddfde51a50192f6d9960dc929cbb9b72898a6a03af5039648f5b2d634e38be750f73e9e874cc99025961b0aa2e01f803beecfbb99139f2e154af46f55f6d55d56ccb22a02790ba1f38afb3e5e449dac9217c069bb5976bda7f4eb01ed7374cf079f20b0f712fdd02c71d5d277015a4edbfbc35a254ab18eaf28e11e04f6f22919df14c72d7f0922ad9c32adbb0a74774fca62758f34938a3789e9b50d5e1c49b3d5c45d8c1bba059ddf49965184a19e0fd2ade1887b185ab106fb704c2eef66551d5c31a54af2a8053f60c7a8f43b9c075e3ad5f4b49a54163b3648a509c56a23307a31b5825a8f53beca1a802edff82f6bf5db5600a55183852b2e902ef8176088e0e4bf6c350d5d6b665b6b6132bcacbaeb5ea73179e8d617982a61f950b2f111213965ea7f0c9a371896bd910b9ca69e38582fc2f4d97daab86a82c3da43e46810a38ee846e0f93194d1cef88bca748c44dcc05c2882ef643012a4fffac2c1c87e5a084a7abd90235ef204f612eb7058eb531d4e8485302e3d8c545c5f8d382194d32d999f85c5943a310efedcf24450f9a6276cfac111eaadd496411115e51278518b1cc8d756354074b16547c2fee612e45d5446a2ce89d1a963d2018df3996a3eb2831a6a3d20bd727ac5a7eac9453781d3084f7639ebe6bd6cfe0682d65283d49e5972350178c6c370ec9819d222c62e1bcf0e0c2e57c48052f9a34a0dad4d6c11d2ce4b8db32276503455c60dec21ca51ec59cc67c07b08ec90d016b4687b20575f1141521dbfb15a703caaacf26d911b07961440cc59463b734246dc1b3940c992d5031817c8cba48430392b817600e3f49d6187e1e02aa9daec1290059b2c6a1dbfa077b5054433e2e84a516f86cab562de6b810a5a48a264e1237f5658ca620f72d951f9571c51f0eab6e9154eaf4473554b5dd603342c5c709da69bacda7ae49403913824633ce1fd830a4990006a1e921d1d26f1e5cf47a03efa61bf640bbf8bd71b72f0e50512ce6264b07b7326d3df09b028759d9826fabb35222800dd0d478446ce4a8fd105f2606056aeca7c32a8dcd4d9b2ae1fe436c7e65227f0ab27ad0df4d5722e9a0a997ca248092d5442921f1f79e32dd0540e75331736624cf691c394ee37244c1c51defecfd64614b6d88ab15a585dc56f9877fe9452afe3561810a25aa20faf154c730077f32b3bdbebf1295a3a8e7e1dfd11c88dd048bc832e26fcf883bdc24034f3c1104032c84d77e4631b7ccb84a446bba8d828e9e44cd759740a098965022ed82bf73caf4a3c4d9de551036ad829e425349543294990a21b538608abde83fe1f8151a9200dc7aa1cbf2bbd4206d911b2e65f5b5df092a858f9c2388df2a786db08e7416ab13cd10432b9704de4cc3d2d183f593c470c57e4e23d260dc2f35194e4279537d1ce22666e7f717d85563c2cca19e0b089058c301367b01bd7ed688ca03d8c8956856b9545e1dc02f1c785b3651f3daddf10d1e0ba9641480b15622bde939be92780629836fce24e788204ef15c128fc30940b66e515ca0bc2f8727d14abb69623f7c2d7100374d8505239a98561eabf3c4b7e2dc3245d28ac32494e1dbae83a8be749a75af43d2c8945e1372ef00a183f521ea85405d69be49d1bd280e658912c61455535bc0381d849ebf6ad90907c0bb4bb10816a5177c49bf42baa7a11ed76745e5139575c76b2ff77c82c11f9fac429d5ff1c18fc3281cb2c085172b24d7395cbe420db8ee00768af06f45347f06b5e4295a2afd6659fcae2bc6ec80ab16c22448c8b4b93a8019326843267aac4488c2ada5b9fdab517bfe3d0f915370f41e4400733d6672a27b2f9185efd5bc779fddd4699d4b11d05f774b5c3b9a172cc9d7f718fe03ea9fd455503302b39ce3a5869f9e5bce7085614c9eea21ceeffd0f05f120f05b069dc5bf983e9f77b11ecb6d687dd9aebe9cd9f8bc52c3e5e8f988ab2c24afbf76997cf9167fb6aeddced428d1bf66ebdccc6f79d2a022e9228d7a79885712ef6785a5ef7556527a3be95abf1a99e8d5142c0736d9ca16996896797aaf8d10198527e12fb35608d5e4c747bbd3352e38179960f7b28a5c45f3b539633e76173f69fc0389853f883ec32243a1cf3af8164db63e37761ade068ebe604fe7e49663dd21340f0eeafecfe420727b819211cb8697f4922f99a3db4a348ef7335cea29f13f37cbe334613c84b521420ea2cff12050747cf2a433bb2fbe03c1a22674450689ff4855cbda0e2dd3a435c03dd92cba1b1bf7d09c6bce503ed3ffce6e9ec69ff1bb92e5bedd6c3c3cd41b17e17962a32d52edc9afa817b2042c08c13632433046ea620984e65ea6b4aa2f4fac5d220438600601bfcf2146c1bd941966030267eede66a3ed3d292038c11f6d55c01a8fd38392c3a0fb829df06cc036d6362137671e3be7d2010f720dda9a7f61cd3d4555cb57a3d42d44db6031f847577f9f00e460ee1a74e3f03b15910caa96d8bbbefea71f5656712bbef5a3494717391dcd53dfff3e79e42cac639671b36b13a7178d00fa0c7aabb97631edc63b5383ddb643bdf662363e1e3b3b34d0ae7518582e19824a29a2abbf01b6ae8709e662879a662f3915cd2bd33080d85cdb4514eb3fca8ade71c36341e1704851a2d4d16f6d617b414b5215eed94d40040e0ed89ae7ce8ae59a75ea6706bb095f886ca57a52a9378f0a95d315c08f05072757ec73035f1e3e0ce50153f283aef637fa7a4bea40ddc7f9de2f487136b96a4325252eacea0b58fd9840e77a940145492514c8b5a8247cec716a4503286efbdac7c96a5e1eb2fad07a81b97add0e3bff3f95ba572961978a29362526cc0bc3fd714211503f700fc6d540ae856b13c4c039e2f5e0bc56df067985c0ea4c91a09645433ccfd55d1415bd56bc0ea928b36976d47a0ef0f9ab033fedfe732559f4eb47daf5b269a50d75f7d038371379da0743427f20a3ba519fabf6351f4cf5c0a6b83e077372c1d06e282ad801e2e76cf7130f0eb6ff6a0e12bf9f9d6ddbc2037b815d4aadc0789d30600077090e4f3bc400fafa00d86915e5f98a707504e19bee0c30676f90c5c2c40e2df6ab443f8e3cc0d604eba58da9b0cd3b01fd5e7b1966a8c5b2ecbbbba75eb37cf87743f3a0c268a7340dd7794db21347b2a6e6a96297da261624b24aec1ec38eecb2d233b26fc84b96ce0b3b4f403c6770007af51c0d5517ae602aa27e289bea4f0f592bf6a9587ccd1678623efe4284c1ac1e53f7a3487f3a89196f4466ad206c00ff4f389ad5e690cda1426f9e9035abad284fdc09c351fe61060adf0d4964c33d98f0db4e2466daaf88889b40d3597a5e1a146c2ea8661e1b1289a97766691152e4386a11e4d33e08174a3783b36b11712ed90532de6811ba8610942e184d28cbbdf83a9b15193d6f62ab20147b70cd48e4cf536be08d0ec1e353194b36a198ef3a0d2c2dd96be49140a7cbf4579717674ecf2f58c5fbd3db29a71c54b24ef135760ebf29937353846102d72de55e1c1d3b547c423f36429d1853e288ce99b8491c6d84720e44a7743f09efd5ec84bfe39c00cbfa319804da6b33ae00ec67e8b308b153a4cb996d85f9a523e7b5d2572c3cb180bbd16ebd60cca2991934b008a139228510da564064c7d41522677e660a0e138f01734bcebacbe6cbda89cd443a72c9778ce57d70817a3fc0049451cb3f1d48b2bd0ae175c2cf2e5bb49151a2d5a85f477bad67acd05e27cfc81c125287e0f551b42a3d4c236f200ccaa7b0f76854f0dc0b24536c013f3dc54e2913b8aab875392ad195f26a71fc8007be5b1a7bc9793f286d0e1a53f02dfdb6565245027898dd1e48c67042aabd2f437de5892a739b5c3759f797609589972d12db9f04ba926ed1a1906f88c79382db3696f37e6b7255aa59bdfde5948c1998d6a2c5936198fba77093a6d84cea5cf847474c490f1ed007c706b8bdb803690046086e5e432bb47be122e5395a921d678558e3a40333613964b4ce9884da06cd43e9f7e6ae9eaa3617728a332a5aa4392ca0c02e1691c74</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>Web</category>
+        <category>SDN</category>
+        <category>DDoS</category>
+      </categories>
+      <tags>
+        <tag>DDoS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>libnum-error</title>
+    <url>/2020/02/05/libnum-error/</url>
+    <content><![CDATA[<p>由于之前清理空间的时候不慎将 WSL 的配置文件也误删掉了，所以慌忙还原 WSL 当初的配置，对于一些 Python 库的安装大多用 <code>pip</code> 的命令，直接安装，通过 <code>import ...</code> 的方式做一个简单的检查。但是前段时间在使用 <code>libnum</code> 的时候遇到了 <code>AttributeError: 'str' object has no attribute 'hex'</code> 的报错。</p>
+<p>网络上并没有这么针对性的博客来排除这个 <code>AttributeError</code>，也几乎没有讲过用 <code>pip</code> 命令其实也可以安装 <code>libnum</code>。</p>
+<p>所以这篇文章就讲解 <code>libnum</code> 两种不同的安装方法，以及为什么会出现和如何解决 <code>libnum</code> 下的 <code>AttributeError</code></p>
+<a id="more"></a>
+<h1>python libnum库安装使用方法</h1>
+<p>方法1：<br>
+在 Python 2.7 的环境下安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hellman/libnum</span><br><span class="line"><span class="built_in">cd</span> libnum</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+<p>方法2：<br>
+在 Python 3 环境下安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install libnum</span><br></pre></td></tr></table></figure>
+<h1>Python2 for libnum</h1>
+<p>这里做下解释，如果搜索 “ python libnum 库安装 ”的文章，一般都只会告诉你第一种方法。</p>
+<p>这是因为在很长一段时间，<code>libnum</code> 都只支持 Python2，在它的开源库中我们也可以看到：“Requirements: python2.7”</p>
+<img src="/2020/02/05/libnum-error/libnum-error.png" width="500">
+<p>甚至在 2018 年 12 月还有人 issue 是否支持 Python3：</p>
+<img src="/2020/02/05/libnum-error/libum2-3.png" width="500">
+<p>很多写 <code>libnum</code> 安装教程的博客也多半是在 2018 年12月前写的。</p>
+<h1>Python3 for libnum</h1>
+<p>然而！！！在 2019 年 3 月的时候有人回复了这个 issue，已经实现支持 Python3 的libnum。</p>
+<img src="/2020/02/05/libnum-error/libnum3.png" width="500">
+<p>其地址是：<a href="https://github.com/JafarAkhondali/python3-libnum" target="_blank" rel="noopener">https://github.com/JafarAkhondali/python3-libnum</a></p>
+<p>同时我们可以查到在 <code>https://pypi.org/</code> 中查到 <a href="http://project/libnum/" target="_blank" rel="noopener"><code>libnum 1.6.0</code></a></p>
+<img src="/2020/02/05/libnum-error/PyPI.png" width="500">
+<p>此时可以用 <code>pip install libnum</code> 的方式安装 <code>libnum</code>，但需要注意的是，这里的 <code>pip install libnum</code> 对应的是 只支持 Python3 的 <code>libnum</code>。</p>
+<h1>AttributeError: ‘str’ object has no attribute ‘hex’</h1>
+<h2 id="报错原因分析">报错原因分析</h2>
+<p>出现这个错误的原因是 python3 中只有 unicode str，所以把 decode 方法去掉了，所以 “str’ object has no attribute 'hex”。</p>
+<blockquote>
+<p>比较抱歉，没有截图，只是文字描述。</p>
+</blockquote>
+<p>我们仔细看报错的信息，稍作分析就发现，运行过程中是遇到 <code>encode('hex')</code> 之类的方法的时候报错的。说明错误是用 Python3 的解释器去解释 Python2 的代码 或者其他等价的情况发生的。</p>
+<p>很可能是因为我 当初+后来 同时使用 <code>pip install libnum</code> 和 <code>python setup.py install</code> 的方法安装库，所以导致解释器解释代码的时候产生冲突。</p>
+<h2 id="问题解决">问题解决</h2>
+<p>笔者并不精通 Python2 和 Python3 的兼容问题。<br>
+只是单纯在 Python2 下使用这些库（毕竟 Python3 的环境是部署在 Windows下的，WSL 只是由于特殊情况也安装了Python3），所以采用 <code>pip uninstall libnum</code> 的方法卸载了支持 Python3 的<code>libnum</code>库。</p>
+<p>之后代码解释正常，也得到了 flag, hhh。</p>
+<img src="/2020/02/05/libnum-error/flag.png" width="300">]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
+        <tag>Crypto</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>OpenSSL</title>
     <url>/2019/09/29/OpenSSL/</url>
     <content><![CDATA[<h1>openssl 简介</h1>
@@ -371,159 +524,6 @@ openssl还包含了公钥私钥的生成、摘要生成等各种工具。</p>
       </categories>
       <tags>
         <tag>Crypto</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SDN-DDoS Question &amp; Consult</title>
-    <url>/2019/12/08/SDN-DDoS/</url>
-    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder="" />
-    <label for="hbePass">输入密码，查看文章</label>
-    <div class="bottom-line"></div>
-  </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="b30ac1cb228034968461e17cabfeb285dc6c695eb6cc7adcc0d7260fcfb95030">c54ef91cce081c6f61e5353cd8bb7033a3a4a4b1fe8abe1b1454f387adbd37348102c6722f4de38abc5e5e7d11e33fb607922e0136851a98202d2c2b9a9b8a4ae5c7908e0d2ec37060e38f7f1217d5781d9f66f930a254506f89c0f90a17be7355fcf26b1e8c3609d466f7df9a2969c9d58a0c3380e6d3e8f87b9ab586c999d4880bd42265233c6cd8b2a026ab3781e30f807c895d127e9b393a71022ac14285953ef63e9348dd40f36d88037e6c2c1b4862924b06f35195f1b51a3333d6e1c318404e0f6a5cd03135e6670161381323c586d2bc95f98afab5350fcaac50ba1d28016418ec73854a93c9a7b43efad3fa49f27aef618045463187c6cfa6e5fbd216b104cccfbc70be79d441c6a30b686c77d4acc3277520686733121015b7a7d429c55004a668dde07877d6676594439fc0feaa056b824d3e9df8708d9e598c8171b72a7d583731487787f192d3e2813be84291edee4e40b939a3deca89df3e6c43e43467d11750e6be778426bd899efce463b6660acba0f23f4567ef5640f3e41acdf17b11fdd72690a36153955ddc7369dc9b119186315ade21e07c9a63dc905e02247821f94e7d394460c3ec13ccfe1a191d13bc72925bc810dccbe3ee6da4a47616127a1b76d0b9ac9893203a47262424cc8a505a796edf640611141d82f22208e6533c28b7bef743ab0b33d93ed6f1b250189961623f73b1658c267c945bf516c339d4fb6576e6da22bf5a66cf4f1b2d11def69cd85376ccef41b6c34b2a27f493f4ad96a3c181c2fb214def70847082241e7b29dd146b88a262388ffa8199092053ecabab51abe6a2d2cfdc893e6221970f4bad1717d1dae9350ea8f001ee90196264136e76dcbe5213d0d0727ddf47407381f0a4f2c1b52650802db59ad035cb3e9648f8350ff4a87bb797f7909ef4a272fcdd243e35f331a0850764ae63352a2be25143468e15781804f84895824bb37858f4a5d14dc8a98fbb3b2687389e64d8ccefc53d2f84e840392c317bee20f4a5a8f5aac2ed65f0d7acf9ffce370ed55c45739de2e608ef72fbbf64d0a7048fabb59b52441c5d2383e8caf60d18b1134a54657c6592f681743f71d0115e6e00c620358065f59e3b61ebcd5823922239522ac56793eb15fa38c35c5fded0eef718a786372636fd57dbe20f6ae88696da0d8f49dc91cbfe65f98c367ede1d5b3c3e6b5b9253a39666c2aa1a141fd286e73760157eb2342ed82833732266de9d25410a6ee48f62ba4306793a5e350cc01a90b11ea7a4e40674d836380cdb4d9a10d455950610f814c77d92d3a03119ca2a249f42b2d47f2fc6d429865477061e0818a19322dfff648f5ed3b0cb33d34439e8302112a2e2e1ca129288ac9b145f79c4259e8fdb80d992f4df477629d21d5812b63969ad8bab195ebb976c3e56cb1ae3c7d398e134c93d327554ac4a9628290ea233b2f905b9c9f4aa2885ac0dee51100074bcc316e796729bf6beece69430b1e6160f6aa145d7f5f110960bb34648f96574161ad5af5ed5aa4bf8cc6fa8fc2980ed6d1dc6aaaf79d2295c80b0bc82dab1bff490026bf57467fafa314b378195ad3b9647793f2208fd1cdf4dcd51d7bde2e6e66cd27b0ff1af3c8536fecf6c97478e1c6d9dfb91f57d70cad375cbe9e62014dba0c77ddfde51a50192f6d9960dc929cbb9b72898a6a03af5039648f5b2d634e38be750f73e9e874cc99025961b0aa2e01f803beecfbb99139f2e154af46f55f6d55d56ccb22a02790ba1f38afb3e5e449dac9217c069bb5976bda7f4eb01ed7374cf079f20b0f712fdd02c71d5d277015a4edbfbc35a254ab18eaf28e11e04f6f22919df14c72d7f0922ad9c32adbb0a74774fca62758f34938a3789e9b50d5e1c49b3d5c45d8c1bba059ddf49965184a19e0fd2ade1887b185ab106fb704c2eef66551d5c31a54af2a8053f60c7a8f43b9c075e3ad5f4b49a54163b3648a509c56a23307a31b5825a8f53beca1a802edff82f6bf5db5600a55183852b2e902ef8176088e0e4bf6c350d5d6b665b6b6132bcacbaeb5ea73179e8d617982a61f950b2f111213965ea7f0c9a371896bd910b9ca69e38582fc2f4d97daab86a82c3da43e46810a38ee846e0f93194d1cef88bca748c44dcc05c2882ef643012a4fffac2c1c87e5a084a7abd90235ef204f612eb7058eb531d4e8485302e3d8c545c5f8d382194d32d999f85c5943a310efedcf24450f9a6276cfac111eaadd496411115e51278518b1cc8d756354074b16547c2fee612e45d5446a2ce89d1a963d2018df3996a3eb2831a6a3d20bd727ac5a7eac9453781d3084f7639ebe6bd6cfe0682d65283d49e5972350178c6c370ec9819d222c62e1bcf0e0c2e57c48052f9a34a0dad4d6c11d2ce4b8db32276503455c60dec21ca51ec59cc67c07b08ec90d016b4687b20575f1141521dbfb15a703caaacf26d911b07961440cc59463b734246dc1b3940c992d5031817c8cba48430392b817600e3f49d6187e1e02aa9daec1290059b2c6a1dbfa077b5054433e2e84a516f86cab562de6b810a5a48a264e1237f5658ca620f72d951f9571c51f0eab6e9154eaf4473554b5dd603342c5c709da69bacda7ae49403913824633ce1fd830a4990006a1e921d1d26f1e5cf47a03efa61bf640bbf8bd71b72f0e50512ce6264b07b7326d3df09b028759d9826fabb35222800dd0d478446ce4a8fd105f2606056aeca7c32a8dcd4d9b2ae1fe436c7e65227f0ab27ad0df4d5722e9a0a997ca248092d5442921f1f79e32dd0540e75331736624cf691c394ee37244c1c51defecfd64614b6d88ab15a585dc56f9877fe9452afe3561810a25aa20faf154c730077f32b3bdbebf1295a3a8e7e1dfd11c88dd048bc832e26fcf883bdc24034f3c1104032c84d77e4631b7ccb84a446bba8d828e9e44cd759740a098965022ed82bf73caf4a3c4d9de551036ad829e425349543294990a21b538608abde83fe1f8151a9200dc7aa1cbf2bbd4206d911b2e65f5b5df092a858f9c2388df2a786db08e7416ab13cd10432b9704de4cc3d2d183f593c470c57e4e23d260dc2f35194e4279537d1ce22666e7f717d85563c2cca19e0b089058c301367b01bd7ed688ca03d8c8956856b9545e1dc02f1c785b3651f3daddf10d1e0ba9641480b15622bde939be92780629836fce24e788204ef15c128fc30940b66e515ca0bc2f8727d14abb69623f7c2d7100374d8505239a98561eabf3c4b7e2dc3245d28ac32494e1dbae83a8be749a75af43d2c8945e1372ef00a183f521ea85405d69be49d1bd280e658912c61455535bc0381d849ebf6ad90907c0bb4bb10816a5177c49bf42baa7a11ed76745e5139575c76b2ff77c82c11f9fac429d5ff1c18fc3281cb2c085172b24d7395cbe420db8ee00768af06f45347f06b5e4295a2afd6659fcae2bc6ec80ab16c22448c8b4b93a8019326843267aac4488c2ada5b9fdab517bfe3d0f915370f41e4400733d6672a27b2f9185efd5bc779fddd4699d4b11d05f774b5c3b9a172cc9d7f718fe03ea9fd455503302b39ce3a5869f9e5bce7085614c9eea21ceeffd0f05f120f05b069dc5bf983e9f77b11ecb6d687dd9aebe9cd9f8bc52c3e5e8f988ab2c24afbf76997cf9167fb6aeddced428d1bf66ebdccc6f79d2a022e9228d7a79885712ef6785a5ef7556527a3be95abf1a99e8d5142c0736d9ca16996896797aaf8d10198527e12fb35608d5e4c747bbd3352e38179960f7b28a5c45f3b539633e76173f69fc0389853f883ec32243a1cf3af8164db63e37761ade068ebe604fe7e49663dd21340f0eeafecfe420727b819211cb8697f4922f99a3db4a348ef7335cea29f13f37cbe334613c84b521420ea2cff12050747cf2a433bb2fbe03c1a22674450689ff4855cbda0e2dd3a435c03dd92cba1b1bf7d09c6bce503ed3ffce6e9ec69ff1bb92e5bedd6c3c3cd41b17e17962a32d52edc9afa817b2042c08c13632433046ea620984e65ea6b4aa2f4fac5d220438600601bfcf2146c1bd941966030267eede66a3ed3d292038c11f6d55c01a8fd38392c3a0fb829df06cc036d6362137671e3be7d2010f720dda9a7f61cd3d4555cb57a3d42d44db6031f847577f9f00e460ee1a74e3f03b15910caa96d8bbbefea71f5656712bbef5a3494717391dcd53dfff3e79e42cac639671b36b13a7178d00fa0c7aabb97631edc63b5383ddb643bdf662363e1e3b3b34d0ae7518582e19824a29a2abbf01b6ae8709e662879a662f3915cd2bd33080d85cdb4514eb3fca8ade71c36341e1704851a2d4d16f6d617b414b5215eed94d40040e0ed89ae7ce8ae59a75ea6706bb095f886ca57a52a9378f0a95d315c08f05072757ec73035f1e3e0ce50153f283aef637fa7a4bea40ddc7f9de2f487136b96a4325252eacea0b58fd9840e77a940145492514c8b5a8247cec716a4503286efbdac7c96a5e1eb2fad07a81b97add0e3bff3f95ba572961978a29362526cc0bc3fd714211503f700fc6d540ae856b13c4c039e2f5e0bc56df067985c0ea4c91a09645433ccfd55d1415bd56bc0ea928b36976d47a0ef0f9ab033fedfe732559f4eb47daf5b269a50d75f7d038371379da0743427f20a3ba519fabf6351f4cf5c0a6b83e077372c1d06e282ad801e2e76cf7130f0eb6ff6a0e12bf9f9d6ddbc2037b815d4aadc0789d30600077090e4f3bc400fafa00d86915e5f98a707504e19bee0c30676f90c5c2c40e2df6ab443f8e3cc0d604eba58da9b0cd3b01fd5e7b1966a8c5b2ecbbbba75eb37cf87743f3a0c268a7340dd7794db21347b2a6e6a96297da261624b24aec1ec38eecb2d233b26fc84b96ce0b3b4f403c6770007af51c0d5517ae602aa27e289bea4f0f592bf6a9587ccd1678623efe4284c1ac1e53f7a3487f3a89196f4466ad206c00ff4f389ad5e690cda1426f9e9035abad284fdc09c351fe61060adf0d4964c33d98f0db4e2466daaf88889b40d3597a5e1a146c2ea8661e1b1289a97766691152e4386a11e4d33e08174a3783b36b11712ed90532de6811ba8610942e184d28cbbdf83a9b15193d6f62ab20147b70cd48e4cf536be08d0ec1e353194b36a198ef3a0d2c2dd96be49140a7cbf4579717674ecf2f58c5fbd3db29a71c54b24ef135760ebf29937353846102d72de55e1c1d3b547c423f36429d1853e288ce99b8491c6d84720e44a7743f09efd5ec84bfe39c00cbfa319804da6b33ae00ec67e8b308b153a4cb996d85f9a523e7b5d2572c3cb180bbd16ebd60cca2991934b008a139228510da564064c7d41522677e660a0e138f01734bcebacbe6cbda89cd443a72c9778ce57d70817a3fc0049451cb3f1d48b2bd0ae175c2cf2e5bb49151a2d5a85f477bad67acd05e27cfc81c125287e0f551b42a3d4c236f200ccaa7b0f76854f0dc0b24536c013f3dc54e2913b8aab875392ad195f26a71fc8007be5b1a7bc9793f286d0e1a53f02dfdb6565245027898dd1e48c67042aabd2f437de5892a739b5c3759f797609589972d12db9f04ba926ed1a1906f88c79382db3696f37e6b7255aa59bdfde5948c1998d6a2c5936198fba77093a6d84cea5cf847474c490f1ed007c706b8bdb803690046086e5e432bb47be122e5395a921d678558e3a40333613964b4ce9884da06cd43e9f7e6ae9eaa3617728a332a5aa4392ca0c02e1691c74</script>
-</div>
-<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>Web</category>
-        <category>SDN</category>
-        <category>DDoS</category>
-      </categories>
-      <tags>
-        <tag>DDoS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jupyter server crashed | VSCode + WLS</title>
-    <url>/2020/03/12/VSCode_Jupyter_bug/</url>
-    <content><![CDATA[<h1>情况分析</h1>
-<p>和往常一样，风平浪静☁️的一天，笔者打开 VSCode Remote WSL 之后，打开 Jupyter notebook，按下 <kbd>ctrl</kbd>+ <kbd>Enter</kbd> 运行代码，却得到了以下不寻常的通知和报错：</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015261571.png" style="zoom:80%;">
-<center> 图 1</center>
-<p><img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015274950.png" alt></p>
-<center> 图 2</center>
-<a id="more"></a>
-<h1>搜索引擎解决法</h1>
-<p>如果是往常，复制保存信息，扔到 Google 应该很快就能得到解决方案，遗憾的是，笔者这个奇葩罕见的 VSCode 的用法，注定了不能直接得到解决的方案。<br>
-VSCode GitHub 相关的 issue 看遍了，google 的基本看遍了、百度的可以看遍了，并没有可以直接的解决它的方法。😭</p>
-<h1>重新分析</h1>
-<h2 id="反思">反思</h2>
-<p>仔细看报错信息！！每个人的情况各异，搜索引擎不可能涵盖所有情况，你已经是个成熟的萌新了🌟 。<br>
-作为程序员，搜索引擎只是辅助手段，仅仅是收集信息中的一种手段。</p>
-<h2 id="波利亚解题法的启发">波利亚解题法的启发</h2>
-<blockquote>
-<p>参考自 <a href="https://www.jianshu.com/p/b55ec8de5968" target="_blank" rel="noopener">波利亚四步解题法</a></p>
-<p>波利亚的《怎样解题：数学思维的新方法》（How to Solve it: A New Aspect  of Mathematical Method)<br>
-1、彻底理解问题：为了确保真正理解问题，你最好把问题用自已的话换成各种形式反复重新表达，但另忘了指出问题的主干：要求解的是什么？已知什么？要满足哪些条件？但凡能画图，一定要画出来。<br>
-2、形成解题思路：要专注，用过往经验，已撑握的知识，并调整适用性来形成思路。如果不行，就改变这个问题的各个组件：已知、未知、条件，先构造简单一点的，引入辅助，条件是否用足，甚至改变求解的未知数，看能否找到解题线索？直到找到与之相似而你又解决过的问题。<br>
-3、执行：一要有耐心，二需要及时的检查每一步，可凭直觉或证明（两个都有用，但是两回事），要问自已每一步都检查了吗？能看出来这一步是对的吗？能证明这一步是对的吗？<br>
-4、总结：巩固与提升的关键，多想想，再论证，尝试另外的解法，找更明快简捷的方法，还要问，这次的解法还能用在什么地方？总结是最好的启法时刻。</p>
-</blockquote>
-<p>⭐️ 那我也简述一下自己一直以来的经验：</p>
-<ol>
-<li>遇到问题(bug)，要先尽可能收集信息，找出发生错误的各种可能的原因；</li>
-<li>把可能的原因序列，根据优先级排序，然后逐个尝试；</li>
-<li>总结归纳；</li>
-</ol>
-<h2 id="收集信息">收集信息</h2>
-<h3 id="信息一">信息一</h3>
-<p>运行时的报错信息：</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204521370.png" alt="image-20200312204521370" style="zoom:80%;">
-<p>仔细看报错信息，…/extensions/ms-python.python-2020.2.64367/…<br>
-应该是一个 ID 为 <code>ms-python.python</code> 的扩展<br>
-ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展的信息中发现 Python 拓展 的 Extension-id 确实是 ms-python python</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204442296.png" alt="image-20200312204442296" style="zoom:50%;">
-<h3 id="信息二">信息二</h3>
-<p>一个月前这个插件还是能正常使用的，为什么这次就不行了？<br>
-可能的原因：</p>
-<ol>
-<li>本次开启的方式和期间有更改一些东西，后台有运行其他的什么等等</li>
-<li>版本不兼容问题（这个版本的）</li>
-</ol>
-<p>原因 1 探索的代价高、难度大，但是解决之后能始终使用最新的版本；<br>
-原因 2 操作简单，能够迅速应对现在的情景，并且我个人使用 WSL 对 Python 的插件的要求不高，更新也不太需要。</p>
-<h2 id="尝试">尝试</h2>
-<p>先尝试版本回退。</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image003.png" style="zoom:80%;">
-<p>很幸运的是，回退到一个月前的之后，Jupyter notebook 可以正常使用了。</p>
-<p>至于探索原因…… 综合考虑种种因素，不去触碰啦~（其实是大失败了）</p>
-<h2 id="后续">后续</h2>
-<p>为了防止 Python 扩展再次更新，取消 WSL 下的扩展的自动更新。<br>
-可以看到 defaultSettign.json （只读文件）中默认是自动更新的。</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image004.png" style="zoom: 50%;">
-<p>我们可以在设置中关闭它：</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201607696.png" alt="image-20200312201607696" style="zoom: 50%;">
-<p>或者在 <code>setting.json</code> 中添加一条 <code>“extensions.autoUpdate”: false</code></p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201631390.png" alt="image-20200312201631390" style="zoom:67%;">
-<blockquote>
-<p>也许你会奇怪为什么 setting.json 中只有这么一点设置，而设置里面可以找到很多。<br>
-这是因为设置中的默认部分在 settign.json 里面不需要补充，只有用户需要额外添加的设置需要写在 setting.json 里面。</p>
-</blockquote>
-<blockquote>
-<p>最后感谢让我发现自己轻视 VSCode 扩展自动更新问题的 <code>syj</code> 😘</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Development</category>
-        <category>bug</category>
-      </categories>
-      <tags>
-        <tag>VSCode</tag>
-        <tag>Error</tag>
-        <tag>IDE</tag>
-        <tag>WSL</tag>
-        <tag>Jupyter notebook</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>libnum-error</title>
-    <url>/2020/02/05/libnum-error/</url>
-    <content><![CDATA[<p>由于之前清理空间的时候不慎将 WSL 的配置文件也误删掉了，所以慌忙还原 WSL 当初的配置，对于一些 Python 库的安装大多用 <code>pip</code> 的命令，直接安装，通过 <code>import ...</code> 的方式做一个简单的检查。但是前段时间在使用 <code>libnum</code> 的时候遇到了 <code>AttributeError: 'str' object has no attribute 'hex'</code> 的报错。</p>
-<p>网络上并没有这么针对性的博客来排除这个 <code>AttributeError</code>，也几乎没有讲过用 <code>pip</code> 命令其实也可以安装 <code>libnum</code>。</p>
-<p>所以这篇文章就讲解 <code>libnum</code> 两种不同的安装方法，以及为什么会出现和如何解决 <code>libnum</code> 下的 <code>AttributeError</code></p>
-<a id="more"></a>
-<h1>python libnum库安装使用方法</h1>
-<p>方法1：<br>
-在 Python 2.7 的环境下安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hellman/libnum</span><br><span class="line"><span class="built_in">cd</span> libnum</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
-<p>方法2：<br>
-在 Python 3 环境下安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install libnum</span><br></pre></td></tr></table></figure>
-<h1>Python2 for libnum</h1>
-<p>这里做下解释，如果搜索 “ python libnum 库安装 ”的文章，一般都只会告诉你第一种方法。</p>
-<p>这是因为在很长一段时间，<code>libnum</code> 都只支持 Python2，在它的开源库中我们也可以看到：“Requirements: python2.7”</p>
-<img src="/2020/02/05/libnum-error/libnum-error.png" width="500">
-<p>甚至在 2018 年 12 月还有人 issue 是否支持 Python3：</p>
-<img src="/2020/02/05/libnum-error/libum2-3.png" width="500">
-<p>很多写 <code>libnum</code> 安装教程的博客也多半是在 2018 年12月前写的。</p>
-<h1>Python3 for libnum</h1>
-<p>然而！！！在 2019 年 3 月的时候有人回复了这个 issue，已经实现支持 Python3 的libnum。</p>
-<img src="/2020/02/05/libnum-error/libnum3.png" width="500">
-<p>其地址是：<a href="https://github.com/JafarAkhondali/python3-libnum" target="_blank" rel="noopener">https://github.com/JafarAkhondali/python3-libnum</a></p>
-<p>同时我们可以查到在 <code>https://pypi.org/</code> 中查到 <a href="http://project/libnum/" target="_blank" rel="noopener"><code>libnum 1.6.0</code></a></p>
-<img src="/2020/02/05/libnum-error/PyPI.png" width="500">
-<p>此时可以用 <code>pip install libnum</code> 的方式安装 <code>libnum</code>，但需要注意的是，这里的 <code>pip install libnum</code> 对应的是 只支持 Python3 的 <code>libnum</code>。</p>
-<h1>AttributeError: ‘str’ object has no attribute ‘hex’</h1>
-<h2 id="报错原因分析">报错原因分析</h2>
-<p>出现这个错误的原因是 python3 中只有 unicode str，所以把 decode 方法去掉了，所以 “str’ object has no attribute 'hex”。</p>
-<blockquote>
-<p>比较抱歉，没有截图，只是文字描述。</p>
-</blockquote>
-<p>我们仔细看报错的信息，稍作分析就发现，运行过程中是遇到 <code>encode('hex')</code> 之类的方法的时候报错的。说明错误是用 Python3 的解释器去解释 Python2 的代码 或者其他等价的情况发生的。</p>
-<p>很可能是因为我 当初+后来 同时使用 <code>pip install libnum</code> 和 <code>python setup.py install</code> 的方法安装库，所以导致解释器解释代码的时候产生冲突。</p>
-<h2 id="问题解决">问题解决</h2>
-<p>笔者并不精通 Python2 和 Python3 的兼容问题。<br>
-只是单纯在 Python2 下使用这些库（毕竟 Python3 的环境是部署在 Windows下的，WSL 只是由于特殊情况也安装了Python3），所以采用 <code>pip uninstall libnum</code> 的方法卸载了支持 Python3 的<code>libnum</code>库。</p>
-<p>之后代码解释正常，也得到了 flag, hhh。</p>
-<img src="/2020/02/05/libnum-error/flag.png" width="300">]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
-      <tags>
-        <tag>Crypto</tag>
-        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -1153,173 +1153,6 @@ $\therefore (e, (p-1))=1$</p>
       </categories>
   </entry>
   <entry>
-    <title>2019 年终总结 - 对自己负责</title>
-    <url>/2020/01/25/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<img src="/2020/01/25/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/man-3777108.jpg" width="800">
-<blockquote>
-<p>总是有人以上帝视角对你说，“你现在所经历的，在未来看来根本不算什么。”<br>
-我不喜欢这句话。这一句话本身没有错误，但是却有所偏袒。它偏袒结果。<br>
-我想补充的是：“如果没有现在正在经历的痛苦，未来的痛苦会更加难以承担。”</p>
-<p>己亥年收获很多快乐与幸福之余，也经历了前所未有的失落、失望、绝望。</p>
-<p>庚子年希望能够承担起更多曾经难以想象的苦楚，逐步揭穿生活巨大的隐喻，抬起头，在克莱斯勒《爱的忧伤》的尽头，迎来《爱的欢乐》。</p>
-</blockquote>
-<a id="more"></a>
-<h1>时间维度</h1>
-<h2 id="对过去负责">对过去负责</h2>
-<h3 id="历史观">历史观</h3>
-<p>我以前不是特别喜欢历史，说心底话（而不是以前答卷上写的漂亮话），总感觉它们离自己太远，没有特别大的意义，顶多是多了一些故事用以“以史为鉴”，多了一些风云人物用以“勉励后生”。</p>
-<p>现在想想，那时候的我的历史观其实非常平面化，那个时候理解的历史其实可以切成现在进行时的另一个平行空间。他们有他们的风云人物，他们有他们精彩的故事。是的，我的潜意识断开了他们和现在之间的联系。</p>
-<p>现代社会不是凭空而来的，滚滚而来的历史，它们的价值和意义是难以估量的。</p>
-<p>当然我这样思维的错误也没有那么彻底，中国的近现代史和现代的联系我是能够深刻体悟到的。中国的近代史是我的高中同桌 yyy 最不喜欢这一段屈辱的历史。虽然我也谈不上喜欢，但是它们却是我自己能感受到历史感的一个重要部分，也是能激起我的心灵震荡的一个重要部分。</p>
-<h3 id="个体历史观">个体历史观</h3>
-<p>历史裹挟着滚滚红尘浩浩荡荡地前行，如果一个国家和民族企图切断和历史的联系，把他们当做一个和自己毫无关联的平行时空，那是一件蛮恐怖的事情。</p>
-<p>人也是带着各种各样的羁绊和时光在自己人生留下的印记不断前行，如果否定过去，不能痛彻心扉地反思，也同样恐怖。</p>
-<p>虽然一个个体相比于历史长河，不过沧海一粟，但对于我这样很关注“自我”的凡夫俗子，十分重视这样的“个体历史观”。（可以理解为人生观的一部分）</p>
-<h3 id="2019-我的爱情史">2019 我的爱情史</h3>
-<blockquote>
-<p>人总是踏入同一条河流。<br>
-——吴人问津<br>
-我们在自己所有的细节中都无意识地将自己的曾经错误“贯彻”到底。<br>
-和自己的周边所有人的交流方式、在人群中的表现等等都总是犯着本质上完全相同的错误。<br>
-以不同的表现形式，在不同的时期，尽是这般绝望地相似。</p>
-<p>所以我们需要一日复一日地戳痛身上、心上的曾经的伤疤，一日复一日地自我沉思，一日复一日地坚定信念和自我革命。</p>
-<p>人生没有存档服务，没有入栈保存的结点，没有版本控制器，没有快照。<br>
-有的只是掩面痛哭和一往直前。</p>
-<p>以上。</p>
-</blockquote>
-<h4 id="爱情·掩面痛哭">爱情·掩面痛哭</h4>
-<p>悲伤抑郁的时候，我感觉自己是一个蛮负责的人，对自己的情绪负责的人。<br>
-今年和自己喜欢的女生分开了。转身走去的那一刻我就开始哭泣，回到在简陋的宾馆里继续痛哭。我没有试图用其他方式转移注意力，我不想逃避这样喜欢一个人的心情，不想逃避离这样的痛苦，不想忘记这一份“相互喜欢的人不一定能够在一起”痛彻心扉的领悟，也不想忘掉这一场奋不顾身的初恋。</p>
-<p>哭，可能需要安慰，更需要面对。<br>
-情绪和痛觉一样都在给我们传递很重要的信息，来无踪去无影，错过就不再。</p>
-<h4 id="爱情·一往直前">爱情·一往直前</h4>
-<p>之后的几天，我更是噙着泪水，把我们在一起时所有的经历都回顾了一遍，所有的共享、所有的聊天记录、所有的照片。游览完所有的照片之后，都打包上传到云端，删除了本地文件。<br>
-之后很长的时间都在慢慢消除她在我生活中留下的痕迹。</p>
-<p>当了一回专职的心灵解剖医生，解剖分析自我。<br>
-我慢慢在这一段亲密关系中剖析出自己深层的人格特征，也正是这些，葬送了自己的爱情。</p>
-<p>感谢那时候把分手的痛苦贯彻到底的自己，不仅仅停留在那个时候的观念，也想尽办法建立方法论去克服自己在亲密关系中暴露的问题。<br>
-然后践行 “人生，有的只是掩面痛苦和一往直前” 的感悟。</p>
-<h4 id="爱情·领悟">爱情·领悟</h4>
-<p>像周国平说的那样，没有深爱过的人和世界是没有建立联系的。我现在更能理解这一点。我的亲人（尤其是我姐~）对我的爱我现在更能体会。每次寄礼物，仔细挑选、包装、传递情感，整个流程包含的，以前的我绝对没有现在能感受到的这么多。</p>
-<p>之前还看了一篇心理学的文章，讲的是恋爱的意义。“自己一个人明明过得很好，为什么还要谈恋爱？”这是很多人的想法。亲密关系对于人来说，首先的确是可以满足一系列片面的需求。比如打发时间的需求、互相陪伴和支持的需求、性的需求、甚至是经济的需求等。但我们从亲密关系中能够获得的东西，其实还远比这些更多。正是因为亲密关系的这种机制，它也成为了我们人格疗愈的一种最为重要的契机。恋爱不是简单的相处，真的是一种自我寻找和相互寻找。</p>
-<p>分析分手原因不是为了挽回，虽然这只是无意间慢慢理解的。<br>
-虽然大脑会习惯性会“理想化”过去，但我早已抵抗住这种错觉，我知道我们如果重新再来，我还没成长到在亲密关系中自信到她能满意的程度，她也很可能没有办法兑现时常牵挂及时回复我的一纸承诺。</p>
-<p>过去的幻象再美，死灰复燃的爱情都没有意义了，没有痛彻心扉的每日自我革命，重来也会掉进一样的漩涡。</p>
-<h3 id="2019-我的家族继承史">2019 我的家族继承史</h3>
-<blockquote>
-<p>那些由不安惶恐凝聚而成的血泪，<br>
-就轻易被现实揉进深深的夜梦，<br>
-写进逃不过的宿命，<br>
-摁进扭曲的自我。</p>
-</blockquote>
-<h4 id="血脉·继承">血脉·继承</h4>
-<p>关于这一点的感悟其实在高三成年人礼的时候就写下了，那个时候写得很深刻，这里也没想着再写一遍。<br>
-过去的我觉得血缘联系是蛮荒诞而狭隘的，自己不想囿于自己的血缘，于是企图摆脱。当我觉得自己已经成功做到从这种束缚中挣脱出来之后，却一次又一次地遇到打击、失控和现实的冲撞，我逐渐发现我深层次的种种特征都和我父亲一模一样。<br>
-这里用这样简练的语言概括当然难以说服人，也可能被认为是荒谬的；我也知道即使再次详细地描述我所经历的所有那些冲击我世界观的经历，很多人未必能够理解。真的，经历比任何说理都更加有力。</p>
-<p>与其去理解，不如去感受。</p>
-<h4 id="血脉·超越">血脉·超越</h4>
-<p>这一年我对于它的理解和体悟进一步加深了，也和一个人讨论过。但是讨论的对象正是那种无法理解我的人。<br>
-努力就能有可观的回报，不用竭尽全力和历尽绝望就抵达自己想要的地方，这样的人，我知道可能没有机会体会到和真正理解我的痛苦和底层的卑微。</p>
-<p>但是，恰恰也给了我启发，在她的鼓励下，也在意识上觉得能够改变那些血脉中继承的，刻骨铭心之物。<br>
-也许很艰难，也许穷尽毕生也未必有大的改变，但是即便如此、即便如此也不能就此放弃抵抗。</p>
-<p>还是非常非常感谢那个她。</p>
-<h3 id="2019-回忆孤独的过去">2019 回忆孤独的过去</h3>
-<p>现在回想，依然非常非常怀念高中的那三年，那是非常纯粹的三年。<br>
-每天和很纯粹的知识、题目搏斗，每天和很纯粹的自己、他人搏斗。</p>
-<p>大学时的压力确实没有高中时的压力大，高中的竞争氛围非常浓厚，每次模拟考的排名、明细、试题分析、互批、对比、竞赛，让人长期处于高压的状态。<br>
-我已经难以想象当时自己的压力，翻看过去的日记，真的已经难以还原当时的情景，我不知道在怎样高压下的我才能写下那样压抑、激情甚至有些燃烧的文字。</p>
-<p>那是过去的我的努力。每次翻看日记或多或少有些愧疚感。人应该变得更加优秀、更加卓越。真正的卓越是优于过去的自己。一旦选错参考系，就容易妄自尊大和妄自菲薄。<br>
-要对过去的自己负责，对那个无比纯粹的自我负责，对那个在内心呼喊、咆哮的自己负责，对那个写着无比孤独文字的自我负责，对那个在操场狂奔到泪流满面的自己负责，对那个疲惫到难以入睡需要从黑暗中摸索出一瓶温和的牛奶、咕噜咕噜下肚才嫩缓和的自己负责。<br>
-这样才不负过去。</p>
-<h3 id="个体历史-史官">个体历史-史官</h3>
-<p>历史有专门的史官记载，但个人历史却少有人记录。可能只有作家、名人以及少数有写日记习惯的人才会记录自己的个体历史。<br>
-以史为鉴是对历史负责的一种方式，而以史为鉴的前提是：“有史”。</p>
-<p>个人要对自己负责，就要能保留住自己的个体历史。人一时的记忆给了人一种错觉，即：我以后会记得此时此刻。<br>
-遗憾的是，人的记忆没有那么持久，并且很受主观因素的影响，无法作为保留个人的个体历史的方式。很多重要的经历由于种种原因可能会淡忘，即便记住了，记忆本身也不能保留住它的重要的细节。“好了伤疤忘了痛”就是一种很典型又非常普遍的事后发现忘记当初教训的体现。</p>
-<p>对过去负责是方式是，用文字或者其他方式记录下过去，无论它是带给你欢乐和幸福的回忆还是痛彻心扉的痛苦。<br>
-可能没有这些记录，一年又一年地过去，我们也便一年又一年地淡忘自己的快乐，一年又一年地忘记自己的伤疤带来的苦痛，然后一年又一年地没有成长。</p>
-<p>我是一个很贪心的人，希望此时此刻的自己是由过去无数个自己的完美迭代：每个加入迭代的版本都是那个最优的部分，剔除糟糕的部分，不将同样的错误再故伎重演。</p>
-<p>然后将痛楚转化成防止故伎重演的方法论，一直指导着自己前行。</p>
-<h2 id="对现在负责">对现在负责</h2>
-<blockquote>
-<p>我可以从很多人身上看到自己的影子，但是仅凭这些依然无法拼凑出一个完整的自己。</p>
-</blockquote>
-<p>总是有人以上帝视角对你说，你现在所经历的，在未来看来根本不算什么。<br>
-这一句话本身没有错误，但是却有所偏袒。它偏袒结果。有时显得冷漠。<br>
-作为正在经历痛苦的人，我会补充另一个本身没有错误的话以完整这句话：“但是没有现在正在经历的痛苦，未来的痛苦会更加难以承担。”</p>
-<p>不得不承认，此时此刻的自己正处于一种迷茫和孤独之中。<br>
-常常感觉自己是套着一透明的膜，然后混进人群。</p>
-<p>我总会想起太宰治说过的一句话：“活着，那是多么忍辱负重、奄奄一息的伟大事业。”<br>
-虽然我没有完整地读过他的著作，但心想他口中的“活着”绝非是生理上那种简单地“活着”。<br>
-要怎么对现在的真实的自己负责，怎样不敷衍、不自自我欺骗、不迎合随流，真的真的是一件“多么忍辱负重、奄奄一息的伟大事业。”</p>
-<p>这样一种逐渐脱离群体，走向自我的道路，似乎是真正成人的必经之路。<br>
-我慢慢接受这一种孤独，群体中我的确是异类。<br>
-但我知道，那些人之间的沟通不是心有灵犀，是平庸。<br>
-但是我看到很多也是异类的人却活得很光彩，活得很自在。<br>
-我想，只要继续努力、贯彻自我，对现在负责，不忘初心，<br>
-既然这个世界宣称是多元而包容的，总有一天，我也会找到适合的舞台。</p>
-<p>那不是心有灵犀，那是平庸。</p>
-<h2 id="对未来负责">对未来负责</h2>
-<blockquote>
-<p>我们就是这么无可救药的生物吧，迁就着自己的幻想妄想理想梦想，混进人群，低声不语。</p>
-</blockquote>
-<p>人在回顾过去的时候，会这样想：如果当时能够如何如何，现在就不会是目前这不堪的境况。<br>
-但是殊不知，如果现在能够做出改变，就能改变未来。</p>
-<h3 id="对身体负责">对身体负责</h3>
-<p>我们活得太久了，忘了自己终将会死的事实。</p>
-<p>这一年我的作息出现了很多的变化。</p>
-<p>以往的我，哪怕是假期也遵循着在学校的作息，早睡早起，定时午睡。哪怕在忙，也不会晚过十二点。</p>
-<p>大一下的后期，为了完成数据结构的实验报告，为了完成自拟的大学物理编程题，连续几天十二点半睡觉，六点半起来。虽然现在回忆起来已经感觉不算什么了，但是整栋楼都是断电的，室友都已经上了床，自已依然在下面噼里啪啦地敲着键盘，是完全新奇的体验。</p>
-<p>在新加坡国立大学做项目期间，更是讨论到三点钟才散会休息。</p>
-<p>大二上开始变态。最开始是每天睡眠六个小时，基本是六点半起床离开寝室，晚上十一点回寝室，十二点半睡觉。<br>
-遇到什么特殊的情况的时候会特别加上“加班”的时间。一次加班加一个半小时，也就是两点钟睡觉，加两次班就是三点半睡觉，一天睡三个小时。印象中有四天的平均睡眠是五个小时……<br>
-还在实验室一个人趴/躺在桌上陪着服务器的噪声睡了一个晚上</p>
-<p>让我感觉离死亡十分接近的那一刻是一次分享会上，hrdg 告诉我们他们 ICPC 校队里有人猝死。<br>
-生命是一切的前提，死亡就是失去和这个世界交互的权力。<br>
-那么一件事情就发生在离自己那么近的地方，顿时毛骨悚然。</p>
-<p>我一直有一种觉得自己身体还不错的错觉。</p>
-<p>直到出现一些小小的迹象，再到体能测试， 1500m 虽然达标优秀，但是速率是按照之前的速率跑的，跑得居然有点想要呕吐，前所未有。</p>
-<p>期末考前大家疯狂熬夜，</p>
-<p>疯狂复习。但是我……在第一门考试之前就被系统抛出了异常，某个早上，自己的左下腹部疼痛，根本没有办法走路，是在去了洗手间回来的路上发作的，突发抽搐疼痛，条件反射地猛地蹲了下来。之后发现站起来就会感到疼痛，所以在走廊道上，蜷曲着身子，缓缓地向工作室的方向挪动。有时候挪动都会感到疼痛。那条 50 米的走廊，花费了 30 分钟的时间才走完。事情还没有结束，那天下午突然流鼻血，一个小时之后才勉强止住。</p>
-<p>在第一门考试还有两天的时候，我突然生病了，早上起来以为是没有睡醒，晕乎乎的。洗完脸回来发现是真的晕。不妙，多半是感冒发烧了。然后躺到床上，想着睡一会就恢复了。显然我欠下的债没有那么少，它没有罢休。醒来之后头更加晕了。寝室这个时候已经没有人了，大家纷纷跑去图书馆复习了，一个没有复习完、甚至感觉遥遥无期的被病魔追债的孩子被缠身，卧病在床。</p>
-<p>后来撑着去了医院，吃了药，暂时缓和了一些。</p>
-<p>之后复习的关键节点完全没有之前熬夜的冲劲，养生学习法。</p>
-<blockquote>
-<p>想起李开复的《向死而生：我修的死亡学分》，想起《叛逆的鲁路修》中不死的 C.C，笨拙地说一句，我们活得太久，以致于我们淡忘了我们终将死亡的事实。</p>
-</blockquote>
-<h3 id="对理想负责">对理想负责</h3>
-<p>2019 遇到了很多精彩的人，遇到了不仅有梦而且敢于做梦的人，遇到了综合实力很强的人，遇到了敬畏神明的人，遇到了每次聊天都能给我带来惊喜的人，遇到了很执着于自己感兴趣的事情的人，遇到了让我怀疑自己价值、感觉自己的生态位被取代的人。</p>
-<p>我对自己想要专注的方向愈发了解，愈发清晰，理想也一步步实体化。一部分焦虑因为真正了解事实和原理之后而消散，一部分焦虑因为认识了真正的现实和黑暗之后而猛增。</p>
-<p>对理想负责，就要去理解自己的理想是什么，是否有价值。</p>
-<p>虽然在思修之旅之后更加坚定，但在一个根本问题上，我却摇摆不定。</p>
-<blockquote>
-<p>主人：那咱们往哪走啊？<br>
-雅克：往前走。<br>
-主人：哪是前啊？<br>
-雅克：我对您透露一个大秘密，这是人类最古老的玩笑。往哪走，都是往前走。<br>
-——《雅克和他的主人》(米兰·昆德拉)</p>
-</blockquote>
-<p>我不知道，那些乐观主义者是真的将我们带进更加美好的世界，还是进一步步入泥沼？我们前进的方向，是否会将我们自己灭亡？</p>
-<p>如果说人类的进化史是一个延迟满足感的能力逐渐提升的过程，现代社会不进反退，人类终将成为娱乐至死的生物。</p>
-<ol>
-<li>娱乐节目中自带的解读和标识，越是受欢迎的节目，就越是不需要脑子就能产生愉悦感。</li>
-<li>UI\UX 每一个设计都是慢慢的反馈和舒适感</li>
-<li>QQ 空间、微信朋友圈、微博等社交平台成为情绪的发泄点，人们慢慢不会驾驭自己的情绪，不能静静地洞察更深层次的东西</li>
-<li>碎片化阅读、交互式编程、视频弹幕这些奖励机制折射出来的互联网前进的方向就是“大家就是想着怎么样让你现在就爽”</li>
-<li>老师也异常的浮躁<br>
-综合课程设计做了那么多的可视化，我以为再怎么最初不了解 SDN 的人看了我们的 PPT 和听了我们的讲解之后一定会立刻理解，结果他们头都不抬，那一刻起，我对那些老师感到失望透了。</li>
-</ol>
-<p>最吸引人的未必是最有价值的。</p>
-]]></content>
-      <categories>
-        <category>Life</category>
-        <category>Reflection</category>
-      </categories>
-      <tags>
-        <tag>Reflection</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>仿射密码与希尔密码深度解析</title>
     <url>/2020/03/22/%E4%BB%BF%E5%B0%84%E5%AF%86%E7%A0%81%E4%B8%8E%E5%B8%8C%E5%B0%94%E5%AF%86%E7%A0%81/</url>
     <content><![CDATA[<h1>前言</h1>
@@ -1516,7 +1349,7 @@ $$</p>
 <p>题目选自 Viking 战队2018级的招新题：被线性代数支配的恐惧。</p>
 <h3 id="文件">文件</h3>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HNBSIRVQQBRFGPS</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><figcaption><span>:encrypt.cpp</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">encrypt</span><span class="params">(<span class="keyword">char</span> *msg, <span class="keyword">int</span> key1[][<span class="number">3</span>], <span class="keyword">int</span> *key2, <span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> key[<span class="number">3</span>][<span class="number">3</span>] =</span><br><span class="line">		&#123;&#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">		 &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">		 &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> key2[<span class="number">3</span>] = &#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>&#125;;</span><br><span class="line">	<span class="keyword">char</span> flag[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line">	FILE *file = fopen(<span class="string">"flag.txt"</span>, <span class="string">"r"</span>);</span><br><span class="line">	<span class="keyword">if</span> (file == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Flag不在这里哦"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	fgets(flag, <span class="number">0X100</span>, file);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, <span class="built_in">strlen</span>(flag));</span><br><span class="line">	encrypt(flag, key, key2, <span class="number">3</span>);</span><br><span class="line">	FILE *cipher = fopen(<span class="string">"cipher.txt"</span>, <span class="string">"w"</span>);</span><br><span class="line">	<span class="built_in">fputs</span>(flag, cipher);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">encrypt</span><span class="params">(<span class="keyword">char</span> *msg, <span class="keyword">int</span> key1[][<span class="number">3</span>], <span class="keyword">int</span> *key2, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> f = <span class="built_in">strlen</span>(msg) / n;</span><br><span class="line">	<span class="keyword">int</span> len = <span class="built_in">strlen</span>(msg);</span><br><span class="line">	<span class="keyword">int</span> tmp[n];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">		msg[i] -= <span class="string">'A'</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; f; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++)</span><br><span class="line">				t += (key1[j][k] * msg[i * n + k]);</span><br><span class="line">			tmp[j] = t;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++)</span><br><span class="line">			msg[i * n + k] = (tmp[k] + key2[k]) % <span class="number">26</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">		msg[i] += <span class="string">'A'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">encrypt</span><span class="params">(<span class="keyword">char</span> *msg, <span class="keyword">int</span> key1[][<span class="number">3</span>], <span class="keyword">int</span> *key2, <span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> key[<span class="number">3</span>][<span class="number">3</span>] =</span><br><span class="line">		&#123;&#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">		 &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">		 &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> key2[<span class="number">3</span>] = &#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>&#125;;</span><br><span class="line">	<span class="keyword">char</span> flag[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line">	FILE *file = fopen(<span class="string">"flag.txt"</span>, <span class="string">"r"</span>);</span><br><span class="line">	<span class="keyword">if</span> (file == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Flag不在这里哦"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	fgets(flag, <span class="number">0X100</span>, file);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, <span class="built_in">strlen</span>(flag));</span><br><span class="line">	encrypt(flag, key, key2, <span class="number">3</span>);</span><br><span class="line">	FILE *cipher = fopen(<span class="string">"cipher.txt"</span>, <span class="string">"w"</span>);</span><br><span class="line">	<span class="built_in">fputs</span>(flag, cipher);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">encrypt</span><span class="params">(<span class="keyword">char</span> *msg, <span class="keyword">int</span> key1[][<span class="number">3</span>], <span class="keyword">int</span> *key2, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> f = <span class="built_in">strlen</span>(msg) / n;</span><br><span class="line">	<span class="keyword">int</span> len = <span class="built_in">strlen</span>(msg);</span><br><span class="line">	<span class="keyword">int</span> tmp[n];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">		msg[i] -= <span class="string">'A'</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; f; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++)</span><br><span class="line">				t += (key1[j][k] * msg[i * n + k]);</span><br><span class="line">			tmp[j] = t;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++)</span><br><span class="line">			msg[i * n + k] = (tmp[k] + key2[k]) % <span class="number">26</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">		msg[i] += <span class="string">'A'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="分析">分析</h3>
 <p>这道题不是原生的希尔密码，有希尔密码+仿射密码的味道。（Exciting ）<br>
 我用 Python 重写代码如下：</p>
@@ -1538,6 +1371,173 @@ $$</p>
 <li><a href="https://ctf-wiki.github.io/ctf-wiki/crypto/classical/polyalphabetic-zh/#hill" target="_blank" rel="noopener">Multi-table Substitution Cipher</a></li>
 </ol>
 ]]></content>
+  </entry>
+  <entry>
+    <title>2019 年终总结 - 对自己负责</title>
+    <url>/2020/01/25/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<img src="/2020/01/25/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/man-3777108.jpg" width="800">
+<blockquote>
+<p>总是有人以上帝视角对你说，“你现在所经历的，在未来看来根本不算什么。”<br>
+我不喜欢这句话。这一句话本身没有错误，但是却有所偏袒。它偏袒结果。<br>
+我想补充的是：“如果没有现在正在经历的痛苦，未来的痛苦会更加难以承担。”</p>
+<p>己亥年收获很多快乐与幸福之余，也经历了前所未有的失落、失望、绝望。</p>
+<p>庚子年希望能够承担起更多曾经难以想象的苦楚，逐步揭穿生活巨大的隐喻，抬起头，在克莱斯勒《爱的忧伤》的尽头，迎来《爱的欢乐》。</p>
+</blockquote>
+<a id="more"></a>
+<h1>时间维度</h1>
+<h2 id="对过去负责">对过去负责</h2>
+<h3 id="历史观">历史观</h3>
+<p>我以前不是特别喜欢历史，说心底话（而不是以前答卷上写的漂亮话），总感觉它们离自己太远，没有特别大的意义，顶多是多了一些故事用以“以史为鉴”，多了一些风云人物用以“勉励后生”。</p>
+<p>现在想想，那时候的我的历史观其实非常平面化，那个时候理解的历史其实可以切成现在进行时的另一个平行空间。他们有他们的风云人物，他们有他们精彩的故事。是的，我的潜意识断开了他们和现在之间的联系。</p>
+<p>现代社会不是凭空而来的，滚滚而来的历史，它们的价值和意义是难以估量的。</p>
+<p>当然我这样思维的错误也没有那么彻底，中国的近现代史和现代的联系我是能够深刻体悟到的。中国的近代史是我的高中同桌 yyy 最不喜欢这一段屈辱的历史。虽然我也谈不上喜欢，但是它们却是我自己能感受到历史感的一个重要部分，也是能激起我的心灵震荡的一个重要部分。</p>
+<h3 id="个体历史观">个体历史观</h3>
+<p>历史裹挟着滚滚红尘浩浩荡荡地前行，如果一个国家和民族企图切断和历史的联系，把他们当做一个和自己毫无关联的平行时空，那是一件蛮恐怖的事情。</p>
+<p>人也是带着各种各样的羁绊和时光在自己人生留下的印记不断前行，如果否定过去，不能痛彻心扉地反思，也同样恐怖。</p>
+<p>虽然一个个体相比于历史长河，不过沧海一粟，但对于我这样很关注“自我”的凡夫俗子，十分重视这样的“个体历史观”。（可以理解为人生观的一部分）</p>
+<h3 id="2019-我的爱情史">2019 我的爱情史</h3>
+<blockquote>
+<p>人总是踏入同一条河流。<br>
+——吴人问津<br>
+我们在自己所有的细节中都无意识地将自己的曾经错误“贯彻”到底。<br>
+和自己的周边所有人的交流方式、在人群中的表现等等都总是犯着本质上完全相同的错误。<br>
+以不同的表现形式，在不同的时期，尽是这般绝望地相似。</p>
+<p>所以我们需要一日复一日地戳痛身上、心上的曾经的伤疤，一日复一日地自我沉思，一日复一日地坚定信念和自我革命。</p>
+<p>人生没有存档服务，没有入栈保存的结点，没有版本控制器，没有快照。<br>
+有的只是掩面痛哭和一往直前。</p>
+<p>以上。</p>
+</blockquote>
+<h4 id="爱情·掩面痛哭">爱情·掩面痛哭</h4>
+<p>悲伤抑郁的时候，我感觉自己是一个蛮负责的人，对自己的情绪负责的人。<br>
+今年和自己喜欢的女生分开了。转身走去的那一刻我就开始哭泣，回到在简陋的宾馆里继续痛哭。我没有试图用其他方式转移注意力，我不想逃避这样喜欢一个人的心情，不想逃避离这样的痛苦，不想忘记这一份“相互喜欢的人不一定能够在一起”痛彻心扉的领悟，也不想忘掉这一场奋不顾身的初恋。</p>
+<p>哭，可能需要安慰，更需要面对。<br>
+情绪和痛觉一样都在给我们传递很重要的信息，来无踪去无影，错过就不再。</p>
+<h4 id="爱情·一往直前">爱情·一往直前</h4>
+<p>之后的几天，我更是噙着泪水，把我们在一起时所有的经历都回顾了一遍，所有的共享、所有的聊天记录、所有的照片。游览完所有的照片之后，都打包上传到云端，删除了本地文件。<br>
+之后很长的时间都在慢慢消除她在我生活中留下的痕迹。</p>
+<p>当了一回专职的心灵解剖医生，解剖分析自我。<br>
+我慢慢在这一段亲密关系中剖析出自己深层的人格特征，也正是这些，葬送了自己的爱情。</p>
+<p>感谢那时候把分手的痛苦贯彻到底的自己，不仅仅停留在那个时候的观念，也想尽办法建立方法论去克服自己在亲密关系中暴露的问题。<br>
+然后践行 “人生，有的只是掩面痛苦和一往直前” 的感悟。</p>
+<h4 id="爱情·领悟">爱情·领悟</h4>
+<p>像周国平说的那样，没有深爱过的人和世界是没有建立联系的。我现在更能理解这一点。我的亲人（尤其是我姐~）对我的爱我现在更能体会。每次寄礼物，仔细挑选、包装、传递情感，整个流程包含的，以前的我绝对没有现在能感受到的这么多。</p>
+<p>之前还看了一篇心理学的文章，讲的是恋爱的意义。“自己一个人明明过得很好，为什么还要谈恋爱？”这是很多人的想法。亲密关系对于人来说，首先的确是可以满足一系列片面的需求。比如打发时间的需求、互相陪伴和支持的需求、性的需求、甚至是经济的需求等。但我们从亲密关系中能够获得的东西，其实还远比这些更多。正是因为亲密关系的这种机制，它也成为了我们人格疗愈的一种最为重要的契机。恋爱不是简单的相处，真的是一种自我寻找和相互寻找。</p>
+<p>分析分手原因不是为了挽回，虽然这只是无意间慢慢理解的。<br>
+虽然大脑会习惯性会“理想化”过去，但我早已抵抗住这种错觉，我知道我们如果重新再来，我还没成长到在亲密关系中自信到她能满意的程度，她也很可能没有办法兑现时常牵挂及时回复我的一纸承诺。</p>
+<p>过去的幻象再美，死灰复燃的爱情都没有意义了，没有痛彻心扉的每日自我革命，重来也会掉进一样的漩涡。</p>
+<h3 id="2019-我的家族继承史">2019 我的家族继承史</h3>
+<blockquote>
+<p>那些由不安惶恐凝聚而成的血泪，<br>
+就轻易被现实揉进深深的夜梦，<br>
+写进逃不过的宿命，<br>
+摁进扭曲的自我。</p>
+</blockquote>
+<h4 id="血脉·继承">血脉·继承</h4>
+<p>关于这一点的感悟其实在高三成年人礼的时候就写下了，那个时候写得很深刻，这里也没想着再写一遍。<br>
+过去的我觉得血缘联系是蛮荒诞而狭隘的，自己不想囿于自己的血缘，于是企图摆脱。当我觉得自己已经成功做到从这种束缚中挣脱出来之后，却一次又一次地遇到打击、失控和现实的冲撞，我逐渐发现我深层次的种种特征都和我父亲一模一样。<br>
+这里用这样简练的语言概括当然难以说服人，也可能被认为是荒谬的；我也知道即使再次详细地描述我所经历的所有那些冲击我世界观的经历，很多人未必能够理解。真的，经历比任何说理都更加有力。</p>
+<p>与其去理解，不如去感受。</p>
+<h4 id="血脉·超越">血脉·超越</h4>
+<p>这一年我对于它的理解和体悟进一步加深了，也和一个人讨论过。但是讨论的对象正是那种无法理解我的人。<br>
+努力就能有可观的回报，不用竭尽全力和历尽绝望就抵达自己想要的地方，这样的人，我知道可能没有机会体会到和真正理解我的痛苦和底层的卑微。</p>
+<p>但是，恰恰也给了我启发，在她的鼓励下，也在意识上觉得能够改变那些血脉中继承的，刻骨铭心之物。<br>
+也许很艰难，也许穷尽毕生也未必有大的改变，但是即便如此、即便如此也不能就此放弃抵抗。</p>
+<p>还是非常非常感谢那个她。</p>
+<h3 id="2019-回忆孤独的过去">2019 回忆孤独的过去</h3>
+<p>现在回想，依然非常非常怀念高中的那三年，那是非常纯粹的三年。<br>
+每天和很纯粹的知识、题目搏斗，每天和很纯粹的自己、他人搏斗。</p>
+<p>大学时的压力确实没有高中时的压力大，高中的竞争氛围非常浓厚，每次模拟考的排名、明细、试题分析、互批、对比、竞赛，让人长期处于高压的状态。<br>
+我已经难以想象当时自己的压力，翻看过去的日记，真的已经难以还原当时的情景，我不知道在怎样高压下的我才能写下那样压抑、激情甚至有些燃烧的文字。</p>
+<p>那是过去的我的努力。每次翻看日记或多或少有些愧疚感。人应该变得更加优秀、更加卓越。真正的卓越是优于过去的自己。一旦选错参考系，就容易妄自尊大和妄自菲薄。<br>
+要对过去的自己负责，对那个无比纯粹的自我负责，对那个在内心呼喊、咆哮的自己负责，对那个写着无比孤独文字的自我负责，对那个在操场狂奔到泪流满面的自己负责，对那个疲惫到难以入睡需要从黑暗中摸索出一瓶温和的牛奶、咕噜咕噜下肚才嫩缓和的自己负责。<br>
+这样才不负过去。</p>
+<h3 id="个体历史-史官">个体历史-史官</h3>
+<p>历史有专门的史官记载，但个人历史却少有人记录。可能只有作家、名人以及少数有写日记习惯的人才会记录自己的个体历史。<br>
+以史为鉴是对历史负责的一种方式，而以史为鉴的前提是：“有史”。</p>
+<p>个人要对自己负责，就要能保留住自己的个体历史。人一时的记忆给了人一种错觉，即：我以后会记得此时此刻。<br>
+遗憾的是，人的记忆没有那么持久，并且很受主观因素的影响，无法作为保留个人的个体历史的方式。很多重要的经历由于种种原因可能会淡忘，即便记住了，记忆本身也不能保留住它的重要的细节。“好了伤疤忘了痛”就是一种很典型又非常普遍的事后发现忘记当初教训的体现。</p>
+<p>对过去负责是方式是，用文字或者其他方式记录下过去，无论它是带给你欢乐和幸福的回忆还是痛彻心扉的痛苦。<br>
+可能没有这些记录，一年又一年地过去，我们也便一年又一年地淡忘自己的快乐，一年又一年地忘记自己的伤疤带来的苦痛，然后一年又一年地没有成长。</p>
+<p>我是一个很贪心的人，希望此时此刻的自己是由过去无数个自己的完美迭代：每个加入迭代的版本都是那个最优的部分，剔除糟糕的部分，不将同样的错误再故伎重演。</p>
+<p>然后将痛楚转化成防止故伎重演的方法论，一直指导着自己前行。</p>
+<h2 id="对现在负责">对现在负责</h2>
+<blockquote>
+<p>我可以从很多人身上看到自己的影子，但是仅凭这些依然无法拼凑出一个完整的自己。</p>
+</blockquote>
+<p>总是有人以上帝视角对你说，你现在所经历的，在未来看来根本不算什么。<br>
+这一句话本身没有错误，但是却有所偏袒。它偏袒结果。有时显得冷漠。<br>
+作为正在经历痛苦的人，我会补充另一个本身没有错误的话以完整这句话：“但是没有现在正在经历的痛苦，未来的痛苦会更加难以承担。”</p>
+<p>不得不承认，此时此刻的自己正处于一种迷茫和孤独之中。<br>
+常常感觉自己是套着一透明的膜，然后混进人群。</p>
+<p>我总会想起太宰治说过的一句话：“活着，那是多么忍辱负重、奄奄一息的伟大事业。”<br>
+虽然我没有完整地读过他的著作，但心想他口中的“活着”绝非是生理上那种简单地“活着”。<br>
+要怎么对现在的真实的自己负责，怎样不敷衍、不自自我欺骗、不迎合随流，真的真的是一件“多么忍辱负重、奄奄一息的伟大事业。”</p>
+<p>这样一种逐渐脱离群体，走向自我的道路，似乎是真正成人的必经之路。<br>
+我慢慢接受这一种孤独，群体中我的确是异类。<br>
+但我知道，那些人之间的沟通不是心有灵犀，是平庸。<br>
+但是我看到很多也是异类的人却活得很光彩，活得很自在。<br>
+我想，只要继续努力、贯彻自我，对现在负责，不忘初心，<br>
+既然这个世界宣称是多元而包容的，总有一天，我也会找到适合的舞台。</p>
+<p>那不是心有灵犀，那是平庸。</p>
+<h2 id="对未来负责">对未来负责</h2>
+<blockquote>
+<p>我们就是这么无可救药的生物吧，迁就着自己的幻想妄想理想梦想，混进人群，低声不语。</p>
+</blockquote>
+<p>人在回顾过去的时候，会这样想：如果当时能够如何如何，现在就不会是目前这不堪的境况。<br>
+但是殊不知，如果现在能够做出改变，就能改变未来。</p>
+<h3 id="对身体负责">对身体负责</h3>
+<p>我们活得太久了，忘了自己终将会死的事实。</p>
+<p>这一年我的作息出现了很多的变化。</p>
+<p>以往的我，哪怕是假期也遵循着在学校的作息，早睡早起，定时午睡。哪怕在忙，也不会晚过十二点。</p>
+<p>大一下的后期，为了完成数据结构的实验报告，为了完成自拟的大学物理编程题，连续几天十二点半睡觉，六点半起来。虽然现在回忆起来已经感觉不算什么了，但是整栋楼都是断电的，室友都已经上了床，自已依然在下面噼里啪啦地敲着键盘，是完全新奇的体验。</p>
+<p>在新加坡国立大学做项目期间，更是讨论到三点钟才散会休息。</p>
+<p>大二上开始变态。最开始是每天睡眠六个小时，基本是六点半起床离开寝室，晚上十一点回寝室，十二点半睡觉。<br>
+遇到什么特殊的情况的时候会特别加上“加班”的时间。一次加班加一个半小时，也就是两点钟睡觉，加两次班就是三点半睡觉，一天睡三个小时。印象中有四天的平均睡眠是五个小时……<br>
+还在实验室一个人趴/躺在桌上陪着服务器的噪声睡了一个晚上</p>
+<p>让我感觉离死亡十分接近的那一刻是一次分享会上，hrdg 告诉我们他们 ICPC 校队里有人猝死。<br>
+生命是一切的前提，死亡就是失去和这个世界交互的权力。<br>
+那么一件事情就发生在离自己那么近的地方，顿时毛骨悚然。</p>
+<p>我一直有一种觉得自己身体还不错的错觉。</p>
+<p>直到出现一些小小的迹象，再到体能测试， 1500m 虽然达标优秀，但是速率是按照之前的速率跑的，跑得居然有点想要呕吐，前所未有。</p>
+<p>期末考前大家疯狂熬夜，</p>
+<p>疯狂复习。但是我……在第一门考试之前就被系统抛出了异常，某个早上，自己的左下腹部疼痛，根本没有办法走路，是在去了洗手间回来的路上发作的，突发抽搐疼痛，条件反射地猛地蹲了下来。之后发现站起来就会感到疼痛，所以在走廊道上，蜷曲着身子，缓缓地向工作室的方向挪动。有时候挪动都会感到疼痛。那条 50 米的走廊，花费了 30 分钟的时间才走完。事情还没有结束，那天下午突然流鼻血，一个小时之后才勉强止住。</p>
+<p>在第一门考试还有两天的时候，我突然生病了，早上起来以为是没有睡醒，晕乎乎的。洗完脸回来发现是真的晕。不妙，多半是感冒发烧了。然后躺到床上，想着睡一会就恢复了。显然我欠下的债没有那么少，它没有罢休。醒来之后头更加晕了。寝室这个时候已经没有人了，大家纷纷跑去图书馆复习了，一个没有复习完、甚至感觉遥遥无期的被病魔追债的孩子被缠身，卧病在床。</p>
+<p>后来撑着去了医院，吃了药，暂时缓和了一些。</p>
+<p>之后复习的关键节点完全没有之前熬夜的冲劲，养生学习法。</p>
+<blockquote>
+<p>想起李开复的《向死而生：我修的死亡学分》，想起《叛逆的鲁路修》中不死的 C.C，笨拙地说一句，我们活得太久，以致于我们淡忘了我们终将死亡的事实。</p>
+</blockquote>
+<h3 id="对理想负责">对理想负责</h3>
+<p>2019 遇到了很多精彩的人，遇到了不仅有梦而且敢于做梦的人，遇到了综合实力很强的人，遇到了敬畏神明的人，遇到了每次聊天都能给我带来惊喜的人，遇到了很执着于自己感兴趣的事情的人，遇到了让我怀疑自己价值、感觉自己的生态位被取代的人。</p>
+<p>我对自己想要专注的方向愈发了解，愈发清晰，理想也一步步实体化。一部分焦虑因为真正了解事实和原理之后而消散，一部分焦虑因为认识了真正的现实和黑暗之后而猛增。</p>
+<p>对理想负责，就要去理解自己的理想是什么，是否有价值。</p>
+<p>虽然在思修之旅之后更加坚定，但在一个根本问题上，我却摇摆不定。</p>
+<blockquote>
+<p>主人：那咱们往哪走啊？<br>
+雅克：往前走。<br>
+主人：哪是前啊？<br>
+雅克：我对您透露一个大秘密，这是人类最古老的玩笑。往哪走，都是往前走。<br>
+——《雅克和他的主人》(米兰·昆德拉)</p>
+</blockquote>
+<p>我不知道，那些乐观主义者是真的将我们带进更加美好的世界，还是进一步步入泥沼？我们前进的方向，是否会将我们自己灭亡？</p>
+<p>如果说人类的进化史是一个延迟满足感的能力逐渐提升的过程，现代社会不进反退，人类终将成为娱乐至死的生物。</p>
+<ol>
+<li>娱乐节目中自带的解读和标识，越是受欢迎的节目，就越是不需要脑子就能产生愉悦感。</li>
+<li>UI\UX 每一个设计都是慢慢的反馈和舒适感</li>
+<li>QQ 空间、微信朋友圈、微博等社交平台成为情绪的发泄点，人们慢慢不会驾驭自己的情绪，不能静静地洞察更深层次的东西</li>
+<li>碎片化阅读、交互式编程、视频弹幕这些奖励机制折射出来的互联网前进的方向就是“大家就是想着怎么样让你现在就爽”</li>
+<li>老师也异常的浮躁<br>
+综合课程设计做了那么多的可视化，我以为再怎么最初不了解 SDN 的人看了我们的 PPT 和听了我们的讲解之后一定会立刻理解，结果他们头都不抬，那一刻起，我对那些老师感到失望透了。</li>
+</ol>
+<p>最吸引人的未必是最有价值的。</p>
+]]></content>
+      <categories>
+        <category>Life</category>
+        <category>Reflection</category>
+      </categories>
+      <tags>
+        <tag>Reflection</tag>
+      </tags>
   </entry>
   <entry>
     <title>【转载】DDoS原理与防御</title>
