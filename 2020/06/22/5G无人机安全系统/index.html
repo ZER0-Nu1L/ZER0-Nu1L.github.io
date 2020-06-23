@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="QvPZ3tgcDy_FQ1Ivu9CLCAEPdzhAyW8GzyQ1APQgiVg" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="ueLXt8dSC9" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-crypto.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-crypto.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="5G,Blockchain,ML&DA,Cloud Computing," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZER0-Nu1L" type="application/atom+xml" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="5G 无人机安全系统 JoyFly">
+<meta property="og:url" content="https://zer0-nu1l.github.io/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="ZER0-Nu1L">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/Cover.gif">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/image-20200622180656636.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E4%B8%8E%E5%9F%BA%E7%A1%80%E8%83%BD%E5%8A%9B.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/%E4%B8%9A%E5%8A%A1%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%9B%BE.png">
+<meta property="article:published_time" content="2020-06-22T07:25:42.000Z">
+<meta property="article:modified_time" content="2020-06-22T11:30:54.756Z">
+<meta property="article:author" content="Andy Wu">
+<meta property="article:tag" content="5G">
+<meta property="article:tag" content="Blockchain">
+<meta property="article:tag" content="ML&amp;DA">
+<meta property="article:tag" content="Cloud Computing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zer0-nu1l.github.io/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/Cover.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zer0-nu1l.github.io/2020/06/22/5G无人机安全系统/"/>
+
+
+
+
+
+  <title>5G 无人机安全系统 JoyFly | ZER0-Nu1L</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZER0-Nu1L</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">In me the tiger sniffs the rose.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zer0-nu1l.github.io/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Andy Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/Profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZER0-Nu1L">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">5G 无人机安全系统 JoyFly</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T15:25:42+08:00">
+                2020-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Development/" itemprop="url" rel="index">
+                    <span itemprop="name">Development</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Development/5G/" itemprop="url" rel="index">
+                    <span itemprop="name">5G</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/Cover.gif" alt></p>
+<a id="more"></a>
+<h1>前言</h1>
+<p>某学院举办了“5G应用创新大赛”，分成两个赛道，在 NUS 项目中结识的伙伴，兴致勃勃地打算重建团队，参加“应用场景设计”赛道，一雪 NUS 落榜之耻。（某个没有UI/UX灵魂的理财软件瓦釜雷鸣，我们耿耿于怀😢 ）<br>
+一方面，想通过此次机会练习项目开发配合，项目推进安排，还有编写规范的文档、策划书、答辩展示能力；另一方面，希望能乘机督促自己学习各种前沿的概念。（当然还有几种 PPT 设计还想尝试一下：2.5D，3D，新拟态等）<br>
+报名的时候还在学期内，抽了四天的一点课余时间，上报了一个“5G 下基于深度强化学习与区块链的大流量物流配送和监管平台”的课题。（为之后走入死胡同埋下伏笔 😅）<br>
+在寒假第四次会议的时候，@zjmy 整出了下面这个庞大而所有成员陷入绝望的思维导图：<br>
+<img src="/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/image-20200622180656636.png" alt></p>
+<center>图：原方案疑问点归纳 </center>
+<p>这也是项目的一次转折点。我们回想起 Professor Lu 对我们团队说过的 “You are not trying to solve a single problem”，回想起 “Don’t be afraid of making the mistakes”，回想起”Spend 20~30% time to try your ideas“，最后从中抽取了出”无人机安全“的话题。<br>
+后续查阅资料、文献、法律法规，搜寻同类产品等等，得到了初步的方案，在后续的讨论中也得到了令我们很满意的方案。（PPT 的各种设计也做了个痛（zi）快（bi）)<br>
+总的来说，还是非常有收获的，项目管理、团队合作体验都极佳（以后做 PPT 没有 @Dyllan Logo&amp;UI 设计、素材处理、提供配色方案了😭😭:sob），也接触了很多新的技术和观念，PPT 也设计能力更上一层楼，答辩的各种细节也有很多收获。</p>
+<blockquote>
+<p>⚠️郑重声明，由于过长时间设计 PPT ，导致 PSTD，武功散尽，本人已经不会再为项目做任何的 PPT。🤒</p>
+</blockquote>
+<h1>背景与需求</h1>
+<blockquote>
+<p>瞎扯完之后，我就开始简单介绍这次做的项目了。🙂</p>
+</blockquote>
+<p>当今当代，无人机技术逐渐成熟，在各个领域都得到广泛应用。从无人机出租车到无人机送餐，乃至疫情防控等方面，无人机功能相继试验成功。<br>
+在即将到来的 5G 时代，凭借其无限的发展能力，蜂窝技术为无人机带来全新级别的可靠性、覆盖性、移动性，以及安全性，这将为无人机行业未来发展提供更加丰富的资源。<br>
+<a href="https://www.qdaily.com/articles/53767.html?tdsourcetag=s_pctim_aiomsg" target="_blank" rel="noopener">饿了么开始用无人机送外卖</a>，美团试水无人机机器人送外卖，亚马逊用无人机送货，5G智慧无人机高空助防疫，答辩现场也有 5G 无人机的项目：基于5G及无人机群的医疗救援、5G网联无人机火情检测系统。大家都在畅想利用 5G+无人机 开拓人类的空中空间。<br>
+可能笔者是网络安全方向的学生，有着一点点浅薄的网络安全素养，对于 5G+无人机的安全性非常在意。</p>
+<p align="center">
+<video width="690" height="400" controls>
+<source src="./需求深度分析.mp4">
+</video>
+</p>
+<p>5G时代到来，包括无人机在内的各种物联网设备，将以排山倒海之势涌入市场，革新生活面貌，很多曾经只出现在科幻小说中的新事物逐渐在人类文明的舞台上登场。</p>
+<p>IOT 被爱立信预测到2025年设备数量将从 2019 年的 11亿 增加到 250亿，设备爆炸而致的数据收集方式改变的讨论如火如荼；AWS 等大型云计算供应商全力以赴深化数据处理集中模式，“数据引力”而产生的循环加速和朝着生成数据的计算“边缘”方向的矛盾冲突亟待解决；“IT组装线”推行的阻滞揭露了数据结构通常只是权利结构遮上了薄薄的面纱，数据永远都不是中立的，始终是安全问题，绝不可能有“唯一版本的事实”的存在。</p>
+<p>当人们在畅想利用 5G 技术与无人机相结合的时候，却往往低估了当新事物发展过程中来自旧事物的抵抗力量。科技带来的生活方式变革转型必然伴随着众多矛盾局面和权衡取舍，市场、机构、基础设施等等的发展走向都成为了热议的命题，而在 5G 与无人机相结合的过程中，安全问题是强大的抵抗力量之关键。</p>
+<p>耶鲁大学的 David Gelernter 曾预言“镜像世界”：一个基于数据、受数据驱动的人类生活的新维度。<br>
+而其发展将反作用于现实世界，催生虚拟与现实问题，加速生活变革的进展。新时代，人类即将把生活空间的边界拓展至空中空间，伴随而来的正是诸多矛盾冲突，如地面空间对空中空间的威胁（来自地面的恶意破坏等），空中空间对地面空间原有秩序的威胁（用户隐私问题、空中坠物的问题等），空中飞行物自身的安全稳定性问题（故障分析响应）。</p>
+<p>本项目推陈出新，切中这阻碍5G时代发展的症结，立足于目前被忽视却绝不可忽略的安全需求，并利用5G高速率、大容量、低时延高可靠的特点，创新地提出综合利用云计算、人工智能、区块链等技术为无人机在空中空间安全提供可靠保障，兼容现有的部分制度，并为未来相关法律纠纷提供帮助。本项目旨在“对症下药”，掌握技术、利用技术，针对弊病制定切实可行的方案，高效完备地解决安全议题，</p>
+<h1>项目方案</h1>
+<p align="center">
+<video width="690" height="400" controls>
+<source src="./业务流程图.mp4">
+</video>
+</p>
+<p>首先，用户向交易平台提供目标无人机信息，购买无人机安全服务，获取产品序列号。无人机经过认证，并通过5G通信连接服务器，实现服务的连接。</p>
+<p>在飞行过程中，无人机将采集 湿度、光照、雨量、风速等气象信息，并监控 无人机姿态、GPS信息、飞行速度、电池电压等自身信息，统计 执行器的五种故障数据，并通过摄像头拍摄高清画面。其中高清画面通过无人机群联合拍摄不同角度，对无人机群自身及周边环境进行全方位监控；</p>
+<p>无人机在飞行过程中，调用云端的深度强化学习模型进行自动化的飞行。</p>
+<p>而其他业务，如攻击检测、故障分析等，采用的模式是类似的，其中轻量级的服务，可直接从云端下载到无人机的芯片上，在无人机端直接运行；而重量级的服务，则将采集到的数据 利用 5G 技术 高速传输到云端进行处理，由云端服务返回决策控制信息。相关的服务有 GPS 攻击识别、禁飞区识别、智能路线调整、故障分析等等。</p>
+<p>设备采集的数据分为文本、图片和视频：由于视频数据较大，不适合直接上链存储，需利用机器学习识别具有业务需求特征的图片。每隔一定时间，将文件或文件存放的路径及其 hash 值上链。实现数据的防篡改存储。</p>
+<p>当无人机发生事故时，可以根据时间检索区块的内容，为事故分析和民事事件提供重要证据与线索；</p>
+<p><img src="/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E4%B8%8E%E5%9F%BA%E7%A1%80%E8%83%BD%E5%8A%9B.png" alt></p>
+<center>图：应用场景与基础能力 </center>
+<p><img src="/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/%E4%B8%9A%E5%8A%A1%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt></p>
+<center>图：业务系统架构图</center>
+<h1>核心问题介绍</h1>
+<h2 id="无人机会遇到哪些安全威胁">无人机会遇到哪些安全威胁</h2>
+<ol>
+<li>失控坠落（受复杂的外界环境和人为因素的影响）
+<ol>
+<li>飞行高度低，会不可避免地来自打靶者和偷窃者的乱射或者其他意外伤害；</li>
+<li>天气恶劣（冰雹或小雪）</li>
+</ol>
+</li>
+<li>民事相关
+<ol>
+<li>威胁航空安全</li>
+<li>威胁人民群众生命财产安全</li>
+<li>威胁民众隐私安全</li>
+<li>肆意获取私人信息</li>
+<li>扰乱公民正常生活</li>
+<li>泄露公民私人信息</li>
+</ol>
+</li>
+<li>网络安全
+<ol>
+<li>被动攻击（传输信息被窃取，也就是所谓的“被动攻击”）</li>
+<li>主动攻击</li>
+<li>以向手机发虚假视频，欺骗用户，制造无人机正常工作的假象。</li>
+<li>侵入并控制无人机，可以将摄像头指向任意方向，打开或关闭摄像头，窃取无人机上存储的图像， 或者删除无人机上的所有数据。</li>
+<li>劫持无人机，让它飞到任意地方或坠毁。</li>
+<li>GPS 欺骗（向GPS 接收装置发送虚假GPS 数据）</li>
+</ol>
+</li>
+</ol>
+<h2 id="区块链发挥的主要作用是什么？">区块链发挥的主要作用是什么？</h2>
+<p>区块链的核心价值在于作为可信互联网的基础设施，实现可信的网上社会。</p>
+<p>所有人类活动都是基于某种程度的信任，然而现实社会中建立和维持信任的成本很高。而我们也通过区块链技术，大幅度地提高人类互动的效率，降低信任成本，让人们能更安心地、大规、日常化地使用无人机，拓展人类生存活动空间。</p>
+<h2 id="区块链为什么采用联盟链？">区块链为什么采用联盟链？</h2>
+<p>区块链技术的落地应用，需要政府、金融机构等多方的配合，而且要基于相应的产业或领域信息化改造的基础之上。</p>
+<p>首先，区块链按准入机制分成三类，公有链、私有链、联盟链，以后还有可能诞生其他类型的区块链。我们只是在综合考虑各方条件下，给出了一个比较可行的方案，完全可以根据具体情况进行变更、<br>
+公有链公开透明，世界上任何个体或团体都可以在公开链发送交易。联盟链半公开式，是某个群体或组织内部使用的区块链。根据目前的国家政策和具体的商业考虑，联盟链的可行性最高。</p>
+<h1>UI &amp; Logo 设计</h1>
+<p align="center">
+<video width="690" height="400" controls>
+<source src="./设计.mp4">
+</video>
+</p>
+<hr>
+<blockquote>
+<p>感谢团队所有成员的倾力付出，感谢 wj 做了一份震撼热心的文稿优化（虽然答辩的时候忍痛删减）， 感谢 sy 给我的 PPT 一些很好的建议。<br>
+最后再次⚠️郑重声明，由于过长时间设计 PPT ，导致 PSTD，武功散尽，本人已经不会再为项目做任何的 PPT。🤒</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ The end ------</div>
+    
+</div>
+      
+    </div>
+    <div>
+          
+            
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/">5G 无人机安全系统 JoyFly</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Andy Wu 的个人博客">Andy Wu</a></p>
+  <p><span>发布时间:</span>2020年06月22日 - 15:06</p>
+  <p><span>最后更新:</span>2020年06月22日 - 19:06</p>
+  <p><span>原始链接:</span><a href="/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/" title="5G 无人机安全系统 JoyFly">https://zer0-nu1l.github.io/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://zer0-nu1l.github.io/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+          
+    </div>
+    
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/5G/" rel="tag"><i class="fa fa-tag"></i> 5G</a>
+          
+            <a href="/tags/Blockchain/" rel="tag"><i class="fa fa-tag"></i> Blockchain</a>
+          
+            <a href="/tags/ML-DA/" rel="tag"><i class="fa fa-tag"></i> ML&DA</a>
+          
+            <a href="/tags/Cloud-Computing/" rel="tag"><i class="fa fa-tag"></i> Cloud Computing</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/01/%E7%96%AB%E6%83%85%E4%B8%8B%EF%BC%8C%E8%A2%AB%E5%AF%84%E4%BA%88%E5%B8%8C%E6%9C%9B%E7%9A%84%E5%8C%BA%E5%9D%97%E9%93%BE%E6%8A%80%E6%9C%AF/" rel="next" title="疫情下，被寄予期望的区块链技术">
+                <i class="fa fa-chevron-left"></i> 疫情下，被寄予期望的区块链技术
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+  <div id="gitalk-container"></div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/Profile.jpg"
+                alt="Andy Wu" />
+            
+              <p class="site-author-name" itemprop="name">Andy Wu</p>
+              <p class="site-description motion-element" itemprop="description">Cover the face and straight ahead.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ZER0-Nu1L" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wcb534813346@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Blogroll
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ff-0xff.github.io/" title="ff-0xff" target="_blank">ff-0xff</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://fitz.hasentu.com/" title="五维生物" target="_blank">五维生物</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gemini-lin.github.io/" title="Gemini-Lin" target="_blank">Gemini-Lin</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">背景与需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text">项目方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">4.</span> <span class="nav-text">核心问题介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#无人机会遇到哪些安全威胁"><span class="nav-number">4.1.</span> <span class="nav-text">无人机会遇到哪些安全威胁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区块链发挥的主要作用是什么？"><span class="nav-number">4.2.</span> <span class="nav-text">区块链发挥的主要作用是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区块链为什么采用联盟链？"><span class="nav-number">4.3.</span> <span class="nav-text">区块链为什么采用联盟链？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">5.</span> <span class="nav-text">UI &amp; Logo 设计</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+ 
+ <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"> Andy Wu &nbsp | &nbsp </span>
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+    Number of visitors:<span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">64k</span>
+  
+</div>
+
+
+</div>
+
+<!--
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+-->
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count"></span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <div id="gitalk-container"></div>
+  <script src="/js/src/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: 'b559026a8469cfafb7e3',
+      clientSecret: '68757dba62da9ddd3078e0b24c9c146b555deecc',
+      repo: 'ZER0-Nu1L.github.io',
+      owner: 'ZER0-Nu1L',
+      admin: ['ZER0-Nu1L'],
+      id: md5(location.pathname),
+      distractionFreeMode: 'true'
+    })
+    gitalk.render('gitalk-container')
+  </script>
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+  <script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

@@ -1,4 +1,1041 @@
-<!DOCTYPE html><html class="theme-next pisces use-motion" lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><script src="/lib/pace/pace.min.js?v=1.0.2"></script><link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="google-site-verification" content="QvPZ3tgcDy_FQ1Ivu9CLCAEPdzhAyW8GzyQ1APQgiVg"><meta name="baidu-site-verification" content="ueLXt8dSC9"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-crypto.png?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-crypto.png?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><meta name="keywords" content="Studio,"><link rel="alternate" href="/atom.xml" title="ZER0-Nu1L" type="application/atom+xml"><meta name="description" content="Crypto 方向基础 入门基础:  C语言 &#x2F;&#x2F; 很多代码审计都是以 C语言形式呈现 Python3:  菜鸟教程 廖雪峰的博客 gmpy2库、Crypto库的使用   数学基础 (重中之重) 可以参考《信息安全数学基础》（初等数论、近世代数） linux的常见使用 基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。 其余的遇到问题看需要再去学。"><meta property="og:type" content="article"><meta property="og:title" content="招新：Crypto方向介绍"><meta property="og:url" content="https://zer0-nu1l.github.io/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/index.html"><meta property="og:site_name" content="ZER0-Nu1L"><meta property="og:description" content="Crypto 方向基础 入门基础:  C语言 &#x2F;&#x2F; 很多代码审计都是以 C语言形式呈现 Python3:  菜鸟教程 廖雪峰的博客 gmpy2库、Crypto库的使用   数学基础 (重中之重) 可以参考《信息安全数学基础》（初等数论、近世代数） linux的常见使用 基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。 其余的遇到问题看需要再去学。"><meta property="og:locale" content="en_US"><meta property="article:published_time" content="2019-10-10T08:53:23.000Z"><meta property="article:modified_time" content="2019-11-01T10:22:26.251Z"><meta property="article:author" content="Andy Wu"><meta property="article:tag" content="Studio"><meta name="twitter:card" content="summary"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Pisces",version:"5.1.4",sidebar:{position:"left",display:"post",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},duoshuo:{userId:"0",author:"Author"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="https://zer0-nu1l.github.io/2019/10/10/CTF-Crypto 方向介绍/"><title>招新：Crypto方向介绍 | ZER0-Nu1L</title><meta name="generator" content="Hexo 4.2.0"></head><body itemscope itemtype="http://schema.org/WebPage" lang="en"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">ZER0-Nu1L</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">In me the tiger sniffs the rose.</p></div><div class="site-nav-toggle"> <button><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br> Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br> Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br> Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br> Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br> About</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br> Search</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://zer0-nu1l.github.io/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Andy Wu"><meta itemprop="description" content=""><meta itemprop="image" content="/uploads/Profile.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="ZER0-Nu1L"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">招新：Crypto方向介绍</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-10T16:53:23+08:00">2019-10-10</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span> , <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CTF/Crypto/" itemprop="url" rel="index"><span itemprop="name">Crypto</span></a></span></span><div class="post-wordcount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span> <span class="post-meta-item-text">Words count in article&#58;</span> <span title="Words count in article">498</span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-clock-o"></i></span> <span class="post-meta-item-text">Reading time &asymp;</span> <span title="Reading time">1</span></div></div></header><div class="post-body" itemprop="articleBody"><h1>Crypto 方向基础</h1><h2 id="入门基础">入门基础:</h2><ol><li>C语言<br> // 很多代码审计都是以 C语言形式呈现</li><li>Python3:<ol><li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li><li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li><li>gmpy2库、Crypto库的使用</li></ol></li><li><strong>数学基础</strong> (重中之重)<br> 可以参考《信息安全数学基础》（初等数论、近世代数）</li><li>linux的常见使用<br> 基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br> 其余的遇到问题看需要再去学。</li></ol><a id="more"></a><p>注意事项：</p><blockquote><ol><li>密码学的要求是两点：算法编程能力，数学推理能力。</li><li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li><li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br> 参见题目：<br> DEF CON CTF Qualifier 2018 SAG?<br> DEF CON CTF Qualifier 2018 smcauth<br> DEF CON CTF Qualifier 2018 Easy Pisy<br> codegate2018 miro</li></ol></blockquote><h2 id="涵盖基本知识">涵盖基本知识</h2><ol><li>常见编码方式<br> base家族、Uuencode、Xxencode 等等等等。</li><li>古典密码<br> 凯撒密码、栅栏密码、维基利亚密码 等等等等。</li><li>分组密码<br> DES、AES 等。</li><li>非对称密码<br> RSA、Elgamal、ECC等。</li><li>哈希函数<br> 经常出现在 Web 题目中</li></ol><h2 id="资源推荐">资源推荐</h2><ol><li>学习方式推荐：<br> 看书+看ctfwiki或者自己找一些blog+做题</li><li>密码学书籍：<br> 《信息安全数学基础》（各个学校都有自己的版本）<br> <a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li><li>密码学学习网站推荐：<br> <a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br> （主要是面向ctf解题以及算法编程）</li><li>做题网站：<br> <a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br> <a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li></ol><h2 id="题目类型">题目类型</h2><table><thead><tr><th>攻击方式</th><th>说明</th></tr></thead><tbody><tr><td>唯密文攻击</td><td>只拥有密文</td></tr><tr><td>选择明文攻击</td><td>拥有加密权限，能够对明文加密后获得相应密文</td></tr><tr><td>已知明文攻击</td><td>拥有密文与对应的明文。</td></tr><tr><td>选择密文攻击</td><td>拥有解密权限，能够对密文解密后获得相应明文</td></tr></tbody></table><p>Crypto 方向负责人：ZER0-Nu1L</p></div><div><div><div style="text-align:center;color:#ccc;font-size:14px">------ The end ------</div></div></div><div><div class="my_post_copyright"><script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script><script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><p><span>本文标题:</span><a href="/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/">招新：Crypto方向介绍</a></p><p><span>文章作者:</span><a href="/" title="访问 Andy Wu 的个人博客">Andy Wu</a></p><p><span>发布时间:</span>2019年10月10日 - 16:10</p><p><span>最后更新:</span>2019年11月01日 - 18:11</p><p><span>原始链接:</span><a href="/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/" title="招新：Crypto方向介绍">https://zer0-nu1l.github.io/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</a><span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://zer0-nu1l.github.io/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/" aria-label="复制成功！"></i></span></p><p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p></div><script>var clipboard=new Clipboard(".fa-clipboard");$(".fa-clipboard").click(function(){clipboard.on("success",function(){swal({title:"",text:"复制成功",icon:"success",showConfirmButton:!0})})})</script></div><footer class="post-footer"><div class="post-tags"><a href="/tags/Studio/" rel="tag"><i class="fa fa-tag"></i> Studio</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/09/29/OpenSSL/" rel="next" title="OpenSSL"><i class="fa fa-chevron-left"></i> OpenSSL</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2019/10/20/%E6%9E%81%E5%AE%A2%E5%B7%85%E5%B3%B0-CoCo-writeup/" rel="prev" title="巅峰极客 CoCo Writeup">巅峰极客 CoCo Writeup<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"></div></div></div><div id="gitalk-container"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> Table of Contents</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> Overview</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/uploads/Profile.jpg" alt="Andy Wu"><p class="site-author-name" itemprop="name">Andy Wu</p><p class="site-description motion-element" itemprop="description">Cover the face and straight ahead.</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/%7C%7C%20archive"><span class="site-state-item-count">21</span> <span class="site-state-item-name">posts</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/index.html"><span class="site-state-item-count">18</span> <span class="site-state-item-name">categories</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">29</span> <span class="site-state-item-name">tags</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/ZER0-Nu1L" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="mailto:wcb534813346@126.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i> E-Mail</a></span></div><div class="links-of-blogroll motion-element links-of-blogroll-block"><div class="links-of-blogroll-title"><i class="fa fa-fw fa-link"></i> Blogroll</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"> <a href="https://ff-0xff.github.io/" title="ff-0xff" target="_blank">ff-0xff</a></li><li class="links-of-blogroll-item"> <a href="http://fitz.hasentu.com/" title="五维生物" target="_blank">五维生物</a></li><li class="links-of-blogroll-item"> <a href="https://gemini-lin.github.io/" title="Gemini-Lin" target="_blank">Gemini-Lin</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">Crypto 方向基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#入门基础"><span class="nav-number">1.1.</span> <span class="nav-text">入门基础:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#涵盖基本知识"><span class="nav-number">1.2.</span> <span class="nav-text">涵盖基本知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源推荐"><span class="nav-number">1.3.</span> <span class="nav-text">资源推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目类型"><span class="nav-number">1.4.</span> <span class="nav-text">题目类型</span></a></li></ol></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2020</span><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="with-love"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">Andy Wu &nbsp | &nbsp</span><div class="powered-by"><i class="fa fa-user-md"></i> <span id="busuanzi_container_site_pv">Number of visitors:<span id="busuanzi_value_site_pv"></span></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-area-chart"></i></span> <span class="post-meta-item-text">Site words total count&#58;</span> <span title="Site words total count">61.3k</span></div></div><div class="theme-info"><div class="powered-by"></div><span class="post-count"></span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><div id="gitalk-container"></div><script src="/js/src/md5.min.js"></script><script type="text/javascript">var gitalk=new Gitalk({clientID:"b559026a8469cfafb7e3",clientSecret:"68757dba62da9ddd3078e0b24c9c146b555deecc",repo:"ZER0-Nu1L.github.io",owner:"ZER0-Nu1L",admin:["ZER0-Nu1L"],id:md5(location.pathname),distractionFreeMode:"true"});gitalk.render("gitalk-container")</script><script type="text/javascript">
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="QvPZ3tgcDy_FQ1Ivu9CLCAEPdzhAyW8GzyQ1APQgiVg" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="ueLXt8dSC9" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-crypto.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-crypto.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Studio," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZER0-Nu1L" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Crypto 方向基础 入门基础:  C语言 &#x2F;&#x2F; 很多代码审计都是以 C语言形式呈现 Python3:  菜鸟教程 廖雪峰的博客 gmpy2库、Crypto库的使用   数学基础 (重中之重) 可以参考《信息安全数学基础》（初等数论、近世代数） linux的常见使用 基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。 其余的遇到问题看需要再去学。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="招新：Crypto方向介绍">
+<meta property="og:url" content="https://zer0-nu1l.github.io/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="ZER0-Nu1L">
+<meta property="og:description" content="Crypto 方向基础 入门基础:  C语言 &#x2F;&#x2F; 很多代码审计都是以 C语言形式呈现 Python3:  菜鸟教程 廖雪峰的博客 gmpy2库、Crypto库的使用   数学基础 (重中之重) 可以参考《信息安全数学基础》（初等数论、近世代数） linux的常见使用 基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。 其余的遇到问题看需要再去学。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-10-10T08:53:23.000Z">
+<meta property="article:modified_time" content="2019-11-01T10:22:26.251Z">
+<meta property="article:author" content="Andy Wu">
+<meta property="article:tag" content="Studio">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zer0-nu1l.github.io/2019/10/10/CTF-Crypto 方向介绍/"/>
+
+
+
+
+
+  <title>招新：Crypto方向介绍 | ZER0-Nu1L</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZER0-Nu1L</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">In me the tiger sniffs the rose.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zer0-nu1l.github.io/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Andy Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/Profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZER0-Nu1L">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">招新：Crypto方向介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-10T16:53:23+08:00">
+                2019-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/Crypto/" itemprop="url" rel="index">
+                    <span itemprop="name">Crypto</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  498
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1>Crypto 方向基础</h1>
+<h2 id="入门基础">入门基础:</h2>
+<ol>
+<li>C语言<br>
+// 很多代码审计都是以 C语言形式呈现</li>
+<li>Python3:
+<ol>
+<li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li>
+<li>gmpy2库、Crypto库的使用</li>
+</ol>
+</li>
+<li><strong>数学基础</strong> (重中之重)<br>
+可以参考《信息安全数学基础》（初等数论、近世代数）</li>
+<li>linux的常见使用<br>
+基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>
+其余的遇到问题看需要再去学。</li>
+</ol>
+<a id="more"></a>
+<p>注意事项：</p>
+<blockquote>
+<ol>
+<li>密码学的要求是两点：算法编程能力，数学推理能力。</li>
+<li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li>
+<li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>
+参见题目：<br>
+DEF CON CTF Qualifier 2018 SAG?<br>
+DEF CON CTF Qualifier 2018 smcauth<br>
+DEF CON CTF Qualifier 2018 Easy Pisy<br>
+codegate2018 miro</li>
+</ol>
+</blockquote>
+<h2 id="涵盖基本知识">涵盖基本知识</h2>
+<ol>
+<li>常见编码方式<br>
+base家族、Uuencode、Xxencode 等等等等。</li>
+<li>古典密码<br>
+凯撒密码、栅栏密码、维基利亚密码 等等等等。</li>
+<li>分组密码<br>
+DES、AES 等。</li>
+<li>非对称密码<br>
+RSA、Elgamal、ECC等。</li>
+<li>哈希函数<br>
+经常出现在 Web 题目中</li>
+</ol>
+<h2 id="资源推荐">资源推荐</h2>
+<ol>
+<li>学习方式推荐：<br>
+看书+看ctfwiki或者自己找一些blog+做题</li>
+<li>密码学书籍：<br>
+《信息安全数学基础》（各个学校都有自己的版本）<br>
+<a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li>
+<li>密码学学习网站推荐：<br>
+<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>
+（主要是面向ctf解题以及算法编程）</li>
+<li>做题网站：<br>
+<a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br>
+<a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li>
+</ol>
+<h2 id="题目类型">题目类型</h2>
+<table>
+<thead>
+<tr>
+<th>攻击方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>唯密文攻击</td>
+<td>只拥有密文</td>
+</tr>
+<tr>
+<td>选择明文攻击</td>
+<td>拥有加密权限，能够对明文加密后获得相应密文</td>
+</tr>
+<tr>
+<td>已知明文攻击</td>
+<td>拥有密文与对应的明文。</td>
+</tr>
+<tr>
+<td>选择密文攻击</td>
+<td>拥有解密权限，能够对密文解密后获得相应明文</td>
+</tr>
+</tbody>
+</table>
+<p>Crypto 方向负责人：ZER0-Nu1L</p>
+
+      
+    </div>
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ The end ------</div>
+    
+</div>
+      
+    </div>
+    <div>
+          
+            
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/">招新：Crypto方向介绍</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Andy Wu 的个人博客">Andy Wu</a></p>
+  <p><span>发布时间:</span>2019年10月10日 - 16:10</p>
+  <p><span>最后更新:</span>2019年11月01日 - 18:11</p>
+  <p><span>原始链接:</span><a href="/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/" title="招新：Crypto方向介绍">https://zer0-nu1l.github.io/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://zer0-nu1l.github.io/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+          
+    </div>
+    
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Studio/" rel="tag"><i class="fa fa-tag"></i> Studio</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/29/OpenSSL/" rel="next" title="OpenSSL">
+                <i class="fa fa-chevron-left"></i> OpenSSL
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/20/%E6%9E%81%E5%AE%A2%E5%B7%85%E5%B3%B0-CoCo-writeup/" rel="prev" title="巅峰极客 CoCo Writeup">
+                巅峰极客 CoCo Writeup <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+  <div id="gitalk-container"></div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/Profile.jpg"
+                alt="Andy Wu" />
+            
+              <p class="site-author-name" itemprop="name">Andy Wu</p>
+              <p class="site-description motion-element" itemprop="description">Cover the face and straight ahead.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ZER0-Nu1L" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wcb534813346@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Blogroll
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ff-0xff.github.io/" title="ff-0xff" target="_blank">ff-0xff</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://fitz.hasentu.com/" title="五维生物" target="_blank">五维生物</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gemini-lin.github.io/" title="Gemini-Lin" target="_blank">Gemini-Lin</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">Crypto 方向基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#入门基础"><span class="nav-number">1.1.</span> <span class="nav-text">入门基础:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#涵盖基本知识"><span class="nav-number">1.2.</span> <span class="nav-text">涵盖基本知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源推荐"><span class="nav-number">1.3.</span> <span class="nav-text">资源推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目类型"><span class="nav-number">1.4.</span> <span class="nav-text">题目类型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+ 
+ <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"> Andy Wu &nbsp | &nbsp </span>
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+    Number of visitors:<span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">64k</span>
+  
+</div>
+
+
+</div>
+
+<!--
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+-->
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count"></span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <div id="gitalk-container"></div>
+  <script src="/js/src/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: 'b559026a8469cfafb7e3',
+      clientSecret: '68757dba62da9ddd3078e0b24c9c146b555deecc',
+      repo: 'ZER0-Nu1L.github.io',
+      owner: 'ZER0-Nu1L',
+      admin: ['ZER0-Nu1L'],
+      id: md5(location.pathname),
+      distractionFreeMode: 'true'
+    })
+    gitalk.render('gitalk-container')
+  </script>
+
+  
+
+  <script type="text/javascript">
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -313,7 +1350,24 @@
         onPopupClose();
       }
     });
-  </script><script type="text/x-mathjax-config">
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: {
           inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
@@ -321,11 +1375,27 @@
           skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
         }
       });
-    </script><script type="text/x-mathjax-config">
+    </script>
+
+    <script type="text/x-mathjax-config">
       MathJax.Hub.Queue(function() {
         var all = MathJax.Hub.getAllJax(), i;
         for (i=0; i < all.length; i += 1) {
           all[i].SourceElement().parentNode.className += ' has-jax';
         }
       });
-    </script><script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="/js/src/clipboard.min.js"></script><script type="text/javascript" src="/js/src/custom.js"></script></body></html>
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+  <script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>
