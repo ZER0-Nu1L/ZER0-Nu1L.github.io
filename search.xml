@@ -1,6 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>招新：Crypto方向介绍</title>
+    <url>/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h1>Crypto 方向基础</h1>
+<h2 id="入门基础">入门基础:</h2>
+<ol>
+<li>C语言<br>
+// 很多代码审计都是以 C语言形式呈现</li>
+<li>Python3:
+<ol>
+<li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li>
+<li>gmpy2库、Crypto库的使用</li>
+</ol>
+</li>
+<li><strong>数学基础</strong> (重中之重)<br>
+可以参考《信息安全数学基础》（初等数论、近世代数）</li>
+<li>linux的常见使用<br>
+基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>
+其余的遇到问题看需要再去学。</li>
+</ol>
+<a id="more"></a>
+<p>注意事项：</p>
+<blockquote>
+<ol>
+<li>密码学的要求是两点：算法编程能力，数学推理能力。</li>
+<li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li>
+<li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>
+参见题目：<br>
+DEF CON CTF Qualifier 2018 SAG?<br>
+DEF CON CTF Qualifier 2018 smcauth<br>
+DEF CON CTF Qualifier 2018 Easy Pisy<br>
+codegate2018 miro</li>
+</ol>
+</blockquote>
+<h2 id="涵盖基本知识">涵盖基本知识</h2>
+<ol>
+<li>常见编码方式<br>
+base家族、Uuencode、Xxencode 等等等等。</li>
+<li>古典密码<br>
+凯撒密码、栅栏密码、维基利亚密码 等等等等。</li>
+<li>分组密码<br>
+DES、AES 等。</li>
+<li>非对称密码<br>
+RSA、Elgamal、ECC等。</li>
+<li>哈希函数<br>
+经常出现在 Web 题目中</li>
+</ol>
+<h2 id="资源推荐">资源推荐</h2>
+<ol>
+<li>学习方式推荐：<br>
+看书+看ctfwiki或者自己找一些blog+做题</li>
+<li>密码学书籍：<br>
+《信息安全数学基础》（各个学校都有自己的版本）<br>
+<a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li>
+<li>密码学学习网站推荐：<br>
+<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>
+（主要是面向ctf解题以及算法编程）</li>
+<li>做题网站：<br>
+<a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br>
+<a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li>
+</ol>
+<h2 id="题目类型">题目类型</h2>
+<table>
+<thead>
+<tr>
+<th>攻击方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>唯密文攻击</td>
+<td>只拥有密文</td>
+</tr>
+<tr>
+<td>选择明文攻击</td>
+<td>拥有加密权限，能够对明文加密后获得相应密文</td>
+</tr>
+<tr>
+<td>已知明文攻击</td>
+<td>拥有密文与对应的明文。</td>
+</tr>
+<tr>
+<td>选择密文攻击</td>
+<td>拥有解密权限，能够对密文解密后获得相应明文</td>
+</tr>
+</tbody>
+</table>
+<p>Crypto 方向负责人：ZER0-Nu1L</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
+      <tags>
+        <tag>Studio</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>5G 无人机安全系统 JoyFly</title>
     <url>/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<p><img src="/2020/06/22/5G%E6%97%A0%E4%BA%BA%E6%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F/Cover.gif" alt></p>
@@ -443,105 +542,6 @@ mod_security模块，一个开源的WAF模块，有专门针对慢速攻击防�
       </categories>
   </entry>
   <entry>
-    <title>招新：Crypto方向介绍</title>
-    <url>/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h1>Crypto 方向基础</h1>
-<h2 id="入门基础">入门基础:</h2>
-<ol>
-<li>C语言<br>
-// 很多代码审计都是以 C语言形式呈现</li>
-<li>Python3:
-<ol>
-<li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li>
-<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li>
-<li>gmpy2库、Crypto库的使用</li>
-</ol>
-</li>
-<li><strong>数学基础</strong> (重中之重)<br>
-可以参考《信息安全数学基础》（初等数论、近世代数）</li>
-<li>linux的常见使用<br>
-基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>
-其余的遇到问题看需要再去学。</li>
-</ol>
-<a id="more"></a>
-<p>注意事项：</p>
-<blockquote>
-<ol>
-<li>密码学的要求是两点：算法编程能力，数学推理能力。</li>
-<li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li>
-<li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>
-参见题目：<br>
-DEF CON CTF Qualifier 2018 SAG?<br>
-DEF CON CTF Qualifier 2018 smcauth<br>
-DEF CON CTF Qualifier 2018 Easy Pisy<br>
-codegate2018 miro</li>
-</ol>
-</blockquote>
-<h2 id="涵盖基本知识">涵盖基本知识</h2>
-<ol>
-<li>常见编码方式<br>
-base家族、Uuencode、Xxencode 等等等等。</li>
-<li>古典密码<br>
-凯撒密码、栅栏密码、维基利亚密码 等等等等。</li>
-<li>分组密码<br>
-DES、AES 等。</li>
-<li>非对称密码<br>
-RSA、Elgamal、ECC等。</li>
-<li>哈希函数<br>
-经常出现在 Web 题目中</li>
-</ol>
-<h2 id="资源推荐">资源推荐</h2>
-<ol>
-<li>学习方式推荐：<br>
-看书+看ctfwiki或者自己找一些blog+做题</li>
-<li>密码学书籍：<br>
-《信息安全数学基础》（各个学校都有自己的版本）<br>
-<a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li>
-<li>密码学学习网站推荐：<br>
-<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>
-（主要是面向ctf解题以及算法编程）</li>
-<li>做题网站：<br>
-<a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br>
-<a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li>
-</ol>
-<h2 id="题目类型">题目类型</h2>
-<table>
-<thead>
-<tr>
-<th>攻击方式</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>唯密文攻击</td>
-<td>只拥有密文</td>
-</tr>
-<tr>
-<td>选择明文攻击</td>
-<td>拥有加密权限，能够对明文加密后获得相应密文</td>
-</tr>
-<tr>
-<td>已知明文攻击</td>
-<td>拥有密文与对应的明文。</td>
-</tr>
-<tr>
-<td>选择密文攻击</td>
-<td>拥有解密权限，能够对密文解密后获得相应明文</td>
-</tr>
-</tbody>
-</table>
-<p>Crypto 方向负责人：ZER0-Nu1L</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
-      <tags>
-        <tag>Studio</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【GitKraken】 Could not find a compatible repository</title>
     <url>/2020/05/01/GitKraken%20Error/</url>
     <content><![CDATA[<h1>情况说明</h1>
@@ -594,6 +594,84 @@ RSA、Elgamal、ECC等。</li>
       <tags>
         <tag>GitKraken</tag>
         <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VSCode Remote-SSH Kali 配置</title>
+    <url>/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/architecture-ssh.png" width="700">
+<h1>前言</h1>
+<p>SSH 是我们经常用的一种协议，而 VSCode 的拓展 Remote-SSH 确实给力，允许在远程连接，在本地的终端进行编程。对我而言，就不需要在虚拟机 Ubuntu 里面安装 IDE，或者每次用共享文件夹编程完后跑到虚拟机中再跑程序。可以直接在自己的 Windows 下的 VSCode 进行编程。</p>
+<p>关于这方面的博客大多只有陈列一堆的命令而不加解释，读者照抄命令，有时候可以成功，有时候却不能，有时候抄命令抄一半就忘了抄到哪里。</p>
+<a id="more"></a>
+<p>最糟糕的是不能举一反三，比如现在似乎没有用 Remote-SSH 连接 kali 的文章。这也正是此文章的目的所在之一。<br>
+此文章最重要的目的在于将整个过程命令的含义和排错命令进行阐述。</p>
+<h1>SSH 需要注意的几个点</h1>
+<h2 id="SSH-命令">SSH 命令</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p 22 username@ipaddress</span><br></pre></td></tr></table></figure>
+<h3 id="端口">端口</h3>
+<p>在命令中已经声明端口是22 （<code>-p 22</code>），很多时候可以省略这个参数，因为 <code>ssh</code> 命令默认的端口就是 22。</p>
+<p>端口 22 有时候是没有打开的，在 Linux 和 Windows 系统中都是用 <code>netstat -an</code> 来查看所有开放的端口。</p>
+<p>在 Linux 下可以用 <code>netstat -an | grep :22</code> 来查看端口 22 是否开放；<br>
+<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/Ubuntu_netstart_22.png" width="500"></p>
+<p>在 Windows 下可以用 <code>netstat -an | findstr &quot;:22&quot;</code> 来查看端口 22 是否开放。<br>
+<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/Windows_netstart_22.png" width="500"></p>
+<h3 id="连接成功">连接成功</h3>
+<p>连接之后查看信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">user@hostname :~$ <span class="built_in">echo</span> <span class="variable">$SSH_CLIENT</span></span><br><span class="line">xxx.xxx.xxx.xxx portxx 22</span><br><span class="line">user@hostname :~$ <span class="built_in">echo</span> <span class="variable">$SSH_CONNECTION</span></span><br><span class="line">xxx.xxx.xxx.xxx portxx xxx.xxx.xxx.xxx portxx</span><br></pre></td></tr></table></figure>
+<h3 id="主机名与用户">主机名与用户</h3>
+<p>一种可能导致连接不成功的原因是把主机名和用户名搞混淆了。<br>
+这样会错连接一个可能存在也或者不存在的用户。</p>
+<p>查看主机的命令是 <code>hostname</code> ，查看用户的命令是 <code>whoami</code>。</p>
+<p>其实也可以发现在 Linux 的终端中，每个命令的头部是 <code>username@hostname</code> ；<br>
+而 Windows 的终端中命令的头部只有目录信息。</p>
+<h1>VSCode Remote-SSH — kali</h1>
+<h2 id="VSCode-Remote-SSH">VSCode Remote-SSH</h2>
+<p>这个拓展是非常易用的，只需要启动 <code>Remote-SSH</code>后点击 <code>Remote-SSH:Connect to Host...</code>，输入 ip 和密码就可以 SSH 连接到远程机器。</p>
+<h2 id="kali">kali</h2>
+<h3 id="1-Permission-denied-please-try-again">1.Permission denied, please try again.</h3>
+<p>如果用同样的方式去连接 kali 的话，会遇到的第一个情况是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Permission denied, please try again.</span><br></pre></td></tr></table></figure>
+<p>原因在于用上述的方式默认连接的是 kali 的普通用户，但是 kali 是默认是特权用户 root，所以输入的账户和密码是不对应的。</p>
+<p>解决的方法是：</p>
+<p>启动 <code>Remote-SSH</code>后点击 <code>Remote-SSH:Connect to Host...</code>，再点击 <code>Add New SSH Host...</code>，根据提示输入<br>
+<code>ssh root@xxx.xxx.xxx.xxx</code>，此时再连接，输入的密码就匹配上了。</p>
+<h3 id="2-ssh-connect-to-host-xxx-xxx-xx-xx-port-22-Connection-refused">2.ssh:connect to host xxx.xxx.xx.xx port 22: Connection refused</h3>
+<p>虽然密码正确，但是依然连接不上。<br>
+现在再去查“kali使用ssh进行登录”，就很容易明白为什么 kali 使用 ssh 登录需要改那里改这里了。</p>
+<p>这也是 kali 是默认是特权用户 root 导致的。平时我们用 SSH 连接的是普通的用户，连接特权用户需要更改 SSH 的配置文件。</p>
+<h3 id="修改-ssh-配置文件">修改 ssh 配置文件</h3>
+<p>在 kali 的终端下：<br>
+需要修改的 ssh 的配置文件有 /etc/ssh 下的 ssh_config 和 ssh文件。</p>
+<h4 id="修改-ssh-config-文件">修改 ssh_config 文件</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/ssh</span><br><span class="line">vim ssh_config</span><br></pre></td></tr></table></figure>
+<p>修改一个地方：<br>
+<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/PasswordAuthentication.png" width="300"><br>
+保存修改，退出 vim 编辑器</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">:wq!</span><br></pre></td></tr></table></figure>
+<h4 id="修改-sshd-config-文件">修改 sshd_config 文件</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim sshd_config</span><br></pre></td></tr></table></figure>
+<p>修改两处地方：<br>
+<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/PermitRootLogin.png" width="300"></p>
+<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/PasswordAuthentication_d.png" width="600">
+<p>修改的含义，根据其中文意义和文章之前的解说应该非常容易理解。<br>
+保存修改，退出 vim 编辑器</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">:wq!</span><br></pre></td></tr></table></figure>
+<p>重启ssh服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service ssh strat</span><br></pre></td></tr></table></figure>
+<p>有时候重启一下才会生效（不知道为什么）。</p>
+<h3 id="连接">连接</h3>
+<p>再一次用 VSCode 的 Remote-SSH 连接，就能成功连接 kali 了。</p>
+]]></content>
+      <categories>
+        <category>Web</category>
+        <category>SSH</category>
+      </categories>
+      <tags>
+        <tag>kali</tag>
+        <tag>SSH</tag>
+        <tag>VSCode</tag>
+        <tag>Remote-SSH</tag>
       </tags>
   </entry>
   <entry>
@@ -799,84 +877,6 @@ use more than 20~30% time to try;</p>
       </categories>
       <tags>
         <tag>Joyeat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VSCode Remote-SSH Kali 配置</title>
-    <url>/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/architecture-ssh.png" width="700">
-<h1>前言</h1>
-<p>SSH 是我们经常用的一种协议，而 VSCode 的拓展 Remote-SSH 确实给力，允许在远程连接，在本地的终端进行编程。对我而言，就不需要在虚拟机 Ubuntu 里面安装 IDE，或者每次用共享文件夹编程完后跑到虚拟机中再跑程序。可以直接在自己的 Windows 下的 VSCode 进行编程。</p>
-<p>关于这方面的博客大多只有陈列一堆的命令而不加解释，读者照抄命令，有时候可以成功，有时候却不能，有时候抄命令抄一半就忘了抄到哪里。</p>
-<a id="more"></a>
-<p>最糟糕的是不能举一反三，比如现在似乎没有用 Remote-SSH 连接 kali 的文章。这也正是此文章的目的所在之一。<br>
-此文章最重要的目的在于将整个过程命令的含义和排错命令进行阐述。</p>
-<h1>SSH 需要注意的几个点</h1>
-<h2 id="SSH-命令">SSH 命令</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p 22 username@ipaddress</span><br></pre></td></tr></table></figure>
-<h3 id="端口">端口</h3>
-<p>在命令中已经声明端口是22 （<code>-p 22</code>），很多时候可以省略这个参数，因为 <code>ssh</code> 命令默认的端口就是 22。</p>
-<p>端口 22 有时候是没有打开的，在 Linux 和 Windows 系统中都是用 <code>netstat -an</code> 来查看所有开放的端口。</p>
-<p>在 Linux 下可以用 <code>netstat -an | grep :22</code> 来查看端口 22 是否开放；<br>
-<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/Ubuntu_netstart_22.png" width="500"></p>
-<p>在 Windows 下可以用 <code>netstat -an | findstr &quot;:22&quot;</code> 来查看端口 22 是否开放。<br>
-<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/Windows_netstart_22.png" width="500"></p>
-<h3 id="连接成功">连接成功</h3>
-<p>连接之后查看信息：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">user@hostname :~$ <span class="built_in">echo</span> <span class="variable">$SSH_CLIENT</span></span><br><span class="line">xxx.xxx.xxx.xxx portxx 22</span><br><span class="line">user@hostname :~$ <span class="built_in">echo</span> <span class="variable">$SSH_CONNECTION</span></span><br><span class="line">xxx.xxx.xxx.xxx portxx xxx.xxx.xxx.xxx portxx</span><br></pre></td></tr></table></figure>
-<h3 id="主机名与用户">主机名与用户</h3>
-<p>一种可能导致连接不成功的原因是把主机名和用户名搞混淆了。<br>
-这样会错连接一个可能存在也或者不存在的用户。</p>
-<p>查看主机的命令是 <code>hostname</code> ，查看用户的命令是 <code>whoami</code>。</p>
-<p>其实也可以发现在 Linux 的终端中，每个命令的头部是 <code>username@hostname</code> ；<br>
-而 Windows 的终端中命令的头部只有目录信息。</p>
-<h1>VSCode Remote-SSH — kali</h1>
-<h2 id="VSCode-Remote-SSH">VSCode Remote-SSH</h2>
-<p>这个拓展是非常易用的，只需要启动 <code>Remote-SSH</code>后点击 <code>Remote-SSH:Connect to Host...</code>，输入 ip 和密码就可以 SSH 连接到远程机器。</p>
-<h2 id="kali">kali</h2>
-<h3 id="1-Permission-denied-please-try-again">1.Permission denied, please try again.</h3>
-<p>如果用同样的方式去连接 kali 的话，会遇到的第一个情况是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Permission denied, please try again.</span><br></pre></td></tr></table></figure>
-<p>原因在于用上述的方式默认连接的是 kali 的普通用户，但是 kali 是默认是特权用户 root，所以输入的账户和密码是不对应的。</p>
-<p>解决的方法是：</p>
-<p>启动 <code>Remote-SSH</code>后点击 <code>Remote-SSH:Connect to Host...</code>，再点击 <code>Add New SSH Host...</code>，根据提示输入<br>
-<code>ssh root@xxx.xxx.xxx.xxx</code>，此时再连接，输入的密码就匹配上了。</p>
-<h3 id="2-ssh-connect-to-host-xxx-xxx-xx-xx-port-22-Connection-refused">2.ssh:connect to host xxx.xxx.xx.xx port 22: Connection refused</h3>
-<p>虽然密码正确，但是依然连接不上。<br>
-现在再去查“kali使用ssh进行登录”，就很容易明白为什么 kali 使用 ssh 登录需要改那里改这里了。</p>
-<p>这也是 kali 是默认是特权用户 root 导致的。平时我们用 SSH 连接的是普通的用户，连接特权用户需要更改 SSH 的配置文件。</p>
-<h3 id="修改-ssh-配置文件">修改 ssh 配置文件</h3>
-<p>在 kali 的终端下：<br>
-需要修改的 ssh 的配置文件有 /etc/ssh 下的 ssh_config 和 ssh文件。</p>
-<h4 id="修改-ssh-config-文件">修改 ssh_config 文件</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/ssh</span><br><span class="line">vim ssh_config</span><br></pre></td></tr></table></figure>
-<p>修改一个地方：<br>
-<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/PasswordAuthentication.png" width="300"><br>
-保存修改，退出 vim 编辑器</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">:wq!</span><br></pre></td></tr></table></figure>
-<h4 id="修改-sshd-config-文件">修改 sshd_config 文件</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim sshd_config</span><br></pre></td></tr></table></figure>
-<p>修改两处地方：<br>
-<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/PermitRootLogin.png" width="300"></p>
-<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/PasswordAuthentication_d.png" width="600">
-<p>修改的含义，根据其中文意义和文章之前的解说应该非常容易理解。<br>
-保存修改，退出 vim 编辑器</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">:wq!</span><br></pre></td></tr></table></figure>
-<p>重启ssh服务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service ssh strat</span><br></pre></td></tr></table></figure>
-<p>有时候重启一下才会生效（不知道为什么）。</p>
-<h3 id="连接">连接</h3>
-<p>再一次用 VSCode 的 Remote-SSH 连接，就能成功连接 kali 了。</p>
-]]></content>
-      <categories>
-        <category>Web</category>
-        <category>SSH</category>
-      </categories>
-      <tags>
-        <tag>kali</tag>
-        <tag>SSH</tag>
-        <tag>VSCode</tag>
-        <tag>Remote-SSH</tag>
       </tags>
   </entry>
   <entry>
@@ -1449,6 +1449,124 @@ $$<br>
       </tags>
   </entry>
   <entry>
+    <title>OpenSSL</title>
+    <url>/2019/09/29/OpenSSL/</url>
+    <content><![CDATA[<h1>openssl 简介</h1>
+<p>openssl是web安全通信的基石</p>
+<h2 id="基础知识">基础知识</h2>
+<h3 id="SSL">SSL</h3>
+<p>Secure Socket Layer(安全套接字层)<br>
+主要是防止信息在互联网上传输的时候不被窃听或者篡改</p>
+<h3 id="数字签名">数字签名</h3>
+<p>将报文使用一定的 HASH 算法算出一个固定位数的摘要信息，然后用私钥将摘要加密，连同原来的报文一起，发送给接收者。<br>
+接受者通过公钥将摘要解出来，再通过 HASH 算法算出报文摘要，对比两者。<br>
+如果两个摘要一致，说明数据未被篡改，数据是完整的。</p>
+<blockquote>
+<p>数字签名具有证明发送者身份和防篡改的功能。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="数字证书">数字证书</h3>
+<p>由CA颁发给网站的身份证书，里面包含了该网站的公钥，有效时间，网站的地址，CA的数字签名等。</p>
+<p>手动查看方式：<br>
+<image src="./证书.png" width="300"><br>
+<image src="./Web证书入口.png" width="300"></image></image></p>
+<p>实际上就是使用了CA的私钥将网站的公钥等信息进行了签名，当客户端请求服务器的时候，网站会把证书发给客户端，客户端首先可以通过CA的数字签名校验CA的身份，也能证明证书的真实完整性<br>
+CA的地址是内嵌在浏览器中的，很难被篡改。</p>
+<h2 id="SSL如何保护数据">SSL如何保护数据</h2>
+<p>1）认证用户和服务器，确保数据发送到正确的客户端和服务器；<br>
+2）加密数据以防止数据中途被窃取；<br>
+3）维护数据的完整性，确保数据在传输过程中不被改变。</p>
+<h3 id="认证用户和服务器">认证用户和服务器</h3>
+<blockquote>
+<p>怎么知道自己访问的是真百度还是假百度？是不是有可能有人<strong>劫持</strong>了我们访问百度的请求，然后路由给了一台他伪造的服务器？</p>
+</blockquote>
+<p>在SSL的通信流程中做了这样一个规定：一旦我们向服务器发送了请求后，服务器必须返回它的数字证书，当我们拿到数字证书之后，我们可以根据里面的ca数字签名，校验证书的合法性（不是被伪造的）</p>
+<p>假设百度服务器是假冒的，他一定没有正确的私钥，那么之后的通信都无法进行，所以假冒服务器是无法操作的。</p>
+<p>由此，SSL就解决了服务器认证的问题。</p>
+<h3 id="加密数据以防止数据中途被窃取">加密数据以防止数据中途被窃取</h3>
+<p>客户端第一次给服务器发送请求的时候（拿到证书前的一次），会在请求里面放一个随机数C1；<br>
+服务器在返回证书的响应里也会带一个随机数F；<br>
+客户端拿到证书后，会使用公钥加密一个随机数C2送给服务器。<br>
+这样客户端、服务器都拥有了三个随机数：C1、F、C2。<br>
+双方使用<strong>这些</strong>随机数和一个相同的算法生成一个对称密钥，之后所有的通信都使用这个对称密钥来进行。</p>
+<p>这个密钥会不会被泄露呢？不会，因为密钥是由3个随机数产生的，对于第一个随机数C1，他可能会被中间人监听到，然后第二个随机数F，也可能会被中间人监听到，但是第三个随机数C2，因为是用公钥加密的，除非中间人有私钥，否则是不可能解出来的。</p>
+<h3 id="维护数据的完整性">维护数据的完整性</h3>
+<p>针对服务器发送数字证书这一过程来说，<br>
+服务器的数字证书中含有ca数字签名，可以很有效的保证证书的真实性和完整性（没有被篡改）</p>
+<h2 id="openssl">openssl</h2>
+<p><s>参考：<a href="https://segmentfault.com/a/1190000014963014" target="_blank" rel="noopener">https://segmentfault.com/a/1190000014963014</a></s><br>
+参考：<a href="E:/%60Desktop/eBook/Cryptology/OpenSSL%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8-%E5%9F%BA%E7%A1%80%E3%80%81%E7%BB%93%E6%9E%84%E5%92%8C%E6%8C%87%E4%BB%A4.pdf">《OpenSSL与网络信息安全-基础、结构和指令》</a><br>
+//博客资料太少</p>
+<p>SSL只是一个协议，openssl则是SSL的实现版<br>
+openssl还包含了公钥私钥的生成、摘要生成等各种工具。</p>
+<h4 id="生成-RSA-密钥-genrsa-指令">生成 RSA 密钥 - genrsa 指令</h4>
+<image src="openssl_genrsa.png" width="700/">
+<ul>
+<li>RSA 最重要的就是私钥的保密性，所以会用对称加密再对私钥加密</li>
+<li>对于 OpenSSL 来说，文件名和其后缀都是没有特别含义的，你可以取任意名字，当然，习惯的用法是以格式来指令后缀，比如 “pem”。</li>
+<li>注意参数的顺序，加密类型可以放在口令之前，位长建议放在最后。</li>
+</ul>
+<p>举例：<br>
+生成一个 1024 位的 RSA 密钥，并输出到 rsaprivkey.pem 文件中.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OpenSSL&gt;genrsa -out rsaprivkey.pem 1024</span><br></pre></td></tr></table></figure>
+<p>生成一个 1024 位的 RSA 密钥，并采用 DES3 算法进行加密, 并输出到 &gt; rsaprivkey.pem 文件中.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OpenSSL&gt;genrsa -out rsaprivkey.pem -des3 -passout pass:xY*&amp;2wG</span><br></pre></td></tr></table></figure>
+<p>(外接硬件设备的例子略)</p>
+<h4 id="管理-RSA-密钥-genrsa-指令">管理 RSA 密钥 - genrsa 指令</h4>
+<image src="openssl_rsa.png" width="800/">
+<ul>
+<li>功能一：对私钥加密/更改对私钥加密的方式（公钥加密无意义）/去掉加密</li>
+<li>功能二：明文输出文件中保存的内容</li>
+</ul>
+<p>举例：<br>
+将一个加密的 PEM 编码的 RSA 私钥(privkey.pem ) 转换成一个不加密的 PEM 编码的 RSA 私钥</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OpenSSL&gt;rsa -in privkey.pem -passin pass:1234567 -out privkey.pem</span><br></pre></td></tr></table></figure>
+<p>原来使用 DES3 加密的 RSA 私钥保存不够安全，而想要使用 256 位 AES 算法加密的时</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OpenSSL&gt;rsa -in privkey.pem -passin pass1234567 -passout xY*&amp;2wG -aes256</span><br></pre></td></tr></table></figure>
+<p>对于明文输出文件保存内容的例子并不令人满意……</p>
+<p>Normal_RSA 题解里面的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">openssl&gt;rsa -pubin -text -modulus -in warmup -in pubkey.pem</span><br></pre></td></tr></table></figure>
+<p>不知道他怎么弄出来的，就连在《openssl-cookbook》也没找到其中的一些参数。</p>
+<hr>
+<p>参看：<a href="https://www.jianshu.com/p/bb2f50862025" target="_blank" rel="noopener">https://www.jianshu.com/p/bb2f50862025</a></p>
+<p>简单地生成私钥 d :</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">openssl&gt; genrsa -out private.pem 1024</span><br><span class="line">&#x2F;&#x2F; -out 输出文件 ； 1024 表示位数</span><br></pre></td></tr></table></figure>
+<p>提取公钥 e :</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">openssl&gt; rsa -in private.pem -pubout -out public.pem</span><br><span class="line">&#x2F;&#x2F; -in 输入文件，这里是使用私钥；</span><br><span class="line">&#x2F;&#x2F;-pubout 输出公钥文件</span><br><span class="line">&#x2F;&#x2F;-out 输出，后跟目标文件</span><br></pre></td></tr></table></figure>
+<p>对明文进行加密</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">openssl&gt; rsautl -encrypt -in message.txt -inkey public.pem -pubin -out enc.txt</span><br><span class="line">&#x2F;&#x2F; -encrpt 加密模式</span><br><span class="line">&#x2F;&#x2F; -in 输入文件，此时是明文</span><br><span class="line">&#x2F;&#x2F; -inkey 输入公钥</span><br><span class="line">&#x2F;&#x2F; -pubin 将公钥放进文件？</span><br><span class="line">&#x2F;&#x2F; -out 输出文件</span><br></pre></td></tr></table></figure>
+<p>对明文进行解密</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">openssl&gt; rsautl -decrypt -in enc.txt -inkey private.pem -out dec.txt</span><br><span class="line">&#x2F;&#x2F; -decrpt 解密模式</span><br><span class="line">&#x2F;&#x2F; -in 输入文件，此时是密文</span><br><span class="line">&#x2F;&#x2F; -inkey 输入私钥</span><br><span class="line">&#x2F;&#x2F; -out 输出文件</span><br></pre></td></tr></table></figure></image></image>]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
+      <tags>
+        <tag>Crypto</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SDN-DDoS Question &amp; Consult</title>
+    <url>/2019/12/08/SDN-DDoS/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">输入密码，查看文章</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="b30ac1cb228034968461e17cabfeb285dc6c695eb6cc7adcc0d7260fcfb95030">c54ef91cce081c6f61e5353cd8bb7033a3a4a4b1fe8abe1b1454f387adbd37348102c6722f4de38abc5e5e7d11e33fb607922e0136851a98202d2c2b9a9b8a4ae5c7908e0d2ec37060e38f7f1217d5781d9f66f930a254506f89c0f90a17be7355fcf26b1e8c3609d466f7df9a2969c9d58a0c3380e6d3e8f87b9ab586c999d4880bd42265233c6cd8b2a026ab3781e30f807c895d127e9b393a71022ac14285953ef63e9348dd40f36d88037e6c2c1b4862924b06f35195f1b51a3333d6e1c318404e0f6a5cd03135e6670161381323c586d2bc95f98afab5350fcaac50ba1d28016418ec73854a93c9a7b43efad3fa49f27aef618045463187c6cfa6e5fbd216b104cccfbc70be79d441c6a30b686c77d4acc3277520686733121015b7a7d429c55004a668dde07877d6676594439fc0feaa056b824d3e9df8708d9e598c8171b72a7d583731487787f192d3e2813be84291edee4e40b939a3deca89df3e6c43e43467d11750e6be778426bd899efce463b6660acba0f23f4567ef5640f3e41acdf17b11fdd72690a36153955ddc7369dc9b119186315ade21e07c9a63dc905e02247821f94e7d394460c3ec13ccfe1a191d13bc72925bc810dccbe3ee6da4a47616127a1b76d0b9ac9893203a47262424cc8a505a796edf640611141d82f22208e6533c28b7bef743ab0b33d93ed6f1b250189961623f73b1658c267c945bf516c339d4fb6576e6da22bf5a66cf4f1b2d11def69cd85376ccef41b6c34b2a27f493f4ad96a3c181c2fb214def70847082241e7b29dd146b88a262388ffa8199092053ecabab51abe6a2d2cfdc893e6221970f4bad1717d1dae9350ea8f001ee90196264136e76dcbe5213d0d0727ddf47407381f0a4f2c1b52650802db59ad035cb3e9648f8350ff4a87bb797f7909ef4a272fcdd243e35f331a0850764ae63352a2be25143468e15781804f84895824bb37858f4a5d14dc8a98fbb3b2687389e64d8ccefc53d2f84e840392c317bee20f4a5a8f5aac2ed65f0d7acf9ffce370ed55c45739de2e608ef72fbbf64d0a7048fabb59b52441c5d2383e8caf60d18b1134a54657c6592f681743f71d0115e6e00c620358065f59e3b61ebcd5823922239522ac56793eb15fa38c35c5fded0eef718a786372636fd57dbe20f6ae88696da0d8f49dc91cbfe65f98c367ede1d5b3c3e6b5b9253a39666c2aa1a141fd286e73760157eb2342ed82833732266de9d25410a6ee48f62ba4306793a5e350cc01a90b11ea7a4e40674d836380cdb4d9a10d455950610f814c77d92d3a03119ca2a249f42b2d47f2fc6d429865477061e0818a19322dfff648f5ed3b0cb33d34439e8302112a2e2e1ca129288ac9b145f79c4259e8fdb80d992f4df477629d21d5812b63969ad8bab195ebb976c3e56cb1ae3c7d398e134c93d327554ac4a9628290ea233b2f905b9c9f4aa2885ac0dee51100074bcc316e796729bf6beece69430b1e6160f6aa145d7f5f110960bb34648f96574161ad5af5ed5aa4bf8cc6fa8fc2980ed6d1dc6aaaf79d2295c80b0bc82dab1bff490026bf57467fafa314b378195ad3b9647793f2208fd1cdf4dcd51d7bde2e6e66cd27b0ff1af3c8536fecf6c97478e1c6d9dfb91f57d70cad375cbe9e62014dba0c77ddfde51a50192f6d9960dc929cbb9b72898a6a03af5039648f5b2d634e38be750f73e9e874cc99025961b0aa2e01f803beecfbb99139f2e154af46f55f6d55d56ccb22a02790ba1f38afb3e5e449dac9217c069bb5976bda7f4eb01ed7374cf079f20b0f712fdd02c71d5d277015a4edbfbc35a254ab18eaf28e11e04f6f22919df14c72d7f0922ad9c32adbb0a74774fca62758f34938a3789e9b50d5e1c49b3d5c45d8c1bba059ddf49965184a19e0fd2ade1887b185ab106fb704c2eef66551d5c31a54af2a8053f60c7a8f43b9c075e3ad5f4b49a54163b3648a509c56a23307a31b5825a8f53beca1a802edff82f6bf5db5600a55183852b2e902ef8176088e0e4bf6c350d5d6b665b6b6132bcacbaeb5ea73179e8d617982a61f950b2f111213965ea7f0c9a371896bd910b9ca69e38582fc2f4d97daab86a82c3da43e46810a38ee846e0f93194d1cef88bca748c44dcc05c2882ef643012a4fffac2c1c87e5a084a7abd90235ef204f612eb7058eb531d4e8485302e3d8c545c5f8d382194d32d999f85c5943a310efedcf24450f9a6276cfac111eaadd496411115e51278518b1cc8d756354074b16547c2fee612e45d5446a2ce89d1a963d2018df3996a3eb2831a6a3d20bd727ac5a7eac9453781d3084f7639ebe6bd6cfe0682d65283d49e5972350178c6c370ec9819d222c62e1bcf0e0c2e57c48052f9a34a0dad4d6c11d2ce4b8db32276503455c60dec21ca51ec59cc67c07b08ec90d016b4687b20575f1141521dbfb15a703caaacf26d911b07961440cc59463b734246dc1b3940c992d5031817c8cba48430392b817600e3f49d6187e1e02aa9daec1290059b2c6a1dbfa077b5054433e2e84a516f86cab562de6b810a5a48a264e1237f5658ca620f72d951f9571c51f0eab6e9154eaf4473554b5dd603342c5c709da69bacda7ae49403913824633ce1fd830a4990006a1e921d1d26f1e5cf47a03efa61bf640bbf8bd71b72f0e50512ce6264b07b7326d3df09b028759d9826fabb35222800dd0d478446ce4a8fd105f2606056aeca7c32a8dcd4d9b2ae1fe436c7e65227f0ab27ad0df4d5722e9a0a997ca248092d5442921f1f79e32dd0540e75331736624cf691c394ee37244c1c51defecfd64614b6d88ab15a585dc56f9877fe9452afe3561810a25aa20faf154c730077f32b3bdbebf1295a3a8e7e1dfd11c88dd048bc832e26fcf883bdc24034f3c1104032c84d77e4631b7ccb84a446bba8d828e9e44cd759740a098965022ed82bf73caf4a3c4d9de551036ad829e425349543294990a21b538608abde83fe1f8151a9200dc7aa1cbf2bbd4206d911b2e65f5b5df092a858f9c2388df2a786db08e7416ab13cd10432b9704de4cc3d2d183f593c470c57e4e23d260dc2f35194e4279537d1ce22666e7f717d85563c2cca19e0b089058c301367b01bd7ed688ca03d8c8956856b9545e1dc02f1c785b3651f3daddf10d1e0ba9641480b15622bde939be92780629836fce24e788204ef15c128fc30940b66e515ca0bc2f8727d14abb69623f7c2d7100374d8505239a98561eabf3c4b7e2dc3245d28ac32494e1dbae83a8be749a75af43d2c8945e1372ef00a183f521ea85405d69be49d1bd280e658912c61455535bc0381d849ebf6ad90907c0bb4bb10816a5177c49bf42baa7a11ed76745e5139575c76b2ff77c82c11f9fac429d5ff1c18fc3281cb2c085172b24d7395cbe420db8ee00768af06f45347f06b5e4295a2afd6659fcae2bc6ec80ab16c22448c8b4b93a8019326843267aac4488c2ada5b9fdab517bfe3d0f915370f41e4400733d6672a27b2f9185efd5bc779fddd4699d4b11d05f774b5c3b9a172cc9d7f718fe03ea9fd455503302b39ce3a5869f9e5bce7085614c9eea21ceeffd0f05f120f05b069dc5bf983e9f77b11ecb6d687dd9aebe9cd9f8bc52c3e5e8f988ab2c24afbf76997cf9167fb6aeddced428d1bf66ebdccc6f79d2a022e9228d7a79885712ef6785a5ef7556527a3be95abf1a99e8d5142c0736d9ca16996896797aaf8d10198527e12fb35608d5e4c747bbd3352e38179960f7b28a5c45f3b539633e76173f69fc0389853f883ec32243a1cf3af8164db63e37761ade068ebe604fe7e49663dd21340f0eeafecfe420727b819211cb8697f4922f99a3db4a348ef7335cea29f13f37cbe334613c84b521420ea2cff12050747cf2a433bb2fbe03c1a22674450689ff4855cbda0e2dd3a435c03dd92cba1b1bf7d09c6bce503ed3ffce6e9ec69ff1bb92e5bedd6c3c3cd41b17e17962a32d52edc9afa817b2042c08c13632433046ea620984e65ea6b4aa2f4fac5d220438600601bfcf2146c1bd941966030267eede66a3ed3d292038c11f6d55c01a8fd38392c3a0fb829df06cc036d6362137671e3be7d2010f720dda9a7f61cd3d4555cb57a3d42d44db6031f847577f9f00e460ee1a74e3f03b15910caa96d8bbbefea71f5656712bbef5a3494717391dcd53dfff3e79e42cac639671b36b13a7178d00fa0c7aabb97631edc63b5383ddb643bdf662363e1e3b3b34d0ae7518582e19824a29a2abbf01b6ae8709e662879a662f3915cd2bd33080d85cdb4514eb3fca8ade71c36341e1704851a2d4d16f6d617b414b5215eed94d40040e0ed89ae7ce8ae59a75ea6706bb095f886ca57a52a9378f0a95d315c08f05072757ec73035f1e3e0ce50153f283aef637fa7a4bea40ddc7f9de2f487136b96a4325252eacea0b58fd9840e77a940145492514c8b5a8247cec716a4503286efbdac7c96a5e1eb2fad07a81b97add0e3bff3f95ba572961978a29362526cc0bc3fd714211503f700fc6d540ae856b13c4c039e2f5e0bc56df067985c0ea4c91a09645433ccfd55d1415bd56bc0ea928b36976d47a0ef0f9ab033fedfe732559f4eb47daf5b269a50d75f7d038371379da0743427f20a3ba519fabf6351f4cf5c0a6b83e077372c1d06e282ad801e2e76cf7130f0eb6ff6a0e12bf9f9d6ddbc2037b815d4aadc0789d30600077090e4f3bc400fafa00d86915e5f98a707504e19bee0c30676f90c5c2c40e2df6ab443f8e3cc0d604eba58da9b0cd3b01fd5e7b1966a8c5b2ecbbbba75eb37cf87743f3a0c268a7340dd7794db21347b2a6e6a96297da261624b24aec1ec38eecb2d233b26fc84b96ce0b3b4f403c6770007af51c0d5517ae602aa27e289bea4f0f592bf6a9587ccd1678623efe4284c1ac1e53f7a3487f3a89196f4466ad206c00ff4f389ad5e690cda1426f9e9035abad284fdc09c351fe61060adf0d4964c33d98f0db4e2466daaf88889b40d3597a5e1a146c2ea8661e1b1289a97766691152e4386a11e4d33e08174a3783b36b11712ed90532de6811ba8610942e184d28cbbdf83a9b15193d6f62ab20147b70cd48e4cf536be08d0ec1e353194b36a198ef3a0d2c2dd96be49140a7cbf4579717674ecf2f58c5fbd3db29a71c54b24ef135760ebf29937353846102d72de55e1c1d3b547c423f36429d1853e288ce99b8491c6d84720e44a7743f09efd5ec84bfe39c00cbfa319804da6b33ae00ec67e8b308b153a4cb996d85f9a523e7b5d2572c3cb180bbd16ebd60cca2991934b008a139228510da564064c7d41522677e660a0e138f01734bcebacbe6cbda89cd443a72c9778ce57d70817a3fc0049451cb3f1d48b2bd0ae175c2cf2e5bb49151a2d5a85f477bad67acd05e27cfc81c125287e0f551b42a3d4c236f200ccaa7b0f76854f0dc0b24536c013f3dc54e2913b8aab875392ad195f26a71fc8007be5b1a7bc9793f286d0e1a53f02dfdb6565245027898dd1e48c67042aabd2f437de5892a739b5c3759f797609589972d12db9f04ba926ed1a1906f88c79382db3696f37e6b7255aa59bdfde5948c1998d6a2c5936198fba77093a6d84cea5cf847474c490f1ed007c706b8bdb803690046086e5e432bb47be122e5395a921d678558e3a40333613964b4ce9884da06cd43e9f7e6ae9eaa3617728a332a5aa4392ca0c02e1691c74</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>Web</category>
+        <category>SDN</category>
+        <category>DDoS</category>
+      </categories>
+      <tags>
+        <tag>DDoS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NPUCTF Write Up</title>
     <url>/2020/04/21/NPUCTF-Writeup/</url>
     <content><![CDATA[<p>周末的时候做了 NPUCTF  Crypto 部分的题目，题目有些一言难尽，但还是有很多收获，写了点 Write up。<br>
@@ -1726,206 +1844,6 @@ TODO: <a href="https://0xdktb.top/2020/04/19/WriteUp-NPUCTF-Crypto/#EzRSA" targe
       </tags>
   </entry>
   <entry>
-    <title>OpenSSL</title>
-    <url>/2019/09/29/OpenSSL/</url>
-    <content><![CDATA[<h1>openssl 简介</h1>
-<p>openssl是web安全通信的基石</p>
-<h2 id="基础知识">基础知识</h2>
-<h3 id="SSL">SSL</h3>
-<p>Secure Socket Layer(安全套接字层)<br>
-主要是防止信息在互联网上传输的时候不被窃听或者篡改</p>
-<h3 id="数字签名">数字签名</h3>
-<p>将报文使用一定的 HASH 算法算出一个固定位数的摘要信息，然后用私钥将摘要加密，连同原来的报文一起，发送给接收者。<br>
-接受者通过公钥将摘要解出来，再通过 HASH 算法算出报文摘要，对比两者。<br>
-如果两个摘要一致，说明数据未被篡改，数据是完整的。</p>
-<blockquote>
-<p>数字签名具有证明发送者身份和防篡改的功能。</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="数字证书">数字证书</h3>
-<p>由CA颁发给网站的身份证书，里面包含了该网站的公钥，有效时间，网站的地址，CA的数字签名等。</p>
-<p>手动查看方式：<br>
-<image src="./证书.png" width="300"><br>
-<image src="./Web证书入口.png" width="300"></image></image></p>
-<p>实际上就是使用了CA的私钥将网站的公钥等信息进行了签名，当客户端请求服务器的时候，网站会把证书发给客户端，客户端首先可以通过CA的数字签名校验CA的身份，也能证明证书的真实完整性<br>
-CA的地址是内嵌在浏览器中的，很难被篡改。</p>
-<h2 id="SSL如何保护数据">SSL如何保护数据</h2>
-<p>1）认证用户和服务器，确保数据发送到正确的客户端和服务器；<br>
-2）加密数据以防止数据中途被窃取；<br>
-3）维护数据的完整性，确保数据在传输过程中不被改变。</p>
-<h3 id="认证用户和服务器">认证用户和服务器</h3>
-<blockquote>
-<p>怎么知道自己访问的是真百度还是假百度？是不是有可能有人<strong>劫持</strong>了我们访问百度的请求，然后路由给了一台他伪造的服务器？</p>
-</blockquote>
-<p>在SSL的通信流程中做了这样一个规定：一旦我们向服务器发送了请求后，服务器必须返回它的数字证书，当我们拿到数字证书之后，我们可以根据里面的ca数字签名，校验证书的合法性（不是被伪造的）</p>
-<p>假设百度服务器是假冒的，他一定没有正确的私钥，那么之后的通信都无法进行，所以假冒服务器是无法操作的。</p>
-<p>由此，SSL就解决了服务器认证的问题。</p>
-<h3 id="加密数据以防止数据中途被窃取">加密数据以防止数据中途被窃取</h3>
-<p>客户端第一次给服务器发送请求的时候（拿到证书前的一次），会在请求里面放一个随机数C1；<br>
-服务器在返回证书的响应里也会带一个随机数F；<br>
-客户端拿到证书后，会使用公钥加密一个随机数C2送给服务器。<br>
-这样客户端、服务器都拥有了三个随机数：C1、F、C2。<br>
-双方使用<strong>这些</strong>随机数和一个相同的算法生成一个对称密钥，之后所有的通信都使用这个对称密钥来进行。</p>
-<p>这个密钥会不会被泄露呢？不会，因为密钥是由3个随机数产生的，对于第一个随机数C1，他可能会被中间人监听到，然后第二个随机数F，也可能会被中间人监听到，但是第三个随机数C2，因为是用公钥加密的，除非中间人有私钥，否则是不可能解出来的。</p>
-<h3 id="维护数据的完整性">维护数据的完整性</h3>
-<p>针对服务器发送数字证书这一过程来说，<br>
-服务器的数字证书中含有ca数字签名，可以很有效的保证证书的真实性和完整性（没有被篡改）</p>
-<h2 id="openssl">openssl</h2>
-<p><s>参考：<a href="https://segmentfault.com/a/1190000014963014" target="_blank" rel="noopener">https://segmentfault.com/a/1190000014963014</a></s><br>
-参考：<a href="E:/%60Desktop/eBook/Cryptology/OpenSSL%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8-%E5%9F%BA%E7%A1%80%E3%80%81%E7%BB%93%E6%9E%84%E5%92%8C%E6%8C%87%E4%BB%A4.pdf">《OpenSSL与网络信息安全-基础、结构和指令》</a><br>
-//博客资料太少</p>
-<p>SSL只是一个协议，openssl则是SSL的实现版<br>
-openssl还包含了公钥私钥的生成、摘要生成等各种工具。</p>
-<h4 id="生成-RSA-密钥-genrsa-指令">生成 RSA 密钥 - genrsa 指令</h4>
-<image src="openssl_genrsa.png" width="700/">
-<ul>
-<li>RSA 最重要的就是私钥的保密性，所以会用对称加密再对私钥加密</li>
-<li>对于 OpenSSL 来说，文件名和其后缀都是没有特别含义的，你可以取任意名字，当然，习惯的用法是以格式来指令后缀，比如 “pem”。</li>
-<li>注意参数的顺序，加密类型可以放在口令之前，位长建议放在最后。</li>
-</ul>
-<p>举例：<br>
-生成一个 1024 位的 RSA 密钥，并输出到 rsaprivkey.pem 文件中.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OpenSSL&gt;genrsa -out rsaprivkey.pem 1024</span><br></pre></td></tr></table></figure>
-<p>生成一个 1024 位的 RSA 密钥，并采用 DES3 算法进行加密, 并输出到 &gt; rsaprivkey.pem 文件中.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OpenSSL&gt;genrsa -out rsaprivkey.pem -des3 -passout pass:xY*&amp;2wG</span><br></pre></td></tr></table></figure>
-<p>(外接硬件设备的例子略)</p>
-<h4 id="管理-RSA-密钥-genrsa-指令">管理 RSA 密钥 - genrsa 指令</h4>
-<image src="openssl_rsa.png" width="800/">
-<ul>
-<li>功能一：对私钥加密/更改对私钥加密的方式（公钥加密无意义）/去掉加密</li>
-<li>功能二：明文输出文件中保存的内容</li>
-</ul>
-<p>举例：<br>
-将一个加密的 PEM 编码的 RSA 私钥(privkey.pem ) 转换成一个不加密的 PEM 编码的 RSA 私钥</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OpenSSL&gt;rsa -in privkey.pem -passin pass:1234567 -out privkey.pem</span><br></pre></td></tr></table></figure>
-<p>原来使用 DES3 加密的 RSA 私钥保存不够安全，而想要使用 256 位 AES 算法加密的时</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OpenSSL&gt;rsa -in privkey.pem -passin pass1234567 -passout xY*&amp;2wG -aes256</span><br></pre></td></tr></table></figure>
-<p>对于明文输出文件保存内容的例子并不令人满意……</p>
-<p>Normal_RSA 题解里面的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">openssl&gt;rsa -pubin -text -modulus -in warmup -in pubkey.pem</span><br></pre></td></tr></table></figure>
-<p>不知道他怎么弄出来的，就连在《openssl-cookbook》也没找到其中的一些参数。</p>
-<hr>
-<p>参看：<a href="https://www.jianshu.com/p/bb2f50862025" target="_blank" rel="noopener">https://www.jianshu.com/p/bb2f50862025</a></p>
-<p>简单地生成私钥 d :</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">openssl&gt; genrsa -out private.pem 1024</span><br><span class="line">&#x2F;&#x2F; -out 输出文件 ； 1024 表示位数</span><br></pre></td></tr></table></figure>
-<p>提取公钥 e :</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">openssl&gt; rsa -in private.pem -pubout -out public.pem</span><br><span class="line">&#x2F;&#x2F; -in 输入文件，这里是使用私钥；</span><br><span class="line">&#x2F;&#x2F;-pubout 输出公钥文件</span><br><span class="line">&#x2F;&#x2F;-out 输出，后跟目标文件</span><br></pre></td></tr></table></figure>
-<p>对明文进行加密</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">openssl&gt; rsautl -encrypt -in message.txt -inkey public.pem -pubin -out enc.txt</span><br><span class="line">&#x2F;&#x2F; -encrpt 加密模式</span><br><span class="line">&#x2F;&#x2F; -in 输入文件，此时是明文</span><br><span class="line">&#x2F;&#x2F; -inkey 输入公钥</span><br><span class="line">&#x2F;&#x2F; -pubin 将公钥放进文件？</span><br><span class="line">&#x2F;&#x2F; -out 输出文件</span><br></pre></td></tr></table></figure>
-<p>对明文进行解密</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">openssl&gt; rsautl -decrypt -in enc.txt -inkey private.pem -out dec.txt</span><br><span class="line">&#x2F;&#x2F; -decrpt 解密模式</span><br><span class="line">&#x2F;&#x2F; -in 输入文件，此时是密文</span><br><span class="line">&#x2F;&#x2F; -inkey 输入私钥</span><br><span class="line">&#x2F;&#x2F; -out 输出文件</span><br></pre></td></tr></table></figure></image></image>]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
-      <tags>
-        <tag>Crypto</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SDN-DDoS Question &amp; Consult</title>
-    <url>/2019/12/08/SDN-DDoS/</url>
-    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder="" />
-    <label for="hbePass">输入密码，查看文章</label>
-    <div class="bottom-line"></div>
-  </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="b30ac1cb228034968461e17cabfeb285dc6c695eb6cc7adcc0d7260fcfb95030">c54ef91cce081c6f61e5353cd8bb7033a3a4a4b1fe8abe1b1454f387adbd37348102c6722f4de38abc5e5e7d11e33fb607922e0136851a98202d2c2b9a9b8a4ae5c7908e0d2ec37060e38f7f1217d5781d9f66f930a254506f89c0f90a17be7355fcf26b1e8c3609d466f7df9a2969c9d58a0c3380e6d3e8f87b9ab586c999d4880bd42265233c6cd8b2a026ab3781e30f807c895d127e9b393a71022ac14285953ef63e9348dd40f36d88037e6c2c1b4862924b06f35195f1b51a3333d6e1c318404e0f6a5cd03135e6670161381323c586d2bc95f98afab5350fcaac50ba1d28016418ec73854a93c9a7b43efad3fa49f27aef618045463187c6cfa6e5fbd216b104cccfbc70be79d441c6a30b686c77d4acc3277520686733121015b7a7d429c55004a668dde07877d6676594439fc0feaa056b824d3e9df8708d9e598c8171b72a7d583731487787f192d3e2813be84291edee4e40b939a3deca89df3e6c43e43467d11750e6be778426bd899efce463b6660acba0f23f4567ef5640f3e41acdf17b11fdd72690a36153955ddc7369dc9b119186315ade21e07c9a63dc905e02247821f94e7d394460c3ec13ccfe1a191d13bc72925bc810dccbe3ee6da4a47616127a1b76d0b9ac9893203a47262424cc8a505a796edf640611141d82f22208e6533c28b7bef743ab0b33d93ed6f1b250189961623f73b1658c267c945bf516c339d4fb6576e6da22bf5a66cf4f1b2d11def69cd85376ccef41b6c34b2a27f493f4ad96a3c181c2fb214def70847082241e7b29dd146b88a262388ffa8199092053ecabab51abe6a2d2cfdc893e6221970f4bad1717d1dae9350ea8f001ee90196264136e76dcbe5213d0d0727ddf47407381f0a4f2c1b52650802db59ad035cb3e9648f8350ff4a87bb797f7909ef4a272fcdd243e35f331a0850764ae63352a2be25143468e15781804f84895824bb37858f4a5d14dc8a98fbb3b2687389e64d8ccefc53d2f84e840392c317bee20f4a5a8f5aac2ed65f0d7acf9ffce370ed55c45739de2e608ef72fbbf64d0a7048fabb59b52441c5d2383e8caf60d18b1134a54657c6592f681743f71d0115e6e00c620358065f59e3b61ebcd5823922239522ac56793eb15fa38c35c5fded0eef718a786372636fd57dbe20f6ae88696da0d8f49dc91cbfe65f98c367ede1d5b3c3e6b5b9253a39666c2aa1a141fd286e73760157eb2342ed82833732266de9d25410a6ee48f62ba4306793a5e350cc01a90b11ea7a4e40674d836380cdb4d9a10d455950610f814c77d92d3a03119ca2a249f42b2d47f2fc6d429865477061e0818a19322dfff648f5ed3b0cb33d34439e8302112a2e2e1ca129288ac9b145f79c4259e8fdb80d992f4df477629d21d5812b63969ad8bab195ebb976c3e56cb1ae3c7d398e134c93d327554ac4a9628290ea233b2f905b9c9f4aa2885ac0dee51100074bcc316e796729bf6beece69430b1e6160f6aa145d7f5f110960bb34648f96574161ad5af5ed5aa4bf8cc6fa8fc2980ed6d1dc6aaaf79d2295c80b0bc82dab1bff490026bf57467fafa314b378195ad3b9647793f2208fd1cdf4dcd51d7bde2e6e66cd27b0ff1af3c8536fecf6c97478e1c6d9dfb91f57d70cad375cbe9e62014dba0c77ddfde51a50192f6d9960dc929cbb9b72898a6a03af5039648f5b2d634e38be750f73e9e874cc99025961b0aa2e01f803beecfbb99139f2e154af46f55f6d55d56ccb22a02790ba1f38afb3e5e449dac9217c069bb5976bda7f4eb01ed7374cf079f20b0f712fdd02c71d5d277015a4edbfbc35a254ab18eaf28e11e04f6f22919df14c72d7f0922ad9c32adbb0a74774fca62758f34938a3789e9b50d5e1c49b3d5c45d8c1bba059ddf49965184a19e0fd2ade1887b185ab106fb704c2eef66551d5c31a54af2a8053f60c7a8f43b9c075e3ad5f4b49a54163b3648a509c56a23307a31b5825a8f53beca1a802edff82f6bf5db5600a55183852b2e902ef8176088e0e4bf6c350d5d6b665b6b6132bcacbaeb5ea73179e8d617982a61f950b2f111213965ea7f0c9a371896bd910b9ca69e38582fc2f4d97daab86a82c3da43e46810a38ee846e0f93194d1cef88bca748c44dcc05c2882ef643012a4fffac2c1c87e5a084a7abd90235ef204f612eb7058eb531d4e8485302e3d8c545c5f8d382194d32d999f85c5943a310efedcf24450f9a6276cfac111eaadd496411115e51278518b1cc8d756354074b16547c2fee612e45d5446a2ce89d1a963d2018df3996a3eb2831a6a3d20bd727ac5a7eac9453781d3084f7639ebe6bd6cfe0682d65283d49e5972350178c6c370ec9819d222c62e1bcf0e0c2e57c48052f9a34a0dad4d6c11d2ce4b8db32276503455c60dec21ca51ec59cc67c07b08ec90d016b4687b20575f1141521dbfb15a703caaacf26d911b07961440cc59463b734246dc1b3940c992d5031817c8cba48430392b817600e3f49d6187e1e02aa9daec1290059b2c6a1dbfa077b5054433e2e84a516f86cab562de6b810a5a48a264e1237f5658ca620f72d951f9571c51f0eab6e9154eaf4473554b5dd603342c5c709da69bacda7ae49403913824633ce1fd830a4990006a1e921d1d26f1e5cf47a03efa61bf640bbf8bd71b72f0e50512ce6264b07b7326d3df09b028759d9826fabb35222800dd0d478446ce4a8fd105f2606056aeca7c32a8dcd4d9b2ae1fe436c7e65227f0ab27ad0df4d5722e9a0a997ca248092d5442921f1f79e32dd0540e75331736624cf691c394ee37244c1c51defecfd64614b6d88ab15a585dc56f9877fe9452afe3561810a25aa20faf154c730077f32b3bdbebf1295a3a8e7e1dfd11c88dd048bc832e26fcf883bdc24034f3c1104032c84d77e4631b7ccb84a446bba8d828e9e44cd759740a098965022ed82bf73caf4a3c4d9de551036ad829e425349543294990a21b538608abde83fe1f8151a9200dc7aa1cbf2bbd4206d911b2e65f5b5df092a858f9c2388df2a786db08e7416ab13cd10432b9704de4cc3d2d183f593c470c57e4e23d260dc2f35194e4279537d1ce22666e7f717d85563c2cca19e0b089058c301367b01bd7ed688ca03d8c8956856b9545e1dc02f1c785b3651f3daddf10d1e0ba9641480b15622bde939be92780629836fce24e788204ef15c128fc30940b66e515ca0bc2f8727d14abb69623f7c2d7100374d8505239a98561eabf3c4b7e2dc3245d28ac32494e1dbae83a8be749a75af43d2c8945e1372ef00a183f521ea85405d69be49d1bd280e658912c61455535bc0381d849ebf6ad90907c0bb4bb10816a5177c49bf42baa7a11ed76745e5139575c76b2ff77c82c11f9fac429d5ff1c18fc3281cb2c085172b24d7395cbe420db8ee00768af06f45347f06b5e4295a2afd6659fcae2bc6ec80ab16c22448c8b4b93a8019326843267aac4488c2ada5b9fdab517bfe3d0f915370f41e4400733d6672a27b2f9185efd5bc779fddd4699d4b11d05f774b5c3b9a172cc9d7f718fe03ea9fd455503302b39ce3a5869f9e5bce7085614c9eea21ceeffd0f05f120f05b069dc5bf983e9f77b11ecb6d687dd9aebe9cd9f8bc52c3e5e8f988ab2c24afbf76997cf9167fb6aeddced428d1bf66ebdccc6f79d2a022e9228d7a79885712ef6785a5ef7556527a3be95abf1a99e8d5142c0736d9ca16996896797aaf8d10198527e12fb35608d5e4c747bbd3352e38179960f7b28a5c45f3b539633e76173f69fc0389853f883ec32243a1cf3af8164db63e37761ade068ebe604fe7e49663dd21340f0eeafecfe420727b819211cb8697f4922f99a3db4a348ef7335cea29f13f37cbe334613c84b521420ea2cff12050747cf2a433bb2fbe03c1a22674450689ff4855cbda0e2dd3a435c03dd92cba1b1bf7d09c6bce503ed3ffce6e9ec69ff1bb92e5bedd6c3c3cd41b17e17962a32d52edc9afa817b2042c08c13632433046ea620984e65ea6b4aa2f4fac5d220438600601bfcf2146c1bd941966030267eede66a3ed3d292038c11f6d55c01a8fd38392c3a0fb829df06cc036d6362137671e3be7d2010f720dda9a7f61cd3d4555cb57a3d42d44db6031f847577f9f00e460ee1a74e3f03b15910caa96d8bbbefea71f5656712bbef5a3494717391dcd53dfff3e79e42cac639671b36b13a7178d00fa0c7aabb97631edc63b5383ddb643bdf662363e1e3b3b34d0ae7518582e19824a29a2abbf01b6ae8709e662879a662f3915cd2bd33080d85cdb4514eb3fca8ade71c36341e1704851a2d4d16f6d617b414b5215eed94d40040e0ed89ae7ce8ae59a75ea6706bb095f886ca57a52a9378f0a95d315c08f05072757ec73035f1e3e0ce50153f283aef637fa7a4bea40ddc7f9de2f487136b96a4325252eacea0b58fd9840e77a940145492514c8b5a8247cec716a4503286efbdac7c96a5e1eb2fad07a81b97add0e3bff3f95ba572961978a29362526cc0bc3fd714211503f700fc6d540ae856b13c4c039e2f5e0bc56df067985c0ea4c91a09645433ccfd55d1415bd56bc0ea928b36976d47a0ef0f9ab033fedfe732559f4eb47daf5b269a50d75f7d038371379da0743427f20a3ba519fabf6351f4cf5c0a6b83e077372c1d06e282ad801e2e76cf7130f0eb6ff6a0e12bf9f9d6ddbc2037b815d4aadc0789d30600077090e4f3bc400fafa00d86915e5f98a707504e19bee0c30676f90c5c2c40e2df6ab443f8e3cc0d604eba58da9b0cd3b01fd5e7b1966a8c5b2ecbbbba75eb37cf87743f3a0c268a7340dd7794db21347b2a6e6a96297da261624b24aec1ec38eecb2d233b26fc84b96ce0b3b4f403c6770007af51c0d5517ae602aa27e289bea4f0f592bf6a9587ccd1678623efe4284c1ac1e53f7a3487f3a89196f4466ad206c00ff4f389ad5e690cda1426f9e9035abad284fdc09c351fe61060adf0d4964c33d98f0db4e2466daaf88889b40d3597a5e1a146c2ea8661e1b1289a97766691152e4386a11e4d33e08174a3783b36b11712ed90532de6811ba8610942e184d28cbbdf83a9b15193d6f62ab20147b70cd48e4cf536be08d0ec1e353194b36a198ef3a0d2c2dd96be49140a7cbf4579717674ecf2f58c5fbd3db29a71c54b24ef135760ebf29937353846102d72de55e1c1d3b547c423f36429d1853e288ce99b8491c6d84720e44a7743f09efd5ec84bfe39c00cbfa319804da6b33ae00ec67e8b308b153a4cb996d85f9a523e7b5d2572c3cb180bbd16ebd60cca2991934b008a139228510da564064c7d41522677e660a0e138f01734bcebacbe6cbda89cd443a72c9778ce57d70817a3fc0049451cb3f1d48b2bd0ae175c2cf2e5bb49151a2d5a85f477bad67acd05e27cfc81c125287e0f551b42a3d4c236f200ccaa7b0f76854f0dc0b24536c013f3dc54e2913b8aab875392ad195f26a71fc8007be5b1a7bc9793f286d0e1a53f02dfdb6565245027898dd1e48c67042aabd2f437de5892a739b5c3759f797609589972d12db9f04ba926ed1a1906f88c79382db3696f37e6b7255aa59bdfde5948c1998d6a2c5936198fba77093a6d84cea5cf847474c490f1ed007c706b8bdb803690046086e5e432bb47be122e5395a921d678558e3a40333613964b4ce9884da06cd43e9f7e6ae9eaa3617728a332a5aa4392ca0c02e1691c74</script>
-</div>
-<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>Web</category>
-        <category>SDN</category>
-        <category>DDoS</category>
-      </categories>
-      <tags>
-        <tag>DDoS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jupyter server crashed | VSCode + WLS</title>
-    <url>/2020/03/12/VSCode_Jupyter_bug/</url>
-    <content><![CDATA[<h1>情况分析</h1>
-<p>和往常一样，风平浪静☁️的一天，笔者打开 VSCode Remote WSL 之后，打开 Jupyter notebook，按下 <kbd>ctrl</kbd>+ <kbd>Enter</kbd> 运行代码，却得到了以下不寻常的通知和报错：</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015261571.png" style="zoom:80%;">
-<center> 图 1</center>
-<p><img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015274950.png" alt></p>
-<center> 图 2</center>
-<a id="more"></a>
-<h1>搜索引擎解决法</h1>
-<p>如果是往常，复制保存信息，扔到 Google 应该很快就能得到解决方案，遗憾的是，笔者这个奇葩罕见的 VSCode 的用法，注定了不能直接得到解决的方案。<br>
-VSCode GitHub 相关的 issue 看遍了，google 的基本看遍了、百度的可以看遍了，并没有可以直接的解决它的方法。😭</p>
-<h1>重新分析</h1>
-<h2 id="反思">反思</h2>
-<p>仔细看报错信息！！每个人的情况各异，搜索引擎不可能涵盖所有情况，你已经是个成熟的萌新了🌟 。<br>
-作为程序员，搜索引擎只是辅助手段，仅仅是收集信息中的一种手段。</p>
-<h2 id="波利亚解题法的启发">波利亚解题法的启发</h2>
-<blockquote>
-<p>参考自 <a href="https://www.jianshu.com/p/b55ec8de5968" target="_blank" rel="noopener">波利亚四步解题法</a></p>
-<p>波利亚的《怎样解题：数学思维的新方法》（How to Solve it: A New Aspect  of Mathematical Method)<br>
-1、彻底理解问题：为了确保真正理解问题，你最好把问题用自已的话换成各种形式反复重新表达，但另忘了指出问题的主干：要求解的是什么？已知什么？要满足哪些条件？但凡能画图，一定要画出来。<br>
-2、形成解题思路：要专注，用过往经验，已撑握的知识，并调整适用性来形成思路。如果不行，就改变这个问题的各个组件：已知、未知、条件，先构造简单一点的，引入辅助，条件是否用足，甚至改变求解的未知数，看能否找到解题线索？直到找到与之相似而你又解决过的问题。<br>
-3、执行：一要有耐心，二需要及时的检查每一步，可凭直觉或证明（两个都有用，但是两回事），要问自已每一步都检查了吗？能看出来这一步是对的吗？能证明这一步是对的吗？<br>
-4、总结：巩固与提升的关键，多想想，再论证，尝试另外的解法，找更明快简捷的方法，还要问，这次的解法还能用在什么地方？总结是最好的启法时刻。</p>
-</blockquote>
-<p>⭐️ 那我也简述一下自己一直以来的经验：</p>
-<ol>
-<li>遇到问题(bug)，要先尽可能收集信息，找出发生错误的各种可能的原因；</li>
-<li>把可能的原因序列，根据优先级排序，然后逐个尝试；</li>
-<li>总结归纳；</li>
-</ol>
-<h2 id="收集信息">收集信息</h2>
-<h3 id="信息一">信息一</h3>
-<p>运行时的报错信息：</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204521370.png" alt="image-20200312204521370" style="zoom:80%;">
-<p>仔细看报错信息，…/extensions/ms-python.python-2020.2.64367/…<br>
-应该是一个 ID 为 <code>ms-python.python</code> 的扩展<br>
-ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展的信息中发现 Python 拓展 的 Extension-id 确实是 ms-python python</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204442296.png" alt="image-20200312204442296" style="zoom:50%;">
-<h3 id="信息二">信息二</h3>
-<p>一个月前这个插件还是能正常使用的，为什么这次就不行了？<br>
-可能的原因：</p>
-<ol>
-<li>本次开启的方式和期间有更改一些东西，后台有运行其他的什么等等</li>
-<li>版本不兼容问题（这个版本的）</li>
-</ol>
-<p>原因 1 探索的代价高、难度大，但是解决之后能始终使用最新的版本；<br>
-原因 2 操作简单，能够迅速应对现在的情景，并且我个人使用 WSL 对 Python 的插件的要求不高，更新也不太需要。</p>
-<h2 id="尝试">尝试</h2>
-<p>先尝试版本回退。</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image003.png" style="zoom:80%;">
-<p>很幸运的是，回退到一个月前的之后，Jupyter notebook 可以正常使用了。</p>
-<p>至于探索原因…… 综合考虑种种因素，不去触碰啦~（其实是大失败了）</p>
-<h2 id="后续">后续</h2>
-<p>为了防止 Python 扩展再次更新，取消 WSL 下的扩展的自动更新。<br>
-可以看到 defaultSettign.json （只读文件）中默认是自动更新的。</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image004.png" style="zoom: 50%;">
-<p>我们可以在设置中关闭它：</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201607696.png" alt="image-20200312201607696" style="zoom: 50%;">
-<p>或者在 <code>setting.json</code> 中添加一条 <code>“extensions.autoUpdate”: false</code></p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201631390.png" alt="image-20200312201631390" style="zoom:67%;">
-<blockquote>
-<p>也许你会奇怪为什么 setting.json 中只有这么一点设置，而设置里面可以找到很多。<br>
-这是因为设置中的默认部分在 settign.json 里面不需要补充，只有用户需要额外添加的设置需要写在 setting.json 里面。</p>
-</blockquote>
-<blockquote>
-<p>最后感谢让我发现自己轻视 VSCode 扩展自动更新问题的 <code>syj</code> 😘</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Development</category>
-        <category>bug</category>
-      </categories>
-      <tags>
-        <tag>Error</tag>
-        <tag>VSCode</tag>
-        <tag>IDE</tag>
-        <tag>WSL</tag>
-        <tag>Jupyter notebook</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>libnum-error</title>
     <url>/2020/02/05/libnum-error/</url>
     <content><![CDATA[<p>由于之前清理空间的时候不慎将 WSL 的配置文件也误删掉了，所以慌忙还原 WSL 当初的配置，对于一些 Python 库的安装大多用 <code>pip</code> 的命令，直接安装，通过 <code>import ...</code> 的方式做一个简单的检查。但是前段时间在使用 <code>libnum</code> 的时候遇到了 <code>AttributeError: 'str' object has no attribute 'hex'</code> 的报错。</p>
@@ -2103,6 +2021,88 @@ ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展
       <tags>
         <tag>Powershell</tag>
         <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jupyter server crashed | VSCode + WLS</title>
+    <url>/2020/03/12/VSCode_Jupyter_bug/</url>
+    <content><![CDATA[<h1>情况分析</h1>
+<p>和往常一样，风平浪静☁️的一天，笔者打开 VSCode Remote WSL 之后，打开 Jupyter notebook，按下 <kbd>ctrl</kbd>+ <kbd>Enter</kbd> 运行代码，却得到了以下不寻常的通知和报错：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015261571.png" style="zoom:80%;">
+<center> 图 1</center>
+<p><img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015274950.png" alt></p>
+<center> 图 2</center>
+<a id="more"></a>
+<h1>搜索引擎解决法</h1>
+<p>如果是往常，复制保存信息，扔到 Google 应该很快就能得到解决方案，遗憾的是，笔者这个奇葩罕见的 VSCode 的用法，注定了不能直接得到解决的方案。<br>
+VSCode GitHub 相关的 issue 看遍了，google 的基本看遍了、百度的可以看遍了，并没有可以直接的解决它的方法。😭</p>
+<h1>重新分析</h1>
+<h2 id="反思">反思</h2>
+<p>仔细看报错信息！！每个人的情况各异，搜索引擎不可能涵盖所有情况，你已经是个成熟的萌新了🌟 。<br>
+作为程序员，搜索引擎只是辅助手段，仅仅是收集信息中的一种手段。</p>
+<h2 id="波利亚解题法的启发">波利亚解题法的启发</h2>
+<blockquote>
+<p>参考自 <a href="https://www.jianshu.com/p/b55ec8de5968" target="_blank" rel="noopener">波利亚四步解题法</a></p>
+<p>波利亚的《怎样解题：数学思维的新方法》（How to Solve it: A New Aspect  of Mathematical Method)<br>
+1、彻底理解问题：为了确保真正理解问题，你最好把问题用自已的话换成各种形式反复重新表达，但另忘了指出问题的主干：要求解的是什么？已知什么？要满足哪些条件？但凡能画图，一定要画出来。<br>
+2、形成解题思路：要专注，用过往经验，已撑握的知识，并调整适用性来形成思路。如果不行，就改变这个问题的各个组件：已知、未知、条件，先构造简单一点的，引入辅助，条件是否用足，甚至改变求解的未知数，看能否找到解题线索？直到找到与之相似而你又解决过的问题。<br>
+3、执行：一要有耐心，二需要及时的检查每一步，可凭直觉或证明（两个都有用，但是两回事），要问自已每一步都检查了吗？能看出来这一步是对的吗？能证明这一步是对的吗？<br>
+4、总结：巩固与提升的关键，多想想，再论证，尝试另外的解法，找更明快简捷的方法，还要问，这次的解法还能用在什么地方？总结是最好的启法时刻。</p>
+</blockquote>
+<p>⭐️ 那我也简述一下自己一直以来的经验：</p>
+<ol>
+<li>遇到问题(bug)，要先尽可能收集信息，找出发生错误的各种可能的原因；</li>
+<li>把可能的原因序列，根据优先级排序，然后逐个尝试；</li>
+<li>总结归纳；</li>
+</ol>
+<h2 id="收集信息">收集信息</h2>
+<h3 id="信息一">信息一</h3>
+<p>运行时的报错信息：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204521370.png" alt="image-20200312204521370" style="zoom:80%;">
+<p>仔细看报错信息，…/extensions/ms-python.python-2020.2.64367/…<br>
+应该是一个 ID 为 <code>ms-python.python</code> 的扩展<br>
+ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展的信息中发现 Python 拓展 的 Extension-id 确实是 ms-python python</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204442296.png" alt="image-20200312204442296" style="zoom:50%;">
+<h3 id="信息二">信息二</h3>
+<p>一个月前这个插件还是能正常使用的，为什么这次就不行了？<br>
+可能的原因：</p>
+<ol>
+<li>本次开启的方式和期间有更改一些东西，后台有运行其他的什么等等</li>
+<li>版本不兼容问题（这个版本的）</li>
+</ol>
+<p>原因 1 探索的代价高、难度大，但是解决之后能始终使用最新的版本；<br>
+原因 2 操作简单，能够迅速应对现在的情景，并且我个人使用 WSL 对 Python 的插件的要求不高，更新也不太需要。</p>
+<h2 id="尝试">尝试</h2>
+<p>先尝试版本回退。</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image003.png" style="zoom:80%;">
+<p>很幸运的是，回退到一个月前的之后，Jupyter notebook 可以正常使用了。</p>
+<p>至于探索原因…… 综合考虑种种因素，不去触碰啦~（其实是大失败了）</p>
+<h2 id="后续">后续</h2>
+<p>为了防止 Python 扩展再次更新，取消 WSL 下的扩展的自动更新。<br>
+可以看到 defaultSettign.json （只读文件）中默认是自动更新的。</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image004.png" style="zoom: 50%;">
+<p>我们可以在设置中关闭它：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201607696.png" alt="image-20200312201607696" style="zoom: 50%;">
+<p>或者在 <code>setting.json</code> 中添加一条 <code>“extensions.autoUpdate”: false</code></p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201631390.png" alt="image-20200312201631390" style="zoom:67%;">
+<blockquote>
+<p>也许你会奇怪为什么 setting.json 中只有这么一点设置，而设置里面可以找到很多。<br>
+这是因为设置中的默认部分在 settign.json 里面不需要补充，只有用户需要额外添加的设置需要写在 setting.json 里面。</p>
+</blockquote>
+<blockquote>
+<p>最后感谢让我发现自己轻视 VSCode 扩展自动更新问题的 <code>syj</code> 😘</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Development</category>
+        <category>bug</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
+        <tag>VSCode</tag>
+        <tag>IDE</tag>
+        <tag>WSL</tag>
+        <tag>Jupyter notebook</tag>
       </tags>
   </entry>
   <entry>
@@ -3167,103 +3167,6 @@ rsatool 还有更多的功能。（还有RSA-CRT）<br>
       </tags>
   </entry>
   <entry>
-    <title>巅峰极客 CoCo Writeup</title>
-    <url>/2019/10/20/%E6%9E%81%E5%AE%A2%E5%B7%85%E5%B3%B0-CoCo-writeup/</url>
-    <content><![CDATA[<h2 id="CoCo">CoCo</h2>
-<h3 id="题目描述">题目描述</h3>
-<p>文件：b5574201c88c73ac00b4e5d32b317339_NTURE.zip</p>
-<a id="more"></a>
-<p><a href="http://challenge.py" target="_blank" rel="noopener">challenge.py</a>：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Random.random <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line">Co = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">CoCo = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">CoCoCo = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCo</span><span class="params">(Co, CoCo)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> CoCo: Co, CoCo = CoCo, Co % CoCo</span><br><span class="line">    <span class="keyword">return</span> Co</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCoCo</span><span class="params">(Co, CoCo, CoCoCo)</span>:</span></span><br><span class="line">    CoCoCoCo = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> CoCo != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> (CoCo &amp; <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">            CoCoCoCo = (CoCoCoCo * Co) % CoCoCo</span><br><span class="line">        CoCo &gt;&gt;= <span class="number">1</span></span><br><span class="line">        Co = (Co * Co) % CoCoCo</span><br><span class="line">    <span class="keyword">return</span> CoCoCoCo</span><br><span class="line"></span><br><span class="line">CoCoCoCoCoCoCoCo = CoCoCoCoCo(CoCoCo, Co, CoCo)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    CoCoCoCoCoCoCoCoCo = randint(<span class="number">1</span>, <span class="number">2</span> ** <span class="number">512</span>)</span><br><span class="line">    <span class="keyword">if</span> CoCoCoCo(CoCoCoCoCoCoCoCoCo, CoCo - <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">CoCoCoCoCoCo = bytes_to_long(<span class="string">"CoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCo"</span>)</span><br><span class="line">CoCoCoCoCoCoCoCoCoCo = CoCoCoCoCo(CoCoCo, CoCoCoCoCoCoCoCoCo, CoCo)</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCo = (CoCoCoCoCoCo * CoCoCoCoCo(CoCoCoCoCoCoCoCo, CoCoCoCoCoCoCoCoCo, CoCo)) % CoCo</span><br><span class="line">CoCoCoCoCoCoCo = bytes_to_long(flag)</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCoCo = (CoCoCoCoCoCoCo * CoCoCoCoCo(CoCoCoCoCoCoCoCo, CoCoCoCoCoCoCoCoCo, CoCo)) % CoCo</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'cipher.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCo = "</span> + str(CoCoCoCoCoCoCoCoCoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCo = "</span> + str(CoCoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCo = "</span> + str(CoCoCoCoCoCoCoCoCoCoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCo = "</span> + str(CoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCoCo = "</span> + str(CoCoCoCoCoCoCoCoCoCoCoCo) + <span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
-<p>cipher.txt:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CoCoCoCoCoCoCoCoCoCo &#x3D; 112376755434839067242492450580926874835238627566940029196532175644877689078482714802636681537478746972878719135123815462672622666337365766404438579837929587693947036556506459672209528097159093195480318719604062458476883089712408549646871208319887232708573834573129807851612788612229862109446349174773685766921</span><br><span class="line">CoCoCo &#x3D; 151397348765463697819328127490368915291237595957138740365628078489836085372845681091989345334904026246892900348971981402476845038743843701086311667536372419728644485998870855126715225674611022660290971207449534822797616008980284083777280866124762176520095351401654370256535990768524594118090702757650148363921</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCo &#x3D; 120085813769601903784459580746767828105716607333492124010803514777437504109331448009890874939858984666641139819379969714070220763093188551966830630639308142299719976258227450642141963425187429636880593480951498406380068747404115889400485463839002674872020074254287490910994729347868122864760194135575038263365</span><br><span class="line">CoCo &#x3D; 133694097868622092961596455982173439482901807533684907590429464542321832157724052684517499871073826858762297729480414306161113412741865099163152505447334863097434932940729269605986418443532208942119505043634990271717198694190123478547503837269948205839761848366722796091382894026537012764323367229104988051357</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCoCo &#x3D; 53913320010474614353771348695262553935361078517742942745359182152882204780769206005474818637010209561420480280523029509375286538886061621596249179407728697515399046471231513536340506648832858695583318765423245104561512700887050932667507358898646356134386213016528778706360147066411877832628237361011621917972</span><br></pre></td></tr></table></figure>
-<h3 id="分析与解">分析与解</h3>
-<h4 id="Coco">Coco</h4>
-<p>变量的命名丧心病狂……<br>
-姑且用数目代替原来的名字：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">e.g. CoCoCo -&gt; three</span><br><span class="line">    CoCoCoCoCoCo -&gt; twelve</span><br></pre></td></tr></table></figure>
-<p>由于数容易数错，替换也会因为短的是长的前缀，所以不能一键替换，也要仔细数。<br>
-当然用 Python <code>len()/2</code> + <code>复制</code> 更好。</p>
-<blockquote>
-<p>题目用这种方式主要目的可能还是为了掩盖变量对应的含义。</p>
-</blockquote>
-<h4 id="函数理解">函数理解</h4>
-<p>代码中有两个函数：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCo</span><span class="params">(one, two)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> two: one, two = two, one % two</span><br><span class="line">    <span class="keyword">return</span> one</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCoCo</span><span class="params">(one, two, three)</span>:</span></span><br><span class="line">    four = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> two != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> (two &amp; <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">            four = (four * one) % three</span><br><span class="line">        two &gt;&gt;= <span class="number">1</span></span><br><span class="line">        one = (one * one) % three</span><br><span class="line">    <span class="keyword">return</span> four</span><br></pre></td></tr></table></figure>
-<p>第一个函数一眼就可以看出来是欧几里得算法。<br>
-<code>two: one, two = two, one % two</code>是欧几里得算法的理论基础。<br>
-第二个看得很熟悉，但是当时没有立刻搞懂……（导致后面的理解很受挫……）</p>
-<blockquote>
-<p><code>&gt;&gt;=</code> 是向右移位一位，但是操作数只能是整数（所以相当于除以2，小数部分直接舍去）</p>
-</blockquote>
-<p>回头看的时候想起来是当时 ACM 上的<a href="https://blog.csdn.net/qq_32680617/article/details/50640622" target="_blank" rel="noopener">快速求幂取模</a>……</p>
-<blockquote>
-<p>为了增加代码可读性，我们用 <code>gmpy2.gcd(a,b)</code> 代替 <code> CoCoCoCo(Co, CoCo)</code>；用 <code>pow(a, b, n) </code> 代替 <code>CoCoCoCoCo(Co, CoCo, CoCoCo)</code>。<br>
-最后需要深刻反思…… ACMer 的优势。这周开始刷数论的算法题，看《算法竞赛入门》的数量部分</p>
-</blockquote>
-<h4 id="分析和调整代码">分析和调整代码</h4>
-<p>知道了函数的作用（尤其发现和数论直接相关），整个代码的基本功能就能很好地理解。<br>
-但是代码的毛病不止是变量的命名，还有顺序：函数放在中间是什么意思？？？+一些代码调换位置会更容易看懂。<br>
-此外，刚刚也说了只是姑且用数目代替原来的名字……<br>
-需要根据代码的意义去分析，基本分析完成后：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Random.random <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"></span><br><span class="line">a = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">p = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">c = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:<span class="comment"># get a number(n) enable (n-1, random-e) = 1</span></span><br><span class="line">    e = randint(<span class="number">1</span>, <span class="number">2</span> ** <span class="number">512</span>) <span class="comment"># 1- 2 ** 512 之间</span></span><br><span class="line">    <span class="keyword">if</span> gmpy2.gcd(e, p - <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">eight = pow(c, a, p)</span><br><span class="line">ten = pow(c, e, p)</span><br><span class="line"></span><br><span class="line">six = bytes_to_long(<span class="string">b"CoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCo"</span>)</span><br><span class="line">seven = bytes_to_long(flag)</span><br><span class="line"></span><br><span class="line">eleven = (six * pow(eight, e, p)) % p</span><br><span class="line">twelve = (seven * pow(eight, e, p)) % p</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'cipher.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f: <span class="comment"># 写进文件</span></span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCo = "</span> + str(ten) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCo = "</span> + str(c) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCo = "</span> + str(eleven) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCo = "</span> + str(p) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCoCo = "</span> + str(twelve) + <span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># two - p</span></span><br><span class="line"><span class="comment"># (e, n - 1) == 1</span></span><br><span class="line"><span class="comment"># three - c</span></span><br><span class="line"><span class="comment"># one - a</span></span><br><span class="line"><span class="comment"># nine - e</span></span><br></pre></td></tr></table></figure>
-<p>确实是一个浩大的工程……（一共十二个变量）<br>
-做了多次调整…… Orz<br>
-其中印象很深的是 p:<br>
-在 RSA 的模数一般是 n，所以会想当然地把最后定为 p 的变量（CoCo）最开始当成 n。<br>
-但是一直让我费解的是：<code>gmpy2.gcd(e, CoCo - 1) == 1;</code></p>
-<p>$\because (e, \varphi (m))=1 $ 而 $ \varphi (m) = \varphi (pq) = (p-1)(q-1)$<br>
-$\therefore (e, (p-1))=1$</p>
-<p>基于这一点，所以我就猜想 CoCo 其实不是 n，而是 p。</p>
-<h4 id="数学分析">数学分析</h4>
-<p>这道题更像是自己设计的加密算法，所以纯粹靠自己进行数学分析。</p>
-<h5 id="条件：">条件：</h5>
-<p>（黄色表示最终目标，蓝色表示已知条件，灰色表示关键的中间变量）</p>
-<img src="/2019/10/20/%E6%9E%81%E5%AE%A2%E5%B7%85%E5%B3%B0-CoCo-writeup/CoCodraft.png" width="600/">
-<h5 id="灵感和正解">灵感和正解</h5>
-<p>记得之前一道奇妙的“数学题”条件没有用完一直让我耿耿于怀，这次碰巧看到一个博客是讲那道题目的：<br>
-<a href="http://blog.cirq.me/2018/02/07/Codegate2018-rsababy/" target="_blank" rel="noopener">Codegate CTF 2018 - RSAbaby</a><br>
-其中一句话点醒了我：“真正的 crypter 对于题目的直觉令人十分惊异：h参数看起来太奇怪了，所以直接无视它！看到这里也只能怪自己的高考思维了，毕竟现实世界中，不是每一个条件都是有用的嘛。”<br>
-于是猛回头解题，重新审视。</p>
-<p>开始集中关注后面两个式子：</p>
-<ol>
-<li>$ tweleve = seven \times eight^e  \pmod p $</li>
-<li>$ eleven = six \times eight^e \pmod p$<br>
-其实他们是两个同余方程。</li>
-</ol>
-<p>如果！<br>
-把  $eight^e$ 看成一个整体，而不是想要求出 $eight^e$，角度完全不同。<br>
-复杂的式子变得极度简单，不妨设 $x = (eight^e , mod ,p)$.</p>
-<ol>
-<li>$ tweleve = seven \cdot x \pmod p $</li>
-<li>$ eleven = six \cdot x \pmod p $</li>
-</ol>
-<p>变成两个同余方程。<br>
-其中第二个式子只有一个未知变量x，求出来之后第一个式子也就变成一元一次的同余方程。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Random.random <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">six = bytes_to_long(<span class="string">b"CoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCo"</span>)</span><br><span class="line">eleven = <span class="number">120085813769601903784459580746767828105716607333492124010803514777437504109331448009890874939858984666641139819379969714070220763093188551966830630639308142299719976258227450642141963425187429636880593480951498406380068747404115889400485463839002674872020074254287490910994729347868122864760194135575038263365</span></span><br><span class="line">tweleve = <span class="number">53913320010474614353771348695262553935361078517742942745359182152882204780769206005474818637010209561420480280523029509375286538886061621596249179407728697515399046471231513536340506648832858695583318765423245104561512700887050932667507358898646356134386213016528778706360147066411877832628237361011621917972</span></span><br><span class="line"></span><br><span class="line">p = <span class="number">133694097868622092961596455982173439482901807533684907590429464542321832157724052684517499871073826858762297729480414306161113412741865099163152505447334863097434932940729269605986418443532208942119505043634990271717198694190123478547503837269948205839761848366722796091382894026537012764323367229104988051357</span></span><br><span class="line">x = gmpy2.invert(gmpy2.mpz(six), gmpy2.mpz(p)) * gmpy2.mpz(eleven)</span><br><span class="line">tweleve= gmpy2.invert(gmpy2.mpz(x), gmpy2.mpz(p)) *gmpy2.mpz(tweleve)</span><br><span class="line">tweleve %= p</span><br><span class="line">flag  = long_to_bytes(tweleve)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>b’flag{394191c7-261c-4ecb-a1bd-a6440639f217}’</p>
-</blockquote>
-<p>需要注意的是： invert() 这个函数返回的值不是那么理想，没有注意到这一点的我，第一次解出的 flag 很奇怪：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">b&quot;#&amp;\xd1?_T\xdd\xb1!\x11\x00&#96;V\rI&#123;\xb0\t\x8eW&#x3D;&lt;z\xfeq\x1f\xfa\xca\xfd\x93mx\xe71\x0f\xa2\x1fD\x06H&#x2F;&#125;\xe1_\x1b\x87+\xa1\xb0\xcb\xe6\xfa\r\xdbt\xa6\x95g&#39;x\xe2\x0b\xa2.\x08N\xcc\xa3\xd1\xba\x82\xa2,\xdeW1\x1b\x8e\x88\x97\xde\xf5E\x8a\xf1r\xedU\x9e\xe1\xb6\xc0\x1d\xc1\x85\x1b\x96J\x9bJm&#125;\xb0\x9a\xc5\x04\x9b\x1duo\x11&amp;7\xa0U\x96\xb1h\xe7\x1d8rwY8v\x92\xd9:\x9e6\xd9\xb0\xea.\xe0\x89\xd0|\xfd\xf6\x96Tg\x87\xaew\x9eH!\x87\xb7\xd6\x1d\xcf&#x2F;&amp;E\xae\x056hd\xe2\xbd\x81&#123;\xc1(P\xd1\x14?\x13(r\xd0D\x1d\xfe$\xf6z&#125;\x82u\xf2F#\xdb-\x18\xce\x94\xf2\x87\xfd\x86\xe3 \\\x87\x8b\xf12:p\xea\x02b\x05\xe6L)\xbd&lt;,\x15\x89\xc6I\xde\x96B\xf5\xda&gt;&#96;\x15rC\xeed\xb1&#123;\xf9\xba&#39;y\xb0Wv(z\xa8\x95?\xa9J\x10\x06s#\xca\x89\xd0&quot;</span><br></pre></td></tr></table></figure>
-<p>但是带回去验算又没有问题。<br>
-通过对比的对 six 进行 <code>bytes_to_long</code> 和 <code>long_to_bytes</code> 实验，发现 flag 比 six 大非常非常多……<br>
-所以才想是 invert() 的问题， 所以再 <code>tweleve %= p</code> 了一遍，然后转回字符串，终于成功。<br>
-在比赛结束前三十多米秒提交。</p>
-<h3 id="题目特点">题目特点</h3>
-<ol>
-<li>用恶心的变量名去掩盖变量真实的含义</li>
-<li>不是特殊的加密算法，是自己编造的加密方法，没有资料和经验，完全依靠数学和想象力。</li>
-</ol>
-<h2 id="赛后官方-WP">赛后官方 WP</h2>
-<p>赛后仔细看了官方的 WP，并推算了一遍，发现他的费马小定理用得画蛇添足，思路也不怎么清晰，如果展开推算，最后又会绕回来，最后的最后形式是和我的推算相一致。</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
-  </entry>
-  <entry>
     <title>“阅享成电” - 生命本来没有名字</title>
     <url>/2019/11/10/%E7%94%9F%E5%91%BD%E6%9C%AC%E6%9D%A5%E6%B2%A1%E6%9C%89%E5%90%8D%E5%AD%97/</url>
     <content><![CDATA[<h3 id="引言">引言</h3>
@@ -3423,5 +3326,102 @@ $\therefore (e, (p-1))=1$</p>
       <tags>
         <tag>Blockchain</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>巅峰极客 CoCo Writeup</title>
+    <url>/2019/10/20/%E6%9E%81%E5%AE%A2%E5%B7%85%E5%B3%B0-CoCo-writeup/</url>
+    <content><![CDATA[<h2 id="CoCo">CoCo</h2>
+<h3 id="题目描述">题目描述</h3>
+<p>文件：b5574201c88c73ac00b4e5d32b317339_NTURE.zip</p>
+<a id="more"></a>
+<p><a href="http://challenge.py" target="_blank" rel="noopener">challenge.py</a>：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Random.random <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line">Co = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">CoCo = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">CoCoCo = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCo</span><span class="params">(Co, CoCo)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> CoCo: Co, CoCo = CoCo, Co % CoCo</span><br><span class="line">    <span class="keyword">return</span> Co</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCoCo</span><span class="params">(Co, CoCo, CoCoCo)</span>:</span></span><br><span class="line">    CoCoCoCo = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> CoCo != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> (CoCo &amp; <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">            CoCoCoCo = (CoCoCoCo * Co) % CoCoCo</span><br><span class="line">        CoCo &gt;&gt;= <span class="number">1</span></span><br><span class="line">        Co = (Co * Co) % CoCoCo</span><br><span class="line">    <span class="keyword">return</span> CoCoCoCo</span><br><span class="line"></span><br><span class="line">CoCoCoCoCoCoCoCo = CoCoCoCoCo(CoCoCo, Co, CoCo)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    CoCoCoCoCoCoCoCoCo = randint(<span class="number">1</span>, <span class="number">2</span> ** <span class="number">512</span>)</span><br><span class="line">    <span class="keyword">if</span> CoCoCoCo(CoCoCoCoCoCoCoCoCo, CoCo - <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">CoCoCoCoCoCo = bytes_to_long(<span class="string">"CoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCo"</span>)</span><br><span class="line">CoCoCoCoCoCoCoCoCoCo = CoCoCoCoCo(CoCoCo, CoCoCoCoCoCoCoCoCo, CoCo)</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCo = (CoCoCoCoCoCo * CoCoCoCoCo(CoCoCoCoCoCoCoCo, CoCoCoCoCoCoCoCoCo, CoCo)) % CoCo</span><br><span class="line">CoCoCoCoCoCoCo = bytes_to_long(flag)</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCoCo = (CoCoCoCoCoCoCo * CoCoCoCoCo(CoCoCoCoCoCoCoCo, CoCoCoCoCoCoCoCoCo, CoCo)) % CoCo</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'cipher.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCo = "</span> + str(CoCoCoCoCoCoCoCoCoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCo = "</span> + str(CoCoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCo = "</span> + str(CoCoCoCoCoCoCoCoCoCoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCo = "</span> + str(CoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCoCo = "</span> + str(CoCoCoCoCoCoCoCoCoCoCoCo) + <span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
+<p>cipher.txt:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CoCoCoCoCoCoCoCoCoCo &#x3D; 112376755434839067242492450580926874835238627566940029196532175644877689078482714802636681537478746972878719135123815462672622666337365766404438579837929587693947036556506459672209528097159093195480318719604062458476883089712408549646871208319887232708573834573129807851612788612229862109446349174773685766921</span><br><span class="line">CoCoCo &#x3D; 151397348765463697819328127490368915291237595957138740365628078489836085372845681091989345334904026246892900348971981402476845038743843701086311667536372419728644485998870855126715225674611022660290971207449534822797616008980284083777280866124762176520095351401654370256535990768524594118090702757650148363921</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCo &#x3D; 120085813769601903784459580746767828105716607333492124010803514777437504109331448009890874939858984666641139819379969714070220763093188551966830630639308142299719976258227450642141963425187429636880593480951498406380068747404115889400485463839002674872020074254287490910994729347868122864760194135575038263365</span><br><span class="line">CoCo &#x3D; 133694097868622092961596455982173439482901807533684907590429464542321832157724052684517499871073826858762297729480414306161113412741865099163152505447334863097434932940729269605986418443532208942119505043634990271717198694190123478547503837269948205839761848366722796091382894026537012764323367229104988051357</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCoCo &#x3D; 53913320010474614353771348695262553935361078517742942745359182152882204780769206005474818637010209561420480280523029509375286538886061621596249179407728697515399046471231513536340506648832858695583318765423245104561512700887050932667507358898646356134386213016528778706360147066411877832628237361011621917972</span><br></pre></td></tr></table></figure>
+<h3 id="分析与解">分析与解</h3>
+<h4 id="Coco">Coco</h4>
+<p>变量的命名丧心病狂……<br>
+姑且用数目代替原来的名字：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">e.g. CoCoCo -&gt; three</span><br><span class="line">    CoCoCoCoCoCo -&gt; twelve</span><br></pre></td></tr></table></figure>
+<p>由于数容易数错，替换也会因为短的是长的前缀，所以不能一键替换，也要仔细数。<br>
+当然用 Python <code>len()/2</code> + <code>复制</code> 更好。</p>
+<blockquote>
+<p>题目用这种方式主要目的可能还是为了掩盖变量对应的含义。</p>
+</blockquote>
+<h4 id="函数理解">函数理解</h4>
+<p>代码中有两个函数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCo</span><span class="params">(one, two)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> two: one, two = two, one % two</span><br><span class="line">    <span class="keyword">return</span> one</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCoCo</span><span class="params">(one, two, three)</span>:</span></span><br><span class="line">    four = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> two != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> (two &amp; <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">            four = (four * one) % three</span><br><span class="line">        two &gt;&gt;= <span class="number">1</span></span><br><span class="line">        one = (one * one) % three</span><br><span class="line">    <span class="keyword">return</span> four</span><br></pre></td></tr></table></figure>
+<p>第一个函数一眼就可以看出来是欧几里得算法。<br>
+<code>two: one, two = two, one % two</code>是欧几里得算法的理论基础。<br>
+第二个看得很熟悉，但是当时没有立刻搞懂……（导致后面的理解很受挫……）</p>
+<blockquote>
+<p><code>&gt;&gt;=</code> 是向右移位一位，但是操作数只能是整数（所以相当于除以2，小数部分直接舍去）</p>
+</blockquote>
+<p>回头看的时候想起来是当时 ACM 上的<a href="https://blog.csdn.net/qq_32680617/article/details/50640622" target="_blank" rel="noopener">快速求幂取模</a>……</p>
+<blockquote>
+<p>为了增加代码可读性，我们用 <code>gmpy2.gcd(a,b)</code> 代替 <code> CoCoCoCo(Co, CoCo)</code>；用 <code>pow(a, b, n) </code> 代替 <code>CoCoCoCoCo(Co, CoCo, CoCoCo)</code>。<br>
+最后需要深刻反思…… ACMer 的优势。这周开始刷数论的算法题，看《算法竞赛入门》的数量部分</p>
+</blockquote>
+<h4 id="分析和调整代码">分析和调整代码</h4>
+<p>知道了函数的作用（尤其发现和数论直接相关），整个代码的基本功能就能很好地理解。<br>
+但是代码的毛病不止是变量的命名，还有顺序：函数放在中间是什么意思？？？+一些代码调换位置会更容易看懂。<br>
+此外，刚刚也说了只是姑且用数目代替原来的名字……<br>
+需要根据代码的意义去分析，基本分析完成后：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Random.random <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"></span><br><span class="line">a = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">p = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">c = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:<span class="comment"># get a number(n) enable (n-1, random-e) = 1</span></span><br><span class="line">    e = randint(<span class="number">1</span>, <span class="number">2</span> ** <span class="number">512</span>) <span class="comment"># 1- 2 ** 512 之间</span></span><br><span class="line">    <span class="keyword">if</span> gmpy2.gcd(e, p - <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">eight = pow(c, a, p)</span><br><span class="line">ten = pow(c, e, p)</span><br><span class="line"></span><br><span class="line">six = bytes_to_long(<span class="string">b"CoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCo"</span>)</span><br><span class="line">seven = bytes_to_long(flag)</span><br><span class="line"></span><br><span class="line">eleven = (six * pow(eight, e, p)) % p</span><br><span class="line">twelve = (seven * pow(eight, e, p)) % p</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'cipher.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f: <span class="comment"># 写进文件</span></span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCo = "</span> + str(ten) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCo = "</span> + str(c) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCo = "</span> + str(eleven) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCo = "</span> + str(p) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCoCo = "</span> + str(twelve) + <span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># two - p</span></span><br><span class="line"><span class="comment"># (e, n - 1) == 1</span></span><br><span class="line"><span class="comment"># three - c</span></span><br><span class="line"><span class="comment"># one - a</span></span><br><span class="line"><span class="comment"># nine - e</span></span><br></pre></td></tr></table></figure>
+<p>确实是一个浩大的工程……（一共十二个变量）<br>
+做了多次调整…… Orz<br>
+其中印象很深的是 p:<br>
+在 RSA 的模数一般是 n，所以会想当然地把最后定为 p 的变量（CoCo）最开始当成 n。<br>
+但是一直让我费解的是：<code>gmpy2.gcd(e, CoCo - 1) == 1;</code></p>
+<p>$\because (e, \varphi (m))=1 $ 而 $ \varphi (m) = \varphi (pq) = (p-1)(q-1)$<br>
+$\therefore (e, (p-1))=1$</p>
+<p>基于这一点，所以我就猜想 CoCo 其实不是 n，而是 p。</p>
+<h4 id="数学分析">数学分析</h4>
+<p>这道题更像是自己设计的加密算法，所以纯粹靠自己进行数学分析。</p>
+<h5 id="条件：">条件：</h5>
+<p>（黄色表示最终目标，蓝色表示已知条件，灰色表示关键的中间变量）</p>
+<img src="/2019/10/20/%E6%9E%81%E5%AE%A2%E5%B7%85%E5%B3%B0-CoCo-writeup/CoCodraft.png" width="600/">
+<h5 id="灵感和正解">灵感和正解</h5>
+<p>记得之前一道奇妙的“数学题”条件没有用完一直让我耿耿于怀，这次碰巧看到一个博客是讲那道题目的：<br>
+<a href="http://blog.cirq.me/2018/02/07/Codegate2018-rsababy/" target="_blank" rel="noopener">Codegate CTF 2018 - RSAbaby</a><br>
+其中一句话点醒了我：“真正的 crypter 对于题目的直觉令人十分惊异：h参数看起来太奇怪了，所以直接无视它！看到这里也只能怪自己的高考思维了，毕竟现实世界中，不是每一个条件都是有用的嘛。”<br>
+于是猛回头解题，重新审视。</p>
+<p>开始集中关注后面两个式子：</p>
+<ol>
+<li>$ tweleve = seven \times eight^e  \pmod p $</li>
+<li>$ eleven = six \times eight^e \pmod p$<br>
+其实他们是两个同余方程。</li>
+</ol>
+<p>如果！<br>
+把  $eight^e$ 看成一个整体，而不是想要求出 $eight^e$，角度完全不同。<br>
+复杂的式子变得极度简单，不妨设 $x = (eight^e , mod ,p)$.</p>
+<ol>
+<li>$ tweleve = seven \cdot x \pmod p $</li>
+<li>$ eleven = six \cdot x \pmod p $</li>
+</ol>
+<p>变成两个同余方程。<br>
+其中第二个式子只有一个未知变量x，求出来之后第一个式子也就变成一元一次的同余方程。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Random.random <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">six = bytes_to_long(<span class="string">b"CoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCo"</span>)</span><br><span class="line">eleven = <span class="number">120085813769601903784459580746767828105716607333492124010803514777437504109331448009890874939858984666641139819379969714070220763093188551966830630639308142299719976258227450642141963425187429636880593480951498406380068747404115889400485463839002674872020074254287490910994729347868122864760194135575038263365</span></span><br><span class="line">tweleve = <span class="number">53913320010474614353771348695262553935361078517742942745359182152882204780769206005474818637010209561420480280523029509375286538886061621596249179407728697515399046471231513536340506648832858695583318765423245104561512700887050932667507358898646356134386213016528778706360147066411877832628237361011621917972</span></span><br><span class="line"></span><br><span class="line">p = <span class="number">133694097868622092961596455982173439482901807533684907590429464542321832157724052684517499871073826858762297729480414306161113412741865099163152505447334863097434932940729269605986418443532208942119505043634990271717198694190123478547503837269948205839761848366722796091382894026537012764323367229104988051357</span></span><br><span class="line">x = gmpy2.invert(gmpy2.mpz(six), gmpy2.mpz(p)) * gmpy2.mpz(eleven)</span><br><span class="line">tweleve= gmpy2.invert(gmpy2.mpz(x), gmpy2.mpz(p)) *gmpy2.mpz(tweleve)</span><br><span class="line">tweleve %= p</span><br><span class="line">flag  = long_to_bytes(tweleve)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>b’flag{394191c7-261c-4ecb-a1bd-a6440639f217}’</p>
+</blockquote>
+<p>需要注意的是： invert() 这个函数返回的值不是那么理想，没有注意到这一点的我，第一次解出的 flag 很奇怪：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">b&quot;#&amp;\xd1?_T\xdd\xb1!\x11\x00&#96;V\rI&#123;\xb0\t\x8eW&#x3D;&lt;z\xfeq\x1f\xfa\xca\xfd\x93mx\xe71\x0f\xa2\x1fD\x06H&#x2F;&#125;\xe1_\x1b\x87+\xa1\xb0\xcb\xe6\xfa\r\xdbt\xa6\x95g&#39;x\xe2\x0b\xa2.\x08N\xcc\xa3\xd1\xba\x82\xa2,\xdeW1\x1b\x8e\x88\x97\xde\xf5E\x8a\xf1r\xedU\x9e\xe1\xb6\xc0\x1d\xc1\x85\x1b\x96J\x9bJm&#125;\xb0\x9a\xc5\x04\x9b\x1duo\x11&amp;7\xa0U\x96\xb1h\xe7\x1d8rwY8v\x92\xd9:\x9e6\xd9\xb0\xea.\xe0\x89\xd0|\xfd\xf6\x96Tg\x87\xaew\x9eH!\x87\xb7\xd6\x1d\xcf&#x2F;&amp;E\xae\x056hd\xe2\xbd\x81&#123;\xc1(P\xd1\x14?\x13(r\xd0D\x1d\xfe$\xf6z&#125;\x82u\xf2F#\xdb-\x18\xce\x94\xf2\x87\xfd\x86\xe3 \\\x87\x8b\xf12:p\xea\x02b\x05\xe6L)\xbd&lt;,\x15\x89\xc6I\xde\x96B\xf5\xda&gt;&#96;\x15rC\xeed\xb1&#123;\xf9\xba&#39;y\xb0Wv(z\xa8\x95?\xa9J\x10\x06s#\xca\x89\xd0&quot;</span><br></pre></td></tr></table></figure>
+<p>但是带回去验算又没有问题。<br>
+通过对比的对 six 进行 <code>bytes_to_long</code> 和 <code>long_to_bytes</code> 实验，发现 flag 比 six 大非常非常多……<br>
+所以才想是 invert() 的问题， 所以再 <code>tweleve %= p</code> 了一遍，然后转回字符串，终于成功。<br>
+在比赛结束前三十多米秒提交。</p>
+<h3 id="题目特点">题目特点</h3>
+<ol>
+<li>用恶心的变量名去掩盖变量真实的含义</li>
+<li>不是特殊的加密算法，是自己编造的加密方法，没有资料和经验，完全依靠数学和想象力。</li>
+</ol>
+<h2 id="赛后官方-WP">赛后官方 WP</h2>
+<p>赛后仔细看了官方的 WP，并推算了一遍，发现他的费马小定理用得画蛇添足，思路也不怎么清晰，如果展开推算，最后又会绕回来，最后的最后形式是和我的推算相一致。</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
   </entry>
 </search>
