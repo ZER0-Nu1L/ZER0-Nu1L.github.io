@@ -216,105 +216,6 @@ fping指令来扫描当前网段内的所有IP</p>
       </tags>
   </entry>
   <entry>
-    <title>招新：Crypto方向介绍</title>
-    <url>/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h1>Crypto 方向基础</h1>
-<h2 id="入门基础">入门基础:</h2>
-<ol>
-<li>C语言<br>
-// 很多代码审计都是以 C语言形式呈现</li>
-<li>Python3:
-<ol>
-<li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li>
-<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li>
-<li>gmpy2库、Crypto库的使用</li>
-</ol>
-</li>
-<li><strong>数学基础</strong> (重中之重)<br>
-可以参考《信息安全数学基础》（初等数论、近世代数）</li>
-<li>linux的常见使用<br>
-基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>
-其余的遇到问题看需要再去学。</li>
-</ol>
-<a id="more"></a>
-<p>注意事项：</p>
-<blockquote>
-<ol>
-<li>密码学的要求是两点：算法编程能力，数学推理能力。</li>
-<li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li>
-<li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>
-参见题目：<br>
-DEF CON CTF Qualifier 2018 SAG?<br>
-DEF CON CTF Qualifier 2018 smcauth<br>
-DEF CON CTF Qualifier 2018 Easy Pisy<br>
-codegate2018 miro</li>
-</ol>
-</blockquote>
-<h2 id="涵盖基本知识">涵盖基本知识</h2>
-<ol>
-<li>常见编码方式<br>
-base家族、Uuencode、Xxencode 等等等等。</li>
-<li>古典密码<br>
-凯撒密码、栅栏密码、维基利亚密码 等等等等。</li>
-<li>分组密码<br>
-DES、AES 等。</li>
-<li>非对称密码<br>
-RSA、Elgamal、ECC等。</li>
-<li>哈希函数<br>
-经常出现在 Web 题目中</li>
-</ol>
-<h2 id="资源推荐">资源推荐</h2>
-<ol>
-<li>学习方式推荐：<br>
-看书+看ctfwiki或者自己找一些blog+做题</li>
-<li>密码学书籍：<br>
-《信息安全数学基础》（各个学校都有自己的版本）<br>
-<a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li>
-<li>密码学学习网站推荐：<br>
-<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>
-（主要是面向ctf解题以及算法编程）</li>
-<li>做题网站：<br>
-<a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br>
-<a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li>
-</ol>
-<h2 id="题目类型">题目类型</h2>
-<table>
-<thead>
-<tr>
-<th>攻击方式</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>唯密文攻击</td>
-<td>只拥有密文</td>
-</tr>
-<tr>
-<td>选择明文攻击</td>
-<td>拥有加密权限，能够对明文加密后获得相应密文</td>
-</tr>
-<tr>
-<td>已知明文攻击</td>
-<td>拥有密文与对应的明文。</td>
-</tr>
-<tr>
-<td>选择密文攻击</td>
-<td>拥有解密权限，能够对密文解密后获得相应明文</td>
-</tr>
-</tbody>
-</table>
-<p>Crypto 方向负责人：ZER0-Nu1L</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
-      <tags>
-        <tag>Studio</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【转载】DDoS原理与防御</title>
     <url>/2019/11/16/DDoS/</url>
     <content><![CDATA[<p>文章转载自：<br>
@@ -540,6 +441,105 @@ mod_security模块，一个开源的WAF模块，有专门针对慢速攻击防�
         <category>Web</category>
         <category>DDoS</category>
       </categories>
+  </entry>
+  <entry>
+    <title>招新：Crypto方向介绍</title>
+    <url>/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h1>Crypto 方向基础</h1>
+<h2 id="入门基础">入门基础:</h2>
+<ol>
+<li>C语言<br>
+// 很多代码审计都是以 C语言形式呈现</li>
+<li>Python3:
+<ol>
+<li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li>
+<li>gmpy2库、Crypto库的使用</li>
+</ol>
+</li>
+<li><strong>数学基础</strong> (重中之重)<br>
+可以参考《信息安全数学基础》（初等数论、近世代数）</li>
+<li>linux的常见使用<br>
+基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>
+其余的遇到问题看需要再去学。</li>
+</ol>
+<a id="more"></a>
+<p>注意事项：</p>
+<blockquote>
+<ol>
+<li>密码学的要求是两点：算法编程能力，数学推理能力。</li>
+<li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li>
+<li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>
+参见题目：<br>
+DEF CON CTF Qualifier 2018 SAG?<br>
+DEF CON CTF Qualifier 2018 smcauth<br>
+DEF CON CTF Qualifier 2018 Easy Pisy<br>
+codegate2018 miro</li>
+</ol>
+</blockquote>
+<h2 id="涵盖基本知识">涵盖基本知识</h2>
+<ol>
+<li>常见编码方式<br>
+base家族、Uuencode、Xxencode 等等等等。</li>
+<li>古典密码<br>
+凯撒密码、栅栏密码、维基利亚密码 等等等等。</li>
+<li>分组密码<br>
+DES、AES 等。</li>
+<li>非对称密码<br>
+RSA、Elgamal、ECC等。</li>
+<li>哈希函数<br>
+经常出现在 Web 题目中</li>
+</ol>
+<h2 id="资源推荐">资源推荐</h2>
+<ol>
+<li>学习方式推荐：<br>
+看书+看ctfwiki或者自己找一些blog+做题</li>
+<li>密码学书籍：<br>
+《信息安全数学基础》（各个学校都有自己的版本）<br>
+<a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li>
+<li>密码学学习网站推荐：<br>
+<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>
+（主要是面向ctf解题以及算法编程）</li>
+<li>做题网站：<br>
+<a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br>
+<a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li>
+</ol>
+<h2 id="题目类型">题目类型</h2>
+<table>
+<thead>
+<tr>
+<th>攻击方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>唯密文攻击</td>
+<td>只拥有密文</td>
+</tr>
+<tr>
+<td>选择明文攻击</td>
+<td>拥有加密权限，能够对明文加密后获得相应密文</td>
+</tr>
+<tr>
+<td>已知明文攻击</td>
+<td>拥有密文与对应的明文。</td>
+</tr>
+<tr>
+<td>选择密文攻击</td>
+<td>拥有解密权限，能够对密文解密后获得相应明文</td>
+</tr>
+</tbody>
+</table>
+<p>Crypto 方向负责人：ZER0-Nu1L</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
+      <tags>
+        <tag>Studio</tag>
+      </tags>
   </entry>
   <entry>
     <title>【GitKraken】 Could not find a compatible repository</title>
