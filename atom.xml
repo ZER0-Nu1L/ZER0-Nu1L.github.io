@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zer0-nu1l.github.io/"/>
-  <updated>2020-06-23T01:03:10.665Z</updated>
+  <updated>2020-06-28T15:32:30.829Z</updated>
   <id>https://zer0-nu1l.github.io/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Wireshark 系列】MAC 地址泛洪攻击分析</title>
+    <link href="https://zer0-nu1l.github.io/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/"/>
+    <id>https://zer0-nu1l.github.io/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</id>
+    <published>2020-06-28T15:04:51.000Z</published>
+    <updated>2020-06-28T15:32:30.829Z</updated>
+    
+    <content type="html"><![CDATA[<p>接下来我会开一个 Wireshark 网络分析的博文系列，主要借助华为的网络模拟工具 eNSP ，它可以接入真实的主机，为我们进行网络攻击提供了非常友好、非常纯洁的环境。<br>具体怎么连接可以自行查阅，或者可以在评论区留言，我可以单独再写一篇~ 😁</p><hr><p>下面从数据链路层对交换机的攻击说起：</p><ol><li>目前网络安全的问题有     80%来自于“内部网络”</li><li>链路层是内部网络通信最为重要的协议，而交换机正是这一层的典型设备</li><li>但是相比起其他网络设备来说，交换机的防护措施往往也是最差的，因此也经常成为黑客攻击的目标。</li></ol> <a id="more"></a><h1>实验环境介绍</h1><h2 id="数据链路层的攻击">数据链路层的攻击</h2><ul><li>MAC 地址欺骗攻击（放到下期中间人攻击部分讲解）</li><li>MAC 地址泛洪攻击（本次讲解内容）⭐️</li><li>STP 操纵攻击</li><li>广播风暴攻击</li></ul><h2 id="MAC-地址泛洪可能导致的情景">MAC 地址泛洪可能导致的情景</h2><p>网络在之前一直可以正常运行，但是在前些天很多用户突然发现网络速度变得十分缓慢，经过我们的检查没有发现线路方面的问题。<br>但是我们发现每次重启交换机之后网络速度就会恢复。<br>而经过一段时间之后网络速度就会再次变得缓慢。</p><h2 id="eNSP-交换机介绍">eNSP 交换机介绍</h2><h3 id="命令：查看-MAC-表">命令：查看 MAC 表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display mac-address</span><br></pre></td></tr></table></figure><h3 id="交换机-UDP-伪造源-MAC">交换机 UDP 伪造源 MAC</h3><p>（交换机不认 ip:port，目的和源 IP, port 可以随便写）<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230527919.png" alt="image-20200628230527919"></p><p>eNSP 实现的功能比较简单，但是告诉了我们伪造不是一件难事；<br>而大批量地进行伪造是需要专门的工具的，所以我们后面会接入 kali，做攻击的模拟。</p><h2 id="网络拓扑">网络拓扑</h2><p>网络拓扑 <a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Topo/SwitchAttack/" target="_blank" rel="noopener">SwitchAttack</a>：</p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628231643896.png" alt="image-20200628231643896" style="zoom:67%;"><h1>MAC 地址泛洪攻击</h1><p>网络拓扑中，PC1, PC2 都用 DHCP 配置；ping 通之后，查看交换机的 mac table ：<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230733652.png" alt="image-20200628230733652"></p><p>Kali 执行 <code>macof</code> 进行 MAC 地址泛洪（可以多开几个终端执行泛洪），同时抓取交换机连接 kali 的端口的数据包。<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230750772.png" alt="image-20200628230750772"></p><p>获取到泛洪攻击的数据包：<a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/raw/master/Package/SwitchAttack_attacked.pcapng" target="_blank" rel="noopener">SwitchAttack_attack.pcapng</a></p><p>接下来再看下交换机的 mac-address 表：<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230803774.png" alt="image-20200628230803774"></p><p>可以看到交换机已经完全被 Eth0/0/3 的端口映射关系淹没，甚至已经没有 Eth0/0/1 和 Eth0/0/2 了，这将导致，PC1 和 PC2 基本不能进行正常的网络通信。</p><h1>攻击分析</h1><blockquote><p>现实场景下是不了解自己的网络问题是否由 MAC 泛洪导致的，接下来我们将通过分析刚刚抓到的包，讲解 MAC 泛洪攻击的特点，以便我们自己在其他场景下判断、分辨 MAC 泛洪攻击。</p></blockquote><h2 id="初看">初看</h2><p>选项 - 统计 - 捕捉文件属性</p><p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230822539.png" alt="image-20200628230822539"></p><p>这个数据包很大，但是乍一眼可以看出来源 IP 和目的 IP 意外地多，且不属于用户主机的数据包：</p><p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image006.png" alt></p><p>另外，数据包长度还一样——很可能是软件生成的。<br>很容易想到，这些数据包是大量伪造的。</p><blockquote><p>但是以上只是基本猜测，需要进一步分析。</p></blockquote><h2 id="Wireshark-统计分析">Wireshark 统计分析</h2><p>现在我们发现网络中出现了大量来历不明的数据包，可是到底出现了多少个数据包呢，这些数据包是否来自同一个源地址，或者发向同一个目的地址呢？如果手动地逐个计算的话，那么显然这是一个十分繁重的重复劳动。好在 Wireshark 中提供了极为强大的网络统计功能，利用这些功能我们可以对网络活动有一个宏观的了解。<br>选项 - 统计 - 会话：<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230934444.png" alt="image-20200628230934444"></p><p>可以看到这里有基本上所有 IP 之间的报文只发了一次，这个是非常不正常的！至少一个以上，比如TCP 三次握手都需要一次通信。所以基本可以咬定，源 IP 和目的 IP 都是伪造的。<br>选项 - 统计 - 协议分析：<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image008.png" alt></p><p>这个统计图是从 Frame 展开，到 Ethernet，再到 IP，再到传输层到应用层。<br>这里可以看出，大部分的集中在了 IPv4 协议。<br>但是正常情况下，TCP 和 UDP 应该是最多的，这里链路层协议占比很多，很可能是伪造的。<br>我们不妨看一下我随便捕捉的正常的数据包的情况：<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png" alt></p><p>UDP 报文和 TCP 报文占比比较重，这个是比较正常的情况。<br>现在，很肯定这是来自数据链路层的 MAC 泛洪。</p><h1>找到攻击的源头</h1><p>其实刚刚已经提到了，我们用 kali 进行 MAC 泛洪的时候，查看了交换机的 mac-address 表，发现 Eth0/0/3 对应了大量的 MAC 地址。也就是说如果我们有交换机控制权，就能查到 MAC 泛洪攻击的始作俑者。（连的接口是不能伪造的）</p><h1>如何防御 MAC 地址泛洪攻击</h1><p>非常简单，让一个端口只能对应特定个数 MAC，在华为交换机里的配置是这样的：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int eth0&#x2F;0&#x2F;3</span><br><span class="line">port-security enable</span><br><span class="line">port-security mac-address sticky</span><br><span class="line">port-security protect-action protect</span><br><span class="line">port-security mac-mac-num 8 </span><br><span class="line">disaplay mac-address</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;接下来我会开一个 Wireshark 网络分析的博文系列，主要借助华为的网络模拟工具 eNSP ，它可以接入真实的主机，为我们进行网络攻击提供了非常友好、非常纯洁的环境。&lt;br&gt;
+具体怎么连接可以自行查阅，或者可以在评论区留言，我可以单独再写一篇~ 😁&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;下面从数据链路层对交换机的攻击说起：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;目前网络安全的问题有     80%来自于“内部网络”&lt;/li&gt;
+&lt;li&gt;链路层是内部网络通信最为重要的协议，而交换机正是这一层的典型设备&lt;/li&gt;
+&lt;li&gt;但是相比起其他网络设备来说，交换机的防护措施往往也是最差的，因此也经常成为黑客攻击的目标。&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="Web" scheme="https://zer0-nu1l.github.io/categories/Web/"/>
+    
+      <category term="Wireshark" scheme="https://zer0-nu1l.github.io/categories/Web/Wireshark/"/>
+    
+    
+      <category term="kali" scheme="https://zer0-nu1l.github.io/tags/kali/"/>
+    
+      <category term="Wireshark" scheme="https://zer0-nu1l.github.io/tags/Wireshark/"/>
+    
+      <category term="eNSP" scheme="https://zer0-nu1l.github.io/tags/eNSP/"/>
+    
+  </entry>
   
   <entry>
     <title>5G 无人机安全系统 JoyFly</title>
@@ -628,43 +665,6 @@
     
     
       <category term="Studio" scheme="https://zer0-nu1l.github.io/tags/Studio/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OpenSSL</title>
-    <link href="https://zer0-nu1l.github.io/2019/09/29/OpenSSL/"/>
-    <id>https://zer0-nu1l.github.io/2019/09/29/OpenSSL/</id>
-    <published>2019-09-29T07:30:32.000Z</published>
-    <updated>2019-11-01T10:24:05.016Z</updated>
-    
-    <content type="html"><![CDATA[<h1>openssl 简介</h1><p>openssl是web安全通信的基石</p><h2 id="基础知识">基础知识</h2><h3 id="SSL">SSL</h3><p>Secure Socket Layer(安全套接字层)<br>主要是防止信息在互联网上传输的时候不被窃听或者篡改</p><h3 id="数字签名">数字签名</h3><p>将报文使用一定的 HASH 算法算出一个固定位数的摘要信息，然后用私钥将摘要加密，连同原来的报文一起，发送给接收者。<br>接受者通过公钥将摘要解出来，再通过 HASH 算法算出报文摘要，对比两者。<br>如果两个摘要一致，说明数据未被篡改，数据是完整的。</p><blockquote><p>数字签名具有证明发送者身份和防篡改的功能。</p></blockquote><a id="more"></a><h3 id="数字证书">数字证书</h3><p>由CA颁发给网站的身份证书，里面包含了该网站的公钥，有效时间，网站的地址，CA的数字签名等。</p><p>手动查看方式：<br><image src="./证书.png" width="300"><br><image src="./Web证书入口.png" width="300"></image></image></p><p>实际上就是使用了CA的私钥将网站的公钥等信息进行了签名，当客户端请求服务器的时候，网站会把证书发给客户端，客户端首先可以通过CA的数字签名校验CA的身份，也能证明证书的真实完整性<br>CA的地址是内嵌在浏览器中的，很难被篡改。</p><h2 id="SSL如何保护数据">SSL如何保护数据</h2><p>1）认证用户和服务器，确保数据发送到正确的客户端和服务器；<br>2）加密数据以防止数据中途被窃取；<br>3）维护数据的完整性，确保数据在传输过程中不被改变。</p><h3 id="认证用户和服务器">认证用户和服务器</h3><blockquote><p>怎么知道自己访问的是真百度还是假百度？是不是有可能有人<strong>劫持</strong>了我们访问百度的请求，然后路由给了一台他伪造的服务器？</p></blockquote><p>在SSL的通信流程中做了这样一个规定：一旦我们向服务器发送了请求后，服务器必须返回它的数字证书，当我们拿到数字证书之后，我们可以根据里面的ca数字签名，校验证书的合法性（不是被伪造的）</p><p>假设百度服务器是假冒的，他一定没有正确的私钥，那么之后的通信都无法进行，所以假冒服务器是无法操作的。</p><p>由此，SSL就解决了服务器认证的问题。</p><h3 id="加密数据以防止数据中途被窃取">加密数据以防止数据中途被窃取</h3><p>客户端第一次给服务器发送请求的时候（拿到证书前的一次），会在请求里面放一个随机数C1；<br>服务器在返回证书的响应里也会带一个随机数F；<br>客户端拿到证书后，会使用公钥加密一个随机数C2送给服务器。<br>这样客户端、服务器都拥有了三个随机数：C1、F、C2。<br>双方使用<strong>这些</strong>随机数和一个相同的算法生成一个对称密钥，之后所有的通信都使用这个对称密钥来进行。</p><p>这个密钥会不会被泄露呢？不会，因为密钥是由3个随机数产生的，对于第一个随机数C1，他可能会被中间人监听到，然后第二个随机数F，也可能会被中间人监听到，但是第三个随机数C2，因为是用公钥加密的，除非中间人有私钥，否则是不可能解出来的。</p><h3 id="维护数据的完整性">维护数据的完整性</h3><p>针对服务器发送数字证书这一过程来说，<br>服务器的数字证书中含有ca数字签名，可以很有效的保证证书的真实性和完整性（没有被篡改）</p><h2 id="openssl">openssl</h2><p><s>参考：<a href="https://segmentfault.com/a/1190000014963014" target="_blank" rel="noopener">https://segmentfault.com/a/1190000014963014</a></s><br>参考：<a href="E:/%60Desktop/eBook/Cryptology/OpenSSL%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8-%E5%9F%BA%E7%A1%80%E3%80%81%E7%BB%93%E6%9E%84%E5%92%8C%E6%8C%87%E4%BB%A4.pdf">《OpenSSL与网络信息安全-基础、结构和指令》</a><br>//博客资料太少</p><p>SSL只是一个协议，openssl则是SSL的实现版<br>openssl还包含了公钥私钥的生成、摘要生成等各种工具。</p><h4 id="生成-RSA-密钥-genrsa-指令">生成 RSA 密钥 - genrsa 指令</h4><image src="openssl_genrsa.png" width="700/"><ul><li>RSA 最重要的就是私钥的保密性，所以会用对称加密再对私钥加密</li><li>对于 OpenSSL 来说，文件名和其后缀都是没有特别含义的，你可以取任意名字，当然，习惯的用法是以格式来指令后缀，比如 “pem”。</li><li>注意参数的顺序，加密类型可以放在口令之前，位长建议放在最后。</li></ul><p>举例：<br>生成一个 1024 位的 RSA 密钥，并输出到 rsaprivkey.pem 文件中.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OpenSSL&gt;genrsa -out rsaprivkey.pem 1024</span><br></pre></td></tr></table></figure><p>生成一个 1024 位的 RSA 密钥，并采用 DES3 算法进行加密, 并输出到 &gt; rsaprivkey.pem 文件中.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OpenSSL&gt;genrsa -out rsaprivkey.pem -des3 -passout pass:xY*&amp;2wG</span><br></pre></td></tr></table></figure><p>(外接硬件设备的例子略)</p><h4 id="管理-RSA-密钥-genrsa-指令">管理 RSA 密钥 - genrsa 指令</h4><image src="openssl_rsa.png" width="800/"><ul><li>功能一：对私钥加密/更改对私钥加密的方式（公钥加密无意义）/去掉加密</li><li>功能二：明文输出文件中保存的内容</li></ul><p>举例：<br>将一个加密的 PEM 编码的 RSA 私钥(privkey.pem ) 转换成一个不加密的 PEM 编码的 RSA 私钥</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OpenSSL&gt;rsa -in privkey.pem -passin pass:1234567 -out privkey.pem</span><br></pre></td></tr></table></figure><p>原来使用 DES3 加密的 RSA 私钥保存不够安全，而想要使用 256 位 AES 算法加密的时</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OpenSSL&gt;rsa -in privkey.pem -passin pass1234567 -passout xY*&amp;2wG -aes256</span><br></pre></td></tr></table></figure><p>对于明文输出文件保存内容的例子并不令人满意……</p><p>Normal_RSA 题解里面的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl&gt;rsa -pubin -text -modulus -in warmup -in pubkey.pem</span><br></pre></td></tr></table></figure><p>不知道他怎么弄出来的，就连在《openssl-cookbook》也没找到其中的一些参数。</p><hr><p>参看：<a href="https://www.jianshu.com/p/bb2f50862025" target="_blank" rel="noopener">https://www.jianshu.com/p/bb2f50862025</a></p><p>简单地生成私钥 d :</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl&gt; genrsa -out private.pem 1024</span><br><span class="line">&#x2F;&#x2F; -out 输出文件 ； 1024 表示位数</span><br></pre></td></tr></table></figure><p>提取公钥 e :</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">openssl&gt; rsa -in private.pem -pubout -out public.pem</span><br><span class="line">&#x2F;&#x2F; -in 输入文件，这里是使用私钥；</span><br><span class="line">&#x2F;&#x2F;-pubout 输出公钥文件</span><br><span class="line">&#x2F;&#x2F;-out 输出，后跟目标文件</span><br></pre></td></tr></table></figure><p>对明文进行加密</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">openssl&gt; rsautl -encrypt -in message.txt -inkey public.pem -pubin -out enc.txt</span><br><span class="line">&#x2F;&#x2F; -encrpt 加密模式</span><br><span class="line">&#x2F;&#x2F; -in 输入文件，此时是明文</span><br><span class="line">&#x2F;&#x2F; -inkey 输入公钥</span><br><span class="line">&#x2F;&#x2F; -pubin 将公钥放进文件？</span><br><span class="line">&#x2F;&#x2F; -out 输出文件</span><br></pre></td></tr></table></figure><p>对明文进行解密</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">openssl&gt; rsautl -decrypt -in enc.txt -inkey private.pem -out dec.txt</span><br><span class="line">&#x2F;&#x2F; -decrpt 解密模式</span><br><span class="line">&#x2F;&#x2F; -in 输入文件，此时是密文</span><br><span class="line">&#x2F;&#x2F; -inkey 输入私钥</span><br><span class="line">&#x2F;&#x2F; -out 输出文件</span><br></pre></td></tr></table></figure></image></image>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1&gt;openssl 简介&lt;/h1&gt;
-&lt;p&gt;openssl是web安全通信的基石&lt;/p&gt;
-&lt;h2 id=&quot;基础知识&quot;&gt;基础知识&lt;/h2&gt;
-&lt;h3 id=&quot;SSL&quot;&gt;SSL&lt;/h3&gt;
-&lt;p&gt;Secure Socket Layer(安全套接字层)&lt;br&gt;
-主要是防止信息在互联网上传输的时候不被窃听或者篡改&lt;/p&gt;
-&lt;h3 id=&quot;数字签名&quot;&gt;数字签名&lt;/h3&gt;
-&lt;p&gt;将报文使用一定的 HASH 算法算出一个固定位数的摘要信息，然后用私钥将摘要加密，连同原来的报文一起，发送给接收者。&lt;br&gt;
-接受者通过公钥将摘要解出来，再通过 HASH 算法算出报文摘要，对比两者。&lt;br&gt;
-如果两个摘要一致，说明数据未被篡改，数据是完整的。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;数字签名具有证明发送者身份和防篡改的功能。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="CTF" scheme="https://zer0-nu1l.github.io/categories/CTF/"/>
-    
-      <category term="Crypto" scheme="https://zer0-nu1l.github.io/categories/CTF/Crypto/"/>
-    
-    
-      <category term="Crypto" scheme="https://zer0-nu1l.github.io/tags/Crypto/"/>
     
   </entry>
   

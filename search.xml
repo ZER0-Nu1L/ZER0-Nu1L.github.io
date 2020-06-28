@@ -216,105 +216,6 @@ fping指令来扫描当前网段内的所有IP</p>
       </tags>
   </entry>
   <entry>
-    <title>招新：Crypto方向介绍</title>
-    <url>/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h1>Crypto 方向基础</h1>
-<h2 id="入门基础">入门基础:</h2>
-<ol>
-<li>C语言<br>
-// 很多代码审计都是以 C语言形式呈现</li>
-<li>Python3:
-<ol>
-<li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li>
-<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li>
-<li>gmpy2库、Crypto库的使用</li>
-</ol>
-</li>
-<li><strong>数学基础</strong> (重中之重)<br>
-可以参考《信息安全数学基础》（初等数论、近世代数）</li>
-<li>linux的常见使用<br>
-基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>
-其余的遇到问题看需要再去学。</li>
-</ol>
-<a id="more"></a>
-<p>注意事项：</p>
-<blockquote>
-<ol>
-<li>密码学的要求是两点：算法编程能力，数学推理能力。</li>
-<li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li>
-<li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>
-参见题目：<br>
-DEF CON CTF Qualifier 2018 SAG?<br>
-DEF CON CTF Qualifier 2018 smcauth<br>
-DEF CON CTF Qualifier 2018 Easy Pisy<br>
-codegate2018 miro</li>
-</ol>
-</blockquote>
-<h2 id="涵盖基本知识">涵盖基本知识</h2>
-<ol>
-<li>常见编码方式<br>
-base家族、Uuencode、Xxencode 等等等等。</li>
-<li>古典密码<br>
-凯撒密码、栅栏密码、维基利亚密码 等等等等。</li>
-<li>分组密码<br>
-DES、AES 等。</li>
-<li>非对称密码<br>
-RSA、Elgamal、ECC等。</li>
-<li>哈希函数<br>
-经常出现在 Web 题目中</li>
-</ol>
-<h2 id="资源推荐">资源推荐</h2>
-<ol>
-<li>学习方式推荐：<br>
-看书+看ctfwiki或者自己找一些blog+做题</li>
-<li>密码学书籍：<br>
-《信息安全数学基础》（各个学校都有自己的版本）<br>
-<a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li>
-<li>密码学学习网站推荐：<br>
-<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>
-（主要是面向ctf解题以及算法编程）</li>
-<li>做题网站：<br>
-<a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br>
-<a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li>
-</ol>
-<h2 id="题目类型">题目类型</h2>
-<table>
-<thead>
-<tr>
-<th>攻击方式</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>唯密文攻击</td>
-<td>只拥有密文</td>
-</tr>
-<tr>
-<td>选择明文攻击</td>
-<td>拥有加密权限，能够对明文加密后获得相应密文</td>
-</tr>
-<tr>
-<td>已知明文攻击</td>
-<td>拥有密文与对应的明文。</td>
-</tr>
-<tr>
-<td>选择密文攻击</td>
-<td>拥有解密权限，能够对密文解密后获得相应明文</td>
-</tr>
-</tbody>
-</table>
-<p>Crypto 方向负责人：ZER0-Nu1L</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
-      <tags>
-        <tag>Studio</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【转载】DDoS原理与防御</title>
     <url>/2019/11/16/DDoS/</url>
     <content><![CDATA[<p>文章转载自：<br>
@@ -542,6 +443,160 @@ mod_security模块，一个开源的WAF模块，有专门针对慢速攻击防�
       </categories>
   </entry>
   <entry>
+    <title>招新：Crypto方向介绍</title>
+    <url>/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h1>Crypto 方向基础</h1>
+<h2 id="入门基础">入门基础:</h2>
+<ol>
+<li>C语言<br>
+// 很多代码审计都是以 C语言形式呈现</li>
+<li>Python3:
+<ol>
+<li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li>
+<li>gmpy2库、Crypto库的使用</li>
+</ol>
+</li>
+<li><strong>数学基础</strong> (重中之重)<br>
+可以参考《信息安全数学基础》（初等数论、近世代数）</li>
+<li>linux的常见使用<br>
+基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>
+其余的遇到问题看需要再去学。</li>
+</ol>
+<a id="more"></a>
+<p>注意事项：</p>
+<blockquote>
+<ol>
+<li>密码学的要求是两点：算法编程能力，数学推理能力。</li>
+<li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li>
+<li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>
+参见题目：<br>
+DEF CON CTF Qualifier 2018 SAG?<br>
+DEF CON CTF Qualifier 2018 smcauth<br>
+DEF CON CTF Qualifier 2018 Easy Pisy<br>
+codegate2018 miro</li>
+</ol>
+</blockquote>
+<h2 id="涵盖基本知识">涵盖基本知识</h2>
+<ol>
+<li>常见编码方式<br>
+base家族、Uuencode、Xxencode 等等等等。</li>
+<li>古典密码<br>
+凯撒密码、栅栏密码、维基利亚密码 等等等等。</li>
+<li>分组密码<br>
+DES、AES 等。</li>
+<li>非对称密码<br>
+RSA、Elgamal、ECC等。</li>
+<li>哈希函数<br>
+经常出现在 Web 题目中</li>
+</ol>
+<h2 id="资源推荐">资源推荐</h2>
+<ol>
+<li>学习方式推荐：<br>
+看书+看ctfwiki或者自己找一些blog+做题</li>
+<li>密码学书籍：<br>
+《信息安全数学基础》（各个学校都有自己的版本）<br>
+<a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li>
+<li>密码学学习网站推荐：<br>
+<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>
+（主要是面向ctf解题以及算法编程）</li>
+<li>做题网站：<br>
+<a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br>
+<a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li>
+</ol>
+<h2 id="题目类型">题目类型</h2>
+<table>
+<thead>
+<tr>
+<th>攻击方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>唯密文攻击</td>
+<td>只拥有密文</td>
+</tr>
+<tr>
+<td>选择明文攻击</td>
+<td>拥有加密权限，能够对明文加密后获得相应密文</td>
+</tr>
+<tr>
+<td>已知明文攻击</td>
+<td>拥有密文与对应的明文。</td>
+</tr>
+<tr>
+<td>选择密文攻击</td>
+<td>拥有解密权限，能够对密文解密后获得相应明文</td>
+</tr>
+</tbody>
+</table>
+<p>Crypto 方向负责人：ZER0-Nu1L</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
+      <tags>
+        <tag>Studio</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【GitKraken】 Could not find a compatible repository</title>
+    <url>/2020/05/01/GitKraken%20Error/</url>
+    <content><![CDATA[<h1>情况说明</h1>
+<p>有一天我用 GitKragen 打开我常用的仓库 Note，但发现有这样的报错：</p>
+<img src="/2020/05/01/GitKraken%20Error/image-20200501230732304.png" alt="image-20200501230732304" style="zoom:67%;">
+<p>之后用 GitKragen 始终打不开仓库 Notes 仓库。</p>
+<blockquote>
+<p>本文分析了可能出现此情况的所有可能，提出解决这个问题的方法，以及使用 GitKragen 的经验教训。</p>
+</blockquote>
+<a id="more"></a>
+<h1>原因分析</h1>
+<p>在 <a href="https://support.gitkraken.com/faq/" target="_blank" rel="noopener">https://support.gitkraken.com/faq/</a> 有专门这样一条：</p>
+<p><img src="/2020/05/01/GitKraken%20Error/clip_image001-1588345641404.png" alt></p>
+<p>翻译解释如下:</p>
+<ol>
+<li>当前的仓库被其他工具占用了，先把这些工具解除对仓库的占用，再尝试用 GitKragen 打开。</li>
+<li>尝试将仓库未解决的更改 stash ，或者提交，或者切换分支，再尝试用     GitKragen 打开。</li>
+<li>坑你是某个文件的完整路径过长，GitKragen 支持的最大的文件路径是 260 个字符。</li>
+</ol>
+<h1>尝试与解决</h1>
+<p>根据我当前的情况，第一个情况不可能，开始尝试第二个，同时在处理第二个的过程中注意第三个。<br>
+因为很可能是最近添加了路径过长的文件导致，在解决新的更改的时候可能发现那个文件。</p>
+<p>最开始并没有发现可特别疑的文件，顺利地把所有的文件提交了上去。之后发现 GitKragen 还是打不开仓库（排除了第二种情况）。</p>
+<p>尝试对最近看起来文件路径还是蛮长的文件进行了路径长度统计，但基本都不超过 150。<br>
+所以实在太奇怪了……（第三种情况也要排除了？）😵</p>
+<p>然而，在观察 Git History 的时候发现了神奇的事情：⭐️<img src="/2020/05/01/GitKraken%20Error/clip_image002.png" alt>发现之前提交了这个文件名巨长无比的文件？？<br>
+赶紧测试了一下：<br>
+<img src="/2020/05/01/GitKraken%20Error/clip_image003.png" alt></p>
+<p>逼近 260，有很大可能，然后发现这个文件原来的名称是“常用的输入字符的上标、下标、脚标.txt”<br>
+顿时懂了，这个含中文字符的文件名在 git 里面中文字符被 <code>\xxx</code> 来编码代替，而所谓的“文件路径是 260 个字符”是没有对 <code>\xxx</code> 解码的情况下测定的长度。<br>
+更改文件名，之后，GitKragen 果然恢复正常了…… ​😄​</p>
+<h1>经验教训</h1>
+<ol>
+<li>了解可能导致 GitKragen 打不开仓库的情况。</li>
+<li>在 Git 仓库里面
+<ol>
+<li>尽量不要让文件的层次太深（本案例没有太大这样的问题）</li>
+<li>文件命名在没有特殊需求的情况下使用英文字符（中文字符对 GitKragen 的字符长度规则里是 ×4 的，容易超过它的上限 260）</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>希望本文对也喜爱 GitKraken 的同仁能有点启示。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Development</category>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>GitKraken</tag>
+        <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【NUS】基于互联网思维缓解新加坡的排队现象</title>
     <url>/2019/11/18/Joyeat/</url>
     <content><![CDATA[<img src="/2019/11/18/Joyeat/Joyeat-Cover.png" width="800" align="middle">
@@ -744,61 +799,6 @@ use more than 20~30% time to try;</p>
       </categories>
       <tags>
         <tag>Joyeat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【GitKraken】 Could not find a compatible repository</title>
-    <url>/2020/05/01/GitKraken%20Error/</url>
-    <content><![CDATA[<h1>情况说明</h1>
-<p>有一天我用 GitKragen 打开我常用的仓库 Note，但发现有这样的报错：</p>
-<img src="/2020/05/01/GitKraken%20Error/image-20200501230732304.png" alt="image-20200501230732304" style="zoom:67%;">
-<p>之后用 GitKragen 始终打不开仓库 Notes 仓库。</p>
-<blockquote>
-<p>本文分析了可能出现此情况的所有可能，提出解决这个问题的方法，以及使用 GitKragen 的经验教训。</p>
-</blockquote>
-<a id="more"></a>
-<h1>原因分析</h1>
-<p>在 <a href="https://support.gitkraken.com/faq/" target="_blank" rel="noopener">https://support.gitkraken.com/faq/</a> 有专门这样一条：</p>
-<p><img src="/2020/05/01/GitKraken%20Error/clip_image001-1588345641404.png" alt></p>
-<p>翻译解释如下:</p>
-<ol>
-<li>当前的仓库被其他工具占用了，先把这些工具解除对仓库的占用，再尝试用 GitKragen 打开。</li>
-<li>尝试将仓库未解决的更改 stash ，或者提交，或者切换分支，再尝试用     GitKragen 打开。</li>
-<li>坑你是某个文件的完整路径过长，GitKragen 支持的最大的文件路径是 260 个字符。</li>
-</ol>
-<h1>尝试与解决</h1>
-<p>根据我当前的情况，第一个情况不可能，开始尝试第二个，同时在处理第二个的过程中注意第三个。<br>
-因为很可能是最近添加了路径过长的文件导致，在解决新的更改的时候可能发现那个文件。</p>
-<p>最开始并没有发现可特别疑的文件，顺利地把所有的文件提交了上去。之后发现 GitKragen 还是打不开仓库（排除了第二种情况）。</p>
-<p>尝试对最近看起来文件路径还是蛮长的文件进行了路径长度统计，但基本都不超过 150。<br>
-所以实在太奇怪了……（第三种情况也要排除了？）😵</p>
-<p>然而，在观察 Git History 的时候发现了神奇的事情：⭐️<img src="/2020/05/01/GitKraken%20Error/clip_image002.png" alt>发现之前提交了这个文件名巨长无比的文件？？<br>
-赶紧测试了一下：<br>
-<img src="/2020/05/01/GitKraken%20Error/clip_image003.png" alt></p>
-<p>逼近 260，有很大可能，然后发现这个文件原来的名称是“常用的输入字符的上标、下标、脚标.txt”<br>
-顿时懂了，这个含中文字符的文件名在 git 里面中文字符被 <code>\xxx</code> 来编码代替，而所谓的“文件路径是 260 个字符”是没有对 <code>\xxx</code> 解码的情况下测定的长度。<br>
-更改文件名，之后，GitKragen 果然恢复正常了…… ​😄​</p>
-<h1>经验教训</h1>
-<ol>
-<li>了解可能导致 GitKragen 打不开仓库的情况。</li>
-<li>在 Git 仓库里面
-<ol>
-<li>尽量不要让文件的层次太深（本案例没有太大这样的问题）</li>
-<li>文件命名在没有特殊需求的情况下使用英文字符（中文字符对 GitKragen 的字符长度规则里是 ×4 的，容易超过它的上限 260）</li>
-</ol>
-</li>
-</ol>
-<blockquote>
-<p>希望本文对也喜爱 GitKraken 的同仁能有点启示。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Development</category>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>GitKraken</tag>
-        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -1844,6 +1844,88 @@ openssl还包含了公钥私钥的生成、摘要生成等各种工具。</p>
       </tags>
   </entry>
   <entry>
+    <title>Jupyter server crashed | VSCode + WLS</title>
+    <url>/2020/03/12/VSCode_Jupyter_bug/</url>
+    <content><![CDATA[<h1>情况分析</h1>
+<p>和往常一样，风平浪静☁️的一天，笔者打开 VSCode Remote WSL 之后，打开 Jupyter notebook，按下 <kbd>ctrl</kbd>+ <kbd>Enter</kbd> 运行代码，却得到了以下不寻常的通知和报错：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015261571.png" style="zoom:80%;">
+<center> 图 1</center>
+<p><img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015274950.png" alt></p>
+<center> 图 2</center>
+<a id="more"></a>
+<h1>搜索引擎解决法</h1>
+<p>如果是往常，复制保存信息，扔到 Google 应该很快就能得到解决方案，遗憾的是，笔者这个奇葩罕见的 VSCode 的用法，注定了不能直接得到解决的方案。<br>
+VSCode GitHub 相关的 issue 看遍了，google 的基本看遍了、百度的可以看遍了，并没有可以直接的解决它的方法。😭</p>
+<h1>重新分析</h1>
+<h2 id="反思">反思</h2>
+<p>仔细看报错信息！！每个人的情况各异，搜索引擎不可能涵盖所有情况，你已经是个成熟的萌新了🌟 。<br>
+作为程序员，搜索引擎只是辅助手段，仅仅是收集信息中的一种手段。</p>
+<h2 id="波利亚解题法的启发">波利亚解题法的启发</h2>
+<blockquote>
+<p>参考自 <a href="https://www.jianshu.com/p/b55ec8de5968" target="_blank" rel="noopener">波利亚四步解题法</a></p>
+<p>波利亚的《怎样解题：数学思维的新方法》（How to Solve it: A New Aspect  of Mathematical Method)<br>
+1、彻底理解问题：为了确保真正理解问题，你最好把问题用自已的话换成各种形式反复重新表达，但另忘了指出问题的主干：要求解的是什么？已知什么？要满足哪些条件？但凡能画图，一定要画出来。<br>
+2、形成解题思路：要专注，用过往经验，已撑握的知识，并调整适用性来形成思路。如果不行，就改变这个问题的各个组件：已知、未知、条件，先构造简单一点的，引入辅助，条件是否用足，甚至改变求解的未知数，看能否找到解题线索？直到找到与之相似而你又解决过的问题。<br>
+3、执行：一要有耐心，二需要及时的检查每一步，可凭直觉或证明（两个都有用，但是两回事），要问自已每一步都检查了吗？能看出来这一步是对的吗？能证明这一步是对的吗？<br>
+4、总结：巩固与提升的关键，多想想，再论证，尝试另外的解法，找更明快简捷的方法，还要问，这次的解法还能用在什么地方？总结是最好的启法时刻。</p>
+</blockquote>
+<p>⭐️ 那我也简述一下自己一直以来的经验：</p>
+<ol>
+<li>遇到问题(bug)，要先尽可能收集信息，找出发生错误的各种可能的原因；</li>
+<li>把可能的原因序列，根据优先级排序，然后逐个尝试；</li>
+<li>总结归纳；</li>
+</ol>
+<h2 id="收集信息">收集信息</h2>
+<h3 id="信息一">信息一</h3>
+<p>运行时的报错信息：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204521370.png" alt="image-20200312204521370" style="zoom:80%;">
+<p>仔细看报错信息，…/extensions/ms-python.python-2020.2.64367/…<br>
+应该是一个 ID 为 <code>ms-python.python</code> 的扩展<br>
+ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展的信息中发现 Python 拓展 的 Extension-id 确实是 ms-python python</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204442296.png" alt="image-20200312204442296" style="zoom:50%;">
+<h3 id="信息二">信息二</h3>
+<p>一个月前这个插件还是能正常使用的，为什么这次就不行了？<br>
+可能的原因：</p>
+<ol>
+<li>本次开启的方式和期间有更改一些东西，后台有运行其他的什么等等</li>
+<li>版本不兼容问题（这个版本的）</li>
+</ol>
+<p>原因 1 探索的代价高、难度大，但是解决之后能始终使用最新的版本；<br>
+原因 2 操作简单，能够迅速应对现在的情景，并且我个人使用 WSL 对 Python 的插件的要求不高，更新也不太需要。</p>
+<h2 id="尝试">尝试</h2>
+<p>先尝试版本回退。</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image003.png" style="zoom:80%;">
+<p>很幸运的是，回退到一个月前的之后，Jupyter notebook 可以正常使用了。</p>
+<p>至于探索原因…… 综合考虑种种因素，不去触碰啦~（其实是大失败了）</p>
+<h2 id="后续">后续</h2>
+<p>为了防止 Python 扩展再次更新，取消 WSL 下的扩展的自动更新。<br>
+可以看到 defaultSettign.json （只读文件）中默认是自动更新的。</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image004.png" style="zoom: 50%;">
+<p>我们可以在设置中关闭它：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201607696.png" alt="image-20200312201607696" style="zoom: 50%;">
+<p>或者在 <code>setting.json</code> 中添加一条 <code>“extensions.autoUpdate”: false</code></p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201631390.png" alt="image-20200312201631390" style="zoom:67%;">
+<blockquote>
+<p>也许你会奇怪为什么 setting.json 中只有这么一点设置，而设置里面可以找到很多。<br>
+这是因为设置中的默认部分在 settign.json 里面不需要补充，只有用户需要额外添加的设置需要写在 setting.json 里面。</p>
+</blockquote>
+<blockquote>
+<p>最后感谢让我发现自己轻视 VSCode 扩展自动更新问题的 <code>syj</code> 😘</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Development</category>
+        <category>bug</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
+        <tag>VSCode</tag>
+        <tag>IDE</tag>
+        <tag>WSL</tag>
+        <tag>Jupyter notebook</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>libnum-error</title>
     <url>/2020/02/05/libnum-error/</url>
     <content><![CDATA[<p>由于之前清理空间的时候不慎将 WSL 的配置文件也误删掉了，所以慌忙还原 WSL 当初的配置，对于一些 Python 库的安装大多用 <code>pip</code> 的命令，直接安装，通过 <code>import ...</code> 的方式做一个简单的检查。但是前段时间在使用 <code>libnum</code> 的时候遇到了 <code>AttributeError: 'str' object has no attribute 'hex'</code> 的报错。</p>
@@ -1894,133 +1976,91 @@ openssl还包含了公钥私钥的生成、摘要生成等各种工具。</p>
       </tags>
   </entry>
   <entry>
-    <title>【飞蛾扑火】PowerShell 终端美化踩坑</title>
-    <url>/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/</url>
-    <content><![CDATA[<blockquote>
-<p>美，是一种感知。<br>
-潜藏在每个人生命中，<br>
-当它被挖掘，被激发，<br>
-便会变成一种使人安定的力量。<br>
-它不仅能带来感官上的触动，<br>
-也是历练生命、丰沛情感、释放思想的源泉。<br>
-—— 蒋勋</p>
-</blockquote>
-<p>对于 PowerShell 美化的折腾，其实在两三个月前我曾经做过一次，那个时候还是在期末考试期间。因为过度沉迷，以及涌现出了的意料之外的终端乱码，花费了不少时间，最后为了赶复习进度而不了了之。</p>
-<p>这次又一次在 <code>zn</code> 的安利下，开始飞蛾扑火。</p>
-<p>在这里分享 PowerShell 美化的思路，希望帮助大家避过坑，以及记录一些自己的感悟。</p>
-<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308121225697.png" alt="image-20200308121225697"></p>
-<a id="more"></a>
-<h1>PowerShell 终端美化思路</h1>
-<blockquote>
-<p>PowerShell 默认的终端是很简单的，并没有考虑美化。从实用角度基本是够用的，但在实用的基础上，很多人希望能有更好的使用体验，所以一大堆应用涌现。</p>
-</blockquote>
-<p>终端美化的基本思路有：</p>
-<ol>
-<li>对 PowerShell 的字体等进行修改；</li>
-<li>在 PowerShell 上安装并使用 oh-my-posh；</li>
-<li>改用第三方终端，如 Fluent Terminal、Hyper、Terminus 等。</li>
-</ol>
-<p>⭐️ ​其中值得注意的是，PowerShell 安装 oh-my-posh 后很可能出现“乱码”的现象，这是字体缺位导致的，建议改用支持大量其他字体的第三方终端，一劳永逸。</p>
-<h2 id="结论置顶">结论置顶</h2>
-<blockquote>
-<p>这里先呈现结论，结论的依据会在后面详细解释。</p>
-</blockquote>
-<h3 id="效果图">效果图</h3>
-<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308103044933.png" alt="image-20200308103044933"></p>
-<h3 id="思路">思路</h3>
-<p>PowerShell 自身不支持 oh-my-zsh 的一些字体，会导致乱码，故使用 Powershell 第三方终端（如 Fluent Terminal）+oh-my-zsh 的方案。</p>
-<ol>
-<li>下载安装 Fluent Terminal；</li>
-<li>在 PowerShell 下安装 oh-my-zsh，选择自己喜欢的主题，通过更改 <code>$proflie</code> 指定的文件，将 oh-my-zsh 的设置在每次启动 PowerShell 的时候自动加载。</li>
-<li>下载 oh-my-zsh 需要的字体，将 Fluent Terminal 的字体修改；</li>
-<li>更改 VSCode 的终端字体设置，使之同等美化。</li>
-</ol>
-<h2 id="修改-PowerShell-的终端">修改 PowerShell 的终端</h2>
-<p>这是 PowerShell 和 cmd 自身提供的属性设置。（标题栏右键）</p>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308101500526.png" alt="image-20200308101500526" style="zoom:80%;">
-<p>但是局限性非常大，可用的字体非常少。cmd 和 PowerShell 对字体的要求很严苛，即使你安装了一大堆的字体，在 <code>&quot;Windows PowerShell&quot; 属性 </code> 中的 <code>字体</code> 选项卡下，能看到的字体也就几个。</p>
-<p>也有博客对自定义字体有“研究成果”，详见：<a href="https://walterlv.github.io/post/customize-fonts-of-command-window.html#%E6%8E%A8%E8%8D%90%E5%8F%AF%E7%94%A8%E7%9A%84%E5%AD%97%E4%BD%93" target="_blank" rel="noopener">自定义 Windows PowerShell 和 cmd 的字体</a>。</p>
-<h2 id="安装使用-oh-my-zsh">安装使用 oh-my-zsh</h2>
-<p>安装步骤和使用的教程非常多，笔者也是直接参照网络上的教程安装的，这里不再赘述。<br>
-但使用的时候会发现，没有 Linux 下 zsh 的效果，甚至出现如下近乎“乱码”的现象：</p>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308104054220.png" alt="image-20200308104054220" style="zoom: 67%;">
-<p>看看其他主题的情况？</p>
-<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308110644627.png" alt="image-20200308110644627"></p>
-<p>发现“乱码”其实只有一两种字符。<br>
-⭐️ 其实是因为对应的字符在当前字体下是不存在的，而支持这些字符的字体在 cmd 和 PowerShell 严苛要求下的字体几乎是不存在的。<br>
-✔️ 所以需要使用第三方Powershell 终端，才能还原 zsh 在 Linux 下的风采。</p>
-<h2 id="使用第三方-PowerShell-终端">使用第三方 PowerShell 终端</h2>
-<h3 id="下载安装-Fluent-Terminal">下载安装 Fluent Terminal</h3>
-<p>PowerShell 终端非常多，如 Fluent Terminal、Hyper、Terminus 等。</p>
-<p>其中很受推荐的其中一个是 Fluent Terminal，是利用 UWP 技术打造的颜值超高的终端模拟器。不过在 UWP 应用市场并找不到，要去 <a href="https://github.com/felixse/FluentTerminal/releases" target="_blank" rel="noopener">GitHub Release</a> 下载。</p>
-<p>下载完毕后，用 PowerShell 运行文件夹下的 <code>Install.ps1</code> 按照提示操作即可安装成功。<br>
-建议设置在中把默认 shell 改成 PowerShell：</p>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308105324042.png" alt="image-20200308105324042" style="zoom:67%;">
-<h3 id="修改字体">修改字体</h3>
-<p>如果前面已经在 Powershell 安装了 oh-my-zsh，此时的 Fluent Terminal 下的Powershell 依然是存在“乱码”的现象。<br>
-这时候需要下载并安装支持 oh-my-zsh 对应主题的字体，比如 powerline 的字体库： <a href="https://github.com/powerline%E3%80%82%EF%BC%88%E5%85%B6%E5%AE%9E%E6%88%91%E7%94%A8%E7%9A%84%E4%B8%8D%E6%98%AF" target="_blank" rel="noopener">https://github.com/powerline。（其实我用的不是</a> powerline, hhh）<br>
-安装后再在 Fluent Terminal 的设置中更改字体就大工告成了！</p>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308105823820.png" alt="image-20200308105823820" style="zoom:50%;">
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308110523327.png" alt="image-20200308110523327" style="zoom:80%;">
-<h3 id="VSCode-终端美化">VSCode 终端美化</h3>
-<p>在之前的基础上，只需要修改 VSCode 的终端字体即可；<br>
-可以编辑 <code>setting.json</code> ，也可以在设置中查找。</p>
-<img src="file:///C:/Users/wcb53/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png" style="zoom:80%;">
-<p>效果图：<br>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308111027390.png" alt="image-20200308111027390"></p>
+    <title>【Wireshark 系列】MAC 地址泛洪攻击分析</title>
+    <url>/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p>接下来我会开一个 Wireshark 网络分析的博文系列，主要借助华为的网络模拟工具 eNSP ，它可以接入真实的主机，为我们进行网络攻击提供了非常友好、非常纯洁的环境。<br>
+具体怎么连接可以自行查阅，或者可以在评论区留言，我可以单独再写一篇~ 😁</p>
 <hr>
-<h1>美学感悟</h1>
-<blockquote>
-<p>挂了美学的旗子，估计是膨胀了。 😢</p>
-</blockquote>
-<p>折腾一番还是蛮消耗时间的，但是克服不了变美的诱惑 😄。</p>
-<blockquote>
-<p>有时候会问，人的品味高是不是有时候会降低人的生活质量？</p>
-</blockquote>
-<p>百姓的音乐在高雅之士的耳朵里变成了“呕哑嘲哳”；<br>
-普通餐馆的食物在美食家面前变成“糟蹋食物”，<br>
-专业设计师会感觉市面上的东西各种变扭等等。</p>
-<blockquote>
-<p>扰乱人们的不是客观事物，而是人们对客观事物的见解。<br>
-​	—— 爱比克泰德<br>
-“超常的感觉能力会引致情绪失衡、周期性的超乎寻常的愉快或者挥之不去的忧愁。”<br>
-—— 叔本华</p>
-</blockquote>
-<p>笔者感觉，叔本华描述了那些艺术天才的忧郁气质，像极了《名人传》里对米开朗基罗的描述：“他被他这个天才左右了一生，他一生根本就没法从他这个天才里头自拔出来，所以他的生活某种程度像个苦行僧一样的，又是个工作狂。可是他的一切，他活着就是为了这个优势，为了他的天才而生的，他这一辈子就只能在这个范畴里头这么去干。”</p>
-<p>但是除去那些被自己的天才左右了一生的天才，现实生活不是也有很多很多很释然的杰出艺术家吗？就像《名人传》的米开朗琪罗传的那句名言：“世界上只有一种英雄主义,就是看清生活的真相之后依然热爱生活。”</p>
-<p>一个思考角度，我们完全可以驾驭我们的感觉能力，获得释然，开放“对客观事物的间接”，能够同等欣赏“阳春白雪”和“下里巴人”，获得生命的快感。</p>
-<p>另一种思考的角度，艺术家的忧郁气质，对于细节的感知、把控与纠结的完美主义，恰恰成就了艺术家，成为无可争辩的竞争力。</p>
-<blockquote>
-<p>美，是一种感知。<br>
-潜藏在每个人生命中，<br>
-当它被挖掘，被激发，<br>
-便会变成一种使人安定的力量。<br>
-它不仅能带来感官上的触动，<br>
-也是历练生命、丰沛情感、释放思想的源泉。<br>
-—— 蒋勋</p>
-</blockquote>
-<p>在物质匮乏的年代，对食物挑剔的人甚至没办法生存。但是现代社会已经逐步脱离物质的快发，转向追求生命的更高体验。<br>
-就像蒋勋先生所言，美是历练生命、丰沛情感、释放思想的源泉。我想，不去审美而去猎奇，真是辜负了造化的恩宠。</p>
-<hr>
-<h1>参考文章</h1>
+<p>下面从数据链路层对交换机的攻击说起：</p>
 <ol>
-<li><a href="https://walterlv.github.io/post/customize-fonts-of-command-window.html#%E6%8E%A8%E8%8D%90%E5%8F%AF%E7%94%A8%E7%9A%84%E5%AD%97%E4%BD%93" target="_blank" rel="noopener">自定义 Windows PowerShell 和 cmd 的字体</a></li>
-<li><a href="https://blog.csdn.net/WPwalter/article/details/78937346" target="_blank" rel="noopener">将美化进行到底，把 PowerShell 做成 oh-my-zsh 的样子</a></li>
-<li><a href="http://tieba.baidu.com/p/6133164423?red_tag=o2118687620" target="_blank" rel="noopener">oh-my-zsh的图标无法正常显示</a></li>
-<li><a href="https://sspai.com/post/52868" target="_blank" rel="noopener">告别 Windows 终端的难看难用，从改造 PowerShell 的外观开始</a></li>
-<li><a href="https://www.jianshu.com/p/ae7f7b4d7a0e" target="_blank" rel="noopener">解决vscode terminal powerline字体乱码</a></li>
+<li>目前网络安全的问题有     80%来自于“内部网络”</li>
+<li>链路层是内部网络通信最为重要的协议，而交换机正是这一层的典型设备</li>
+<li>但是相比起其他网络设备来说，交换机的防护措施往往也是最差的，因此也经常成为黑客攻击的目标。</li>
 </ol>
+ <a id="more"></a>
+<h1>实验环境介绍</h1>
+<h2 id="数据链路层的攻击">数据链路层的攻击</h2>
+<ul>
+<li>MAC 地址欺骗攻击（放到下期中间人攻击部分讲解）</li>
+<li>MAC 地址泛洪攻击（本次讲解内容）⭐️</li>
+<li>STP 操纵攻击</li>
+<li>广播风暴攻击</li>
+</ul>
+<h2 id="MAC-地址泛洪可能导致的情景">MAC 地址泛洪可能导致的情景</h2>
+<p>网络在之前一直可以正常运行，但是在前些天很多用户突然发现网络速度变得十分缓慢，经过我们的检查没有发现线路方面的问题。<br>
+但是我们发现每次重启交换机之后网络速度就会恢复。<br>
+而经过一段时间之后网络速度就会再次变得缓慢。</p>
+<h2 id="eNSP-交换机介绍">eNSP 交换机介绍</h2>
+<h3 id="命令：查看-MAC-表">命令：查看 MAC 表</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">display mac-address</span><br></pre></td></tr></table></figure>
+<h3 id="交换机-UDP-伪造源-MAC">交换机 UDP 伪造源 MAC</h3>
+<p>（交换机不认 ip:port，目的和源 IP, port 可以随便写）<br>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230527919.png" alt="image-20200628230527919"></p>
+<p>eNSP 实现的功能比较简单，但是告诉了我们伪造不是一件难事；<br>
+而大批量地进行伪造是需要专门的工具的，所以我们后面会接入 kali，做攻击的模拟。</p>
+<h2 id="网络拓扑">网络拓扑</h2>
+<p>网络拓扑 <a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Topo/SwitchAttack/" target="_blank" rel="noopener">SwitchAttack</a>：</p>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628231643896.png" alt="image-20200628231643896" style="zoom:67%;">
+<h1>MAC 地址泛洪攻击</h1>
+<p>网络拓扑中，PC1, PC2 都用 DHCP 配置；ping 通之后，查看交换机的 mac table ：<br>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230733652.png" alt="image-20200628230733652"></p>
+<p>Kali 执行 <code>macof</code> 进行 MAC 地址泛洪（可以多开几个终端执行泛洪），同时抓取交换机连接 kali 的端口的数据包。<br>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230750772.png" alt="image-20200628230750772"></p>
+<p>获取到泛洪攻击的数据包：<a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/raw/master/Package/SwitchAttack_attacked.pcapng" target="_blank" rel="noopener">SwitchAttack_attack.pcapng</a></p>
+<p>接下来再看下交换机的 mac-address 表：<br>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230803774.png" alt="image-20200628230803774"></p>
+<p>可以看到交换机已经完全被 Eth0/0/3 的端口映射关系淹没，甚至已经没有 Eth0/0/1 和 Eth0/0/2 了，这将导致，PC1 和 PC2 基本不能进行正常的网络通信。</p>
+<h1>攻击分析</h1>
 <blockquote>
-<p>此外，还有感谢 <code>wj</code> 小姐姐 👸 提供给庸人笔者的一些灵感~</p>
+<p>现实场景下是不了解自己的网络问题是否由 MAC 泛洪导致的，接下来我们将通过分析刚刚抓到的包，讲解 MAC 泛洪攻击的特点，以便我们自己在其他场景下判断、分辨 MAC 泛洪攻击。</p>
 </blockquote>
-]]></content>
+<h2 id="初看">初看</h2>
+<p>选项 - 统计 - 捕捉文件属性</p>
+<p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230822539.png" alt="image-20200628230822539"></p>
+<p>这个数据包很大，但是乍一眼可以看出来源 IP 和目的 IP 意外地多，且不属于用户主机的数据包：</p>
+<p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image006.png" alt></p>
+<p>另外，数据包长度还一样——很可能是软件生成的。<br>
+很容易想到，这些数据包是大量伪造的。</p>
+<blockquote>
+<p>但是以上只是基本猜测，需要进一步分析。</p>
+</blockquote>
+<h2 id="Wireshark-统计分析">Wireshark 统计分析</h2>
+<p>现在我们发现网络中出现了大量来历不明的数据包，可是到底出现了多少个数据包呢，这些数据包是否来自同一个源地址，或者发向同一个目的地址呢？如果手动地逐个计算的话，那么显然这是一个十分繁重的重复劳动。好在 Wireshark 中提供了极为强大的网络统计功能，利用这些功能我们可以对网络活动有一个宏观的了解。<br>
+选项 - 统计 - 会话：<br>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230934444.png" alt="image-20200628230934444"></p>
+<p>可以看到这里有基本上所有 IP 之间的报文只发了一次，这个是非常不正常的！至少一个以上，比如TCP 三次握手都需要一次通信。所以基本可以咬定，源 IP 和目的 IP 都是伪造的。<br>
+选项 - 统计 - 协议分析：<br>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image008.png" alt></p>
+<p>这个统计图是从 Frame 展开，到 Ethernet，再到 IP，再到传输层到应用层。<br>
+这里可以看出，大部分的集中在了 IPv4 协议。<br>
+但是正常情况下，TCP 和 UDP 应该是最多的，这里链路层协议占比很多，很可能是伪造的。<br>
+我们不妨看一下我随便捕捉的正常的数据包的情况：<br>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png" alt></p>
+<p>UDP 报文和 TCP 报文占比比较重，这个是比较正常的情况。<br>
+现在，很肯定这是来自数据链路层的 MAC 泛洪。</p>
+<h1>找到攻击的源头</h1>
+<p>其实刚刚已经提到了，我们用 kali 进行 MAC 泛洪的时候，查看了交换机的 mac-address 表，发现 Eth0/0/3 对应了大量的 MAC 地址。也就是说如果我们有交换机控制权，就能查到 MAC 泛洪攻击的始作俑者。（连的接口是不能伪造的）</p>
+<h1>如何防御 MAC 地址泛洪攻击</h1>
+<p>非常简单，让一个端口只能对应特定个数 MAC，在华为交换机里的配置是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int eth0&#x2F;0&#x2F;3</span><br><span class="line">port-security enable</span><br><span class="line">port-security mac-address sticky</span><br><span class="line">port-security protect-action protect</span><br><span class="line">port-security mac-mac-num 8 </span><br><span class="line">disaplay mac-address</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Life</category>
-        <category>Beauty</category>
+        <category>Web</category>
+        <category>Wireshark</category>
       </categories>
       <tags>
-        <tag>Powershell</tag>
-        <tag>life</tag>
+        <tag>kali</tag>
+        <tag>Wireshark</tag>
+        <tag>eNSP</tag>
       </tags>
   </entry>
   <entry>
@@ -2253,88 +2293,6 @@ $$</p>
       </tags>
   </entry>
   <entry>
-    <title>Jupyter server crashed | VSCode + WLS</title>
-    <url>/2020/03/12/VSCode_Jupyter_bug/</url>
-    <content><![CDATA[<h1>情况分析</h1>
-<p>和往常一样，风平浪静☁️的一天，笔者打开 VSCode Remote WSL 之后，打开 Jupyter notebook，按下 <kbd>ctrl</kbd>+ <kbd>Enter</kbd> 运行代码，却得到了以下不寻常的通知和报错：</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015261571.png" style="zoom:80%;">
-<center> 图 1</center>
-<p><img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015274950.png" alt></p>
-<center> 图 2</center>
-<a id="more"></a>
-<h1>搜索引擎解决法</h1>
-<p>如果是往常，复制保存信息，扔到 Google 应该很快就能得到解决方案，遗憾的是，笔者这个奇葩罕见的 VSCode 的用法，注定了不能直接得到解决的方案。<br>
-VSCode GitHub 相关的 issue 看遍了，google 的基本看遍了、百度的可以看遍了，并没有可以直接的解决它的方法。😭</p>
-<h1>重新分析</h1>
-<h2 id="反思">反思</h2>
-<p>仔细看报错信息！！每个人的情况各异，搜索引擎不可能涵盖所有情况，你已经是个成熟的萌新了🌟 。<br>
-作为程序员，搜索引擎只是辅助手段，仅仅是收集信息中的一种手段。</p>
-<h2 id="波利亚解题法的启发">波利亚解题法的启发</h2>
-<blockquote>
-<p>参考自 <a href="https://www.jianshu.com/p/b55ec8de5968" target="_blank" rel="noopener">波利亚四步解题法</a></p>
-<p>波利亚的《怎样解题：数学思维的新方法》（How to Solve it: A New Aspect  of Mathematical Method)<br>
-1、彻底理解问题：为了确保真正理解问题，你最好把问题用自已的话换成各种形式反复重新表达，但另忘了指出问题的主干：要求解的是什么？已知什么？要满足哪些条件？但凡能画图，一定要画出来。<br>
-2、形成解题思路：要专注，用过往经验，已撑握的知识，并调整适用性来形成思路。如果不行，就改变这个问题的各个组件：已知、未知、条件，先构造简单一点的，引入辅助，条件是否用足，甚至改变求解的未知数，看能否找到解题线索？直到找到与之相似而你又解决过的问题。<br>
-3、执行：一要有耐心，二需要及时的检查每一步，可凭直觉或证明（两个都有用，但是两回事），要问自已每一步都检查了吗？能看出来这一步是对的吗？能证明这一步是对的吗？<br>
-4、总结：巩固与提升的关键，多想想，再论证，尝试另外的解法，找更明快简捷的方法，还要问，这次的解法还能用在什么地方？总结是最好的启法时刻。</p>
-</blockquote>
-<p>⭐️ 那我也简述一下自己一直以来的经验：</p>
-<ol>
-<li>遇到问题(bug)，要先尽可能收集信息，找出发生错误的各种可能的原因；</li>
-<li>把可能的原因序列，根据优先级排序，然后逐个尝试；</li>
-<li>总结归纳；</li>
-</ol>
-<h2 id="收集信息">收集信息</h2>
-<h3 id="信息一">信息一</h3>
-<p>运行时的报错信息：</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204521370.png" alt="image-20200312204521370" style="zoom:80%;">
-<p>仔细看报错信息，…/extensions/ms-python.python-2020.2.64367/…<br>
-应该是一个 ID 为 <code>ms-python.python</code> 的扩展<br>
-ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展的信息中发现 Python 拓展 的 Extension-id 确实是 ms-python python</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204442296.png" alt="image-20200312204442296" style="zoom:50%;">
-<h3 id="信息二">信息二</h3>
-<p>一个月前这个插件还是能正常使用的，为什么这次就不行了？<br>
-可能的原因：</p>
-<ol>
-<li>本次开启的方式和期间有更改一些东西，后台有运行其他的什么等等</li>
-<li>版本不兼容问题（这个版本的）</li>
-</ol>
-<p>原因 1 探索的代价高、难度大，但是解决之后能始终使用最新的版本；<br>
-原因 2 操作简单，能够迅速应对现在的情景，并且我个人使用 WSL 对 Python 的插件的要求不高，更新也不太需要。</p>
-<h2 id="尝试">尝试</h2>
-<p>先尝试版本回退。</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image003.png" style="zoom:80%;">
-<p>很幸运的是，回退到一个月前的之后，Jupyter notebook 可以正常使用了。</p>
-<p>至于探索原因…… 综合考虑种种因素，不去触碰啦~（其实是大失败了）</p>
-<h2 id="后续">后续</h2>
-<p>为了防止 Python 扩展再次更新，取消 WSL 下的扩展的自动更新。<br>
-可以看到 defaultSettign.json （只读文件）中默认是自动更新的。</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image004.png" style="zoom: 50%;">
-<p>我们可以在设置中关闭它：</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201607696.png" alt="image-20200312201607696" style="zoom: 50%;">
-<p>或者在 <code>setting.json</code> 中添加一条 <code>“extensions.autoUpdate”: false</code></p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201631390.png" alt="image-20200312201631390" style="zoom:67%;">
-<blockquote>
-<p>也许你会奇怪为什么 setting.json 中只有这么一点设置，而设置里面可以找到很多。<br>
-这是因为设置中的默认部分在 settign.json 里面不需要补充，只有用户需要额外添加的设置需要写在 setting.json 里面。</p>
-</blockquote>
-<blockquote>
-<p>最后感谢让我发现自己轻视 VSCode 扩展自动更新问题的 <code>syj</code> 😘</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Development</category>
-        <category>bug</category>
-      </categories>
-      <tags>
-        <tag>Error</tag>
-        <tag>VSCode</tag>
-        <tag>IDE</tag>
-        <tag>WSL</tag>
-        <tag>Jupyter notebook</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在电流强度变化的直导线产生的磁场中任意形状线框运动产生电动势</title>
     <url>/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/</url>
     <content><![CDATA[<h1>背景介绍</h1>
@@ -2445,170 +2403,133 @@ $$</p>
       </tags>
   </entry>
   <entry>
-    <title>2019 年终总结 - 对自己负责</title>
-    <url>/2020/01/25/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<img src="/2020/01/25/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/man-3777108.jpg" width="800">
-<blockquote>
-<p>总是有人以上帝视角对你说，“你现在所经历的，在未来看来根本不算什么。”<br>
-我不喜欢这句话。这一句话本身没有错误，但是却有所偏袒。它偏袒结果。<br>
-我想补充的是：“如果没有现在正在经历的痛苦，未来的痛苦会更加难以承担。”</p>
-<p>己亥年收获很多快乐与幸福之余，也经历了前所未有的失落、失望、绝望。</p>
-<p>庚子年希望能够承担起更多曾经难以想象的苦楚，逐步揭穿生活巨大的隐喻，抬起头，在克莱斯勒《爱的忧伤》的尽头，迎来《爱的欢乐》。</p>
+    <title>【飞蛾扑火】PowerShell 终端美化踩坑</title>
+    <url>/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/</url>
+    <content><![CDATA[<blockquote>
+<p>美，是一种感知。<br>
+潜藏在每个人生命中，<br>
+当它被挖掘，被激发，<br>
+便会变成一种使人安定的力量。<br>
+它不仅能带来感官上的触动，<br>
+也是历练生命、丰沛情感、释放思想的源泉。<br>
+—— 蒋勋</p>
 </blockquote>
+<p>对于 PowerShell 美化的折腾，其实在两三个月前我曾经做过一次，那个时候还是在期末考试期间。因为过度沉迷，以及涌现出了的意料之外的终端乱码，花费了不少时间，最后为了赶复习进度而不了了之。</p>
+<p>这次又一次在 <code>zn</code> 的安利下，开始飞蛾扑火。</p>
+<p>在这里分享 PowerShell 美化的思路，希望帮助大家避过坑，以及记录一些自己的感悟。</p>
+<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308121225697.png" alt="image-20200308121225697"></p>
 <a id="more"></a>
-<h1>时间维度</h1>
-<h2 id="对过去负责">对过去负责</h2>
-<h3 id="历史观">历史观</h3>
-<p>我以前不是特别喜欢历史，说心底话（而不是以前答卷上写的漂亮话），总感觉它们离自己太远，没有特别大的意义，顶多是多了一些故事用以“以史为鉴”，多了一些风云人物用以“勉励后生”。</p>
-<p>现在想想，那时候的我的历史观其实非常平面化，那个时候理解的历史其实可以切成现在进行时的另一个平行空间。他们有他们的风云人物，他们有他们精彩的故事。是的，我的潜意识断开了他们和现在之间的联系。</p>
-<p>现代社会不是凭空而来的，滚滚而来的历史，它们的价值和意义是难以估量的。</p>
-<p>当然我这样思维的错误也没有那么彻底，中国的近现代史和现代的联系我是能够深刻体悟到的。中国的近代史是我的高中同桌 yyy 最不喜欢这一段屈辱的历史。虽然我也谈不上喜欢，但是它们却是我自己能感受到历史感的一个重要部分，也是能激起我的心灵震荡的一个重要部分。</p>
-<h3 id="个体历史观">个体历史观</h3>
-<p>历史裹挟着滚滚红尘浩浩荡荡地前行，如果一个国家和民族企图切断和历史的联系，把他们当做一个和自己毫无关联的平行时空，那是一件蛮恐怖的事情。</p>
-<p>人也是带着各种各样的羁绊和时光在自己人生留下的印记不断前行，如果否定过去，不能痛彻心扉地反思，也同样恐怖。</p>
-<p>虽然一个个体相比于历史长河，不过沧海一粟，但对于我这样很关注“自我”的凡夫俗子，十分重视这样的“个体历史观”。（可以理解为人生观的一部分）</p>
-<h3 id="2019-我的爱情史">2019 我的爱情史</h3>
+<h1>PowerShell 终端美化思路</h1>
 <blockquote>
-<p>人总是踏入同一条河流。<br>
-——吴人问津<br>
-我们在自己所有的细节中都无意识地将自己的曾经错误“贯彻”到底。<br>
-和自己的周边所有人的交流方式、在人群中的表现等等都总是犯着本质上完全相同的错误。<br>
-以不同的表现形式，在不同的时期，尽是这般绝望地相似。</p>
-<p>所以我们需要一日复一日地戳痛身上、心上的曾经的伤疤，一日复一日地自我沉思，一日复一日地坚定信念和自我革命。</p>
-<p>人生没有存档服务，没有入栈保存的结点，没有版本控制器，没有快照。<br>
-有的只是掩面痛哭和一往直前。</p>
-<p>以上。</p>
+<p>PowerShell 默认的终端是很简单的，并没有考虑美化。从实用角度基本是够用的，但在实用的基础上，很多人希望能有更好的使用体验，所以一大堆应用涌现。</p>
 </blockquote>
-<h4 id="爱情·掩面痛哭">爱情·掩面痛哭</h4>
-<p>悲伤抑郁的时候，我感觉自己是一个蛮负责的人，对自己的情绪负责的人。<br>
-今年和自己喜欢的女生分开了。转身走去的那一刻我就开始哭泣，回到在简陋的宾馆里继续痛哭。我没有试图用其他方式转移注意力，我不想逃避这样喜欢一个人的心情，不想逃避离这样的痛苦，不想忘记这一份“相互喜欢的人不一定能够在一起”痛彻心扉的领悟，也不想忘掉这一场奋不顾身的初恋。</p>
-<p>哭，可能需要安慰，更需要面对。<br>
-情绪和痛觉一样都在给我们传递很重要的信息，来无踪去无影，错过就不再。</p>
-<h4 id="爱情·一往直前">爱情·一往直前</h4>
-<p>之后的几天，我更是噙着泪水，把我们在一起时所有的经历都回顾了一遍，所有的共享、所有的聊天记录、所有的照片。游览完所有的照片之后，都打包上传到云端，删除了本地文件。<br>
-之后很长的时间都在慢慢消除她在我生活中留下的痕迹。</p>
-<p>当了一回专职的心灵解剖医生，解剖分析自我。<br>
-我慢慢在这一段亲密关系中剖析出自己深层的人格特征，也正是这些，葬送了自己的爱情。</p>
-<p>感谢那时候把分手的痛苦贯彻到底的自己，不仅仅停留在那个时候的观念，也想尽办法建立方法论去克服自己在亲密关系中暴露的问题。<br>
-然后践行 “人生，有的只是掩面痛苦和一往直前” 的感悟。</p>
-<h4 id="爱情·领悟">爱情·领悟</h4>
-<p>像周国平说的那样，没有深爱过的人和世界是没有建立联系的。我现在更能理解这一点。我的亲人（尤其是我姐~）对我的爱我现在更能体会。每次寄礼物，仔细挑选、包装、传递情感，整个流程包含的，以前的我绝对没有现在能感受到的这么多。</p>
-<p>之前还看了一篇心理学的文章，讲的是恋爱的意义。“自己一个人明明过得很好，为什么还要谈恋爱？”这是很多人的想法。亲密关系对于人来说，首先的确是可以满足一系列片面的需求。比如打发时间的需求、互相陪伴和支持的需求、性的需求、甚至是经济的需求等。但我们从亲密关系中能够获得的东西，其实还远比这些更多。正是因为亲密关系的这种机制，它也成为了我们人格疗愈的一种最为重要的契机。恋爱不是简单的相处，真的是一种自我寻找和相互寻找。</p>
-<p>分析分手原因不是为了挽回，虽然这只是无意间慢慢理解的。<br>
-虽然大脑会习惯性会“理想化”过去，但我早已抵抗住这种错觉，我知道我们如果重新再来，我还没成长到在亲密关系中自信到她能满意的程度，她也很可能没有办法兑现时常牵挂及时回复我的一纸承诺。</p>
-<p>过去的幻象再美，死灰复燃的爱情都没有意义了，没有痛彻心扉的每日自我革命，重来也会掉进一样的漩涡。</p>
-<h3 id="2019-我的家族继承史">2019 我的家族继承史</h3>
-<blockquote>
-<p>那些由不安惶恐凝聚而成的血泪，<br>
-就轻易被现实揉进深深的夜梦，<br>
-写进逃不过的宿命，<br>
-摁进扭曲的自我。</p>
-</blockquote>
-<h4 id="血脉·继承">血脉·继承</h4>
-<p>关于这一点的感悟其实在高三成年人礼的时候就写下了，那个时候写得很深刻，这里也没想着再写一遍。<br>
-过去的我觉得血缘联系是蛮荒诞而狭隘的，自己不想囿于自己的血缘，于是企图摆脱。当我觉得自己已经成功做到从这种束缚中挣脱出来之后，却一次又一次地遇到打击、失控和现实的冲撞，我逐渐发现我深层次的种种特征都和我父亲一模一样。<br>
-这里用这样简练的语言概括当然难以说服人，也可能被认为是荒谬的；我也知道即使再次详细地描述我所经历的所有那些冲击我世界观的经历，很多人未必能够理解。真的，经历比任何说理都更加有力。</p>
-<p>与其去理解，不如去感受。</p>
-<h4 id="血脉·超越">血脉·超越</h4>
-<p>这一年我对于它的理解和体悟进一步加深了，也和一个人讨论过。但是讨论的对象正是那种无法理解我的人。<br>
-努力就能有可观的回报，不用竭尽全力和历尽绝望就抵达自己想要的地方，这样的人，我知道可能没有机会体会到和真正理解我的痛苦和底层的卑微。</p>
-<p>但是，恰恰也给了我启发，在她的鼓励下，也在意识上觉得能够改变那些血脉中继承的，刻骨铭心之物。<br>
-也许很艰难，也许穷尽毕生也未必有大的改变，但是即便如此、即便如此也不能就此放弃抵抗。</p>
-<p>还是非常非常感谢那个她。</p>
-<h3 id="2019-回忆孤独的过去">2019 回忆孤独的过去</h3>
-<p>现在回想，依然非常非常怀念高中的那三年，那是非常纯粹的三年。<br>
-每天和很纯粹的知识、题目搏斗，每天和很纯粹的自己、他人搏斗。</p>
-<p>大学时的压力确实没有高中时的压力大，高中的竞争氛围非常浓厚，每次模拟考的排名、明细、试题分析、互批、对比、竞赛，让人长期处于高压的状态。<br>
-我已经难以想象当时自己的压力，翻看过去的日记，真的已经难以还原当时的情景，我不知道在怎样高压下的我才能写下那样压抑、激情甚至有些燃烧的文字。</p>
-<p>那是过去的我的努力。每次翻看日记或多或少有些愧疚感。人应该变得更加优秀、更加卓越。真正的卓越是优于过去的自己。一旦选错参考系，就容易妄自尊大和妄自菲薄。<br>
-要对过去的自己负责，对那个无比纯粹的自我负责，对那个在内心呼喊、咆哮的自己负责，对那个写着无比孤独文字的自我负责，对那个在操场狂奔到泪流满面的自己负责，对那个疲惫到难以入睡需要从黑暗中摸索出一瓶温和的牛奶、咕噜咕噜下肚才嫩缓和的自己负责。<br>
-这样才不负过去。</p>
-<h3 id="个体历史-史官">个体历史-史官</h3>
-<p>历史有专门的史官记载，但个人历史却少有人记录。可能只有作家、名人以及少数有写日记习惯的人才会记录自己的个体历史。<br>
-以史为鉴是对历史负责的一种方式，而以史为鉴的前提是：“有史”。</p>
-<p>个人要对自己负责，就要能保留住自己的个体历史。人一时的记忆给了人一种错觉，即：我以后会记得此时此刻。<br>
-遗憾的是，人的记忆没有那么持久，并且很受主观因素的影响，无法作为保留个人的个体历史的方式。很多重要的经历由于种种原因可能会淡忘，即便记住了，记忆本身也不能保留住它的重要的细节。“好了伤疤忘了痛”就是一种很典型又非常普遍的事后发现忘记当初教训的体现。</p>
-<p>对过去负责是方式是，用文字或者其他方式记录下过去，无论它是带给你欢乐和幸福的回忆还是痛彻心扉的痛苦。<br>
-可能没有这些记录，一年又一年地过去，我们也便一年又一年地淡忘自己的快乐，一年又一年地忘记自己的伤疤带来的苦痛，然后一年又一年地没有成长。</p>
-<p>我是一个很贪心的人，希望此时此刻的自己是由过去无数个自己的完美迭代：每个加入迭代的版本都是那个最优的部分，剔除糟糕的部分，不将同样的错误再故伎重演。</p>
-<p>然后将痛楚转化成防止故伎重演的方法论，一直指导着自己前行。</p>
-<h2 id="对现在负责">对现在负责</h2>
-<blockquote>
-<p>我可以从很多人身上看到自己的影子，但是仅凭这些依然无法拼凑出一个完整的自己。</p>
-</blockquote>
-<p>总是有人以上帝视角对你说，你现在所经历的，在未来看来根本不算什么。<br>
-这一句话本身没有错误，但是却有所偏袒。它偏袒结果。有时显得冷漠。<br>
-作为正在经历痛苦的人，我会补充另一个本身没有错误的话以完整这句话：“但是没有现在正在经历的痛苦，未来的痛苦会更加难以承担。”</p>
-<p>不得不承认，此时此刻的自己正处于一种迷茫和孤独之中。<br>
-常常感觉自己是套着一透明的膜，然后混进人群。</p>
-<p>我总会想起太宰治说过的一句话：“活着，那是多么忍辱负重、奄奄一息的伟大事业。”<br>
-虽然我没有完整地读过他的著作，但心想他口中的“活着”绝非是生理上那种简单地“活着”。<br>
-要怎么对现在的真实的自己负责，怎样不敷衍、不自自我欺骗、不迎合随流，真的真的是一件“多么忍辱负重、奄奄一息的伟大事业。”</p>
-<p>这样一种逐渐脱离群体，走向自我的道路，似乎是真正成人的必经之路。<br>
-我慢慢接受这一种孤独，群体中我的确是异类。<br>
-但我知道，那些人之间的沟通不是心有灵犀，是平庸。<br>
-但是我看到很多也是异类的人却活得很光彩，活得很自在。<br>
-我想，只要继续努力、贯彻自我，对现在负责，不忘初心，<br>
-既然这个世界宣称是多元而包容的，总有一天，我也会找到适合的舞台。</p>
-<p>那不是心有灵犀，那是平庸。</p>
-<h2 id="对未来负责">对未来负责</h2>
-<blockquote>
-<p>我们就是这么无可救药的生物吧，迁就着自己的幻想妄想理想梦想，混进人群，低声不语。</p>
-</blockquote>
-<p>人在回顾过去的时候，会这样想：如果当时能够如何如何，现在就不会是目前这不堪的境况。<br>
-但是殊不知，如果现在能够做出改变，就能改变未来。</p>
-<h3 id="对身体负责">对身体负责</h3>
-<p>我们活得太久了，忘了自己终将会死的事实。</p>
-<p>这一年我的作息出现了很多的变化。</p>
-<p>以往的我，哪怕是假期也遵循着在学校的作息，早睡早起，定时午睡。哪怕在忙，也不会晚过十二点。</p>
-<p>大一下的后期，为了完成数据结构的实验报告，为了完成自拟的大学物理编程题，连续几天十二点半睡觉，六点半起来。虽然现在回忆起来已经感觉不算什么了，但是整栋楼都是断电的，室友都已经上了床，自已依然在下面噼里啪啦地敲着键盘，是完全新奇的体验。</p>
-<p>在新加坡国立大学做项目期间，更是讨论到三点钟才散会休息。</p>
-<p>大二上开始变态。最开始是每天睡眠六个小时，基本是六点半起床离开寝室，晚上十一点回寝室，十二点半睡觉。<br>
-遇到什么特殊的情况的时候会特别加上“加班”的时间。一次加班加一个半小时，也就是两点钟睡觉，加两次班就是三点半睡觉，一天睡三个小时。印象中有四天的平均睡眠是五个小时……<br>
-还在实验室一个人趴/躺在桌上陪着服务器的噪声睡了一个晚上</p>
-<p>让我感觉离死亡十分接近的那一刻是一次分享会上，hrdg 告诉我们他们 ICPC 校队里有人猝死。<br>
-生命是一切的前提，死亡就是失去和这个世界交互的权力。<br>
-那么一件事情就发生在离自己那么近的地方，顿时毛骨悚然。</p>
-<p>我一直有一种觉得自己身体还不错的错觉。</p>
-<p>直到出现一些小小的迹象，再到体能测试， 1500m 虽然达标优秀，但是速率是按照之前的速率跑的，跑得居然有点想要呕吐，前所未有。</p>
-<p>期末考前大家疯狂熬夜，</p>
-<p>疯狂复习。但是我……在第一门考试之前就被系统抛出了异常，某个早上，自己的左下腹部疼痛，根本没有办法走路，是在去了洗手间回来的路上发作的，突发抽搐疼痛，条件反射地猛地蹲了下来。之后发现站起来就会感到疼痛，所以在走廊道上，蜷曲着身子，缓缓地向工作室的方向挪动。有时候挪动都会感到疼痛。那条 50 米的走廊，花费了 30 分钟的时间才走完。事情还没有结束，那天下午突然流鼻血，一个小时之后才勉强止住。</p>
-<p>在第一门考试还有两天的时候，我突然生病了，早上起来以为是没有睡醒，晕乎乎的。洗完脸回来发现是真的晕。不妙，多半是感冒发烧了。然后躺到床上，想着睡一会就恢复了。显然我欠下的债没有那么少，它没有罢休。醒来之后头更加晕了。寝室这个时候已经没有人了，大家纷纷跑去图书馆复习了，一个没有复习完、甚至感觉遥遥无期的被病魔追债的孩子被缠身，卧病在床。</p>
-<p>后来撑着去了医院，吃了药，暂时缓和了一些。</p>
-<p>之后复习的关键节点完全没有之前熬夜的冲劲，养生学习法。</p>
-<blockquote>
-<p>想起李开复的《向死而生：我修的死亡学分》，想起《叛逆的鲁路修》中不死的 C.C，笨拙地说一句，我们活得太久，以致于我们淡忘了我们终将死亡的事实。</p>
-</blockquote>
-<h3 id="对理想负责">对理想负责</h3>
-<p>2019 遇到了很多精彩的人，遇到了不仅有梦而且敢于做梦的人，遇到了综合实力很强的人，遇到了敬畏神明的人，遇到了每次聊天都能给我带来惊喜的人，遇到了很执着于自己感兴趣的事情的人，遇到了让我怀疑自己价值、感觉自己的生态位被取代的人。</p>
-<p>我对自己想要专注的方向愈发了解，愈发清晰，理想也一步步实体化。一部分焦虑因为真正了解事实和原理之后而消散，一部分焦虑因为认识了真正的现实和黑暗之后而猛增。</p>
-<p>对理想负责，就要去理解自己的理想是什么，是否有价值。</p>
-<p>虽然在思修之旅之后更加坚定，但在一个根本问题上，我却摇摆不定。</p>
-<blockquote>
-<p>主人：那咱们往哪走啊？<br>
-雅克：往前走。<br>
-主人：哪是前啊？<br>
-雅克：我对您透露一个大秘密，这是人类最古老的玩笑。往哪走，都是往前走。<br>
-——《雅克和他的主人》(米兰·昆德拉)</p>
-</blockquote>
-<p>我不知道，那些乐观主义者是真的将我们带进更加美好的世界，还是进一步步入泥沼？我们前进的方向，是否会将我们自己灭亡？</p>
-<p>如果说人类的进化史是一个延迟满足感的能力逐渐提升的过程，现代社会不进反退，人类终将成为娱乐至死的生物。</p>
+<p>终端美化的基本思路有：</p>
 <ol>
-<li>娱乐节目中自带的解读和标识，越是受欢迎的节目，就越是不需要脑子就能产生愉悦感。</li>
-<li>UI\UX 每一个设计都是慢慢的反馈和舒适感</li>
-<li>QQ 空间、微信朋友圈、微博等社交平台成为情绪的发泄点，人们慢慢不会驾驭自己的情绪，不能静静地洞察更深层次的东西</li>
-<li>碎片化阅读、交互式编程、视频弹幕这些奖励机制折射出来的互联网前进的方向就是“大家就是想着怎么样让你现在就爽”</li>
-<li>老师也异常的浮躁<br>
-综合课程设计做了那么多的可视化，我以为再怎么最初不了解 SDN 的人看了我们的 PPT 和听了我们的讲解之后一定会立刻理解，结果他们头都不抬，那一刻起，我对那些老师感到失望透了。</li>
+<li>对 PowerShell 的字体等进行修改；</li>
+<li>在 PowerShell 上安装并使用 oh-my-posh；</li>
+<li>改用第三方终端，如 Fluent Terminal、Hyper、Terminus 等。</li>
 </ol>
-<p>最吸引人的未必是最有价值的。</p>
+<p>⭐️ ​其中值得注意的是，PowerShell 安装 oh-my-posh 后很可能出现“乱码”的现象，这是字体缺位导致的，建议改用支持大量其他字体的第三方终端，一劳永逸。</p>
+<h2 id="结论置顶">结论置顶</h2>
+<blockquote>
+<p>这里先呈现结论，结论的依据会在后面详细解释。</p>
+</blockquote>
+<h3 id="效果图">效果图</h3>
+<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308103044933.png" alt="image-20200308103044933"></p>
+<h3 id="思路">思路</h3>
+<p>PowerShell 自身不支持 oh-my-zsh 的一些字体，会导致乱码，故使用 Powershell 第三方终端（如 Fluent Terminal）+oh-my-zsh 的方案。</p>
+<ol>
+<li>下载安装 Fluent Terminal；</li>
+<li>在 PowerShell 下安装 oh-my-zsh，选择自己喜欢的主题，通过更改 <code>$proflie</code> 指定的文件，将 oh-my-zsh 的设置在每次启动 PowerShell 的时候自动加载。</li>
+<li>下载 oh-my-zsh 需要的字体，将 Fluent Terminal 的字体修改；</li>
+<li>更改 VSCode 的终端字体设置，使之同等美化。</li>
+</ol>
+<h2 id="修改-PowerShell-的终端">修改 PowerShell 的终端</h2>
+<p>这是 PowerShell 和 cmd 自身提供的属性设置。（标题栏右键）</p>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308101500526.png" alt="image-20200308101500526" style="zoom:80%;">
+<p>但是局限性非常大，可用的字体非常少。cmd 和 PowerShell 对字体的要求很严苛，即使你安装了一大堆的字体，在 <code>&quot;Windows PowerShell&quot; 属性 </code> 中的 <code>字体</code> 选项卡下，能看到的字体也就几个。</p>
+<p>也有博客对自定义字体有“研究成果”，详见：<a href="https://walterlv.github.io/post/customize-fonts-of-command-window.html#%E6%8E%A8%E8%8D%90%E5%8F%AF%E7%94%A8%E7%9A%84%E5%AD%97%E4%BD%93" target="_blank" rel="noopener">自定义 Windows PowerShell 和 cmd 的字体</a>。</p>
+<h2 id="安装使用-oh-my-zsh">安装使用 oh-my-zsh</h2>
+<p>安装步骤和使用的教程非常多，笔者也是直接参照网络上的教程安装的，这里不再赘述。<br>
+但使用的时候会发现，没有 Linux 下 zsh 的效果，甚至出现如下近乎“乱码”的现象：</p>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308104054220.png" alt="image-20200308104054220" style="zoom: 67%;">
+<p>看看其他主题的情况？</p>
+<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308110644627.png" alt="image-20200308110644627"></p>
+<p>发现“乱码”其实只有一两种字符。<br>
+⭐️ 其实是因为对应的字符在当前字体下是不存在的，而支持这些字符的字体在 cmd 和 PowerShell 严苛要求下的字体几乎是不存在的。<br>
+✔️ 所以需要使用第三方Powershell 终端，才能还原 zsh 在 Linux 下的风采。</p>
+<h2 id="使用第三方-PowerShell-终端">使用第三方 PowerShell 终端</h2>
+<h3 id="下载安装-Fluent-Terminal">下载安装 Fluent Terminal</h3>
+<p>PowerShell 终端非常多，如 Fluent Terminal、Hyper、Terminus 等。</p>
+<p>其中很受推荐的其中一个是 Fluent Terminal，是利用 UWP 技术打造的颜值超高的终端模拟器。不过在 UWP 应用市场并找不到，要去 <a href="https://github.com/felixse/FluentTerminal/releases" target="_blank" rel="noopener">GitHub Release</a> 下载。</p>
+<p>下载完毕后，用 PowerShell 运行文件夹下的 <code>Install.ps1</code> 按照提示操作即可安装成功。<br>
+建议设置在中把默认 shell 改成 PowerShell：</p>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308105324042.png" alt="image-20200308105324042" style="zoom:67%;">
+<h3 id="修改字体">修改字体</h3>
+<p>如果前面已经在 Powershell 安装了 oh-my-zsh，此时的 Fluent Terminal 下的Powershell 依然是存在“乱码”的现象。<br>
+这时候需要下载并安装支持 oh-my-zsh 对应主题的字体，比如 powerline 的字体库： <a href="https://github.com/powerline%E3%80%82%EF%BC%88%E5%85%B6%E5%AE%9E%E6%88%91%E7%94%A8%E7%9A%84%E4%B8%8D%E6%98%AF" target="_blank" rel="noopener">https://github.com/powerline。（其实我用的不是</a> powerline, hhh）<br>
+安装后再在 Fluent Terminal 的设置中更改字体就大工告成了！</p>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308105823820.png" alt="image-20200308105823820" style="zoom:50%;">
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308110523327.png" alt="image-20200308110523327" style="zoom:80%;">
+<h3 id="VSCode-终端美化">VSCode 终端美化</h3>
+<p>在之前的基础上，只需要修改 VSCode 的终端字体即可；<br>
+可以编辑 <code>setting.json</code> ，也可以在设置中查找。</p>
+<img src="file:///C:/Users/wcb53/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png" style="zoom:80%;">
+<p>效果图：<br>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308111027390.png" alt="image-20200308111027390"></p>
+<hr>
+<h1>美学感悟</h1>
+<blockquote>
+<p>挂了美学的旗子，估计是膨胀了。 😢</p>
+</blockquote>
+<p>折腾一番还是蛮消耗时间的，但是克服不了变美的诱惑 😄。</p>
+<blockquote>
+<p>有时候会问，人的品味高是不是有时候会降低人的生活质量？</p>
+</blockquote>
+<p>百姓的音乐在高雅之士的耳朵里变成了“呕哑嘲哳”；<br>
+普通餐馆的食物在美食家面前变成“糟蹋食物”，<br>
+专业设计师会感觉市面上的东西各种变扭等等。</p>
+<blockquote>
+<p>扰乱人们的不是客观事物，而是人们对客观事物的见解。<br>
+​	—— 爱比克泰德<br>
+“超常的感觉能力会引致情绪失衡、周期性的超乎寻常的愉快或者挥之不去的忧愁。”<br>
+—— 叔本华</p>
+</blockquote>
+<p>笔者感觉，叔本华描述了那些艺术天才的忧郁气质，像极了《名人传》里对米开朗基罗的描述：“他被他这个天才左右了一生，他一生根本就没法从他这个天才里头自拔出来，所以他的生活某种程度像个苦行僧一样的，又是个工作狂。可是他的一切，他活着就是为了这个优势，为了他的天才而生的，他这一辈子就只能在这个范畴里头这么去干。”</p>
+<p>但是除去那些被自己的天才左右了一生的天才，现实生活不是也有很多很多很释然的杰出艺术家吗？就像《名人传》的米开朗琪罗传的那句名言：“世界上只有一种英雄主义,就是看清生活的真相之后依然热爱生活。”</p>
+<p>一个思考角度，我们完全可以驾驭我们的感觉能力，获得释然，开放“对客观事物的间接”，能够同等欣赏“阳春白雪”和“下里巴人”，获得生命的快感。</p>
+<p>另一种思考的角度，艺术家的忧郁气质，对于细节的感知、把控与纠结的完美主义，恰恰成就了艺术家，成为无可争辩的竞争力。</p>
+<blockquote>
+<p>美，是一种感知。<br>
+潜藏在每个人生命中，<br>
+当它被挖掘，被激发，<br>
+便会变成一种使人安定的力量。<br>
+它不仅能带来感官上的触动，<br>
+也是历练生命、丰沛情感、释放思想的源泉。<br>
+—— 蒋勋</p>
+</blockquote>
+<p>在物质匮乏的年代，对食物挑剔的人甚至没办法生存。但是现代社会已经逐步脱离物质的快发，转向追求生命的更高体验。<br>
+就像蒋勋先生所言，美是历练生命、丰沛情感、释放思想的源泉。我想，不去审美而去猎奇，真是辜负了造化的恩宠。</p>
+<hr>
+<h1>参考文章</h1>
+<ol>
+<li><a href="https://walterlv.github.io/post/customize-fonts-of-command-window.html#%E6%8E%A8%E8%8D%90%E5%8F%AF%E7%94%A8%E7%9A%84%E5%AD%97%E4%BD%93" target="_blank" rel="noopener">自定义 Windows PowerShell 和 cmd 的字体</a></li>
+<li><a href="https://blog.csdn.net/WPwalter/article/details/78937346" target="_blank" rel="noopener">将美化进行到底，把 PowerShell 做成 oh-my-zsh 的样子</a></li>
+<li><a href="http://tieba.baidu.com/p/6133164423?red_tag=o2118687620" target="_blank" rel="noopener">oh-my-zsh的图标无法正常显示</a></li>
+<li><a href="https://sspai.com/post/52868" target="_blank" rel="noopener">告别 Windows 终端的难看难用，从改造 PowerShell 的外观开始</a></li>
+<li><a href="https://www.jianshu.com/p/ae7f7b4d7a0e" target="_blank" rel="noopener">解决vscode terminal powerline字体乱码</a></li>
+</ol>
+<blockquote>
+<p>此外，还有感谢 <code>wj</code> 小姐姐 👸 提供给庸人笔者的一些灵感~</p>
+</blockquote>
 ]]></content>
       <categories>
         <category>Life</category>
-        <category>Reflection</category>
+        <category>Beauty</category>
       </categories>
       <tags>
-        <tag>Reflection</tag>
+        <tag>Powershell</tag>
+        <tag>life</tag>
       </tags>
   </entry>
   <entry>
@@ -2750,103 +2671,6 @@ OpenDayliht 则作为控制器层,对 Mininet 搭建的网络进行拓扑展示�
       <tags>
         <tag>SDN</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>巅峰极客 CoCo Writeup</title>
-    <url>/2019/10/20/%E6%9E%81%E5%AE%A2%E5%B7%85%E5%B3%B0-CoCo-writeup/</url>
-    <content><![CDATA[<h2 id="CoCo">CoCo</h2>
-<h3 id="题目描述">题目描述</h3>
-<p>文件：b5574201c88c73ac00b4e5d32b317339_NTURE.zip</p>
-<a id="more"></a>
-<p><a href="http://challenge.py" target="_blank" rel="noopener">challenge.py</a>：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Random.random <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line">Co = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">CoCo = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">CoCoCo = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCo</span><span class="params">(Co, CoCo)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> CoCo: Co, CoCo = CoCo, Co % CoCo</span><br><span class="line">    <span class="keyword">return</span> Co</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCoCo</span><span class="params">(Co, CoCo, CoCoCo)</span>:</span></span><br><span class="line">    CoCoCoCo = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> CoCo != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> (CoCo &amp; <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">            CoCoCoCo = (CoCoCoCo * Co) % CoCoCo</span><br><span class="line">        CoCo &gt;&gt;= <span class="number">1</span></span><br><span class="line">        Co = (Co * Co) % CoCoCo</span><br><span class="line">    <span class="keyword">return</span> CoCoCoCo</span><br><span class="line"></span><br><span class="line">CoCoCoCoCoCoCoCo = CoCoCoCoCo(CoCoCo, Co, CoCo)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    CoCoCoCoCoCoCoCoCo = randint(<span class="number">1</span>, <span class="number">2</span> ** <span class="number">512</span>)</span><br><span class="line">    <span class="keyword">if</span> CoCoCoCo(CoCoCoCoCoCoCoCoCo, CoCo - <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">CoCoCoCoCoCo = bytes_to_long(<span class="string">"CoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCo"</span>)</span><br><span class="line">CoCoCoCoCoCoCoCoCoCo = CoCoCoCoCo(CoCoCo, CoCoCoCoCoCoCoCoCo, CoCo)</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCo = (CoCoCoCoCoCo * CoCoCoCoCo(CoCoCoCoCoCoCoCo, CoCoCoCoCoCoCoCoCo, CoCo)) % CoCo</span><br><span class="line">CoCoCoCoCoCoCo = bytes_to_long(flag)</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCoCo = (CoCoCoCoCoCoCo * CoCoCoCoCo(CoCoCoCoCoCoCoCo, CoCoCoCoCoCoCoCoCo, CoCo)) % CoCo</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'cipher.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCo = "</span> + str(CoCoCoCoCoCoCoCoCoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCo = "</span> + str(CoCoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCo = "</span> + str(CoCoCoCoCoCoCoCoCoCoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCo = "</span> + str(CoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCoCo = "</span> + str(CoCoCoCoCoCoCoCoCoCoCoCo) + <span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
-<p>cipher.txt:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CoCoCoCoCoCoCoCoCoCo &#x3D; 112376755434839067242492450580926874835238627566940029196532175644877689078482714802636681537478746972878719135123815462672622666337365766404438579837929587693947036556506459672209528097159093195480318719604062458476883089712408549646871208319887232708573834573129807851612788612229862109446349174773685766921</span><br><span class="line">CoCoCo &#x3D; 151397348765463697819328127490368915291237595957138740365628078489836085372845681091989345334904026246892900348971981402476845038743843701086311667536372419728644485998870855126715225674611022660290971207449534822797616008980284083777280866124762176520095351401654370256535990768524594118090702757650148363921</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCo &#x3D; 120085813769601903784459580746767828105716607333492124010803514777437504109331448009890874939858984666641139819379969714070220763093188551966830630639308142299719976258227450642141963425187429636880593480951498406380068747404115889400485463839002674872020074254287490910994729347868122864760194135575038263365</span><br><span class="line">CoCo &#x3D; 133694097868622092961596455982173439482901807533684907590429464542321832157724052684517499871073826858762297729480414306161113412741865099163152505447334863097434932940729269605986418443532208942119505043634990271717198694190123478547503837269948205839761848366722796091382894026537012764323367229104988051357</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCoCo &#x3D; 53913320010474614353771348695262553935361078517742942745359182152882204780769206005474818637010209561420480280523029509375286538886061621596249179407728697515399046471231513536340506648832858695583318765423245104561512700887050932667507358898646356134386213016528778706360147066411877832628237361011621917972</span><br></pre></td></tr></table></figure>
-<h3 id="分析与解">分析与解</h3>
-<h4 id="Coco">Coco</h4>
-<p>变量的命名丧心病狂……<br>
-姑且用数目代替原来的名字：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">e.g. CoCoCo -&gt; three</span><br><span class="line">    CoCoCoCoCoCo -&gt; twelve</span><br></pre></td></tr></table></figure>
-<p>由于数容易数错，替换也会因为短的是长的前缀，所以不能一键替换，也要仔细数。<br>
-当然用 Python <code>len()/2</code> + <code>复制</code> 更好。</p>
-<blockquote>
-<p>题目用这种方式主要目的可能还是为了掩盖变量对应的含义。</p>
-</blockquote>
-<h4 id="函数理解">函数理解</h4>
-<p>代码中有两个函数：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCo</span><span class="params">(one, two)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> two: one, two = two, one % two</span><br><span class="line">    <span class="keyword">return</span> one</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCoCo</span><span class="params">(one, two, three)</span>:</span></span><br><span class="line">    four = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> two != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> (two &amp; <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">            four = (four * one) % three</span><br><span class="line">        two &gt;&gt;= <span class="number">1</span></span><br><span class="line">        one = (one * one) % three</span><br><span class="line">    <span class="keyword">return</span> four</span><br></pre></td></tr></table></figure>
-<p>第一个函数一眼就可以看出来是欧几里得算法。<br>
-<code>two: one, two = two, one % two</code>是欧几里得算法的理论基础。<br>
-第二个看得很熟悉，但是当时没有立刻搞懂……（导致后面的理解很受挫……）</p>
-<blockquote>
-<p><code>&gt;&gt;=</code> 是向右移位一位，但是操作数只能是整数（所以相当于除以2，小数部分直接舍去）</p>
-</blockquote>
-<p>回头看的时候想起来是当时 ACM 上的<a href="https://blog.csdn.net/qq_32680617/article/details/50640622" target="_blank" rel="noopener">快速求幂取模</a>……</p>
-<blockquote>
-<p>为了增加代码可读性，我们用 <code>gmpy2.gcd(a,b)</code> 代替 <code> CoCoCoCo(Co, CoCo)</code>；用 <code>pow(a, b, n) </code> 代替 <code>CoCoCoCoCo(Co, CoCo, CoCoCo)</code>。<br>
-最后需要深刻反思…… ACMer 的优势。这周开始刷数论的算法题，看《算法竞赛入门》的数量部分</p>
-</blockquote>
-<h4 id="分析和调整代码">分析和调整代码</h4>
-<p>知道了函数的作用（尤其发现和数论直接相关），整个代码的基本功能就能很好地理解。<br>
-但是代码的毛病不止是变量的命名，还有顺序：函数放在中间是什么意思？？？+一些代码调换位置会更容易看懂。<br>
-此外，刚刚也说了只是姑且用数目代替原来的名字……<br>
-需要根据代码的意义去分析，基本分析完成后：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Random.random <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"></span><br><span class="line">a = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">p = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">c = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:<span class="comment"># get a number(n) enable (n-1, random-e) = 1</span></span><br><span class="line">    e = randint(<span class="number">1</span>, <span class="number">2</span> ** <span class="number">512</span>) <span class="comment"># 1- 2 ** 512 之间</span></span><br><span class="line">    <span class="keyword">if</span> gmpy2.gcd(e, p - <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">eight = pow(c, a, p)</span><br><span class="line">ten = pow(c, e, p)</span><br><span class="line"></span><br><span class="line">six = bytes_to_long(<span class="string">b"CoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCo"</span>)</span><br><span class="line">seven = bytes_to_long(flag)</span><br><span class="line"></span><br><span class="line">eleven = (six * pow(eight, e, p)) % p</span><br><span class="line">twelve = (seven * pow(eight, e, p)) % p</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'cipher.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f: <span class="comment"># 写进文件</span></span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCo = "</span> + str(ten) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCo = "</span> + str(c) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCo = "</span> + str(eleven) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCo = "</span> + str(p) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCoCo = "</span> + str(twelve) + <span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># two - p</span></span><br><span class="line"><span class="comment"># (e, n - 1) == 1</span></span><br><span class="line"><span class="comment"># three - c</span></span><br><span class="line"><span class="comment"># one - a</span></span><br><span class="line"><span class="comment"># nine - e</span></span><br></pre></td></tr></table></figure>
-<p>确实是一个浩大的工程……（一共十二个变量）<br>
-做了多次调整…… Orz<br>
-其中印象很深的是 p:<br>
-在 RSA 的模数一般是 n，所以会想当然地把最后定为 p 的变量（CoCo）最开始当成 n。<br>
-但是一直让我费解的是：<code>gmpy2.gcd(e, CoCo - 1) == 1;</code></p>
-<p>$\because (e, \varphi (m))=1 $ 而 $ \varphi (m) = \varphi (pq) = (p-1)(q-1)$<br>
-$\therefore (e, (p-1))=1$</p>
-<p>基于这一点，所以我就猜想 CoCo 其实不是 n，而是 p。</p>
-<h4 id="数学分析">数学分析</h4>
-<p>这道题更像是自己设计的加密算法，所以纯粹靠自己进行数学分析。</p>
-<h5 id="条件：">条件：</h5>
-<p>（黄色表示最终目标，蓝色表示已知条件，灰色表示关键的中间变量）</p>
-<img src="/2019/10/20/%E6%9E%81%E5%AE%A2%E5%B7%85%E5%B3%B0-CoCo-writeup/CoCodraft.png" width="600/">
-<h5 id="灵感和正解">灵感和正解</h5>
-<p>记得之前一道奇妙的“数学题”条件没有用完一直让我耿耿于怀，这次碰巧看到一个博客是讲那道题目的：<br>
-<a href="http://blog.cirq.me/2018/02/07/Codegate2018-rsababy/" target="_blank" rel="noopener">Codegate CTF 2018 - RSAbaby</a><br>
-其中一句话点醒了我：“真正的 crypter 对于题目的直觉令人十分惊异：h参数看起来太奇怪了，所以直接无视它！看到这里也只能怪自己的高考思维了，毕竟现实世界中，不是每一个条件都是有用的嘛。”<br>
-于是猛回头解题，重新审视。</p>
-<p>开始集中关注后面两个式子：</p>
-<ol>
-<li>$ tweleve = seven \times eight^e  \pmod p $</li>
-<li>$ eleven = six \times eight^e \pmod p$<br>
-其实他们是两个同余方程。</li>
-</ol>
-<p>如果！<br>
-把  $eight^e$ 看成一个整体，而不是想要求出 $eight^e$，角度完全不同。<br>
-复杂的式子变得极度简单，不妨设 $x = (eight^e , mod ,p)$.</p>
-<ol>
-<li>$ tweleve = seven \cdot x \pmod p $</li>
-<li>$ eleven = six \cdot x \pmod p $</li>
-</ol>
-<p>变成两个同余方程。<br>
-其中第二个式子只有一个未知变量x，求出来之后第一个式子也就变成一元一次的同余方程。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Random.random <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">six = bytes_to_long(<span class="string">b"CoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCo"</span>)</span><br><span class="line">eleven = <span class="number">120085813769601903784459580746767828105716607333492124010803514777437504109331448009890874939858984666641139819379969714070220763093188551966830630639308142299719976258227450642141963425187429636880593480951498406380068747404115889400485463839002674872020074254287490910994729347868122864760194135575038263365</span></span><br><span class="line">tweleve = <span class="number">53913320010474614353771348695262553935361078517742942745359182152882204780769206005474818637010209561420480280523029509375286538886061621596249179407728697515399046471231513536340506648832858695583318765423245104561512700887050932667507358898646356134386213016528778706360147066411877832628237361011621917972</span></span><br><span class="line"></span><br><span class="line">p = <span class="number">133694097868622092961596455982173439482901807533684907590429464542321832157724052684517499871073826858762297729480414306161113412741865099163152505447334863097434932940729269605986418443532208942119505043634990271717198694190123478547503837269948205839761848366722796091382894026537012764323367229104988051357</span></span><br><span class="line">x = gmpy2.invert(gmpy2.mpz(six), gmpy2.mpz(p)) * gmpy2.mpz(eleven)</span><br><span class="line">tweleve= gmpy2.invert(gmpy2.mpz(x), gmpy2.mpz(p)) *gmpy2.mpz(tweleve)</span><br><span class="line">tweleve %= p</span><br><span class="line">flag  = long_to_bytes(tweleve)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>b’flag{394191c7-261c-4ecb-a1bd-a6440639f217}’</p>
-</blockquote>
-<p>需要注意的是： invert() 这个函数返回的值不是那么理想，没有注意到这一点的我，第一次解出的 flag 很奇怪：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">b&quot;#&amp;\xd1?_T\xdd\xb1!\x11\x00&#96;V\rI&#123;\xb0\t\x8eW&#x3D;&lt;z\xfeq\x1f\xfa\xca\xfd\x93mx\xe71\x0f\xa2\x1fD\x06H&#x2F;&#125;\xe1_\x1b\x87+\xa1\xb0\xcb\xe6\xfa\r\xdbt\xa6\x95g&#39;x\xe2\x0b\xa2.\x08N\xcc\xa3\xd1\xba\x82\xa2,\xdeW1\x1b\x8e\x88\x97\xde\xf5E\x8a\xf1r\xedU\x9e\xe1\xb6\xc0\x1d\xc1\x85\x1b\x96J\x9bJm&#125;\xb0\x9a\xc5\x04\x9b\x1duo\x11&amp;7\xa0U\x96\xb1h\xe7\x1d8rwY8v\x92\xd9:\x9e6\xd9\xb0\xea.\xe0\x89\xd0|\xfd\xf6\x96Tg\x87\xaew\x9eH!\x87\xb7\xd6\x1d\xcf&#x2F;&amp;E\xae\x056hd\xe2\xbd\x81&#123;\xc1(P\xd1\x14?\x13(r\xd0D\x1d\xfe$\xf6z&#125;\x82u\xf2F#\xdb-\x18\xce\x94\xf2\x87\xfd\x86\xe3 \\\x87\x8b\xf12:p\xea\x02b\x05\xe6L)\xbd&lt;,\x15\x89\xc6I\xde\x96B\xf5\xda&gt;&#96;\x15rC\xeed\xb1&#123;\xf9\xba&#39;y\xb0Wv(z\xa8\x95?\xa9J\x10\x06s#\xca\x89\xd0&quot;</span><br></pre></td></tr></table></figure>
-<p>但是带回去验算又没有问题。<br>
-通过对比的对 six 进行 <code>bytes_to_long</code> 和 <code>long_to_bytes</code> 实验，发现 flag 比 six 大非常非常多……<br>
-所以才想是 invert() 的问题， 所以再 <code>tweleve %= p</code> 了一遍，然后转回字符串，终于成功。<br>
-在比赛结束前三十多米秒提交。</p>
-<h3 id="题目特点">题目特点</h3>
-<ol>
-<li>用恶心的变量名去掩盖变量真实的含义</li>
-<li>不是特殊的加密算法，是自己编造的加密方法，没有资料和经验，完全依靠数学和想象力。</li>
-</ol>
-<h2 id="赛后官方-WP">赛后官方 WP</h2>
-<p>赛后仔细看了官方的 WP，并推算了一遍，发现他的费马小定理用得画蛇添足，思路也不怎么清晰，如果展开推算，最后又会绕回来，最后的最后形式是和我的推算相一致。</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
   </entry>
   <entry>
     <title>攻防世界新手区 writeup</title>
@@ -3264,6 +3088,324 @@ rsatool 还有更多的功能。（还有RSA-CRT）<br>
       </tags>
   </entry>
   <entry>
+    <title>2019 年终总结 - 对自己负责</title>
+    <url>/2020/01/25/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<img src="/2020/01/25/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/man-3777108.jpg" width="800">
+<blockquote>
+<p>总是有人以上帝视角对你说，“你现在所经历的，在未来看来根本不算什么。”<br>
+我不喜欢这句话。这一句话本身没有错误，但是却有所偏袒。它偏袒结果。<br>
+我想补充的是：“如果没有现在正在经历的痛苦，未来的痛苦会更加难以承担。”</p>
+<p>己亥年收获很多快乐与幸福之余，也经历了前所未有的失落、失望、绝望。</p>
+<p>庚子年希望能够承担起更多曾经难以想象的苦楚，逐步揭穿生活巨大的隐喻，抬起头，在克莱斯勒《爱的忧伤》的尽头，迎来《爱的欢乐》。</p>
+</blockquote>
+<a id="more"></a>
+<h1>时间维度</h1>
+<h2 id="对过去负责">对过去负责</h2>
+<h3 id="历史观">历史观</h3>
+<p>我以前不是特别喜欢历史，说心底话（而不是以前答卷上写的漂亮话），总感觉它们离自己太远，没有特别大的意义，顶多是多了一些故事用以“以史为鉴”，多了一些风云人物用以“勉励后生”。</p>
+<p>现在想想，那时候的我的历史观其实非常平面化，那个时候理解的历史其实可以切成现在进行时的另一个平行空间。他们有他们的风云人物，他们有他们精彩的故事。是的，我的潜意识断开了他们和现在之间的联系。</p>
+<p>现代社会不是凭空而来的，滚滚而来的历史，它们的价值和意义是难以估量的。</p>
+<p>当然我这样思维的错误也没有那么彻底，中国的近现代史和现代的联系我是能够深刻体悟到的。中国的近代史是我的高中同桌 yyy 最不喜欢这一段屈辱的历史。虽然我也谈不上喜欢，但是它们却是我自己能感受到历史感的一个重要部分，也是能激起我的心灵震荡的一个重要部分。</p>
+<h3 id="个体历史观">个体历史观</h3>
+<p>历史裹挟着滚滚红尘浩浩荡荡地前行，如果一个国家和民族企图切断和历史的联系，把他们当做一个和自己毫无关联的平行时空，那是一件蛮恐怖的事情。</p>
+<p>人也是带着各种各样的羁绊和时光在自己人生留下的印记不断前行，如果否定过去，不能痛彻心扉地反思，也同样恐怖。</p>
+<p>虽然一个个体相比于历史长河，不过沧海一粟，但对于我这样很关注“自我”的凡夫俗子，十分重视这样的“个体历史观”。（可以理解为人生观的一部分）</p>
+<h3 id="2019-我的爱情史">2019 我的爱情史</h3>
+<blockquote>
+<p>人总是踏入同一条河流。<br>
+——吴人问津<br>
+我们在自己所有的细节中都无意识地将自己的曾经错误“贯彻”到底。<br>
+和自己的周边所有人的交流方式、在人群中的表现等等都总是犯着本质上完全相同的错误。<br>
+以不同的表现形式，在不同的时期，尽是这般绝望地相似。</p>
+<p>所以我们需要一日复一日地戳痛身上、心上的曾经的伤疤，一日复一日地自我沉思，一日复一日地坚定信念和自我革命。</p>
+<p>人生没有存档服务，没有入栈保存的结点，没有版本控制器，没有快照。<br>
+有的只是掩面痛哭和一往直前。</p>
+<p>以上。</p>
+</blockquote>
+<h4 id="爱情·掩面痛哭">爱情·掩面痛哭</h4>
+<p>悲伤抑郁的时候，我感觉自己是一个蛮负责的人，对自己的情绪负责的人。<br>
+今年和自己喜欢的女生分开了。转身走去的那一刻我就开始哭泣，回到在简陋的宾馆里继续痛哭。我没有试图用其他方式转移注意力，我不想逃避这样喜欢一个人的心情，不想逃避离这样的痛苦，不想忘记这一份“相互喜欢的人不一定能够在一起”痛彻心扉的领悟，也不想忘掉这一场奋不顾身的初恋。</p>
+<p>哭，可能需要安慰，更需要面对。<br>
+情绪和痛觉一样都在给我们传递很重要的信息，来无踪去无影，错过就不再。</p>
+<h4 id="爱情·一往直前">爱情·一往直前</h4>
+<p>之后的几天，我更是噙着泪水，把我们在一起时所有的经历都回顾了一遍，所有的共享、所有的聊天记录、所有的照片。游览完所有的照片之后，都打包上传到云端，删除了本地文件。<br>
+之后很长的时间都在慢慢消除她在我生活中留下的痕迹。</p>
+<p>当了一回专职的心灵解剖医生，解剖分析自我。<br>
+我慢慢在这一段亲密关系中剖析出自己深层的人格特征，也正是这些，葬送了自己的爱情。</p>
+<p>感谢那时候把分手的痛苦贯彻到底的自己，不仅仅停留在那个时候的观念，也想尽办法建立方法论去克服自己在亲密关系中暴露的问题。<br>
+然后践行 “人生，有的只是掩面痛苦和一往直前” 的感悟。</p>
+<h4 id="爱情·领悟">爱情·领悟</h4>
+<p>像周国平说的那样，没有深爱过的人和世界是没有建立联系的。我现在更能理解这一点。我的亲人（尤其是我姐~）对我的爱我现在更能体会。每次寄礼物，仔细挑选、包装、传递情感，整个流程包含的，以前的我绝对没有现在能感受到的这么多。</p>
+<p>之前还看了一篇心理学的文章，讲的是恋爱的意义。“自己一个人明明过得很好，为什么还要谈恋爱？”这是很多人的想法。亲密关系对于人来说，首先的确是可以满足一系列片面的需求。比如打发时间的需求、互相陪伴和支持的需求、性的需求、甚至是经济的需求等。但我们从亲密关系中能够获得的东西，其实还远比这些更多。正是因为亲密关系的这种机制，它也成为了我们人格疗愈的一种最为重要的契机。恋爱不是简单的相处，真的是一种自我寻找和相互寻找。</p>
+<p>分析分手原因不是为了挽回，虽然这只是无意间慢慢理解的。<br>
+虽然大脑会习惯性会“理想化”过去，但我早已抵抗住这种错觉，我知道我们如果重新再来，我还没成长到在亲密关系中自信到她能满意的程度，她也很可能没有办法兑现时常牵挂及时回复我的一纸承诺。</p>
+<p>过去的幻象再美，死灰复燃的爱情都没有意义了，没有痛彻心扉的每日自我革命，重来也会掉进一样的漩涡。</p>
+<h3 id="2019-我的家族继承史">2019 我的家族继承史</h3>
+<blockquote>
+<p>那些由不安惶恐凝聚而成的血泪，<br>
+就轻易被现实揉进深深的夜梦，<br>
+写进逃不过的宿命，<br>
+摁进扭曲的自我。</p>
+</blockquote>
+<h4 id="血脉·继承">血脉·继承</h4>
+<p>关于这一点的感悟其实在高三成年人礼的时候就写下了，那个时候写得很深刻，这里也没想着再写一遍。<br>
+过去的我觉得血缘联系是蛮荒诞而狭隘的，自己不想囿于自己的血缘，于是企图摆脱。当我觉得自己已经成功做到从这种束缚中挣脱出来之后，却一次又一次地遇到打击、失控和现实的冲撞，我逐渐发现我深层次的种种特征都和我父亲一模一样。<br>
+这里用这样简练的语言概括当然难以说服人，也可能被认为是荒谬的；我也知道即使再次详细地描述我所经历的所有那些冲击我世界观的经历，很多人未必能够理解。真的，经历比任何说理都更加有力。</p>
+<p>与其去理解，不如去感受。</p>
+<h4 id="血脉·超越">血脉·超越</h4>
+<p>这一年我对于它的理解和体悟进一步加深了，也和一个人讨论过。但是讨论的对象正是那种无法理解我的人。<br>
+努力就能有可观的回报，不用竭尽全力和历尽绝望就抵达自己想要的地方，这样的人，我知道可能没有机会体会到和真正理解我的痛苦和底层的卑微。</p>
+<p>但是，恰恰也给了我启发，在她的鼓励下，也在意识上觉得能够改变那些血脉中继承的，刻骨铭心之物。<br>
+也许很艰难，也许穷尽毕生也未必有大的改变，但是即便如此、即便如此也不能就此放弃抵抗。</p>
+<p>还是非常非常感谢那个她。</p>
+<h3 id="2019-回忆孤独的过去">2019 回忆孤独的过去</h3>
+<p>现在回想，依然非常非常怀念高中的那三年，那是非常纯粹的三年。<br>
+每天和很纯粹的知识、题目搏斗，每天和很纯粹的自己、他人搏斗。</p>
+<p>大学时的压力确实没有高中时的压力大，高中的竞争氛围非常浓厚，每次模拟考的排名、明细、试题分析、互批、对比、竞赛，让人长期处于高压的状态。<br>
+我已经难以想象当时自己的压力，翻看过去的日记，真的已经难以还原当时的情景，我不知道在怎样高压下的我才能写下那样压抑、激情甚至有些燃烧的文字。</p>
+<p>那是过去的我的努力。每次翻看日记或多或少有些愧疚感。人应该变得更加优秀、更加卓越。真正的卓越是优于过去的自己。一旦选错参考系，就容易妄自尊大和妄自菲薄。<br>
+要对过去的自己负责，对那个无比纯粹的自我负责，对那个在内心呼喊、咆哮的自己负责，对那个写着无比孤独文字的自我负责，对那个在操场狂奔到泪流满面的自己负责，对那个疲惫到难以入睡需要从黑暗中摸索出一瓶温和的牛奶、咕噜咕噜下肚才嫩缓和的自己负责。<br>
+这样才不负过去。</p>
+<h3 id="个体历史-史官">个体历史-史官</h3>
+<p>历史有专门的史官记载，但个人历史却少有人记录。可能只有作家、名人以及少数有写日记习惯的人才会记录自己的个体历史。<br>
+以史为鉴是对历史负责的一种方式，而以史为鉴的前提是：“有史”。</p>
+<p>个人要对自己负责，就要能保留住自己的个体历史。人一时的记忆给了人一种错觉，即：我以后会记得此时此刻。<br>
+遗憾的是，人的记忆没有那么持久，并且很受主观因素的影响，无法作为保留个人的个体历史的方式。很多重要的经历由于种种原因可能会淡忘，即便记住了，记忆本身也不能保留住它的重要的细节。“好了伤疤忘了痛”就是一种很典型又非常普遍的事后发现忘记当初教训的体现。</p>
+<p>对过去负责是方式是，用文字或者其他方式记录下过去，无论它是带给你欢乐和幸福的回忆还是痛彻心扉的痛苦。<br>
+可能没有这些记录，一年又一年地过去，我们也便一年又一年地淡忘自己的快乐，一年又一年地忘记自己的伤疤带来的苦痛，然后一年又一年地没有成长。</p>
+<p>我是一个很贪心的人，希望此时此刻的自己是由过去无数个自己的完美迭代：每个加入迭代的版本都是那个最优的部分，剔除糟糕的部分，不将同样的错误再故伎重演。</p>
+<p>然后将痛楚转化成防止故伎重演的方法论，一直指导着自己前行。</p>
+<h2 id="对现在负责">对现在负责</h2>
+<blockquote>
+<p>我可以从很多人身上看到自己的影子，但是仅凭这些依然无法拼凑出一个完整的自己。</p>
+</blockquote>
+<p>总是有人以上帝视角对你说，你现在所经历的，在未来看来根本不算什么。<br>
+这一句话本身没有错误，但是却有所偏袒。它偏袒结果。有时显得冷漠。<br>
+作为正在经历痛苦的人，我会补充另一个本身没有错误的话以完整这句话：“但是没有现在正在经历的痛苦，未来的痛苦会更加难以承担。”</p>
+<p>不得不承认，此时此刻的自己正处于一种迷茫和孤独之中。<br>
+常常感觉自己是套着一透明的膜，然后混进人群。</p>
+<p>我总会想起太宰治说过的一句话：“活着，那是多么忍辱负重、奄奄一息的伟大事业。”<br>
+虽然我没有完整地读过他的著作，但心想他口中的“活着”绝非是生理上那种简单地“活着”。<br>
+要怎么对现在的真实的自己负责，怎样不敷衍、不自自我欺骗、不迎合随流，真的真的是一件“多么忍辱负重、奄奄一息的伟大事业。”</p>
+<p>这样一种逐渐脱离群体，走向自我的道路，似乎是真正成人的必经之路。<br>
+我慢慢接受这一种孤独，群体中我的确是异类。<br>
+但我知道，那些人之间的沟通不是心有灵犀，是平庸。<br>
+但是我看到很多也是异类的人却活得很光彩，活得很自在。<br>
+我想，只要继续努力、贯彻自我，对现在负责，不忘初心，<br>
+既然这个世界宣称是多元而包容的，总有一天，我也会找到适合的舞台。</p>
+<p>那不是心有灵犀，那是平庸。</p>
+<h2 id="对未来负责">对未来负责</h2>
+<blockquote>
+<p>我们就是这么无可救药的生物吧，迁就着自己的幻想妄想理想梦想，混进人群，低声不语。</p>
+</blockquote>
+<p>人在回顾过去的时候，会这样想：如果当时能够如何如何，现在就不会是目前这不堪的境况。<br>
+但是殊不知，如果现在能够做出改变，就能改变未来。</p>
+<h3 id="对身体负责">对身体负责</h3>
+<p>我们活得太久了，忘了自己终将会死的事实。</p>
+<p>这一年我的作息出现了很多的变化。</p>
+<p>以往的我，哪怕是假期也遵循着在学校的作息，早睡早起，定时午睡。哪怕在忙，也不会晚过十二点。</p>
+<p>大一下的后期，为了完成数据结构的实验报告，为了完成自拟的大学物理编程题，连续几天十二点半睡觉，六点半起来。虽然现在回忆起来已经感觉不算什么了，但是整栋楼都是断电的，室友都已经上了床，自已依然在下面噼里啪啦地敲着键盘，是完全新奇的体验。</p>
+<p>在新加坡国立大学做项目期间，更是讨论到三点钟才散会休息。</p>
+<p>大二上开始变态。最开始是每天睡眠六个小时，基本是六点半起床离开寝室，晚上十一点回寝室，十二点半睡觉。<br>
+遇到什么特殊的情况的时候会特别加上“加班”的时间。一次加班加一个半小时，也就是两点钟睡觉，加两次班就是三点半睡觉，一天睡三个小时。印象中有四天的平均睡眠是五个小时……<br>
+还在实验室一个人趴/躺在桌上陪着服务器的噪声睡了一个晚上</p>
+<p>让我感觉离死亡十分接近的那一刻是一次分享会上，hrdg 告诉我们他们 ICPC 校队里有人猝死。<br>
+生命是一切的前提，死亡就是失去和这个世界交互的权力。<br>
+那么一件事情就发生在离自己那么近的地方，顿时毛骨悚然。</p>
+<p>我一直有一种觉得自己身体还不错的错觉。</p>
+<p>直到出现一些小小的迹象，再到体能测试， 1500m 虽然达标优秀，但是速率是按照之前的速率跑的，跑得居然有点想要呕吐，前所未有。</p>
+<p>期末考前大家疯狂熬夜，</p>
+<p>疯狂复习。但是我……在第一门考试之前就被系统抛出了异常，某个早上，自己的左下腹部疼痛，根本没有办法走路，是在去了洗手间回来的路上发作的，突发抽搐疼痛，条件反射地猛地蹲了下来。之后发现站起来就会感到疼痛，所以在走廊道上，蜷曲着身子，缓缓地向工作室的方向挪动。有时候挪动都会感到疼痛。那条 50 米的走廊，花费了 30 分钟的时间才走完。事情还没有结束，那天下午突然流鼻血，一个小时之后才勉强止住。</p>
+<p>在第一门考试还有两天的时候，我突然生病了，早上起来以为是没有睡醒，晕乎乎的。洗完脸回来发现是真的晕。不妙，多半是感冒发烧了。然后躺到床上，想着睡一会就恢复了。显然我欠下的债没有那么少，它没有罢休。醒来之后头更加晕了。寝室这个时候已经没有人了，大家纷纷跑去图书馆复习了，一个没有复习完、甚至感觉遥遥无期的被病魔追债的孩子被缠身，卧病在床。</p>
+<p>后来撑着去了医院，吃了药，暂时缓和了一些。</p>
+<p>之后复习的关键节点完全没有之前熬夜的冲劲，养生学习法。</p>
+<blockquote>
+<p>想起李开复的《向死而生：我修的死亡学分》，想起《叛逆的鲁路修》中不死的 C.C，笨拙地说一句，我们活得太久，以致于我们淡忘了我们终将死亡的事实。</p>
+</blockquote>
+<h3 id="对理想负责">对理想负责</h3>
+<p>2019 遇到了很多精彩的人，遇到了不仅有梦而且敢于做梦的人，遇到了综合实力很强的人，遇到了敬畏神明的人，遇到了每次聊天都能给我带来惊喜的人，遇到了很执着于自己感兴趣的事情的人，遇到了让我怀疑自己价值、感觉自己的生态位被取代的人。</p>
+<p>我对自己想要专注的方向愈发了解，愈发清晰，理想也一步步实体化。一部分焦虑因为真正了解事实和原理之后而消散，一部分焦虑因为认识了真正的现实和黑暗之后而猛增。</p>
+<p>对理想负责，就要去理解自己的理想是什么，是否有价值。</p>
+<p>虽然在思修之旅之后更加坚定，但在一个根本问题上，我却摇摆不定。</p>
+<blockquote>
+<p>主人：那咱们往哪走啊？<br>
+雅克：往前走。<br>
+主人：哪是前啊？<br>
+雅克：我对您透露一个大秘密，这是人类最古老的玩笑。往哪走，都是往前走。<br>
+——《雅克和他的主人》(米兰·昆德拉)</p>
+</blockquote>
+<p>我不知道，那些乐观主义者是真的将我们带进更加美好的世界，还是进一步步入泥沼？我们前进的方向，是否会将我们自己灭亡？</p>
+<p>如果说人类的进化史是一个延迟满足感的能力逐渐提升的过程，现代社会不进反退，人类终将成为娱乐至死的生物。</p>
+<ol>
+<li>娱乐节目中自带的解读和标识，越是受欢迎的节目，就越是不需要脑子就能产生愉悦感。</li>
+<li>UI\UX 每一个设计都是慢慢的反馈和舒适感</li>
+<li>QQ 空间、微信朋友圈、微博等社交平台成为情绪的发泄点，人们慢慢不会驾驭自己的情绪，不能静静地洞察更深层次的东西</li>
+<li>碎片化阅读、交互式编程、视频弹幕这些奖励机制折射出来的互联网前进的方向就是“大家就是想着怎么样让你现在就爽”</li>
+<li>老师也异常的浮躁<br>
+综合课程设计做了那么多的可视化，我以为再怎么最初不了解 SDN 的人看了我们的 PPT 和听了我们的讲解之后一定会立刻理解，结果他们头都不抬，那一刻起，我对那些老师感到失望透了。</li>
+</ol>
+<p>最吸引人的未必是最有价值的。</p>
+]]></content>
+      <categories>
+        <category>Life</category>
+        <category>Reflection</category>
+      </categories>
+      <tags>
+        <tag>Reflection</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>巅峰极客 CoCo Writeup</title>
+    <url>/2019/10/20/%E6%9E%81%E5%AE%A2%E5%B7%85%E5%B3%B0-CoCo-writeup/</url>
+    <content><![CDATA[<h2 id="CoCo">CoCo</h2>
+<h3 id="题目描述">题目描述</h3>
+<p>文件：b5574201c88c73ac00b4e5d32b317339_NTURE.zip</p>
+<a id="more"></a>
+<p><a href="http://challenge.py" target="_blank" rel="noopener">challenge.py</a>：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Random.random <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line">Co = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">CoCo = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">CoCoCo = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCo</span><span class="params">(Co, CoCo)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> CoCo: Co, CoCo = CoCo, Co % CoCo</span><br><span class="line">    <span class="keyword">return</span> Co</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCoCo</span><span class="params">(Co, CoCo, CoCoCo)</span>:</span></span><br><span class="line">    CoCoCoCo = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> CoCo != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> (CoCo &amp; <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">            CoCoCoCo = (CoCoCoCo * Co) % CoCoCo</span><br><span class="line">        CoCo &gt;&gt;= <span class="number">1</span></span><br><span class="line">        Co = (Co * Co) % CoCoCo</span><br><span class="line">    <span class="keyword">return</span> CoCoCoCo</span><br><span class="line"></span><br><span class="line">CoCoCoCoCoCoCoCo = CoCoCoCoCo(CoCoCo, Co, CoCo)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    CoCoCoCoCoCoCoCoCo = randint(<span class="number">1</span>, <span class="number">2</span> ** <span class="number">512</span>)</span><br><span class="line">    <span class="keyword">if</span> CoCoCoCo(CoCoCoCoCoCoCoCoCo, CoCo - <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">CoCoCoCoCoCo = bytes_to_long(<span class="string">"CoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCo"</span>)</span><br><span class="line">CoCoCoCoCoCoCoCoCoCo = CoCoCoCoCo(CoCoCo, CoCoCoCoCoCoCoCoCo, CoCo)</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCo = (CoCoCoCoCoCo * CoCoCoCoCo(CoCoCoCoCoCoCoCo, CoCoCoCoCoCoCoCoCo, CoCo)) % CoCo</span><br><span class="line">CoCoCoCoCoCoCo = bytes_to_long(flag)</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCoCo = (CoCoCoCoCoCoCo * CoCoCoCoCo(CoCoCoCoCoCoCoCo, CoCoCoCoCoCoCoCoCo, CoCo)) % CoCo</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'cipher.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCo = "</span> + str(CoCoCoCoCoCoCoCoCoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCo = "</span> + str(CoCoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCo = "</span> + str(CoCoCoCoCoCoCoCoCoCoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCo = "</span> + str(CoCo) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCoCo = "</span> + str(CoCoCoCoCoCoCoCoCoCoCoCo) + <span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
+<p>cipher.txt:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CoCoCoCoCoCoCoCoCoCo &#x3D; 112376755434839067242492450580926874835238627566940029196532175644877689078482714802636681537478746972878719135123815462672622666337365766404438579837929587693947036556506459672209528097159093195480318719604062458476883089712408549646871208319887232708573834573129807851612788612229862109446349174773685766921</span><br><span class="line">CoCoCo &#x3D; 151397348765463697819328127490368915291237595957138740365628078489836085372845681091989345334904026246892900348971981402476845038743843701086311667536372419728644485998870855126715225674611022660290971207449534822797616008980284083777280866124762176520095351401654370256535990768524594118090702757650148363921</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCo &#x3D; 120085813769601903784459580746767828105716607333492124010803514777437504109331448009890874939858984666641139819379969714070220763093188551966830630639308142299719976258227450642141963425187429636880593480951498406380068747404115889400485463839002674872020074254287490910994729347868122864760194135575038263365</span><br><span class="line">CoCo &#x3D; 133694097868622092961596455982173439482901807533684907590429464542321832157724052684517499871073826858762297729480414306161113412741865099163152505447334863097434932940729269605986418443532208942119505043634990271717198694190123478547503837269948205839761848366722796091382894026537012764323367229104988051357</span><br><span class="line">CoCoCoCoCoCoCoCoCoCoCoCo &#x3D; 53913320010474614353771348695262553935361078517742942745359182152882204780769206005474818637010209561420480280523029509375286538886061621596249179407728697515399046471231513536340506648832858695583318765423245104561512700887050932667507358898646356134386213016528778706360147066411877832628237361011621917972</span><br></pre></td></tr></table></figure>
+<h3 id="分析与解">分析与解</h3>
+<h4 id="Coco">Coco</h4>
+<p>变量的命名丧心病狂……<br>
+姑且用数目代替原来的名字：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">e.g. CoCoCo -&gt; three</span><br><span class="line">    CoCoCoCoCoCo -&gt; twelve</span><br></pre></td></tr></table></figure>
+<p>由于数容易数错，替换也会因为短的是长的前缀，所以不能一键替换，也要仔细数。<br>
+当然用 Python <code>len()/2</code> + <code>复制</code> 更好。</p>
+<blockquote>
+<p>题目用这种方式主要目的可能还是为了掩盖变量对应的含义。</p>
+</blockquote>
+<h4 id="函数理解">函数理解</h4>
+<p>代码中有两个函数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCo</span><span class="params">(one, two)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> two: one, two = two, one % two</span><br><span class="line">    <span class="keyword">return</span> one</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CoCoCoCoCo</span><span class="params">(one, two, three)</span>:</span></span><br><span class="line">    four = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> two != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> (two &amp; <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">            four = (four * one) % three</span><br><span class="line">        two &gt;&gt;= <span class="number">1</span></span><br><span class="line">        one = (one * one) % three</span><br><span class="line">    <span class="keyword">return</span> four</span><br></pre></td></tr></table></figure>
+<p>第一个函数一眼就可以看出来是欧几里得算法。<br>
+<code>two: one, two = two, one % two</code>是欧几里得算法的理论基础。<br>
+第二个看得很熟悉，但是当时没有立刻搞懂……（导致后面的理解很受挫……）</p>
+<blockquote>
+<p><code>&gt;&gt;=</code> 是向右移位一位，但是操作数只能是整数（所以相当于除以2，小数部分直接舍去）</p>
+</blockquote>
+<p>回头看的时候想起来是当时 ACM 上的<a href="https://blog.csdn.net/qq_32680617/article/details/50640622" target="_blank" rel="noopener">快速求幂取模</a>……</p>
+<blockquote>
+<p>为了增加代码可读性，我们用 <code>gmpy2.gcd(a,b)</code> 代替 <code> CoCoCoCo(Co, CoCo)</code>；用 <code>pow(a, b, n) </code> 代替 <code>CoCoCoCoCo(Co, CoCo, CoCoCo)</code>。<br>
+最后需要深刻反思…… ACMer 的优势。这周开始刷数论的算法题，看《算法竞赛入门》的数量部分</p>
+</blockquote>
+<h4 id="分析和调整代码">分析和调整代码</h4>
+<p>知道了函数的作用（尤其发现和数论直接相关），整个代码的基本功能就能很好地理解。<br>
+但是代码的毛病不止是变量的命名，还有顺序：函数放在中间是什么意思？？？+一些代码调换位置会更容易看懂。<br>
+此外，刚刚也说了只是姑且用数目代替原来的名字……<br>
+需要根据代码的意义去分析，基本分析完成后：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Random.random <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"></span><br><span class="line">a = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">p = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line">c = getStrongPrime(<span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:<span class="comment"># get a number(n) enable (n-1, random-e) = 1</span></span><br><span class="line">    e = randint(<span class="number">1</span>, <span class="number">2</span> ** <span class="number">512</span>) <span class="comment"># 1- 2 ** 512 之间</span></span><br><span class="line">    <span class="keyword">if</span> gmpy2.gcd(e, p - <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">eight = pow(c, a, p)</span><br><span class="line">ten = pow(c, e, p)</span><br><span class="line"></span><br><span class="line">six = bytes_to_long(<span class="string">b"CoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCo"</span>)</span><br><span class="line">seven = bytes_to_long(flag)</span><br><span class="line"></span><br><span class="line">eleven = (six * pow(eight, e, p)) % p</span><br><span class="line">twelve = (seven * pow(eight, e, p)) % p</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'cipher.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f: <span class="comment"># 写进文件</span></span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCo = "</span> + str(ten) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCo = "</span> + str(c) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCo = "</span> + str(eleven) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCo = "</span> + str(p) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"CoCoCoCoCoCoCoCoCoCoCoCo = "</span> + str(twelve) + <span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># two - p</span></span><br><span class="line"><span class="comment"># (e, n - 1) == 1</span></span><br><span class="line"><span class="comment"># three - c</span></span><br><span class="line"><span class="comment"># one - a</span></span><br><span class="line"><span class="comment"># nine - e</span></span><br></pre></td></tr></table></figure>
+<p>确实是一个浩大的工程……（一共十二个变量）<br>
+做了多次调整…… Orz<br>
+其中印象很深的是 p:<br>
+在 RSA 的模数一般是 n，所以会想当然地把最后定为 p 的变量（CoCo）最开始当成 n。<br>
+但是一直让我费解的是：<code>gmpy2.gcd(e, CoCo - 1) == 1;</code></p>
+<p>$\because (e, \varphi (m))=1 $ 而 $ \varphi (m) = \varphi (pq) = (p-1)(q-1)$<br>
+$\therefore (e, (p-1))=1$</p>
+<p>基于这一点，所以我就猜想 CoCo 其实不是 n，而是 p。</p>
+<h4 id="数学分析">数学分析</h4>
+<p>这道题更像是自己设计的加密算法，所以纯粹靠自己进行数学分析。</p>
+<h5 id="条件：">条件：</h5>
+<p>（黄色表示最终目标，蓝色表示已知条件，灰色表示关键的中间变量）</p>
+<img src="/2019/10/20/%E6%9E%81%E5%AE%A2%E5%B7%85%E5%B3%B0-CoCo-writeup/CoCodraft.png" width="600/">
+<h5 id="灵感和正解">灵感和正解</h5>
+<p>记得之前一道奇妙的“数学题”条件没有用完一直让我耿耿于怀，这次碰巧看到一个博客是讲那道题目的：<br>
+<a href="http://blog.cirq.me/2018/02/07/Codegate2018-rsababy/" target="_blank" rel="noopener">Codegate CTF 2018 - RSAbaby</a><br>
+其中一句话点醒了我：“真正的 crypter 对于题目的直觉令人十分惊异：h参数看起来太奇怪了，所以直接无视它！看到这里也只能怪自己的高考思维了，毕竟现实世界中，不是每一个条件都是有用的嘛。”<br>
+于是猛回头解题，重新审视。</p>
+<p>开始集中关注后面两个式子：</p>
+<ol>
+<li>$ tweleve = seven \times eight^e  \pmod p $</li>
+<li>$ eleven = six \times eight^e \pmod p$<br>
+其实他们是两个同余方程。</li>
+</ol>
+<p>如果！<br>
+把  $eight^e$ 看成一个整体，而不是想要求出 $eight^e$，角度完全不同。<br>
+复杂的式子变得极度简单，不妨设 $x = (eight^e , mod ,p)$.</p>
+<ol>
+<li>$ tweleve = seven \cdot x \pmod p $</li>
+<li>$ eleven = six \cdot x \pmod p $</li>
+</ol>
+<p>变成两个同余方程。<br>
+其中第二个式子只有一个未知变量x，求出来之后第一个式子也就变成一元一次的同余方程。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Random.random <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">six = bytes_to_long(<span class="string">b"CoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCoCo"</span>)</span><br><span class="line">eleven = <span class="number">120085813769601903784459580746767828105716607333492124010803514777437504109331448009890874939858984666641139819379969714070220763093188551966830630639308142299719976258227450642141963425187429636880593480951498406380068747404115889400485463839002674872020074254287490910994729347868122864760194135575038263365</span></span><br><span class="line">tweleve = <span class="number">53913320010474614353771348695262553935361078517742942745359182152882204780769206005474818637010209561420480280523029509375286538886061621596249179407728697515399046471231513536340506648832858695583318765423245104561512700887050932667507358898646356134386213016528778706360147066411877832628237361011621917972</span></span><br><span class="line"></span><br><span class="line">p = <span class="number">133694097868622092961596455982173439482901807533684907590429464542321832157724052684517499871073826858762297729480414306161113412741865099163152505447334863097434932940729269605986418443532208942119505043634990271717198694190123478547503837269948205839761848366722796091382894026537012764323367229104988051357</span></span><br><span class="line">x = gmpy2.invert(gmpy2.mpz(six), gmpy2.mpz(p)) * gmpy2.mpz(eleven)</span><br><span class="line">tweleve= gmpy2.invert(gmpy2.mpz(x), gmpy2.mpz(p)) *gmpy2.mpz(tweleve)</span><br><span class="line">tweleve %= p</span><br><span class="line">flag  = long_to_bytes(tweleve)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>b’flag{394191c7-261c-4ecb-a1bd-a6440639f217}’</p>
+</blockquote>
+<p>需要注意的是： invert() 这个函数返回的值不是那么理想，没有注意到这一点的我，第一次解出的 flag 很奇怪：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">b&quot;#&amp;\xd1?_T\xdd\xb1!\x11\x00&#96;V\rI&#123;\xb0\t\x8eW&#x3D;&lt;z\xfeq\x1f\xfa\xca\xfd\x93mx\xe71\x0f\xa2\x1fD\x06H&#x2F;&#125;\xe1_\x1b\x87+\xa1\xb0\xcb\xe6\xfa\r\xdbt\xa6\x95g&#39;x\xe2\x0b\xa2.\x08N\xcc\xa3\xd1\xba\x82\xa2,\xdeW1\x1b\x8e\x88\x97\xde\xf5E\x8a\xf1r\xedU\x9e\xe1\xb6\xc0\x1d\xc1\x85\x1b\x96J\x9bJm&#125;\xb0\x9a\xc5\x04\x9b\x1duo\x11&amp;7\xa0U\x96\xb1h\xe7\x1d8rwY8v\x92\xd9:\x9e6\xd9\xb0\xea.\xe0\x89\xd0|\xfd\xf6\x96Tg\x87\xaew\x9eH!\x87\xb7\xd6\x1d\xcf&#x2F;&amp;E\xae\x056hd\xe2\xbd\x81&#123;\xc1(P\xd1\x14?\x13(r\xd0D\x1d\xfe$\xf6z&#125;\x82u\xf2F#\xdb-\x18\xce\x94\xf2\x87\xfd\x86\xe3 \\\x87\x8b\xf12:p\xea\x02b\x05\xe6L)\xbd&lt;,\x15\x89\xc6I\xde\x96B\xf5\xda&gt;&#96;\x15rC\xeed\xb1&#123;\xf9\xba&#39;y\xb0Wv(z\xa8\x95?\xa9J\x10\x06s#\xca\x89\xd0&quot;</span><br></pre></td></tr></table></figure>
+<p>但是带回去验算又没有问题。<br>
+通过对比的对 six 进行 <code>bytes_to_long</code> 和 <code>long_to_bytes</code> 实验，发现 flag 比 six 大非常非常多……<br>
+所以才想是 invert() 的问题， 所以再 <code>tweleve %= p</code> 了一遍，然后转回字符串，终于成功。<br>
+在比赛结束前三十多米秒提交。</p>
+<h3 id="题目特点">题目特点</h3>
+<ol>
+<li>用恶心的变量名去掩盖变量真实的含义</li>
+<li>不是特殊的加密算法，是自己编造的加密方法，没有资料和经验，完全依靠数学和想象力。</li>
+</ol>
+<h2 id="赛后官方-WP">赛后官方 WP</h2>
+<p>赛后仔细看了官方的 WP，并推算了一遍，发现他的费马小定理用得画蛇添足，思路也不怎么清晰，如果展开推算，最后又会绕回来，最后的最后形式是和我的推算相一致。</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>“阅享成电” - 生命本来没有名字</title>
+    <url>/2019/11/10/%E7%94%9F%E5%91%BD%E6%9C%AC%E6%9D%A5%E6%B2%A1%E6%9C%89%E5%90%8D%E5%AD%97/</url>
+    <content><![CDATA[<h3 id="引言">引言</h3>
+<p>这次的主题是“不忘初心”。<br>
+“不忘初心”这个词自从习大大在十九大在全党开展“不忘初心、牢记使命”主题教育之后就特别火。而且也因此开始和“牢记使命”这个词牵连在一起，和“新时代”联系在一起。<br>
+今天我想摆脱这个牵连关系：不谈使命，谈意义；不谈新时代，谈生命本身。</p>
+<p>今天分享的是阅读周国平先生的散文《生命本来没有名字》过程中产生的感悟。</p>
+<a id="more"></a>
+<h3 id="生命的初心">生命的初心</h3>
+<h4 id="问题的起源">问题的起源</h4>
+<p>我们常谈做一件事情的初心是什么，却很少思考生命的初心是什么。<br>
+做一件事有它的目的，所以自然能探索到它的初心，它是为什么而诞生的。那么在宇宙间偶然的偶然中诞生的生命又怎么去谈它的初心？从这一点看，似乎无从谈起。但我想探索的不是给每一个生命都定一个它存在的意义，而是反向去找它不应该变成什么样子。而周国平先生的观点无意间回答了我这个问题：生命本来没有名字。</p>
+<h4 id="名字对生命的侵犯">名字对生命的侵犯</h4>
+<p>我们一出生，就被父母赋予了名字，而这个名字往往给予了父母对我们的期望和很多其他的关系。比如名字“xxx”，姓氏缔结了和家族的联系，名称寄予了父母希望我的一生能往怎样的方向发展（有点情况是未完成愿望之诅咒）。再后来，我们进了幼儿园，进了小学、中学、大学，越来越多的东西和名字有了牵连。比如，我们期待在学校的排行榜上出现自己的名字，我们期待奖状上附上自己的名字，希望自己的称谓里还带着一些头衔，在以后真正踏入社会可能更是如此。（大家可以仔细回想自己生命中的这些常见）<br>
+但用周国平的话讲就是：</p>
+<blockquote>
+<p>随着我们长大，越来越深地沉溺于俗务琐事，已经很少有人能记起这个最单纯的事实了。<br>
+我们彼此以名字相见，名字又与头衔、身份 、财产之类相连，结果，在这些寄生物的缠绕之下，生命本身隐匿了，甚至萎缩了。无论对己对人，生命的感觉都日趋麻痹。多数时候，我们只是作为一个称谓活在世上。即使是朝夕相处的伴侣，也难得以生命的本然状态相待，更多的是一种伦常和习惯。</p>
+</blockquote>
+<h4 id="名字对生命中的爱情">名字对生命中的爱情</h4>
+<p>也受这个影响，在我心里，爱情有三种境界。<br>
+第一种是最广泛存在的最平凡最普通的爱情，也是最受“名字”本身影响的爱情。<br>
+在弗洛姆的《爱的艺术》中描述了这种普遍的爱情：</p>
+<blockquote>
+<p>在一个商业化占统治地位以及物质成果看得高于一切的文化中，人与人之间的爱情关系也遵循着同控制商品和劳动市场一样的基本准则。<br>
+归根结底爱情的产生是以权衡对方及本人的交换价值为前提的。<br>
+——《爱的艺术》（弗洛姆）</p>
+</blockquote>
+<p>第二种是慢慢淡去那种衡量“配不配得上”、“值不值得追求”这些观念观念，而转向一种纯粹的生活的深情。</p>
+<blockquote>
+<p>我不会说美好的情话，我只在柴米油盐中伴你走过每一天。内裤和内裤晾在一起，名字和名字刻在一起。你在，吵得天翻地覆；你走了，在你坟前轻轻地哭。<br>
+—— 《名字和名字刻在一起》（路明）</p>
+</blockquote>
+<p>第三种境界是这篇文章描述的那种，它是从反面去讲的。</p>
+<blockquote>
+<p>你说你爱你的妻子，可是，如果你不是把她当作一个独一无二的生命来爱，那么你的爱还是比较有限。你爱她的美丽、温柔、贤惠 、聪明，当然都对，但这些品质在别的女人身上也能找到。惟独她的生命，作为一个生命体的她，却是在普天下的女人身上也无法重组或再生的，一旦失去，便是不可挽回地失去了。 世上什么都能重复，恋爱可以再谈，配偶可以另择，身份可以炮制，钱财可以重挣，甚至历史也可以重演，惟独生命不能。<br>
+——《生命本来没有名字》（周国平）</p>
+</blockquote>
+<h3 id="生命的意义">生命的意义</h3>
+<p>同样的，我谈不了生命的意义，但是想讲讲生命不该丧失什么。也以此作结。</p>
+<blockquote>
+<p>浩瀚宇宙间，也许只有我们的星球开出了生命的花朵，可是，在这个幸运的星球上，比比皆是利益的交换，身份的较量，财产的争夺，最罕见的偏偏是生命与生命的相遇。仔细想想，我们是怎样地本末倒置，因小失大，辜负了造化的宠爱。<br>
+我相信，对于生命的这种珍惜和体悟乃是一切人间之爱的至深的源泉。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Life</category>
+        <category>Reading</category>
+      </categories>
+      <tags>
+        <tag>Love</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>疫情下，被寄予期望的区块链技术</title>
     <url>/2020/06/01/%E7%96%AB%E6%83%85%E4%B8%8B%EF%BC%8C%E8%A2%AB%E5%AF%84%E4%BA%88%E5%B8%8C%E6%9C%9B%E7%9A%84%E5%8C%BA%E5%9D%97%E9%93%BE%E6%8A%80%E6%9C%AF/</url>
     <content><![CDATA[<p>[摘 要] 区块链技术在1024讲话后，得到正名和政策的支持引导，并逐步落地，进入到强调赋能产业的3.0阶段。文章聚焦于区块链在疫情中为何与如何被给予希望，以及实际上并没有出色完成任务背后的技术限制和中国区块链技术成熟度问题。之后会剖析区块链无可替代的核心价值——可信互联网的基础设施、国家中心化与去中心化的中庸之道。并对区块链在后疫情时期发挥的作用和疫情之后的未来进行展望。</p>
@@ -3368,60 +3510,6 @@ rsatool 还有更多的功能。（还有RSA-CRT）<br>
       </categories>
       <tags>
         <tag>Blockchain</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>“阅享成电” - 生命本来没有名字</title>
-    <url>/2019/11/10/%E7%94%9F%E5%91%BD%E6%9C%AC%E6%9D%A5%E6%B2%A1%E6%9C%89%E5%90%8D%E5%AD%97/</url>
-    <content><![CDATA[<h3 id="引言">引言</h3>
-<p>这次的主题是“不忘初心”。<br>
-“不忘初心”这个词自从习大大在十九大在全党开展“不忘初心、牢记使命”主题教育之后就特别火。而且也因此开始和“牢记使命”这个词牵连在一起，和“新时代”联系在一起。<br>
-今天我想摆脱这个牵连关系：不谈使命，谈意义；不谈新时代，谈生命本身。</p>
-<p>今天分享的是阅读周国平先生的散文《生命本来没有名字》过程中产生的感悟。</p>
-<a id="more"></a>
-<h3 id="生命的初心">生命的初心</h3>
-<h4 id="问题的起源">问题的起源</h4>
-<p>我们常谈做一件事情的初心是什么，却很少思考生命的初心是什么。<br>
-做一件事有它的目的，所以自然能探索到它的初心，它是为什么而诞生的。那么在宇宙间偶然的偶然中诞生的生命又怎么去谈它的初心？从这一点看，似乎无从谈起。但我想探索的不是给每一个生命都定一个它存在的意义，而是反向去找它不应该变成什么样子。而周国平先生的观点无意间回答了我这个问题：生命本来没有名字。</p>
-<h4 id="名字对生命的侵犯">名字对生命的侵犯</h4>
-<p>我们一出生，就被父母赋予了名字，而这个名字往往给予了父母对我们的期望和很多其他的关系。比如名字“xxx”，姓氏缔结了和家族的联系，名称寄予了父母希望我的一生能往怎样的方向发展（有点情况是未完成愿望之诅咒）。再后来，我们进了幼儿园，进了小学、中学、大学，越来越多的东西和名字有了牵连。比如，我们期待在学校的排行榜上出现自己的名字，我们期待奖状上附上自己的名字，希望自己的称谓里还带着一些头衔，在以后真正踏入社会可能更是如此。（大家可以仔细回想自己生命中的这些常见）<br>
-但用周国平的话讲就是：</p>
-<blockquote>
-<p>随着我们长大，越来越深地沉溺于俗务琐事，已经很少有人能记起这个最单纯的事实了。<br>
-我们彼此以名字相见，名字又与头衔、身份 、财产之类相连，结果，在这些寄生物的缠绕之下，生命本身隐匿了，甚至萎缩了。无论对己对人，生命的感觉都日趋麻痹。多数时候，我们只是作为一个称谓活在世上。即使是朝夕相处的伴侣，也难得以生命的本然状态相待，更多的是一种伦常和习惯。</p>
-</blockquote>
-<h4 id="名字对生命中的爱情">名字对生命中的爱情</h4>
-<p>也受这个影响，在我心里，爱情有三种境界。<br>
-第一种是最广泛存在的最平凡最普通的爱情，也是最受“名字”本身影响的爱情。<br>
-在弗洛姆的《爱的艺术》中描述了这种普遍的爱情：</p>
-<blockquote>
-<p>在一个商业化占统治地位以及物质成果看得高于一切的文化中，人与人之间的爱情关系也遵循着同控制商品和劳动市场一样的基本准则。<br>
-归根结底爱情的产生是以权衡对方及本人的交换价值为前提的。<br>
-——《爱的艺术》（弗洛姆）</p>
-</blockquote>
-<p>第二种是慢慢淡去那种衡量“配不配得上”、“值不值得追求”这些观念观念，而转向一种纯粹的生活的深情。</p>
-<blockquote>
-<p>我不会说美好的情话，我只在柴米油盐中伴你走过每一天。内裤和内裤晾在一起，名字和名字刻在一起。你在，吵得天翻地覆；你走了，在你坟前轻轻地哭。<br>
-—— 《名字和名字刻在一起》（路明）</p>
-</blockquote>
-<p>第三种境界是这篇文章描述的那种，它是从反面去讲的。</p>
-<blockquote>
-<p>你说你爱你的妻子，可是，如果你不是把她当作一个独一无二的生命来爱，那么你的爱还是比较有限。你爱她的美丽、温柔、贤惠 、聪明，当然都对，但这些品质在别的女人身上也能找到。惟独她的生命，作为一个生命体的她，却是在普天下的女人身上也无法重组或再生的，一旦失去，便是不可挽回地失去了。 世上什么都能重复，恋爱可以再谈，配偶可以另择，身份可以炮制，钱财可以重挣，甚至历史也可以重演，惟独生命不能。<br>
-——《生命本来没有名字》（周国平）</p>
-</blockquote>
-<h3 id="生命的意义">生命的意义</h3>
-<p>同样的，我谈不了生命的意义，但是想讲讲生命不该丧失什么。也以此作结。</p>
-<blockquote>
-<p>浩瀚宇宙间，也许只有我们的星球开出了生命的花朵，可是，在这个幸运的星球上，比比皆是利益的交换，身份的较量，财产的争夺，最罕见的偏偏是生命与生命的相遇。仔细想想，我们是怎样地本末倒置，因小失大，辜负了造化的宠爱。<br>
-我相信，对于生命的这种珍惜和体悟乃是一切人间之爱的至深的源泉。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Life</category>
-        <category>Reading</category>
-      </categories>
-      <tags>
-        <tag>Love</tag>
       </tags>
   </entry>
 </search>
