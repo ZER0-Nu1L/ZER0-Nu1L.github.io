@@ -100,61 +100,6 @@ fping指令来扫描当前网段内的所有IP</p>
       </tags>
   </entry>
   <entry>
-    <title>【GitKraken】 Could not find a compatible repository</title>
-    <url>/2020/05/01/GitKraken%20Error/</url>
-    <content><![CDATA[<h1>情况说明</h1>
-<p>有一天我用 GitKragen 打开我常用的仓库 Note，但发现有这样的报错：</p>
-<img src="/2020/05/01/GitKraken%20Error/image-20200501230732304.png" alt="image-20200501230732304" style="zoom:67%;">
-<p>之后用 GitKragen 始终打不开仓库 Notes 仓库。</p>
-<blockquote>
-<p>本文分析了可能出现此情况的所有可能，提出解决这个问题的方法，以及使用 GitKragen 的经验教训。</p>
-</blockquote>
-<a id="more"></a>
-<h1>原因分析</h1>
-<p>在 <a href="https://support.gitkraken.com/faq/" target="_blank" rel="noopener">https://support.gitkraken.com/faq/</a> 有专门这样一条：</p>
-<p><img src="/2020/05/01/GitKraken%20Error/clip_image001-1588345641404.png" alt></p>
-<p>翻译解释如下:</p>
-<ol>
-<li>当前的仓库被其他工具占用了，先把这些工具解除对仓库的占用，再尝试用 GitKragen 打开。</li>
-<li>尝试将仓库未解决的更改 stash ，或者提交，或者切换分支，再尝试用     GitKragen 打开。</li>
-<li>坑你是某个文件的完整路径过长，GitKragen 支持的最大的文件路径是 260 个字符。</li>
-</ol>
-<h1>尝试与解决</h1>
-<p>根据我当前的情况，第一个情况不可能，开始尝试第二个，同时在处理第二个的过程中注意第三个。<br>
-因为很可能是最近添加了路径过长的文件导致，在解决新的更改的时候可能发现那个文件。</p>
-<p>最开始并没有发现可特别疑的文件，顺利地把所有的文件提交了上去。之后发现 GitKragen 还是打不开仓库（排除了第二种情况）。</p>
-<p>尝试对最近看起来文件路径还是蛮长的文件进行了路径长度统计，但基本都不超过 150。<br>
-所以实在太奇怪了……（第三种情况也要排除了？）😵</p>
-<p>然而，在观察 Git History 的时候发现了神奇的事情：⭐️<img src="/2020/05/01/GitKraken%20Error/clip_image002.png" alt>发现之前提交了这个文件名巨长无比的文件？？<br>
-赶紧测试了一下：<br>
-<img src="/2020/05/01/GitKraken%20Error/clip_image003.png" alt></p>
-<p>逼近 260，有很大可能，然后发现这个文件原来的名称是“常用的输入字符的上标、下标、脚标.txt”<br>
-顿时懂了，这个含中文字符的文件名在 git 里面中文字符被 <code>\xxx</code> 来编码代替，而所谓的“文件路径是 260 个字符”是没有对 <code>\xxx</code> 解码的情况下测定的长度。<br>
-更改文件名，之后，GitKragen 果然恢复正常了…… ​😄​</p>
-<h1>经验教训</h1>
-<ol>
-<li>了解可能导致 GitKragen 打不开仓库的情况。</li>
-<li>在 Git 仓库里面
-<ol>
-<li>尽量不要让文件的层次太深（本案例没有太大这样的问题）</li>
-<li>文件命名在没有特殊需求的情况下使用英文字符（中文字符对 GitKragen 的字符长度规则里是 ×4 的，容易超过它的上限 260）</li>
-</ol>
-</li>
-</ol>
-<blockquote>
-<p>希望本文对也喜爱 GitKraken 的同仁能有点启示。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Development</category>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>GitKraken</tag>
-        <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>招新：Crypto方向介绍</title>
     <url>/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</url>
     <content><![CDATA[<h1>Crypto 方向基础</h1>
@@ -254,81 +199,58 @@ RSA、Elgamal、ECC等。</li>
       </tags>
   </entry>
   <entry>
-    <title>VSCode Remote-SSH Kali 配置</title>
-    <url>/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/architecture-ssh.png" width="700">
-<h1>前言</h1>
-<p>SSH 是我们经常用的一种协议，而 VSCode 的拓展 Remote-SSH 确实给力，允许在远程连接，在本地的终端进行编程。对我而言，就不需要在虚拟机 Ubuntu 里面安装 IDE，或者每次用共享文件夹编程完后跑到虚拟机中再跑程序。可以直接在自己的 Windows 下的 VSCode 进行编程。</p>
-<p>关于这方面的博客大多只有陈列一堆的命令而不加解释，读者照抄命令，有时候可以成功，有时候却不能，有时候抄命令抄一半就忘了抄到哪里。</p>
+    <title>【GitKraken】 Could not find a compatible repository</title>
+    <url>/2020/05/01/GitKraken%20Error/</url>
+    <content><![CDATA[<h1>情况说明</h1>
+<p>有一天我用 GitKragen 打开我常用的仓库 Note，但发现有这样的报错：</p>
+<img src="/2020/05/01/GitKraken%20Error/image-20200501230732304.png" alt="image-20200501230732304" style="zoom:67%;">
+<p>之后用 GitKragen 始终打不开仓库 Notes 仓库。</p>
+<blockquote>
+<p>本文分析了可能出现此情况的所有可能，提出解决这个问题的方法，以及使用 GitKragen 的经验教训。</p>
+</blockquote>
 <a id="more"></a>
-<p>最糟糕的是不能举一反三，比如现在似乎没有用 Remote-SSH 连接 kali 的文章。这也正是此文章的目的所在之一。<br>
-此文章最重要的目的在于将整个过程命令的含义和排错命令进行阐述。</p>
-<h1>SSH 需要注意的几个点</h1>
-<h2 id="SSH-命令">SSH 命令</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p 22 username@ipaddress</span><br></pre></td></tr></table></figure>
-<h3 id="端口">端口</h3>
-<p>在命令中已经声明端口是22 （<code>-p 22</code>），很多时候可以省略这个参数，因为 <code>ssh</code> 命令默认的端口就是 22。</p>
-<p>端口 22 有时候是没有打开的，在 Linux 和 Windows 系统中都是用 <code>netstat -an</code> 来查看所有开放的端口。</p>
-<p>在 Linux 下可以用 <code>netstat -an | grep :22</code> 来查看端口 22 是否开放；<br>
-<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/Ubuntu_netstart_22.png" width="500"></p>
-<p>在 Windows 下可以用 <code>netstat -an | findstr &quot;:22&quot;</code> 来查看端口 22 是否开放。<br>
-<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/Windows_netstart_22.png" width="500"></p>
-<h3 id="连接成功">连接成功</h3>
-<p>连接之后查看信息：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">user@hostname :~$ <span class="built_in">echo</span> <span class="variable">$SSH_CLIENT</span></span><br><span class="line">xxx.xxx.xxx.xxx portxx 22</span><br><span class="line">user@hostname :~$ <span class="built_in">echo</span> <span class="variable">$SSH_CONNECTION</span></span><br><span class="line">xxx.xxx.xxx.xxx portxx xxx.xxx.xxx.xxx portxx</span><br></pre></td></tr></table></figure>
-<h3 id="主机名与用户">主机名与用户</h3>
-<p>一种可能导致连接不成功的原因是把主机名和用户名搞混淆了。<br>
-这样会错连接一个可能存在也或者不存在的用户。</p>
-<p>查看主机的命令是 <code>hostname</code> ，查看用户的命令是 <code>whoami</code>。</p>
-<p>其实也可以发现在 Linux 的终端中，每个命令的头部是 <code>username@hostname</code> ；<br>
-而 Windows 的终端中命令的头部只有目录信息。</p>
-<h1>VSCode Remote-SSH — kali</h1>
-<h2 id="VSCode-Remote-SSH">VSCode Remote-SSH</h2>
-<p>这个拓展是非常易用的，只需要启动 <code>Remote-SSH</code>后点击 <code>Remote-SSH:Connect to Host...</code>，输入 ip 和密码就可以 SSH 连接到远程机器。</p>
-<h2 id="kali">kali</h2>
-<h3 id="1-Permission-denied-please-try-again">1.Permission denied, please try again.</h3>
-<p>如果用同样的方式去连接 kali 的话，会遇到的第一个情况是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Permission denied, please try again.</span><br></pre></td></tr></table></figure>
-<p>原因在于用上述的方式默认连接的是 kali 的普通用户，但是 kali 是默认是特权用户 root，所以输入的账户和密码是不对应的。</p>
-<p>解决的方法是：</p>
-<p>启动 <code>Remote-SSH</code>后点击 <code>Remote-SSH:Connect to Host...</code>，再点击 <code>Add New SSH Host...</code>，根据提示输入<br>
-<code>ssh root@xxx.xxx.xxx.xxx</code>，此时再连接，输入的密码就匹配上了。</p>
-<h3 id="2-ssh-connect-to-host-xxx-xxx-xx-xx-port-22-Connection-refused">2.ssh:connect to host xxx.xxx.xx.xx port 22: Connection refused</h3>
-<p>虽然密码正确，但是依然连接不上。<br>
-现在再去查“kali使用ssh进行登录”，就很容易明白为什么 kali 使用 ssh 登录需要改那里改这里了。</p>
-<p>这也是 kali 是默认是特权用户 root 导致的。平时我们用 SSH 连接的是普通的用户，连接特权用户需要更改 SSH 的配置文件。</p>
-<h3 id="修改-ssh-配置文件">修改 ssh 配置文件</h3>
-<p>在 kali 的终端下：<br>
-需要修改的 ssh 的配置文件有 /etc/ssh 下的 ssh_config 和 ssh文件。</p>
-<h4 id="修改-ssh-config-文件">修改 ssh_config 文件</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/ssh</span><br><span class="line">vim ssh_config</span><br></pre></td></tr></table></figure>
-<p>修改一个地方：<br>
-<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/PasswordAuthentication.png" width="300"><br>
-保存修改，退出 vim 编辑器</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">:wq!</span><br></pre></td></tr></table></figure>
-<h4 id="修改-sshd-config-文件">修改 sshd_config 文件</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim sshd_config</span><br></pre></td></tr></table></figure>
-<p>修改两处地方：<br>
-<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/PermitRootLogin.png" width="300"></p>
-<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/PasswordAuthentication_d.png" width="600">
-<p>修改的含义，根据其中文意义和文章之前的解说应该非常容易理解。<br>
-保存修改，退出 vim 编辑器</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">:wq!</span><br></pre></td></tr></table></figure>
-<p>重启ssh服务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service ssh strat</span><br></pre></td></tr></table></figure>
-<p>有时候重启一下才会生效（不知道为什么）。</p>
-<h3 id="连接">连接</h3>
-<p>再一次用 VSCode 的 Remote-SSH 连接，就能成功连接 kali 了。</p>
+<h1>原因分析</h1>
+<p>在 <a href="https://support.gitkraken.com/faq/" target="_blank" rel="noopener">https://support.gitkraken.com/faq/</a> 有专门这样一条：</p>
+<p><img src="/2020/05/01/GitKraken%20Error/clip_image001-1588345641404.png" alt></p>
+<p>翻译解释如下:</p>
+<ol>
+<li>当前的仓库被其他工具占用了，先把这些工具解除对仓库的占用，再尝试用 GitKragen 打开。</li>
+<li>尝试将仓库未解决的更改 stash ，或者提交，或者切换分支，再尝试用     GitKragen 打开。</li>
+<li>坑你是某个文件的完整路径过长，GitKragen 支持的最大的文件路径是 260 个字符。</li>
+</ol>
+<h1>尝试与解决</h1>
+<p>根据我当前的情况，第一个情况不可能，开始尝试第二个，同时在处理第二个的过程中注意第三个。<br>
+因为很可能是最近添加了路径过长的文件导致，在解决新的更改的时候可能发现那个文件。</p>
+<p>最开始并没有发现可特别疑的文件，顺利地把所有的文件提交了上去。之后发现 GitKragen 还是打不开仓库（排除了第二种情况）。</p>
+<p>尝试对最近看起来文件路径还是蛮长的文件进行了路径长度统计，但基本都不超过 150。<br>
+所以实在太奇怪了……（第三种情况也要排除了？）😵</p>
+<p>然而，在观察 Git History 的时候发现了神奇的事情：⭐️<img src="/2020/05/01/GitKraken%20Error/clip_image002.png" alt>发现之前提交了这个文件名巨长无比的文件？？<br>
+赶紧测试了一下：<br>
+<img src="/2020/05/01/GitKraken%20Error/clip_image003.png" alt></p>
+<p>逼近 260，有很大可能，然后发现这个文件原来的名称是“常用的输入字符的上标、下标、脚标.txt”<br>
+顿时懂了，这个含中文字符的文件名在 git 里面中文字符被 <code>\xxx</code> 来编码代替，而所谓的“文件路径是 260 个字符”是没有对 <code>\xxx</code> 解码的情况下测定的长度。<br>
+更改文件名，之后，GitKragen 果然恢复正常了…… ​😄​</p>
+<h1>经验教训</h1>
+<ol>
+<li>了解可能导致 GitKragen 打不开仓库的情况。</li>
+<li>在 Git 仓库里面
+<ol>
+<li>尽量不要让文件的层次太深（本案例没有太大这样的问题）</li>
+<li>文件命名在没有特殊需求的情况下使用英文字符（中文字符对 GitKragen 的字符长度规则里是 ×4 的，容易超过它的上限 260）</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>希望本文对也喜爱 GitKraken 的同仁能有点启示。</p>
+</blockquote>
 ]]></content>
       <categories>
-        <category>Web</category>
-        <category>SSH</category>
+        <category>Development</category>
+        <category>Git</category>
       </categories>
       <tags>
-        <tag>kali</tag>
-        <tag>SSH</tag>
-        <tag>VSCode</tag>
-        <tag>Remote-SSH</tag>
+        <tag>GitKraken</tag>
+        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -429,6 +351,84 @@ openssl还包含了公钥私钥的生成、摘要生成等各种工具。</p>
       </tags>
   </entry>
   <entry>
+    <title>VSCode Remote-SSH Kali 配置</title>
+    <url>/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/architecture-ssh.png" width="700">
+<h1>前言</h1>
+<p>SSH 是我们经常用的一种协议，而 VSCode 的拓展 Remote-SSH 确实给力，允许在远程连接，在本地的终端进行编程。对我而言，就不需要在虚拟机 Ubuntu 里面安装 IDE，或者每次用共享文件夹编程完后跑到虚拟机中再跑程序。可以直接在自己的 Windows 下的 VSCode 进行编程。</p>
+<p>关于这方面的博客大多只有陈列一堆的命令而不加解释，读者照抄命令，有时候可以成功，有时候却不能，有时候抄命令抄一半就忘了抄到哪里。</p>
+<a id="more"></a>
+<p>最糟糕的是不能举一反三，比如现在似乎没有用 Remote-SSH 连接 kali 的文章。这也正是此文章的目的所在之一。<br>
+此文章最重要的目的在于将整个过程命令的含义和排错命令进行阐述。</p>
+<h1>SSH 需要注意的几个点</h1>
+<h2 id="SSH-命令">SSH 命令</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p 22 username@ipaddress</span><br></pre></td></tr></table></figure>
+<h3 id="端口">端口</h3>
+<p>在命令中已经声明端口是22 （<code>-p 22</code>），很多时候可以省略这个参数，因为 <code>ssh</code> 命令默认的端口就是 22。</p>
+<p>端口 22 有时候是没有打开的，在 Linux 和 Windows 系统中都是用 <code>netstat -an</code> 来查看所有开放的端口。</p>
+<p>在 Linux 下可以用 <code>netstat -an | grep :22</code> 来查看端口 22 是否开放；<br>
+<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/Ubuntu_netstart_22.png" width="500"></p>
+<p>在 Windows 下可以用 <code>netstat -an | findstr &quot;:22&quot;</code> 来查看端口 22 是否开放。<br>
+<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/Windows_netstart_22.png" width="500"></p>
+<h3 id="连接成功">连接成功</h3>
+<p>连接之后查看信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">user@hostname :~$ <span class="built_in">echo</span> <span class="variable">$SSH_CLIENT</span></span><br><span class="line">xxx.xxx.xxx.xxx portxx 22</span><br><span class="line">user@hostname :~$ <span class="built_in">echo</span> <span class="variable">$SSH_CONNECTION</span></span><br><span class="line">xxx.xxx.xxx.xxx portxx xxx.xxx.xxx.xxx portxx</span><br></pre></td></tr></table></figure>
+<h3 id="主机名与用户">主机名与用户</h3>
+<p>一种可能导致连接不成功的原因是把主机名和用户名搞混淆了。<br>
+这样会错连接一个可能存在也或者不存在的用户。</p>
+<p>查看主机的命令是 <code>hostname</code> ，查看用户的命令是 <code>whoami</code>。</p>
+<p>其实也可以发现在 Linux 的终端中，每个命令的头部是 <code>username@hostname</code> ；<br>
+而 Windows 的终端中命令的头部只有目录信息。</p>
+<h1>VSCode Remote-SSH — kali</h1>
+<h2 id="VSCode-Remote-SSH">VSCode Remote-SSH</h2>
+<p>这个拓展是非常易用的，只需要启动 <code>Remote-SSH</code>后点击 <code>Remote-SSH:Connect to Host...</code>，输入 ip 和密码就可以 SSH 连接到远程机器。</p>
+<h2 id="kali">kali</h2>
+<h3 id="1-Permission-denied-please-try-again">1.Permission denied, please try again.</h3>
+<p>如果用同样的方式去连接 kali 的话，会遇到的第一个情况是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Permission denied, please try again.</span><br></pre></td></tr></table></figure>
+<p>原因在于用上述的方式默认连接的是 kali 的普通用户，但是 kali 是默认是特权用户 root，所以输入的账户和密码是不对应的。</p>
+<p>解决的方法是：</p>
+<p>启动 <code>Remote-SSH</code>后点击 <code>Remote-SSH:Connect to Host...</code>，再点击 <code>Add New SSH Host...</code>，根据提示输入<br>
+<code>ssh root@xxx.xxx.xxx.xxx</code>，此时再连接，输入的密码就匹配上了。</p>
+<h3 id="2-ssh-connect-to-host-xxx-xxx-xx-xx-port-22-Connection-refused">2.ssh:connect to host xxx.xxx.xx.xx port 22: Connection refused</h3>
+<p>虽然密码正确，但是依然连接不上。<br>
+现在再去查“kali使用ssh进行登录”，就很容易明白为什么 kali 使用 ssh 登录需要改那里改这里了。</p>
+<p>这也是 kali 是默认是特权用户 root 导致的。平时我们用 SSH 连接的是普通的用户，连接特权用户需要更改 SSH 的配置文件。</p>
+<h3 id="修改-ssh-配置文件">修改 ssh 配置文件</h3>
+<p>在 kali 的终端下：<br>
+需要修改的 ssh 的配置文件有 /etc/ssh 下的 ssh_config 和 ssh文件。</p>
+<h4 id="修改-ssh-config-文件">修改 ssh_config 文件</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/ssh</span><br><span class="line">vim ssh_config</span><br></pre></td></tr></table></figure>
+<p>修改一个地方：<br>
+<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/PasswordAuthentication.png" width="300"><br>
+保存修改，退出 vim 编辑器</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">:wq!</span><br></pre></td></tr></table></figure>
+<h4 id="修改-sshd-config-文件">修改 sshd_config 文件</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim sshd_config</span><br></pre></td></tr></table></figure>
+<p>修改两处地方：<br>
+<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/PermitRootLogin.png" width="300"></p>
+<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/PasswordAuthentication_d.png" width="600">
+<p>修改的含义，根据其中文意义和文章之前的解说应该非常容易理解。<br>
+保存修改，退出 vim 编辑器</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">:wq!</span><br></pre></td></tr></table></figure>
+<p>重启ssh服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service ssh strat</span><br></pre></td></tr></table></figure>
+<p>有时候重启一下才会生效（不知道为什么）。</p>
+<h3 id="连接">连接</h3>
+<p>再一次用 VSCode 的 Remote-SSH 连接，就能成功连接 kali 了。</p>
+]]></content>
+      <categories>
+        <category>Web</category>
+        <category>SSH</category>
+      </categories>
+      <tags>
+        <tag>kali</tag>
+        <tag>SSH</tag>
+        <tag>VSCode</tag>
+        <tag>Remote-SSH</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SDN-DDoS Question &amp; Consult</title>
     <url>/2019/12/08/SDN-DDoS/</url>
     <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
@@ -447,56 +447,6 @@ openssl还包含了公钥私钥的生成、摘要生成等各种工具。</p>
       </categories>
       <tags>
         <tag>DDoS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>libnum-error</title>
-    <url>/2020/02/05/libnum-error/</url>
-    <content><![CDATA[<p>由于之前清理空间的时候不慎将 WSL 的配置文件也误删掉了，所以慌忙还原 WSL 当初的配置，对于一些 Python 库的安装大多用 <code>pip</code> 的命令，直接安装，通过 <code>import ...</code> 的方式做一个简单的检查。但是前段时间在使用 <code>libnum</code> 的时候遇到了 <code>AttributeError: 'str' object has no attribute 'hex'</code> 的报错。</p>
-<p>网络上并没有这么针对性的博客来排除这个 <code>AttributeError</code>，也几乎没有讲过用 <code>pip</code> 命令其实也可以安装 <code>libnum</code>。</p>
-<p>所以这篇文章就讲解 <code>libnum</code> 两种不同的安装方法，以及为什么会出现和如何解决 <code>libnum</code> 下的 <code>AttributeError</code></p>
-<a id="more"></a>
-<h1>python libnum库安装使用方法</h1>
-<p>方法1：<br>
-在 Python 2.7 的环境下安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hellman/libnum</span><br><span class="line"><span class="built_in">cd</span> libnum</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
-<p>方法2：<br>
-在 Python 3 环境下安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install libnum</span><br></pre></td></tr></table></figure>
-<h1>Python2 for libnum</h1>
-<p>这里做下解释，如果搜索 “ python libnum 库安装 ”的文章，一般都只会告诉你第一种方法。</p>
-<p>这是因为在很长一段时间，<code>libnum</code> 都只支持 Python2，在它的开源库中我们也可以看到：“Requirements: python2.7”</p>
-<img src="/2020/02/05/libnum-error/libnum-error.png" width="500">
-<p>甚至在 2018 年 12 月还有人 issue 是否支持 Python3：</p>
-<img src="/2020/02/05/libnum-error/libum2-3.png" width="500">
-<p>很多写 <code>libnum</code> 安装教程的博客也多半是在 2018 年12月前写的。</p>
-<h1>Python3 for libnum</h1>
-<p>然而！！！在 2019 年 3 月的时候有人回复了这个 issue，已经实现支持 Python3 的libnum。</p>
-<img src="/2020/02/05/libnum-error/libnum3.png" width="500">
-<p>其地址是：<a href="https://github.com/JafarAkhondali/python3-libnum" target="_blank" rel="noopener">https://github.com/JafarAkhondali/python3-libnum</a></p>
-<p>同时我们可以查到在 <code>https://pypi.org/</code> 中查到 <a href="http://project/libnum/" target="_blank" rel="noopener"><code>libnum 1.6.0</code></a></p>
-<img src="/2020/02/05/libnum-error/PyPI.png" width="500">
-<p>此时可以用 <code>pip install libnum</code> 的方式安装 <code>libnum</code>，但需要注意的是，这里的 <code>pip install libnum</code> 对应的是 只支持 Python3 的 <code>libnum</code>。</p>
-<h1>AttributeError: ‘str’ object has no attribute ‘hex’</h1>
-<h2 id="报错原因分析">报错原因分析</h2>
-<p>出现这个错误的原因是 python3 中只有 unicode str，所以把 decode 方法去掉了，所以 “str’ object has no attribute 'hex”。</p>
-<blockquote>
-<p>比较抱歉，没有截图，只是文字描述。</p>
-</blockquote>
-<p>我们仔细看报错的信息，稍作分析就发现，运行过程中是遇到 <code>encode('hex')</code> 之类的方法的时候报错的。说明错误是用 Python3 的解释器去解释 Python2 的代码 或者其他等价的情况发生的。</p>
-<p>很可能是因为我 当初+后来 同时使用 <code>pip install libnum</code> 和 <code>python setup.py install</code> 的方法安装库，所以导致解释器解释代码的时候产生冲突。</p>
-<h2 id="问题解决">问题解决</h2>
-<p>笔者并不精通 Python2 和 Python3 的兼容问题。<br>
-只是单纯在 Python2 下使用这些库（毕竟 Python3 的环境是部署在 Windows下的，WSL 只是由于特殊情况也安装了Python3），所以采用 <code>pip uninstall libnum</code> 的方法卸载了支持 Python3 的<code>libnum</code>库。</p>
-<p>之后代码解释正常，也得到了 flag, hhh。</p>
-<img src="/2020/02/05/libnum-error/flag.png" width="300">]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
-      <tags>
-        <tag>Error</tag>
-        <tag>Crypto</tag>
       </tags>
   </entry>
   <entry>
@@ -579,6 +529,56 @@ ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展
         <tag>IDE</tag>
         <tag>WSL</tag>
         <tag>Jupyter notebook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>libnum-error</title>
+    <url>/2020/02/05/libnum-error/</url>
+    <content><![CDATA[<p>由于之前清理空间的时候不慎将 WSL 的配置文件也误删掉了，所以慌忙还原 WSL 当初的配置，对于一些 Python 库的安装大多用 <code>pip</code> 的命令，直接安装，通过 <code>import ...</code> 的方式做一个简单的检查。但是前段时间在使用 <code>libnum</code> 的时候遇到了 <code>AttributeError: 'str' object has no attribute 'hex'</code> 的报错。</p>
+<p>网络上并没有这么针对性的博客来排除这个 <code>AttributeError</code>，也几乎没有讲过用 <code>pip</code> 命令其实也可以安装 <code>libnum</code>。</p>
+<p>所以这篇文章就讲解 <code>libnum</code> 两种不同的安装方法，以及为什么会出现和如何解决 <code>libnum</code> 下的 <code>AttributeError</code></p>
+<a id="more"></a>
+<h1>python libnum库安装使用方法</h1>
+<p>方法1：<br>
+在 Python 2.7 的环境下安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hellman/libnum</span><br><span class="line"><span class="built_in">cd</span> libnum</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+<p>方法2：<br>
+在 Python 3 环境下安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install libnum</span><br></pre></td></tr></table></figure>
+<h1>Python2 for libnum</h1>
+<p>这里做下解释，如果搜索 “ python libnum 库安装 ”的文章，一般都只会告诉你第一种方法。</p>
+<p>这是因为在很长一段时间，<code>libnum</code> 都只支持 Python2，在它的开源库中我们也可以看到：“Requirements: python2.7”</p>
+<img src="/2020/02/05/libnum-error/libnum-error.png" width="500">
+<p>甚至在 2018 年 12 月还有人 issue 是否支持 Python3：</p>
+<img src="/2020/02/05/libnum-error/libum2-3.png" width="500">
+<p>很多写 <code>libnum</code> 安装教程的博客也多半是在 2018 年12月前写的。</p>
+<h1>Python3 for libnum</h1>
+<p>然而！！！在 2019 年 3 月的时候有人回复了这个 issue，已经实现支持 Python3 的libnum。</p>
+<img src="/2020/02/05/libnum-error/libnum3.png" width="500">
+<p>其地址是：<a href="https://github.com/JafarAkhondali/python3-libnum" target="_blank" rel="noopener">https://github.com/JafarAkhondali/python3-libnum</a></p>
+<p>同时我们可以查到在 <code>https://pypi.org/</code> 中查到 <a href="http://project/libnum/" target="_blank" rel="noopener"><code>libnum 1.6.0</code></a></p>
+<img src="/2020/02/05/libnum-error/PyPI.png" width="500">
+<p>此时可以用 <code>pip install libnum</code> 的方式安装 <code>libnum</code>，但需要注意的是，这里的 <code>pip install libnum</code> 对应的是 只支持 Python3 的 <code>libnum</code>。</p>
+<h1>AttributeError: ‘str’ object has no attribute ‘hex’</h1>
+<h2 id="报错原因分析">报错原因分析</h2>
+<p>出现这个错误的原因是 python3 中只有 unicode str，所以把 decode 方法去掉了，所以 “str’ object has no attribute 'hex”。</p>
+<blockquote>
+<p>比较抱歉，没有截图，只是文字描述。</p>
+</blockquote>
+<p>我们仔细看报错的信息，稍作分析就发现，运行过程中是遇到 <code>encode('hex')</code> 之类的方法的时候报错的。说明错误是用 Python3 的解释器去解释 Python2 的代码 或者其他等价的情况发生的。</p>
+<p>很可能是因为我 当初+后来 同时使用 <code>pip install libnum</code> 和 <code>python setup.py install</code> 的方法安装库，所以导致解释器解释代码的时候产生冲突。</p>
+<h2 id="问题解决">问题解决</h2>
+<p>笔者并不精通 Python2 和 Python3 的兼容问题。<br>
+只是单纯在 Python2 下使用这些库（毕竟 Python3 的环境是部署在 Windows下的，WSL 只是由于特殊情况也安装了Python3），所以采用 <code>pip uninstall libnum</code> 的方法卸载了支持 Python3 的<code>libnum</code>库。</p>
+<p>之后代码解释正常，也得到了 flag, hhh。</p>
+<img src="/2020/02/05/libnum-error/flag.png" width="300">]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
+        <tag>Crypto</tag>
       </tags>
   </entry>
   <entry>
@@ -1045,6 +1045,136 @@ use more than 20~30% time to try;</p>
       </tags>
   </entry>
   <entry>
+    <title>【飞蛾扑火】PowerShell 终端美化踩坑</title>
+    <url>/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/</url>
+    <content><![CDATA[<blockquote>
+<p>美，是一种感知。<br>
+潜藏在每个人生命中，<br>
+当它被挖掘，被激发，<br>
+便会变成一种使人安定的力量。<br>
+它不仅能带来感官上的触动，<br>
+也是历练生命、丰沛情感、释放思想的源泉。<br>
+—— 蒋勋</p>
+</blockquote>
+<p>对于 PowerShell 美化的折腾，其实在两三个月前我曾经做过一次，那个时候还是在期末考试期间。因为过度沉迷，以及涌现出了的意料之外的终端乱码，花费了不少时间，最后为了赶复习进度而不了了之。</p>
+<p>这次又一次在 <code>zn</code> 的安利下，开始飞蛾扑火。</p>
+<p>在这里分享 PowerShell 美化的思路，希望帮助大家避过坑，以及记录一些自己的感悟。</p>
+<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308121225697.png" alt="image-20200308121225697"></p>
+<a id="more"></a>
+<h1>PowerShell 终端美化思路</h1>
+<blockquote>
+<p>PowerShell 默认的终端是很简单的，并没有考虑美化。从实用角度基本是够用的，但在实用的基础上，很多人希望能有更好的使用体验，所以一大堆应用涌现。</p>
+</blockquote>
+<p>终端美化的基本思路有：</p>
+<ol>
+<li>对 PowerShell 的字体等进行修改；</li>
+<li>在 PowerShell 上安装并使用 oh-my-posh；</li>
+<li>改用第三方终端，如 Fluent Terminal、Hyper、Terminus 等。</li>
+</ol>
+<p>⭐️ ​其中值得注意的是，PowerShell 安装 oh-my-posh 后很可能出现“乱码”的现象，这是字体缺位导致的，建议改用支持大量其他字体的第三方终端，一劳永逸。</p>
+<h2 id="结论置顶">结论置顶</h2>
+<blockquote>
+<p>这里先呈现结论，结论的依据会在后面详细解释。</p>
+</blockquote>
+<h3 id="效果图">效果图</h3>
+<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308103044933.png" alt="image-20200308103044933"></p>
+<h3 id="思路">思路</h3>
+<p>PowerShell 自身不支持 oh-my-zsh 的一些字体，会导致乱码，故使用 Powershell 第三方终端（如 Fluent Terminal）+oh-my-zsh 的方案。</p>
+<ol>
+<li>下载安装 Fluent Terminal；</li>
+<li>在 PowerShell 下安装 oh-my-zsh，选择自己喜欢的主题，通过更改 <code>$proflie</code> 指定的文件，将 oh-my-zsh 的设置在每次启动 PowerShell 的时候自动加载。</li>
+<li>下载 oh-my-zsh 需要的字体，将 Fluent Terminal 的字体修改；</li>
+<li>更改 VSCode 的终端字体设置，使之同等美化。</li>
+</ol>
+<h2 id="修改-PowerShell-的终端">修改 PowerShell 的终端</h2>
+<p>这是 PowerShell 和 cmd 自身提供的属性设置。（标题栏右键）</p>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308101500526.png" alt="image-20200308101500526" style="zoom:80%;">
+<p>但是局限性非常大，可用的字体非常少。cmd 和 PowerShell 对字体的要求很严苛，即使你安装了一大堆的字体，在 <code>&quot;Windows PowerShell&quot; 属性 </code> 中的 <code>字体</code> 选项卡下，能看到的字体也就几个。</p>
+<p>也有博客对自定义字体有“研究成果”，详见：<a href="https://walterlv.github.io/post/customize-fonts-of-command-window.html#%E6%8E%A8%E8%8D%90%E5%8F%AF%E7%94%A8%E7%9A%84%E5%AD%97%E4%BD%93" target="_blank" rel="noopener">自定义 Windows PowerShell 和 cmd 的字体</a>。</p>
+<h2 id="安装使用-oh-my-zsh">安装使用 oh-my-zsh</h2>
+<p>安装步骤和使用的教程非常多，笔者也是直接参照网络上的教程安装的，这里不再赘述。<br>
+但使用的时候会发现，没有 Linux 下 zsh 的效果，甚至出现如下近乎“乱码”的现象：</p>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308104054220.png" alt="image-20200308104054220" style="zoom: 67%;">
+<p>看看其他主题的情况？</p>
+<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308110644627.png" alt="image-20200308110644627"></p>
+<p>发现“乱码”其实只有一两种字符。<br>
+⭐️ 其实是因为对应的字符在当前字体下是不存在的，而支持这些字符的字体在 cmd 和 PowerShell 严苛要求下的字体几乎是不存在的。<br>
+✔️ 所以需要使用第三方Powershell 终端，才能还原 zsh 在 Linux 下的风采。</p>
+<h2 id="使用第三方-PowerShell-终端">使用第三方 PowerShell 终端</h2>
+<h3 id="下载安装-Fluent-Terminal">下载安装 Fluent Terminal</h3>
+<p>PowerShell 终端非常多，如 Fluent Terminal、Hyper、Terminus 等。</p>
+<p>其中很受推荐的其中一个是 Fluent Terminal，是利用 UWP 技术打造的颜值超高的终端模拟器。不过在 UWP 应用市场并找不到，要去 <a href="https://github.com/felixse/FluentTerminal/releases" target="_blank" rel="noopener">GitHub Release</a> 下载。</p>
+<p>下载完毕后，用 PowerShell 运行文件夹下的 <code>Install.ps1</code> 按照提示操作即可安装成功。<br>
+建议设置在中把默认 shell 改成 PowerShell：</p>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308105324042.png" alt="image-20200308105324042" style="zoom:67%;">
+<h3 id="修改字体">修改字体</h3>
+<p>如果前面已经在 Powershell 安装了 oh-my-zsh，此时的 Fluent Terminal 下的Powershell 依然是存在“乱码”的现象。<br>
+这时候需要下载并安装支持 oh-my-zsh 对应主题的字体，比如 powerline 的字体库： <a href="https://github.com/powerline%E3%80%82%EF%BC%88%E5%85%B6%E5%AE%9E%E6%88%91%E7%94%A8%E7%9A%84%E4%B8%8D%E6%98%AF" target="_blank" rel="noopener">https://github.com/powerline。（其实我用的不是</a> powerline, hhh）<br>
+安装后再在 Fluent Terminal 的设置中更改字体就大工告成了！</p>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308105823820.png" alt="image-20200308105823820" style="zoom:50%;">
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308110523327.png" alt="image-20200308110523327" style="zoom:80%;">
+<h3 id="VSCode-终端美化">VSCode 终端美化</h3>
+<p>在之前的基础上，只需要修改 VSCode 的终端字体即可；<br>
+可以编辑 <code>setting.json</code> ，也可以在设置中查找。</p>
+<img src="file:///C:/Users/wcb53/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png" style="zoom:80%;">
+<p>效果图：<br>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308111027390.png" alt="image-20200308111027390"></p>
+<hr>
+<h1>美学感悟</h1>
+<blockquote>
+<p>挂了美学的旗子，估计是膨胀了。 😢</p>
+</blockquote>
+<p>折腾一番还是蛮消耗时间的，但是克服不了变美的诱惑 😄。</p>
+<blockquote>
+<p>有时候会问，人的品味高是不是有时候会降低人的生活质量？</p>
+</blockquote>
+<p>百姓的音乐在高雅之士的耳朵里变成了“呕哑嘲哳”；<br>
+普通餐馆的食物在美食家面前变成“糟蹋食物”，<br>
+专业设计师会感觉市面上的东西各种变扭等等。</p>
+<blockquote>
+<p>扰乱人们的不是客观事物，而是人们对客观事物的见解。<br>
+​	—— 爱比克泰德<br>
+“超常的感觉能力会引致情绪失衡、周期性的超乎寻常的愉快或者挥之不去的忧愁。”<br>
+—— 叔本华</p>
+</blockquote>
+<p>笔者感觉，叔本华描述了那些艺术天才的忧郁气质，像极了《名人传》里对米开朗基罗的描述：“他被他这个天才左右了一生，他一生根本就没法从他这个天才里头自拔出来，所以他的生活某种程度像个苦行僧一样的，又是个工作狂。可是他的一切，他活着就是为了这个优势，为了他的天才而生的，他这一辈子就只能在这个范畴里头这么去干。”</p>
+<p>但是除去那些被自己的天才左右了一生的天才，现实生活不是也有很多很多很释然的杰出艺术家吗？就像《名人传》的米开朗琪罗传的那句名言：“世界上只有一种英雄主义,就是看清生活的真相之后依然热爱生活。”</p>
+<p>一个思考角度，我们完全可以驾驭我们的感觉能力，获得释然，开放“对客观事物的间接”，能够同等欣赏“阳春白雪”和“下里巴人”，获得生命的快感。</p>
+<p>另一种思考的角度，艺术家的忧郁气质，对于细节的感知、把控与纠结的完美主义，恰恰成就了艺术家，成为无可争辩的竞争力。</p>
+<blockquote>
+<p>美，是一种感知。<br>
+潜藏在每个人生命中，<br>
+当它被挖掘，被激发，<br>
+便会变成一种使人安定的力量。<br>
+它不仅能带来感官上的触动，<br>
+也是历练生命、丰沛情感、释放思想的源泉。<br>
+—— 蒋勋</p>
+</blockquote>
+<p>在物质匮乏的年代，对食物挑剔的人甚至没办法生存。但是现代社会已经逐步脱离物质的快发，转向追求生命的更高体验。<br>
+就像蒋勋先生所言，美是历练生命、丰沛情感、释放思想的源泉。我想，不去审美而去猎奇，真是辜负了造化的恩宠。</p>
+<hr>
+<h1>参考文章</h1>
+<ol>
+<li><a href="https://walterlv.github.io/post/customize-fonts-of-command-window.html#%E6%8E%A8%E8%8D%90%E5%8F%AF%E7%94%A8%E7%9A%84%E5%AD%97%E4%BD%93" target="_blank" rel="noopener">自定义 Windows PowerShell 和 cmd 的字体</a></li>
+<li><a href="https://blog.csdn.net/WPwalter/article/details/78937346" target="_blank" rel="noopener">将美化进行到底，把 PowerShell 做成 oh-my-zsh 的样子</a></li>
+<li><a href="http://tieba.baidu.com/p/6133164423?red_tag=o2118687620" target="_blank" rel="noopener">oh-my-zsh的图标无法正常显示</a></li>
+<li><a href="https://sspai.com/post/52868" target="_blank" rel="noopener">告别 Windows 终端的难看难用，从改造 PowerShell 的外观开始</a></li>
+<li><a href="https://www.jianshu.com/p/ae7f7b4d7a0e" target="_blank" rel="noopener">解决vscode terminal powerline字体乱码</a></li>
+</ol>
+<blockquote>
+<p>此外，还有感谢 <code>wj</code> 小姐姐 👸 提供给庸人笔者的一些灵感~</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Life</category>
+        <category>Beauty</category>
+      </categories>
+      <tags>
+        <tag>Powershell</tag>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【Wireshark 系列】中间人攻击分析</title>
     <url>/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p>中间人攻击（Man-in-the-MiddleAttack，简称“MITM攻击”）是一种非常高效（基本没有失败的可能）的攻击。<br>
@@ -1173,133 +1303,113 @@ APR 欺骗实施者，无疑。</p>
       </tags>
   </entry>
   <entry>
-    <title>【飞蛾扑火】PowerShell 终端美化踩坑</title>
-    <url>/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/</url>
-    <content><![CDATA[<blockquote>
-<p>美，是一种感知。<br>
-潜藏在每个人生命中，<br>
-当它被挖掘，被激发，<br>
-便会变成一种使人安定的力量。<br>
-它不仅能带来感官上的触动，<br>
-也是历练生命、丰沛情感、释放思想的源泉。<br>
-—— 蒋勋</p>
-</blockquote>
-<p>对于 PowerShell 美化的折腾，其实在两三个月前我曾经做过一次，那个时候还是在期末考试期间。因为过度沉迷，以及涌现出了的意料之外的终端乱码，花费了不少时间，最后为了赶复习进度而不了了之。</p>
-<p>这次又一次在 <code>zn</code> 的安利下，开始飞蛾扑火。</p>
-<p>在这里分享 PowerShell 美化的思路，希望帮助大家避过坑，以及记录一些自己的感悟。</p>
-<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308121225697.png" alt="image-20200308121225697"></p>
+    <title>在电流强度变化的直导线产生的磁场中任意形状线框运动产生电动势</title>
+    <url>/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/</url>
+    <content><![CDATA[<h1>背景介绍</h1>
+<p>在第十二章节变化的电磁场中计算感生电动势中遇到一道题目中包含比较复杂的数学计算，想通过自己的理论推导和借助计算机的算力将同类问题进行推广、借助计算机计算分析。</p>
 <a id="more"></a>
-<h1>PowerShell 终端美化思路</h1>
-<blockquote>
-<p>PowerShell 默认的终端是很简单的，并没有考虑美化。从实用角度基本是够用的，但在实用的基础上，很多人希望能有更好的使用体验，所以一大堆应用涌现。</p>
-</blockquote>
-<p>终端美化的基本思路有：</p>
+<p>原题如下：</p>
+<p>例12-8 长直导线中通有电流 $I=I_0 · cos t (I_0 常量)$ 。有一与之共面的三角形线圈 ABC,已知 AB=a, BC=b。若线圈以垂直于导线方向的速度 v 向右平移, 当 B 点与长直导线的距离为 x 时,求线圈 ABC 中的感应电动势。(如图1所示)</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601203930603.png" alt="image-20200601203930603"></p>
+<center>图1</center>
+<p>解：<br>
+将三角形沿竖直方向分为若干宽为 $dr$ 的矩形积分。<br>
+$$<br>
+\begin{aligned}<br>
+\varphi_m &amp;= \int_x^{x + b}{\frac{\mu _oI}{2\pi r}}\left( x+b-r \right) \frac{a}{b}{d}r<br>
+\\<br>
+&amp;= \frac{\mu _oa}{2\pi b}I\cdot \left[ \left( x+b \right) \ln \frac{x + b}{x}-b \right]<br>
+\end{aligned}<br>
+$$</p>
+<p>$$<br>
+\varepsilon_i = -\frac{ d \varphi_m}{dt}<br>
+$$</p>
+<p>$$<br>
+I=I_0 cos \left( {t} \right) , \frac{dx}{dt} = v<br>
+$$</p>
+<p>$$<br>
+\begin{aligned}<br>
+\varepsilon_i<br>
+&amp;= - \frac{\mu_o a}{2 \pi b} \left\{ \frac{dI}{dt} \left[ \left( x+b \right) \ln \frac{x + b}{x} - b \right] +I \frac{d}{dt} \left[ \left( x+b \right) \ln \frac{x + b}{x}-b \right] \right\}<br>
+\\<br>
+&amp;= \frac{\mu_o a I_o \omega }{2 \pi b} \sin \omega t \left[ \left( x+b \right) \ln \frac{x + b}{x} - b \right] +\frac{\mu _o a v}{2 \pi b}I_o \cos \omega t \left( -\ln \frac{x + b}{x} + \frac{b}{x} \right)<br>
+\end{aligned}<br>
+$$</p>
+<h1>猜想和计算推导</h1>
+<h2 id="思路分析">思路分析</h2>
+<p>我们发现这个电动势的计算结果中与α无关，这意味着只要保持三角形的高不变，将顶点C沿着平行于AB的方向移动，就不会改变对应的电动势，这是实现推广到任意形状的线框的基础。</p>
+<p>本例如果借助编程语言，最关键的并不是我们手算时遇到的数学上的困难（积分，求导时x和I都是t的函数，需要用对应的求导法则），这里的数学问题可以用MATLAB轻松解决，这里为了一元化，从数学计算到数据可视化，再到GUI界面展示，都是用Python。所以这里没有使用MATLAB，而用了Python的SymPy。</p>
+<p>所以现在求电动势式对t求导已经不再是我们遇到最麻烦的问题，推广到任意形状的关键是在任意形状的线框在磁场内的磁通量的求解上。</p>
+<h2 id="推广到梯形">推广到梯形</h2>
+<p>我们可以先把三角形推广到梯形。</p>
+<p>需要分两种情况：一种是梯形的底离直导线更近，一种是梯形的底离直导线更近更远；</p>
+<p>1、梯形的底离直导线更近的情况如图2所示</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601203951198.png" alt="image-20200601203951198"></p>
+<center>图2</center>
+<p>2、梯形的底离直导线更远的情况如图3所示</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204023480.png" alt="image-20200601204023480"></p>
+<center>图3</center>
+<p>类似于我们在例12-8中发现，在梯形中电动势的计算结果中与α无关，这意味着只要保持梯形的高不变，将梯形的平行的两条边C沿着平行的方向移动，就不会改变对应的电动势。</p>
+<p>于此基础上，我们可以把任意的多边形分割成若干个梯形，其中梯形分成两种，一种是梯形的底离直导线更近的梯形，一种是梯形的底离直导线更近更远的梯形。</p>
+<h2 id="用程序计算特定形状对应的电动势和进一步推广解释">用程序计算特定形状对应的电动势和进一步推广解释</h2>
+<p>我们用程序分别对正三角形、正方形、正五边形、正六边形、正七边形在电流强度变化的直导线产生的磁场中任意形状线框运动产生电动势。从中解释任意性。</p>
+<p>正三角形、正方形直接套用情形1（注意a, b, c对应梯形情形中的a, b, c），矩形分析如图4 所示，程序运行结果见图5 、图6。</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204413252.png" alt="image-20200601204413252"></p>
+<center>图4</center>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204444456.png" alt="image-20200601204444456"></p>
+<center>图5</center>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204425458.png" alt="image-20200601204425458"></p>
+<center>图6</center>
+<p>五边形和六边形的分割成成两个部分，这两个部分分别用梯形的情形2和情形1计算磁通量。详解先图7、图8，程序运行结果见图9、图10.</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204504967.png" alt="image-20200601204504967"></p>
+<center>图7</center>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204617490.png" alt="image-20200601204617490"></p>
+<center>图8</center>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204624198.png" alt="image-20200601204624198"></p>
+<center>图9</center>
+<img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204742683.png" alt="image-20200601204742683" style="zoom:80%;">
+<center>图10</center>
+<p>正七边形略微复杂，需要划分成三个部分，但是道理都是相通的。详解见图12，程序运行结果加图13.</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204809753.png" alt="image-20200601204809753"></p>
+<center>图12</center>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204843165.png" alt="image-20200601204843165"></p>
+<center>图13</center>
+<p>对任意性的推广做如下解释：</p>
 <ol>
-<li>对 PowerShell 的字体等进行修改；</li>
-<li>在 PowerShell 上安装并使用 oh-my-posh；</li>
-<li>改用第三方终端，如 Fluent Terminal、Hyper、Terminus 等。</li>
+<li>在编程的时候可以取 $I_0~ = 1, x = 1, v=1, a=1$ 这样的特殊值，这些无关参量对实现任意性没有本质上的影响，但以推广了任意性。</li>
+<li>$I = I_0 \times cos(ω*t)$ 也可以看成是特殊取值，对任何的I=I(t)都是成立的</li>
+<li>同理，此运动也不要求一定是匀速，甚至不要求是直线运动。只用是 $v=v(t)$ 就可以，而非直线运动，只需要得到在垂直于导线的分量即可。（不考虑相对论效应）<br>
+综上实现的计算在任意电流强度变化和任意直线运动（不考虑相对论效应）的电动势，不再局限正弦电流，不局限于参数，不局限于匀速直线运动。</li>
 </ol>
-<p>⭐️ ​其中值得注意的是，PowerShell 安装 oh-my-posh 后很可能出现“乱码”的现象，这是字体缺位导致的，建议改用支持大量其他字体的第三方终端，一劳永逸。</p>
-<h2 id="结论置顶">结论置顶</h2>
-<blockquote>
-<p>这里先呈现结论，结论的依据会在后面详细解释。</p>
-</blockquote>
-<h3 id="效果图">效果图</h3>
-<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308103044933.png" alt="image-20200308103044933"></p>
-<h3 id="思路">思路</h3>
-<p>PowerShell 自身不支持 oh-my-zsh 的一些字体，会导致乱码，故使用 Powershell 第三方终端（如 Fluent Terminal）+oh-my-zsh 的方案。</p>
+<p>计算机算力的窥探：下面是正六边形线框对应的电动势的表达式（程序的中间运行结果）。可见如果让我们手算的话，是难以承担的计算量。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ε &#x3D; -(-4\*I0\*a\*µ\*sin(0.3\*π)\*cos(t\*ω) + I0\*a\*µ\*cos(t\*ω))\*(v\*log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - v\*log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (v&#x2F;2 - v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π)) - (v&#x2F;2 + v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π))) - (4\*I0\*a\*µ\*sin(0.3\*π)\*cos(t\*ω) - I0\*a\*µ\*cos(t\*ω))\*(v\*log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - v\*log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (v&#x2F;2 - v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π)) - (v&#x2F;2 + v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π))) - (-log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)) + log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*(4\*I0\*a\*µ\*ω\*sin(0.3\*π)\*sin(t\*ω) - I0\*a\*µ\*ω\*sin(t\*ω)) - (-log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)) + log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*(-4\*I0\*a\*µ\*ω\*sin(0.3\*π)\*sin(t\*ω) + I0\*a\*µ\*ω\*sin(t\*ω)) + (2.0\*I0\*v\*µ\*(a + t\*v\*cos(0.3\*π))\*sin(0.3\*π)\*cos(t\*ω)&#x2F;(sqrt(3)\*a&#x2F;2 + t\*v) + 2.0\*I0\*v\*µ\*log(sqrt(3)\*a&#x2F;2 + t\*v)\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2\*I0\*v\*µ\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2.0\*I0\*µ\*ω\*(a + t\*v\*cos(0.3\*π))\*log(sqrt(3)\*a&#x2F;2 + t\*v)\*sin(0.3\*π)\*sin(t\*ω) + 2\*I0\*µ\*ω\*(sqrt(3)\*a&#x2F;2 + t\*v)\*sin(0.3\*π)\*sin(t\*ω)\*cos(0.3\*π))&#x2F;(2\*π) - (2.0\*I0\*v\*µ\*(a + t\*v\*cos(0.3\*π))\*sin(0.3\*π)\*cos(t\*ω)&#x2F;(sqrt(3)\*a + t\*v) + 2.0\*I0\*v\*µ\*log(sqrt(3)\*a + t\*v)\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2\*I0\*v\*µ\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2.0\*I0\*µ\*ω\*(a + t\*v\*cos(0.3\*π))\*log(sqrt(3)\*a + t\*v)\*sin(0.3\*π)\*sin(t\*ω) + 2\*I0\*µ\*ω\*(sqrt(3)\*a + t\*v)\*sin(0.3\*π)\*sin(t\*ω)\*cos(0.3\*π))&#x2F;(2\*π)</span><br></pre></td></tr></table></figure>
+<h2 id="存在的问题和当前解决方案">存在的问题和当前解决方案</h2>
+<p>仍然存在的问题是形状没有真正的任意性，停留在多边形的层次上。</p>
+<p>为了解决这个问题，实现进一步的推广，只能用微元的思想，将一个任意的形状切割成梯形/矩形的微元，然后积分计算。</p>
+<p>由于任意形状又有可能涉及非常不规则的图形，分割了也没有明确的函数表达式，依然不可计算。这里提供一种思路。之前提到梯形的上下底可以平移，那么我们可以将它平移成类似函数的形式：</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601205157557.png" alt="image-20200601205157557"></p>
+<p>之后可以用幂级数拟合曲线（泰勒级数），从而可以得到任意形状的函数表达式，当然用傅里叶级数更加合适，因为它对函数图像的要求更低（不需要高阶偏导连续）。</p>
+<p>而函数值即上下的差值，这一点利用计算机的计算还是比较容易解决的。之后再延续上</p>
+<h1>项目原地址</h1>
+<p><a href="https://github.com/ZER0-Nu1L/Physical-programming" target="_blank" rel="noopener">https://github.com/ZER0-Nu1L/Physical-programming</a></p>
+<h1>总结</h1>
+<p>本实验贯彻了大一学习和接触的大部分思想，基于思想投入实践，实现数学思维、物理思维、计算思维的初步融合。<br>
+在理论推导上，结合观察和猜想，利用微元的思想、数学本质分析，实现在电流强度变化的直导线产生的磁场中任意形状线框运动产生电动势。<br>
+在计算思维上，利用计算机的计算能力解决手动求解的繁琐，借助Python的计算生态，避免重复造轮子，快速检索和学习所需模块，实现积分导数计算、数据可视化，首次进行面向对象编程开发，开发了简单的 GUI，<br>
+不足的地方很多，一是UI界面原本想实现调整滑动条的参数来显示结果，但是由于计算规模太大，程序经常卡壳，目前想到的方案是将滑动条对应的每一个状态单独运行出来，保存为图片，之后改变程序内部运行的映射关系，将滑动条每一个状态对应一个科学计算变为滑动条每一个状态对应一张图片。二是理论推导在最后一步没有深入下去，当时分析了好久没有办法推进，可能受限于自己的数学知识。</p>
+<h1>参考文献</h1>
 <ol>
-<li>下载安装 Fluent Terminal；</li>
-<li>在 PowerShell 下安装 oh-my-zsh，选择自己喜欢的主题，通过更改 <code>$proflie</code> 指定的文件，将 oh-my-zsh 的设置在每次启动 PowerShell 的时候自动加载。</li>
-<li>下载 oh-my-zsh 需要的字体，将 Fluent Terminal 的字体修改；</li>
-<li>更改 VSCode 的终端字体设置，使之同等美化。</li>
+<li>孙云卿、雷雨.大学物理学(下册)孙云卿（第二版）[M].科学出版社,2017,01-01</li>
+<li>滕保华,、吴喆、廖旭.大学物理学学习指导 [M].科学出版社,2018,09-05</li>
 </ol>
-<h2 id="修改-PowerShell-的终端">修改 PowerShell 的终端</h2>
-<p>这是 PowerShell 和 cmd 自身提供的属性设置。（标题栏右键）</p>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308101500526.png" alt="image-20200308101500526" style="zoom:80%;">
-<p>但是局限性非常大，可用的字体非常少。cmd 和 PowerShell 对字体的要求很严苛，即使你安装了一大堆的字体，在 <code>&quot;Windows PowerShell&quot; 属性 </code> 中的 <code>字体</code> 选项卡下，能看到的字体也就几个。</p>
-<p>也有博客对自定义字体有“研究成果”，详见：<a href="https://walterlv.github.io/post/customize-fonts-of-command-window.html#%E6%8E%A8%E8%8D%90%E5%8F%AF%E7%94%A8%E7%9A%84%E5%AD%97%E4%BD%93" target="_blank" rel="noopener">自定义 Windows PowerShell 和 cmd 的字体</a>。</p>
-<h2 id="安装使用-oh-my-zsh">安装使用 oh-my-zsh</h2>
-<p>安装步骤和使用的教程非常多，笔者也是直接参照网络上的教程安装的，这里不再赘述。<br>
-但使用的时候会发现，没有 Linux 下 zsh 的效果，甚至出现如下近乎“乱码”的现象：</p>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308104054220.png" alt="image-20200308104054220" style="zoom: 67%;">
-<p>看看其他主题的情况？</p>
-<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308110644627.png" alt="image-20200308110644627"></p>
-<p>发现“乱码”其实只有一两种字符。<br>
-⭐️ 其实是因为对应的字符在当前字体下是不存在的，而支持这些字符的字体在 cmd 和 PowerShell 严苛要求下的字体几乎是不存在的。<br>
-✔️ 所以需要使用第三方Powershell 终端，才能还原 zsh 在 Linux 下的风采。</p>
-<h2 id="使用第三方-PowerShell-终端">使用第三方 PowerShell 终端</h2>
-<h3 id="下载安装-Fluent-Terminal">下载安装 Fluent Terminal</h3>
-<p>PowerShell 终端非常多，如 Fluent Terminal、Hyper、Terminus 等。</p>
-<p>其中很受推荐的其中一个是 Fluent Terminal，是利用 UWP 技术打造的颜值超高的终端模拟器。不过在 UWP 应用市场并找不到，要去 <a href="https://github.com/felixse/FluentTerminal/releases" target="_blank" rel="noopener">GitHub Release</a> 下载。</p>
-<p>下载完毕后，用 PowerShell 运行文件夹下的 <code>Install.ps1</code> 按照提示操作即可安装成功。<br>
-建议设置在中把默认 shell 改成 PowerShell：</p>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308105324042.png" alt="image-20200308105324042" style="zoom:67%;">
-<h3 id="修改字体">修改字体</h3>
-<p>如果前面已经在 Powershell 安装了 oh-my-zsh，此时的 Fluent Terminal 下的Powershell 依然是存在“乱码”的现象。<br>
-这时候需要下载并安装支持 oh-my-zsh 对应主题的字体，比如 powerline 的字体库： <a href="https://github.com/powerline%E3%80%82%EF%BC%88%E5%85%B6%E5%AE%9E%E6%88%91%E7%94%A8%E7%9A%84%E4%B8%8D%E6%98%AF" target="_blank" rel="noopener">https://github.com/powerline。（其实我用的不是</a> powerline, hhh）<br>
-安装后再在 Fluent Terminal 的设置中更改字体就大工告成了！</p>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308105823820.png" alt="image-20200308105823820" style="zoom:50%;">
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308110523327.png" alt="image-20200308110523327" style="zoom:80%;">
-<h3 id="VSCode-终端美化">VSCode 终端美化</h3>
-<p>在之前的基础上，只需要修改 VSCode 的终端字体即可；<br>
-可以编辑 <code>setting.json</code> ，也可以在设置中查找。</p>
-<img src="file:///C:/Users/wcb53/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png" style="zoom:80%;">
-<p>效果图：<br>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308111027390.png" alt="image-20200308111027390"></p>
-<hr>
-<h1>美学感悟</h1>
-<blockquote>
-<p>挂了美学的旗子，估计是膨胀了。 😢</p>
-</blockquote>
-<p>折腾一番还是蛮消耗时间的，但是克服不了变美的诱惑 😄。</p>
-<blockquote>
-<p>有时候会问，人的品味高是不是有时候会降低人的生活质量？</p>
-</blockquote>
-<p>百姓的音乐在高雅之士的耳朵里变成了“呕哑嘲哳”；<br>
-普通餐馆的食物在美食家面前变成“糟蹋食物”，<br>
-专业设计师会感觉市面上的东西各种变扭等等。</p>
-<blockquote>
-<p>扰乱人们的不是客观事物，而是人们对客观事物的见解。<br>
-​	—— 爱比克泰德<br>
-“超常的感觉能力会引致情绪失衡、周期性的超乎寻常的愉快或者挥之不去的忧愁。”<br>
-—— 叔本华</p>
-</blockquote>
-<p>笔者感觉，叔本华描述了那些艺术天才的忧郁气质，像极了《名人传》里对米开朗基罗的描述：“他被他这个天才左右了一生，他一生根本就没法从他这个天才里头自拔出来，所以他的生活某种程度像个苦行僧一样的，又是个工作狂。可是他的一切，他活着就是为了这个优势，为了他的天才而生的，他这一辈子就只能在这个范畴里头这么去干。”</p>
-<p>但是除去那些被自己的天才左右了一生的天才，现实生活不是也有很多很多很释然的杰出艺术家吗？就像《名人传》的米开朗琪罗传的那句名言：“世界上只有一种英雄主义,就是看清生活的真相之后依然热爱生活。”</p>
-<p>一个思考角度，我们完全可以驾驭我们的感觉能力，获得释然，开放“对客观事物的间接”，能够同等欣赏“阳春白雪”和“下里巴人”，获得生命的快感。</p>
-<p>另一种思考的角度，艺术家的忧郁气质，对于细节的感知、把控与纠结的完美主义，恰恰成就了艺术家，成为无可争辩的竞争力。</p>
-<blockquote>
-<p>美，是一种感知。<br>
-潜藏在每个人生命中，<br>
-当它被挖掘，被激发，<br>
-便会变成一种使人安定的力量。<br>
-它不仅能带来感官上的触动，<br>
-也是历练生命、丰沛情感、释放思想的源泉。<br>
-—— 蒋勋</p>
-</blockquote>
-<p>在物质匮乏的年代，对食物挑剔的人甚至没办法生存。但是现代社会已经逐步脱离物质的快发，转向追求生命的更高体验。<br>
-就像蒋勋先生所言，美是历练生命、丰沛情感、释放思想的源泉。我想，不去审美而去猎奇，真是辜负了造化的恩宠。</p>
-<hr>
-<h1>参考文章</h1>
-<ol>
-<li><a href="https://walterlv.github.io/post/customize-fonts-of-command-window.html#%E6%8E%A8%E8%8D%90%E5%8F%AF%E7%94%A8%E7%9A%84%E5%AD%97%E4%BD%93" target="_blank" rel="noopener">自定义 Windows PowerShell 和 cmd 的字体</a></li>
-<li><a href="https://blog.csdn.net/WPwalter/article/details/78937346" target="_blank" rel="noopener">将美化进行到底，把 PowerShell 做成 oh-my-zsh 的样子</a></li>
-<li><a href="http://tieba.baidu.com/p/6133164423?red_tag=o2118687620" target="_blank" rel="noopener">oh-my-zsh的图标无法正常显示</a></li>
-<li><a href="https://sspai.com/post/52868" target="_blank" rel="noopener">告别 Windows 终端的难看难用，从改造 PowerShell 的外观开始</a></li>
-<li><a href="https://www.jianshu.com/p/ae7f7b4d7a0e" target="_blank" rel="noopener">解决vscode terminal powerline字体乱码</a></li>
-</ol>
-<blockquote>
-<p>此外，还有感谢 <code>wj</code> 小姐姐 👸 提供给庸人笔者的一些灵感~</p>
-</blockquote>
 ]]></content>
       <categories>
-        <category>Life</category>
-        <category>Beauty</category>
+        <category>Development</category>
+        <category>Physics</category>
       </categories>
       <tags>
-        <tag>Powershell</tag>
-        <tag>life</tag>
+        <tag>Physics</tag>
+        <tag>GUI</tag>
       </tags>
   </entry>
   <entry>
@@ -1440,116 +1550,6 @@ OpenDayliht 则作为控制器层,对 Mininet 搭建的网络进行拓扑展示�
       </categories>
       <tags>
         <tag>SDN</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在电流强度变化的直导线产生的磁场中任意形状线框运动产生电动势</title>
-    <url>/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/</url>
-    <content><![CDATA[<h1>背景介绍</h1>
-<p>在第十二章节变化的电磁场中计算感生电动势中遇到一道题目中包含比较复杂的数学计算，想通过自己的理论推导和借助计算机的算力将同类问题进行推广、借助计算机计算分析。</p>
-<a id="more"></a>
-<p>原题如下：</p>
-<p>例12-8 长直导线中通有电流 $I=I_0 · cos t (I_0 常量)$ 。有一与之共面的三角形线圈 ABC,已知 AB=a, BC=b。若线圈以垂直于导线方向的速度 v 向右平移, 当 B 点与长直导线的距离为 x 时,求线圈 ABC 中的感应电动势。(如图1所示)</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601203930603.png" alt="image-20200601203930603"></p>
-<center>图1</center>
-<p>解：<br>
-将三角形沿竖直方向分为若干宽为 $dr$ 的矩形积分。<br>
-$$<br>
-\begin{aligned}<br>
-\varphi_m &amp;= \int_x^{x + b}{\frac{\mu _oI}{2\pi r}}\left( x+b-r \right) \frac{a}{b}{d}r<br>
-\\<br>
-&amp;= \frac{\mu _oa}{2\pi b}I\cdot \left[ \left( x+b \right) \ln \frac{x + b}{x}-b \right]<br>
-\end{aligned}<br>
-$$</p>
-<p>$$<br>
-\varepsilon_i = -\frac{ d \varphi_m}{dt}<br>
-$$</p>
-<p>$$<br>
-I=I_0 cos \left( {t} \right) , \frac{dx}{dt} = v<br>
-$$</p>
-<p>$$<br>
-\begin{aligned}<br>
-\varepsilon_i<br>
-&amp;= - \frac{\mu_o a}{2 \pi b} \left\{ \frac{dI}{dt} \left[ \left( x+b \right) \ln \frac{x + b}{x} - b \right] +I \frac{d}{dt} \left[ \left( x+b \right) \ln \frac{x + b}{x}-b \right] \right\}<br>
-\\<br>
-&amp;= \frac{\mu_o a I_o \omega }{2 \pi b} \sin \omega t \left[ \left( x+b \right) \ln \frac{x + b}{x} - b \right] +\frac{\mu _o a v}{2 \pi b}I_o \cos \omega t \left( -\ln \frac{x + b}{x} + \frac{b}{x} \right)<br>
-\end{aligned}<br>
-$$</p>
-<h1>猜想和计算推导</h1>
-<h2 id="思路分析">思路分析</h2>
-<p>我们发现这个电动势的计算结果中与α无关，这意味着只要保持三角形的高不变，将顶点C沿着平行于AB的方向移动，就不会改变对应的电动势，这是实现推广到任意形状的线框的基础。</p>
-<p>本例如果借助编程语言，最关键的并不是我们手算时遇到的数学上的困难（积分，求导时x和I都是t的函数，需要用对应的求导法则），这里的数学问题可以用MATLAB轻松解决，这里为了一元化，从数学计算到数据可视化，再到GUI界面展示，都是用Python。所以这里没有使用MATLAB，而用了Python的SymPy。</p>
-<p>所以现在求电动势式对t求导已经不再是我们遇到最麻烦的问题，推广到任意形状的关键是在任意形状的线框在磁场内的磁通量的求解上。</p>
-<h2 id="推广到梯形">推广到梯形</h2>
-<p>我们可以先把三角形推广到梯形。</p>
-<p>需要分两种情况：一种是梯形的底离直导线更近，一种是梯形的底离直导线更近更远；</p>
-<p>1、梯形的底离直导线更近的情况如图2所示</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601203951198.png" alt="image-20200601203951198"></p>
-<center>图2</center>
-<p>2、梯形的底离直导线更远的情况如图3所示</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204023480.png" alt="image-20200601204023480"></p>
-<center>图3</center>
-<p>类似于我们在例12-8中发现，在梯形中电动势的计算结果中与α无关，这意味着只要保持梯形的高不变，将梯形的平行的两条边C沿着平行的方向移动，就不会改变对应的电动势。</p>
-<p>于此基础上，我们可以把任意的多边形分割成若干个梯形，其中梯形分成两种，一种是梯形的底离直导线更近的梯形，一种是梯形的底离直导线更近更远的梯形。</p>
-<h2 id="用程序计算特定形状对应的电动势和进一步推广解释">用程序计算特定形状对应的电动势和进一步推广解释</h2>
-<p>我们用程序分别对正三角形、正方形、正五边形、正六边形、正七边形在电流强度变化的直导线产生的磁场中任意形状线框运动产生电动势。从中解释任意性。</p>
-<p>正三角形、正方形直接套用情形1（注意a, b, c对应梯形情形中的a, b, c），矩形分析如图4 所示，程序运行结果见图5 、图6。</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204413252.png" alt="image-20200601204413252"></p>
-<center>图4</center>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204444456.png" alt="image-20200601204444456"></p>
-<center>图5</center>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204425458.png" alt="image-20200601204425458"></p>
-<center>图6</center>
-<p>五边形和六边形的分割成成两个部分，这两个部分分别用梯形的情形2和情形1计算磁通量。详解先图7、图8，程序运行结果见图9、图10.</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204504967.png" alt="image-20200601204504967"></p>
-<center>图7</center>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204617490.png" alt="image-20200601204617490"></p>
-<center>图8</center>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204624198.png" alt="image-20200601204624198"></p>
-<center>图9</center>
-<img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204742683.png" alt="image-20200601204742683" style="zoom:80%;">
-<center>图10</center>
-<p>正七边形略微复杂，需要划分成三个部分，但是道理都是相通的。详解见图12，程序运行结果加图13.</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204809753.png" alt="image-20200601204809753"></p>
-<center>图12</center>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204843165.png" alt="image-20200601204843165"></p>
-<center>图13</center>
-<p>对任意性的推广做如下解释：</p>
-<ol>
-<li>在编程的时候可以取 $I_0~ = 1, x = 1, v=1, a=1$ 这样的特殊值，这些无关参量对实现任意性没有本质上的影响，但以推广了任意性。</li>
-<li>$I = I_0 \times cos(ω*t)$ 也可以看成是特殊取值，对任何的I=I(t)都是成立的</li>
-<li>同理，此运动也不要求一定是匀速，甚至不要求是直线运动。只用是 $v=v(t)$ 就可以，而非直线运动，只需要得到在垂直于导线的分量即可。（不考虑相对论效应）<br>
-综上实现的计算在任意电流强度变化和任意直线运动（不考虑相对论效应）的电动势，不再局限正弦电流，不局限于参数，不局限于匀速直线运动。</li>
-</ol>
-<p>计算机算力的窥探：下面是正六边形线框对应的电动势的表达式（程序的中间运行结果）。可见如果让我们手算的话，是难以承担的计算量。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ε &#x3D; -(-4\*I0\*a\*µ\*sin(0.3\*π)\*cos(t\*ω) + I0\*a\*µ\*cos(t\*ω))\*(v\*log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - v\*log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (v&#x2F;2 - v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π)) - (v&#x2F;2 + v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π))) - (4\*I0\*a\*µ\*sin(0.3\*π)\*cos(t\*ω) - I0\*a\*µ\*cos(t\*ω))\*(v\*log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - v\*log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (v&#x2F;2 - v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π)) - (v&#x2F;2 + v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π))) - (-log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)) + log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*(4\*I0\*a\*µ\*ω\*sin(0.3\*π)\*sin(t\*ω) - I0\*a\*µ\*ω\*sin(t\*ω)) - (-log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)) + log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*(-4\*I0\*a\*µ\*ω\*sin(0.3\*π)\*sin(t\*ω) + I0\*a\*µ\*ω\*sin(t\*ω)) + (2.0\*I0\*v\*µ\*(a + t\*v\*cos(0.3\*π))\*sin(0.3\*π)\*cos(t\*ω)&#x2F;(sqrt(3)\*a&#x2F;2 + t\*v) + 2.0\*I0\*v\*µ\*log(sqrt(3)\*a&#x2F;2 + t\*v)\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2\*I0\*v\*µ\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2.0\*I0\*µ\*ω\*(a + t\*v\*cos(0.3\*π))\*log(sqrt(3)\*a&#x2F;2 + t\*v)\*sin(0.3\*π)\*sin(t\*ω) + 2\*I0\*µ\*ω\*(sqrt(3)\*a&#x2F;2 + t\*v)\*sin(0.3\*π)\*sin(t\*ω)\*cos(0.3\*π))&#x2F;(2\*π) - (2.0\*I0\*v\*µ\*(a + t\*v\*cos(0.3\*π))\*sin(0.3\*π)\*cos(t\*ω)&#x2F;(sqrt(3)\*a + t\*v) + 2.0\*I0\*v\*µ\*log(sqrt(3)\*a + t\*v)\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2\*I0\*v\*µ\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2.0\*I0\*µ\*ω\*(a + t\*v\*cos(0.3\*π))\*log(sqrt(3)\*a + t\*v)\*sin(0.3\*π)\*sin(t\*ω) + 2\*I0\*µ\*ω\*(sqrt(3)\*a + t\*v)\*sin(0.3\*π)\*sin(t\*ω)\*cos(0.3\*π))&#x2F;(2\*π)</span><br></pre></td></tr></table></figure>
-<h2 id="存在的问题和当前解决方案">存在的问题和当前解决方案</h2>
-<p>仍然存在的问题是形状没有真正的任意性，停留在多边形的层次上。</p>
-<p>为了解决这个问题，实现进一步的推广，只能用微元的思想，将一个任意的形状切割成梯形/矩形的微元，然后积分计算。</p>
-<p>由于任意形状又有可能涉及非常不规则的图形，分割了也没有明确的函数表达式，依然不可计算。这里提供一种思路。之前提到梯形的上下底可以平移，那么我们可以将它平移成类似函数的形式：</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601205157557.png" alt="image-20200601205157557"></p>
-<p>之后可以用幂级数拟合曲线（泰勒级数），从而可以得到任意形状的函数表达式，当然用傅里叶级数更加合适，因为它对函数图像的要求更低（不需要高阶偏导连续）。</p>
-<p>而函数值即上下的差值，这一点利用计算机的计算还是比较容易解决的。之后再延续上</p>
-<h1>项目原地址</h1>
-<p><a href="https://github.com/ZER0-Nu1L/Physical-programming" target="_blank" rel="noopener">https://github.com/ZER0-Nu1L/Physical-programming</a></p>
-<h1>总结</h1>
-<p>本实验贯彻了大一学习和接触的大部分思想，基于思想投入实践，实现数学思维、物理思维、计算思维的初步融合。<br>
-在理论推导上，结合观察和猜想，利用微元的思想、数学本质分析，实现在电流强度变化的直导线产生的磁场中任意形状线框运动产生电动势。<br>
-在计算思维上，利用计算机的计算能力解决手动求解的繁琐，借助Python的计算生态，避免重复造轮子，快速检索和学习所需模块，实现积分导数计算、数据可视化，首次进行面向对象编程开发，开发了简单的 GUI，<br>
-不足的地方很多，一是UI界面原本想实现调整滑动条的参数来显示结果，但是由于计算规模太大，程序经常卡壳，目前想到的方案是将滑动条对应的每一个状态单独运行出来，保存为图片，之后改变程序内部运行的映射关系，将滑动条每一个状态对应一个科学计算变为滑动条每一个状态对应一张图片。二是理论推导在最后一步没有深入下去，当时分析了好久没有办法推进，可能受限于自己的数学知识。</p>
-<h1>参考文献</h1>
-<ol>
-<li>孙云卿、雷雨.大学物理学(下册)孙云卿（第二版）[M].科学出版社,2017,01-01</li>
-<li>滕保华,、吴喆、廖旭.大学物理学学习指导 [M].科学出版社,2018,09-05</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Development</category>
-        <category>Physics</category>
-      </categories>
-      <tags>
-        <tag>Physics</tag>
-        <tag>GUI</tag>
       </tags>
   </entry>
   <entry>
@@ -2151,6 +2151,233 @@ $$</p>
       <tags>
         <tag>Blockchain</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>【转载】DDoS原理与防御</title>
+    <url>/2019/11/16/DDoS/</url>
+    <content><![CDATA[<p>文章转载自：<br>
+文章作者:<a href="https://mochazz.github.io" target="_blank" rel="noopener">Mochazz</a><br>
+文章链接:<a href="https://mochazz.github.io/2017/09/11/DDOS1/" target="_blank" rel="noopener">https://mochazz.github.io/2017/09/11/DDOS1/</a></p>
+<h3 id="0X01DDOS简介"><a href="#0X01DDOS%E7%AE%80%E4%BB%8B" title="0X01DDOS简介"></a>0X01DDOS简介</h3>
+<p>DDOS(Distributed Denial of Service)，又称分布式拒绝服务攻击。骇客通过控制多个肉鸡或服务器组成的僵尸网络，对目标发送大量看似合法请求，从而占用大量网络资源，瘫痪网络，阻止用户对网络资源的正常访问。</p>
+<a id="more"></a>
+<h3 id="0X02DDOS危害"><a href="#0X02DDOS%E5%8D%B1%E5%AE%B3" title="0X02DDOS危害"></a>0X02DDOS危害</h3>
+<ol>
+<li>出口带宽堵死</li>
+<li>游戏掉线导致客户流失</li>
+<li>服务器连接数多，连接资源被耗尽</li>
+<li>服务器卡、慢、死机、无法连接</li>
+</ol>
+<h3 id="0X03攻击来源"><a href="#0X03%E6%94%BB%E5%87%BB%E6%9D%A5%E6%BA%90" title="0X03攻击来源"></a>0X03攻击来源</h3>
+<ol>
+<li>高性能服务器配合发包软件</li>
+<li>可联网的设备(如打印机、摄像头、电视等等)</li>
+<li>移动设备(数量多，增长速度快，其高性能利于组建僵尸网络)</li>
+<li>个人PC(存在漏洞的PC或一些黑客迷自愿成为DDOS一员)</li>
+<li>骇客控制的僵尸网络(僵尸网络又分为IRC型、HTTP型、P2P型)</li>
+</ol>
+<h3 id="0X04流量特点"><a href="#0X04%E6%B5%81%E9%87%8F%E7%89%B9%E7%82%B9" title="0X04流量特点"></a>0X04流量特点</h3>
+<ol>
+<li>IP地址随机或固定某些IP段随机</li>
+<li>没有完整完成三次握手</li>
+<li>地址多数是伪造的</li>
+<li>请求数量大、快</li>
+</ol>
+<h3 id="0X05导致DDOS原因"><a href="#0X05%E5%AF%BC%E8%87%B4DDOS%E5%8E%9F%E5%9B%A0" title="0X05导致DDOS原因"></a>0X05导致DDOS原因</h3>
+<h4 id="人类因素"><a href="#%E4%BA%BA%E7%B1%BB%E5%9B%A0%E7%B4%A0" title="人类因素"></a>人类因素</h4>
+<ol>
+<li>金钱利益</li>
+<li>政治冲突</li>
+<li>宗教冲突</li>
+<li>为求出名</li>
+</ol>
+<h4 id="非人类因素"><a href="#%E9%9D%9E%E4%BA%BA%E7%B1%BB%E5%9B%A0%E7%B4%A0" title="非人类因素"></a>非人类因素</h4>
+<ol>
+<li>带宽上限</li>
+<li>协议缺陷</li>
+<li>设备性能上限</li>
+<li>应用性能上限</li>
+<li>系统性能上限</li>
+</ol>
+<h3 id="0X06攻击类型及防御"><a href="#0X06%E6%94%BB%E5%87%BB%E7%B1%BB%E5%9E%8B%E5%8F%8A%E9%98%B2%E5%BE%A1" title="0X06攻击类型及防御"></a>0X06攻击类型及防御</h3>
+<h4 id="Smurf攻击"><a href="#Smurf%E6%94%BB%E5%87%BB" title="Smurf攻击"></a>Smurf攻击</h4>
+<p>攻击者向网关发送ICMP请求包，并将该ICMP请求报文的源地址伪造成受害主机IP地址，目的地址为广播地址。路由器在接受到该数据包，发现目的地址是广播地址，就会将该数据包广播出去，局域网内所有的存活主机都会受到一个ICMP请求包，源地址是受害主机IP。接下来受害主机就会收到该网络内所有主机发来的ICMP应答报文，通过大量返回的ICMP应答报文来淹没受害主机，最终导致网络阻塞，受害主机崩溃。下面是smurf攻击示意图<br>
+<a href="https://mochazz.github.io/img/DDOS1/image2.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image2.png" alt></a><br>
+防护方案：</p>
+<ol>
+<li>禁止路由器广播ICMP请求包；</li>
+<li>禁止操作系统对广播发出的ICMP请求包做出响应；</li>
+<li>配置防火墙静止来自你所处网络外部的ping包</li>
+</ol>
+<h4 id="TearDrop攻击"><a href="#TearDrop%E6%94%BB%E5%87%BB" title="TearDrop攻击"></a>TearDrop攻击</h4>
+<p>在了解这种攻击之前，需要先知道什么是IP fragmentation（数据包分片）。数据在网络中传输必定会产生数据包被分片，因为每种网络都有不同的最大单个数据包的大小，也就是常说的MTU（Maximum Transmission Unit，最大传输单元）。当要传输的数据超过你要通信的那台主机所处网络的MTU时，数据包就会被分片进行传输，然后在到达目的地再重新组装成原来的数据包，下面是数据包分片重组过程<br>
+<a href="https://mochazz.github.io/img/DDOS1/image3.jpeg" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image3.jpeg" alt></a><br>
+TearDrop攻击，就是通过设置错误的片偏移，使得数据包到达目的地时，服务器无法重新组合数据包，因为数据包的组合是通过片偏移来组装的，最终导致崩溃。对比一下正常IP数据包和错误IP数据包<br>
+<a href="https://mochazz.github.io/img/DDOS1/image4.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image4.png" alt></a><br>
+这种攻击主要对旧的windows版本和Linux版本有效，防护的话，可以检测发来的数据包片偏移是否合法，如果合法在组装，不合法直接丢弃。例如这个：<a href="https://wenku.baidu.com/view/b45bba61ddccda38376baf7f.html" target="_blank" rel="noopener">分片重组检查算法</a>。</p>
+<h4 id="Land-Attack"><a href="#Land-Attack" title="Land Attack"></a>Land Attack</h4>
+<p>攻击者发动Land Attack攻击时，需要先发出一个SYN数据包，并将数据包的源IP与目的IP都设置成要攻击的目标IP，这样目标在接收到SYN数据包后，会根据源IP回应一个SYN+ACK数据包，即和自己建立一个空连接，然后到达idel超时时间时，才会释放这个连接。攻击者发送大量这样的数据包，从而耗尽目标的TCP连接池，最终导致拒绝服务。攻击过程如下<br>
+<a href="https://mochazz.github.io/img/DDOS1/image5.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image5.png" alt></a><br>
+防御方案参考如下：这种攻击对早期系统有效。通过设置防火墙和路由规则，检测源IP与目的IP相同的数据包，丢弃、过滤这种数据包。</p>
+<h4 id="SYN-FLOOD攻击"><a href="#SYN-FLOOD%E6%94%BB%E5%87%BB" title="SYN FLOOD攻击"></a>SYN FLOOD攻击</h4>
+<p>SYN FLOOD攻击是在TCP三次握手过程中产生的。攻击者通过发送大量伪造的带有SYN标志位的TCP报文，与目标主机建立了很多虚假的半开连接，在服务器返回SYN+ACK数据包后，攻击者不对其做出响应，也就是不返回ACK数据包给服务器，这样服务器就会一直等待直到超时。这种攻击方式会使目标服务器连接资源耗尽、链路堵塞，从而达到拒绝服务的目的。SYN FLOOD攻击图示如下<br>
+<a href="https://mochazz.github.io/img/DDOS1/image6.jpeg" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image6.jpeg" alt></a><br>
+防御：<br>
+SYNCheck：使用防护设备，3次握手变成了6次握手，由防护设备检测SYN请求是否合法，通过后再由防护设备将报文转发给服务器，后续报文仍由防护设备代理。<br>
+Micro blocks：管理员可以在内存中为每个SYN请求创建一个小索引(小于16字节)，而不必把整个连接对象存入内存。<br>
+RST cookies：在客户端发起第一个SYN请求后，服务器故意回应一个错误的SYN+ACK报文。如果合法用户收到这个报文，就会给服务器响应RST报文。当服务器收到这个报文时，就将这个主机的IP记录进合法IP列表，下次该主机发起SYN请求时，就可以直接通过了。<br>
+STACK tweaking：管理员可以调整TCP堆栈以减缓SYN泛洪攻击的影响。这包括减小超时时间，等到堆栈存释内放时再分配连接，否则就随机性地删除传入的连接。</p>
+<h4 id="ACK-FLOOD攻击"><a href="#ACK-FLOOD%E6%94%BB%E5%87%BB" title="ACK FLOOD攻击"></a>ACK FLOOD攻击</h4>
+<p>ACK FLOOD攻击是利用TCP三次握手过程。这里可以分为两种。</p>
+<p>第一种：攻击者伪造大量的SYN+ACK包发送给目标主机，目标主机每收到一个SYN+ACK数据包时，都会去自己的TCP连接表中查看有没有与ACK的发送者建立连接 ，如果有则发送ACK包完成TCP连接，如果没有则发送ACK+RST 断开连接。但是在查询过程中会消耗一定的CUP计算资源。如果瞬间收到大量的SYN+ACK数据包，将会消耗服务器的大量cpu资源，导致正常的连接无法建立或增加延迟，甚至造成服务器瘫痪、死机。<br>
+<a href="https://mochazz.github.io/img/DDOS1/image7.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image7.png" alt></a></p>
+<p>第二种：利用TCP三次握手的ACK+SYN应答，攻击者向不同的服务器发送大量的SYN请求，这些SYN请求数据包的源IP均为受害主机IP，这样就会有大量的SYN+ACK应答数据包发往受害主机，从而占用目标的网络带宽资源，形成拒绝服务。<br>
+<a href="https://mochazz.github.io/img/DDOS1/image8.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image8.png" alt></a><br>
+通常DDOS攻击会将ACK flood与SYN flood结合在一起，从而扩大威力。防御方案可参考如下：采用CDN进行流量稀释；避免服务器IP暴露在公网上；通过限速或动态指纹的方式；利用对称性判断来分析出是否有攻击存在；在连续收到用户发送的ACK包时，中断回话，让其重连。</p>
+<h4 id="UDP-FLOOD攻击"><a href="#UDP-FLOOD%E6%94%BB%E5%87%BB" title="UDP FLOOD攻击"></a>UDP FLOOD攻击</h4>
+<p>UDP（User Datagram Protocol，用户数据报协议），是一种无连接和无状态的网络协议，UDP不需要像TCP那样进行三次握手，运行开销低，不需要确认数据包是否成功到达目的地。这就造成UDP泛洪攻击不但效率高，而且还可以在资源相对较少的情况下执行。UDP FLOOD可以使用小数据包(64字节)进行攻击,也可以使用大数据包(大于1500字节,以太网MTU为1500字节)进行攻击。大量小数据包会增大网络设备处理数据包的压力；而对于大数据包，网络设备需要进行分片、重组，最终达到的效果就是占用网络传输接口的带宽、网络堵塞、服务器响应慢等等。<br>
+<a href="https://mochazz.github.io/img/DDOS1/image9.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image9.png" alt></a><br>
+防御方案：限制每秒钟接受到的流量(可能产生误判)；通过动态指纹学习(需要攻击发生一定时间)，将非法用户加入黑名单。</p>
+<h4 id="NTP放大攻击"><a href="#NTP%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB" title="NTP放大攻击"></a>NTP放大攻击</h4>
+<p>NTP(Network Time Protocol，网络时间协议)，是用来使计算机网络时间同步化的一种协议，它可以使计算机与时钟源进行同步化并提供高精度的时间校正，使用UDP123端口进行通信。通常在NTP服务器上会有一些调试接口，而利用这些接口中的monlist请求，就可触发放大攻击。当主机向NTP服务器发送monlist查询请求时，NTP服务器会将与之进行时间同步的最后600个IP地址返回。所以攻击者只需要将源地址伪造为受害主机的IP，向NTP服务器发送一个monlist查询请求包，受害主机就会收到大量的UDP响应包。这种攻击在放大攻击里，危害相对较大。下面是NTP放大攻击示意图<br>
+<a href="https://mochazz.github.io/img/DDOS1/image10.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image10.png" alt></a><br>
+总结一下这种攻击产生的原因，请求与响应数据包不等价；UDP协议的通信模糊性（无数据传输确认机制）；以及NTP服务器的无认证机制。<br>
+防御方案：</p>
+<ol>
+<li>使用防 DDoS 设备进行清洗；</li>
+<li>加固并升级NTP服务器；</li>
+<li>在网络出口封禁 UDP 123 端口；</li>
+<li>通过网络层或者借助运营商实施 ACL 来防御；</li>
+<li>关闭现在 NTP 服务的 monlist 功能，在ntp.conf配置文件中增加<code>disable monitor</code>选项。</li>
+</ol>
+<h4 id="DNS放大攻击"><a href="#DNS%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB" title="DNS放大攻击"></a>DNS放大攻击</h4>
+<p>DNS(Domain Name System，域名系统)，由于使用IP地址来记忆各个网站比较困难，所以就产生了使用主机名称来表示对应的服务器，主机名称通过域名解析的过程转换成IP地址。下面来看一下DNS报文格式，以便了解攻击发生在何处。<br>
+<a href="https://mochazz.github.io/img/DDOS1/image11.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image11.png" alt></a><br>
+报文首部格式<br>
+<a href="https://mochazz.github.io/img/DDOS1/image12.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image12.png" alt></a><br>
+报文首部各字段含义如下，其中绿色高亮是攻击点之一，之后会分析<br>
+<a href="https://mochazz.github.io/img/DDOS1/image13.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image13.png" alt></a><br>
+下面是问题记录中查询类型可设置的值，我们发现最后一个ANY类型会请求所有记录，这也是一个攻击点<br>
+<a href="https://mochazz.github.io/img/DDOS1/image14.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image14.png" alt></a><br>
+DNS查询可分为递归查询和迭代查询，下面是DNS迭代查询图<br>
+<a href="https://mochazz.github.io/img/DDOS1/image15.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image15.png" alt></a><br>
+再来看DNS递归查询图<br>
+<a href="https://mochazz.github.io/img/DDOS1/image16.jpeg" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image16.jpeg" alt></a><br>
+从DNS数据包结构以及DNS递归查询过程，我们就可以大致分析出攻击原理。首先，攻击者向僵尸网络发出指令，使僵尸网络中的每一台主机均发出一个伪造源地址的DNS查询请求包，这些请求包查询类型设置为ANY，因为这种类型会请求所有的记录，这些记录会在返回的响应包中，也就是说这种数据包的大小较其他类型是最大的。接着查询类型设为递归查询，为什么不是迭代查询呢，仔细看两种查询的过程图可发现，如果迭代查询第一个请求的DNS服务器没有查询到结果，那么第一个请求的服务器会返回另一个DNS服务器IP，让请求主机向这个IP去继续查询，然而攻击者的数据包源地址是伪造的，所以并不会发起第二次查询，因为第一次查询根本就不是它发起的；而递归查询却是在查询到结果之后，才返回给查询请求发起者。利用这两个特点，攻击者就可以成功发起DNS放大攻击。这种普通的查询请求可以将攻击流量放大2~10倍，如果想增大攻击倍数，可以使用RFC 2671中定义的DNS拓展机制EDNS0。未使用EDNS0时，若响应包大小小于512字节，就使用UDP封装数据；若响应包大小超过512字节，就使用TCP连接或者服务器截断响应报文，丢弃超过512字节的部分，并把TC位置1。这两种方式都不利于进行DNS放大攻击。然而在开启EDNS0机制后，增加了OPT RR字段，这两个字段包含了能够处理的最大UDP报文大小信息，所以攻击者将这个信息设置的很大，服务器就会根据这个信息生成响应报文。最后看一下DNS放大攻击演示图<br>
+<a href="https://mochazz.github.io/img/DDOS1/image17.jpeg" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image17.jpeg" alt></a><br>
+防御策略：</p>
+<ol>
+<li>联系ISP清洗上游流量；</li>
+<li>DNS服务器只对可信域内提供服务，限制对域外用户提供DNS解析服务；</li>
+<li>对单个IP的查询速率做限制；</li>
+<li>拥有足够的带宽承受小规模攻击；</li>
+<li>关闭DNS服务器的递归查询；</li>
+<li>利用防火墙等对ANY Request进行过滤。</li>
+</ol>
+<h4 id="SNMP放大攻击"><a href="#SNMP%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB" title="SNMP放大攻击"></a>SNMP放大攻击</h4>
+<p>SNMP(Simple Network Management Protocol，简单网络管理协议)，是目前网络中应用最为广泛的网络管理协议，它提供了一个管理框架来监控和维和互联网设备，它使用UDP161端口进行通信。攻击者向互联网上开启SNMP服务的设备发送GetBulk请求，并使用默认通信字符串作为认证凭据。常见的默认通信字符串如public、private以及一些厂商默认的通信字符串。GetBulk请求是在SNMPv2中添加的的，该请求会让SNMP设备尽可能多的返回数据，这也就是SNMP放大攻击的利用点。下面来看一下SNMP的PDU格式<br>
+<a href="https://mochazz.github.io/img/DDOS1/image18.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image18.png" alt></a><br>
+攻击者先将源地址改成要攻击的目标IP，再使用默认的通信字符串，向大量SNMP设备发出GetBulk请求，设备收到GetBulk请求数据包后，会将一大段的设备检索信息返回给目标主机，最终目标主机会被这些SNMP设备返回的数据包淹没，导致拒绝服务。看一下SNMP的攻击图<br>
+<a href="https://mochazz.github.io/img/DDOS1/image19.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image19.png" alt></a><br>
+防御策略：</p>
+<ol>
+<li>禁止已开启SNMP的设备响应GetBulk请求，避免自己的设备被黑客利用；</li>
+<li>更改默认的通信字符串；</li>
+<li>修改默认端口161；</li>
+<li>隐藏开启SNMP设备的公网IP。</li>
+</ol>
+<h4 id="TFTP放大攻击"><a href="#TFTP%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB" title="TFTP放大攻击"></a>TFTP放大攻击</h4>
+<p>TFTP（Trivial File Transfer Protocol，简单文件传输协议），使用UDP 69端口进行通信，由于TFTP使用的是不可靠的UDP协议，所以他不能确保发送的任何报文都能真正到达目的地，因此他必须使用定时器来检测并重传报文，以下是TFTP传输文件过程图<br>
+<a href="https://mochazz.github.io/img/DDOS1/image20.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image20.png" alt></a><br>
+超时重传机制<br>
+<a href="https://mochazz.github.io/img/DDOS1/image21.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image21.png" alt></a><br>
+可以看到，TFTP协议将数据分成好多个数据块进行传输，每个数据块最大为512字节，客户端在接受到数据块时，需要给服务器端返回一个ACK确认报文，然后才会继续传输下一个报文。若服务器没有收到客户端发来ACK报文，则在时间到达超时计数器时，便会开启重传机制，这也就是攻击利用点。攻击者利用TFTP协议上的缺陷，伪造源地址向服务器发起请求，服务器回复的第1个data数据包后无法收到客户端发送的ACK。此时TFTP就会利用他的重传机制，定时重传第1个data数据包，当攻击者发出大量的这种请求时，TFTP放大攻击也就发生了。来看一下TFTP放大攻击示意图<br>
+<a href="https://mochazz.github.io/img/DDOS1/image22.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image22.png" alt></a><br>
+防御方案:</p>
+<ol>
+<li>不要将TFTP服务器暴露在公网上；</li>
+<li>对流经TFTP服务的流量进行入侵检测；</li>
+<li>将重传（数据包）率设置为1；只为信任域内的主机提供服务。</li>
+</ol>
+<h4 id="CC攻击"><a href="#CC%E6%94%BB%E5%87%BB" title="CC攻击"></a>CC攻击</h4>
+<p>CC攻击（ChallengeCollapsar）又称作HTTP 泛洪攻击，其原理是攻击者控制肉鸡、僵尸网络或使用代理服务器，不停地向目标的web服务发送大量合法请求，使得正常用户的web请求处理缓慢甚至得不到处理，制造大量的后台数据库查询动作，消耗目标CPU资源，最终导致服务器宕机崩溃。这种攻击方式不需要很大的带宽，且无法使用伪造IP地址进行攻击，需要真实的机器与web服务器建立连接，因为HTTP协议是建立在TCP协议上，必须先进行TCP三次握手才能进行HTTP通信。如果目标web服务器支持HTTPS，那么发起的HTTPS泛洪攻击还能穿透一些防护设备。<br>
+<a href="https://mochazz.github.io/img/DDOS1/image23.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image23.png" alt></a><br>
+防御方案：</p>
+<ol>
+<li>必要时将网页做成静态，减少数据库的使用；</li>
+<li>限制连接数量；</li>
+<li>修改最大超时时间；</li>
+<li>让用户手动输入验证码；</li>
+<li>在response报文中添加特殊字段，验证IP合法性；</li>
+<li>屏蔽频繁访问服务器的主机IP。</li>
+</ol>
+<h4 id="HTTP慢速攻击"><a href="#HTTP%E6%85%A2%E9%80%9F%E6%94%BB%E5%87%BB" title="HTTP慢速攻击"></a>HTTP慢速攻击</h4>
+<p>Slow HTTP Dos AttACKs（慢速HTTP拒绝服务攻击），黑客模拟正常用户向web服务器发送慢速http请求，由于是慢速的，服务器端需要保持连接资源，直到数据传输结束或请求结束才可释放连接。当服务器端建立了大量这样的慢速连接，就会导致服务器拒绝服务。这种攻击可以分为两类，一类是客户端发数据，另一类是客户端读取服务器发来的数据。HTTP慢速攻击对基于线程处理的web服务器影响显著，如apache、dhttpd，而对基于事件处理的web服务器影响不大，如ngix、lighttpd。HTTP慢速攻击还可以细分成以下几种攻击方式.</p>
+<p>Slowloris攻击方式<br>
+HTTP协议规定请求头以一个空行结束，所以完整的http请求头结尾是\r\n\r\n。然而使用非正常的\r\n来结尾，就会导致服务端认为我们的请求头还没结束，等待我们继续发送数据直到超时时间。两种请求头区别如下，CRLF（Carriage Return Line Feed）表示回车换行<br>
+<a href="https://mochazz.github.io/img/DDOS1/image24.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image24.png" alt></a></p>
+<p>Slow post攻击方式<br>
+在http头部信息，可以使用content-length声明HTTP消息实体的传输长度，服务器端会content-length的值作为HTTP BODY的长度。利用这一特点，攻击者把content-length设置得很大的，然后缓慢发送数据部分，比如一次只发送一个字节，这样服务器端就要一直保持连接，直到客户端传完所有的数据。<br>
+<a href="https://mochazz.github.io/img/DDOS1/image25.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image25.png" alt></a></p>
+<p>Slow read攻击方式<br>
+攻击者发送一个完整的HTTP数据请求，之后服务器会给出响应，这时攻击者在将自己的TCP窗口大小设置的很小，服务器会根据客户的TCP窗口大小来传送数据。由于客户端的TCP窗口大小很小，服务器只能缓慢的传输数据给客户端。当建立大量的这种连接时，web应用的并发连接池将被耗尽，最终导致拒绝服务。<br>
+<a href="https://mochazz.github.io/img/DDOS1/image26.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image26.png" alt></a></p>
+<p>Apache range header攻击<br>
+这种攻击方式只针对apache，当客户端传输大文件时会有range字段，表示将大文件分段，分成几个小段进行传输。例如攻击者将一个文件按照一个字节一段，分成好多段，这样就会造成传输数据缓慢，长时间占用连接，消耗服务器CPU和内存资源。<br>
+上面这4种攻击方式，也可以参考这篇文章：CC攻击。了解了攻击原理，我们就可以有针对性地进行防御，这里说一下apache的防护策略：设置并使用以下模块<br>
+mod_reqtimeout模块，控制请求数据传输的超时时间及最小速率，防护配置如下<br>
+<a href="https://mochazz.github.io/img/DDOS1/image27.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image27.png" alt></a><br>
+mod_qos模块，Apache的一个服务质量控制模块，用户可配置各种不同阈值，防护配置如下<br>
+<a href="https://mochazz.github.io/img/DDOS1/image28.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image28.png" alt></a><br>
+mod_security模块，一个开源的WAF模块，有专门针对慢速攻击防护的规则，防护配置如下<br>
+<a href="https://mochazz.github.io/img/DDOS1/image29.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image29.png" alt></a><br>
+以上是针对Apache的一些防护策略，至于其他中间件的防护，可以参考这篇文章：<a href="https://blog.qualys.com/securitylabs/2011/11/02/how-to-protect-against-slow-http-attacks" target="_blank" rel="noopener">How to Protect Against Slow HTTP AttACKs</a></p>
+<h4 id="XSS-DOS"><a href="#XSS-DOS" title="XSS-DOS"></a>XSS-DOS</h4>
+<p>利用网站存在的存储型XXS漏洞，在网站中插入恶意的javascript代码。代码的功能是不断向web服务器发起大量请求，从而导致服务器宕机，无法响应正常用户的请求。客户端访问已插入恶意的javascript代码的页面后，抓包截图如下<br>
+<a href="https://mochazz.github.io/img/DDOS1/image30.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image30.png" alt></a><br>
+由于这种攻击的是由存储型XSS导致的，我们再防御方面就要考虑如何防御存储型XSS。<br>
+防御策略：</p>
+<ol>
+<li>对用户的输入以及url参数进行特殊字符过滤；</li>
+<li>对输出内容进行编码转换；</li>
+<li>结合黑白名单机制。</li>
+</ol>
+<h4 id="时间透镜攻击"><a href="#%E6%97%B6%E9%97%B4%E9%80%8F%E9%95%9C%E6%94%BB%E5%87%BB" title="时间透镜攻击"></a>时间透镜攻击</h4>
+<p>通过控制相同源和相同目的IP报文，使得走不同路径的数据包，在同一时刻到达目标服务器，从而达到流量集中攻击的目的。这种攻击其实我也还弄不太懂，详细信息可以阅读这篇paper：<a href="http://icir.org/vern/papers/lensing.oak15.pdf" target="_blank" rel="noopener">Temporal Lensing and its Application in Pulsing Denial-of-Service Attacks</a>，或者看这个<a href="https://www.youtube.com/watch?v=QwAHNnKDVxQ" target="_blank" rel="noopener">视频</a>，还有这份中文分析：<a href="https://mp.weixin.qq.com/s?__biz=MzI2NjUwNjU4OA==&amp;mid=2247483685&amp;idx=1&amp;sn=8ac38ff22d571bbbf7716cb9e83b9b35&amp;chksm=ea8c5916ddfbd00008d9b28e22fccba8c201ce78c70c2d78d10ee732f22a39ccf46d4b197634&amp;mpshare=1&amp;scene=23&amp;srcid=0831Wr5YJPYzSrQU6gnfGVd0" target="_blank" rel="noopener">时间透镜及其在脉冲拒绝服务攻击的应用</a>。看一下freebuf上的一个分析图<br>
+<a href="https://mochazz.github.io/img/DDOS1/image31.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image31.png" alt></a><br>
+<a href="https://mochazz.github.io/img/DDOS1/image32.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image32.png" alt></a><br>
+防御方案：增加抖动，干扰攻击路径，使得数据包无法预期到达；由运营商禁止源路由。<br>
+其他防御措施：</p>
+<ol>
+<li>采用高性能的网络设备；</li>
+<li>充足的网络带宽保证；</li>
+<li>升级主机服务器硬件；</li>
+<li>避免将服务器的真实IP暴露在公网中；<br>
+使用CDN对流量进行稀释，当大流量稀释到各个CDN节点时，再对流量进行清洗，从而达到防护源站的目的。然而这种防御方式只能用在对域名发起的DDOS攻击，如果攻击者直接对IP进行攻击，则需要使用anycast技术来防御。</li>
+</ol>
+<h3 id="0X07总结"><a href="#0X07%E6%80%BB%E7%BB%93" title="0X07总结"></a>0X07总结</h3>
+<p>这篇文章是自己对DDOS学习的一个总结，当中参考了不少文章书籍，当然还有很多类型的DDOS文中未提及，需要再深入学习，文中若有原理性错误，还望大家指出修正。如果大家有什么好的书籍或关于这方面的资料，欢迎推荐、交流，文章仅用于研究，切勿用在非法用途。在下一篇文章中，我将还原大部分DDOS攻击的场景。</p>
+<p>参考：</p>
+<ol>
+<li><a href="http://www.jianshu.com/p/dff5a0d537d8" target="_blank" rel="noopener">CC攻击</a></li>
+<li><a href="https://www.incapsula.com/ddos/attack-glossary/http-flood.html" target="_blank" rel="noopener">HTTP FLOOD</a></li>
+<li><a href="https://www.incapsula.com/ddos/attack-glossary/udp-flood.html" target="_blank" rel="noopener">UDP FLOOD</a></li>
+<li><a href="https://www.webnms.com/snmp/help/snmpapi/snmpv3/snmp_operations/snmp_getbulk.html" target="_blank" rel="noopener">SNMP GETBULK</a></li>
+<li><a href="https://www.incapsula.com/ddos/attack-glossary/smurf-attack-ddos.html" target="_blank" rel="noopener">SMURF DDOS ATTACK</a></li>
+<li><a href="https://wenku.baidu.com/view/436588f4f61fb7360b4c65a1.html" target="_blank" rel="noopener">DNS Amplification AttACK</a></li>
+<li><a href="https://www.us-cert.gov/ncas/alerts/TA14-013A" target="_blank" rel="noopener">NTP Amplification AttACKs Using CVE-2013-5211</a></li>
+<li><a href="https://www.incapsula.com/ddos/attack-glossary/snmp-reflection.html" target="_blank" rel="noopener">SNMP REFLECTION/AMPLIFICATION</a></li>
+<li><a href="https://www.acunetix.com/blog/articles/slow-http-dos-attacks-mitigate-apache-http-server/" target="_blank" rel="noopener">How To Mitigate Slow HTTP DoS AttACKs in Apache HTTP Server</a></li>
+<li><a href="https://blog.qualys.com/securitylabs/2011/11/02/how-to-protect-against-slow-http-attacks" target="_blank" rel="noopener">How to Protect Against Slow HTTP AttACKs</a></li>
+<li><a href="http://icir.org/vern/papers/lensing.oak15.pdf" target="_blank" rel="noopener">Temporal Lensing and its Application in Pulsing Denial-of-Service Attacks</a></li>
+<li>《TCP-IP协议族(第4版)》</li>
+<li>《破坏之王-DDoS攻击与防范深度剖析》</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Web</category>
+        <category>DDoS</category>
+      </categories>
   </entry>
   <entry>
     <title>【深入浅出】基于拉格朗日松弛法的多约束 QoS 路由算法</title>
@@ -2997,233 +3224,6 @@ TODO: <a href="https://0xdktb.top/2020/04/19/WriteUp-NPUCTF-Crypto/#EzRSA" targe
       <tags>
         <tag>Crypto</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>【转载】DDoS原理与防御</title>
-    <url>/2019/11/16/DDoS/</url>
-    <content><![CDATA[<p>文章转载自：<br>
-文章作者:<a href="https://mochazz.github.io" target="_blank" rel="noopener">Mochazz</a><br>
-文章链接:<a href="https://mochazz.github.io/2017/09/11/DDOS1/" target="_blank" rel="noopener">https://mochazz.github.io/2017/09/11/DDOS1/</a></p>
-<h3 id="0X01DDOS简介"><a href="#0X01DDOS%E7%AE%80%E4%BB%8B" title="0X01DDOS简介"></a>0X01DDOS简介</h3>
-<p>DDOS(Distributed Denial of Service)，又称分布式拒绝服务攻击。骇客通过控制多个肉鸡或服务器组成的僵尸网络，对目标发送大量看似合法请求，从而占用大量网络资源，瘫痪网络，阻止用户对网络资源的正常访问。</p>
-<a id="more"></a>
-<h3 id="0X02DDOS危害"><a href="#0X02DDOS%E5%8D%B1%E5%AE%B3" title="0X02DDOS危害"></a>0X02DDOS危害</h3>
-<ol>
-<li>出口带宽堵死</li>
-<li>游戏掉线导致客户流失</li>
-<li>服务器连接数多，连接资源被耗尽</li>
-<li>服务器卡、慢、死机、无法连接</li>
-</ol>
-<h3 id="0X03攻击来源"><a href="#0X03%E6%94%BB%E5%87%BB%E6%9D%A5%E6%BA%90" title="0X03攻击来源"></a>0X03攻击来源</h3>
-<ol>
-<li>高性能服务器配合发包软件</li>
-<li>可联网的设备(如打印机、摄像头、电视等等)</li>
-<li>移动设备(数量多，增长速度快，其高性能利于组建僵尸网络)</li>
-<li>个人PC(存在漏洞的PC或一些黑客迷自愿成为DDOS一员)</li>
-<li>骇客控制的僵尸网络(僵尸网络又分为IRC型、HTTP型、P2P型)</li>
-</ol>
-<h3 id="0X04流量特点"><a href="#0X04%E6%B5%81%E9%87%8F%E7%89%B9%E7%82%B9" title="0X04流量特点"></a>0X04流量特点</h3>
-<ol>
-<li>IP地址随机或固定某些IP段随机</li>
-<li>没有完整完成三次握手</li>
-<li>地址多数是伪造的</li>
-<li>请求数量大、快</li>
-</ol>
-<h3 id="0X05导致DDOS原因"><a href="#0X05%E5%AF%BC%E8%87%B4DDOS%E5%8E%9F%E5%9B%A0" title="0X05导致DDOS原因"></a>0X05导致DDOS原因</h3>
-<h4 id="人类因素"><a href="#%E4%BA%BA%E7%B1%BB%E5%9B%A0%E7%B4%A0" title="人类因素"></a>人类因素</h4>
-<ol>
-<li>金钱利益</li>
-<li>政治冲突</li>
-<li>宗教冲突</li>
-<li>为求出名</li>
-</ol>
-<h4 id="非人类因素"><a href="#%E9%9D%9E%E4%BA%BA%E7%B1%BB%E5%9B%A0%E7%B4%A0" title="非人类因素"></a>非人类因素</h4>
-<ol>
-<li>带宽上限</li>
-<li>协议缺陷</li>
-<li>设备性能上限</li>
-<li>应用性能上限</li>
-<li>系统性能上限</li>
-</ol>
-<h3 id="0X06攻击类型及防御"><a href="#0X06%E6%94%BB%E5%87%BB%E7%B1%BB%E5%9E%8B%E5%8F%8A%E9%98%B2%E5%BE%A1" title="0X06攻击类型及防御"></a>0X06攻击类型及防御</h3>
-<h4 id="Smurf攻击"><a href="#Smurf%E6%94%BB%E5%87%BB" title="Smurf攻击"></a>Smurf攻击</h4>
-<p>攻击者向网关发送ICMP请求包，并将该ICMP请求报文的源地址伪造成受害主机IP地址，目的地址为广播地址。路由器在接受到该数据包，发现目的地址是广播地址，就会将该数据包广播出去，局域网内所有的存活主机都会受到一个ICMP请求包，源地址是受害主机IP。接下来受害主机就会收到该网络内所有主机发来的ICMP应答报文，通过大量返回的ICMP应答报文来淹没受害主机，最终导致网络阻塞，受害主机崩溃。下面是smurf攻击示意图<br>
-<a href="https://mochazz.github.io/img/DDOS1/image2.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image2.png" alt></a><br>
-防护方案：</p>
-<ol>
-<li>禁止路由器广播ICMP请求包；</li>
-<li>禁止操作系统对广播发出的ICMP请求包做出响应；</li>
-<li>配置防火墙静止来自你所处网络外部的ping包</li>
-</ol>
-<h4 id="TearDrop攻击"><a href="#TearDrop%E6%94%BB%E5%87%BB" title="TearDrop攻击"></a>TearDrop攻击</h4>
-<p>在了解这种攻击之前，需要先知道什么是IP fragmentation（数据包分片）。数据在网络中传输必定会产生数据包被分片，因为每种网络都有不同的最大单个数据包的大小，也就是常说的MTU（Maximum Transmission Unit，最大传输单元）。当要传输的数据超过你要通信的那台主机所处网络的MTU时，数据包就会被分片进行传输，然后在到达目的地再重新组装成原来的数据包，下面是数据包分片重组过程<br>
-<a href="https://mochazz.github.io/img/DDOS1/image3.jpeg" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image3.jpeg" alt></a><br>
-TearDrop攻击，就是通过设置错误的片偏移，使得数据包到达目的地时，服务器无法重新组合数据包，因为数据包的组合是通过片偏移来组装的，最终导致崩溃。对比一下正常IP数据包和错误IP数据包<br>
-<a href="https://mochazz.github.io/img/DDOS1/image4.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image4.png" alt></a><br>
-这种攻击主要对旧的windows版本和Linux版本有效，防护的话，可以检测发来的数据包片偏移是否合法，如果合法在组装，不合法直接丢弃。例如这个：<a href="https://wenku.baidu.com/view/b45bba61ddccda38376baf7f.html" target="_blank" rel="noopener">分片重组检查算法</a>。</p>
-<h4 id="Land-Attack"><a href="#Land-Attack" title="Land Attack"></a>Land Attack</h4>
-<p>攻击者发动Land Attack攻击时，需要先发出一个SYN数据包，并将数据包的源IP与目的IP都设置成要攻击的目标IP，这样目标在接收到SYN数据包后，会根据源IP回应一个SYN+ACK数据包，即和自己建立一个空连接，然后到达idel超时时间时，才会释放这个连接。攻击者发送大量这样的数据包，从而耗尽目标的TCP连接池，最终导致拒绝服务。攻击过程如下<br>
-<a href="https://mochazz.github.io/img/DDOS1/image5.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image5.png" alt></a><br>
-防御方案参考如下：这种攻击对早期系统有效。通过设置防火墙和路由规则，检测源IP与目的IP相同的数据包，丢弃、过滤这种数据包。</p>
-<h4 id="SYN-FLOOD攻击"><a href="#SYN-FLOOD%E6%94%BB%E5%87%BB" title="SYN FLOOD攻击"></a>SYN FLOOD攻击</h4>
-<p>SYN FLOOD攻击是在TCP三次握手过程中产生的。攻击者通过发送大量伪造的带有SYN标志位的TCP报文，与目标主机建立了很多虚假的半开连接，在服务器返回SYN+ACK数据包后，攻击者不对其做出响应，也就是不返回ACK数据包给服务器，这样服务器就会一直等待直到超时。这种攻击方式会使目标服务器连接资源耗尽、链路堵塞，从而达到拒绝服务的目的。SYN FLOOD攻击图示如下<br>
-<a href="https://mochazz.github.io/img/DDOS1/image6.jpeg" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image6.jpeg" alt></a><br>
-防御：<br>
-SYNCheck：使用防护设备，3次握手变成了6次握手，由防护设备检测SYN请求是否合法，通过后再由防护设备将报文转发给服务器，后续报文仍由防护设备代理。<br>
-Micro blocks：管理员可以在内存中为每个SYN请求创建一个小索引(小于16字节)，而不必把整个连接对象存入内存。<br>
-RST cookies：在客户端发起第一个SYN请求后，服务器故意回应一个错误的SYN+ACK报文。如果合法用户收到这个报文，就会给服务器响应RST报文。当服务器收到这个报文时，就将这个主机的IP记录进合法IP列表，下次该主机发起SYN请求时，就可以直接通过了。<br>
-STACK tweaking：管理员可以调整TCP堆栈以减缓SYN泛洪攻击的影响。这包括减小超时时间，等到堆栈存释内放时再分配连接，否则就随机性地删除传入的连接。</p>
-<h4 id="ACK-FLOOD攻击"><a href="#ACK-FLOOD%E6%94%BB%E5%87%BB" title="ACK FLOOD攻击"></a>ACK FLOOD攻击</h4>
-<p>ACK FLOOD攻击是利用TCP三次握手过程。这里可以分为两种。</p>
-<p>第一种：攻击者伪造大量的SYN+ACK包发送给目标主机，目标主机每收到一个SYN+ACK数据包时，都会去自己的TCP连接表中查看有没有与ACK的发送者建立连接 ，如果有则发送ACK包完成TCP连接，如果没有则发送ACK+RST 断开连接。但是在查询过程中会消耗一定的CUP计算资源。如果瞬间收到大量的SYN+ACK数据包，将会消耗服务器的大量cpu资源，导致正常的连接无法建立或增加延迟，甚至造成服务器瘫痪、死机。<br>
-<a href="https://mochazz.github.io/img/DDOS1/image7.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image7.png" alt></a></p>
-<p>第二种：利用TCP三次握手的ACK+SYN应答，攻击者向不同的服务器发送大量的SYN请求，这些SYN请求数据包的源IP均为受害主机IP，这样就会有大量的SYN+ACK应答数据包发往受害主机，从而占用目标的网络带宽资源，形成拒绝服务。<br>
-<a href="https://mochazz.github.io/img/DDOS1/image8.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image8.png" alt></a><br>
-通常DDOS攻击会将ACK flood与SYN flood结合在一起，从而扩大威力。防御方案可参考如下：采用CDN进行流量稀释；避免服务器IP暴露在公网上；通过限速或动态指纹的方式；利用对称性判断来分析出是否有攻击存在；在连续收到用户发送的ACK包时，中断回话，让其重连。</p>
-<h4 id="UDP-FLOOD攻击"><a href="#UDP-FLOOD%E6%94%BB%E5%87%BB" title="UDP FLOOD攻击"></a>UDP FLOOD攻击</h4>
-<p>UDP（User Datagram Protocol，用户数据报协议），是一种无连接和无状态的网络协议，UDP不需要像TCP那样进行三次握手，运行开销低，不需要确认数据包是否成功到达目的地。这就造成UDP泛洪攻击不但效率高，而且还可以在资源相对较少的情况下执行。UDP FLOOD可以使用小数据包(64字节)进行攻击,也可以使用大数据包(大于1500字节,以太网MTU为1500字节)进行攻击。大量小数据包会增大网络设备处理数据包的压力；而对于大数据包，网络设备需要进行分片、重组，最终达到的效果就是占用网络传输接口的带宽、网络堵塞、服务器响应慢等等。<br>
-<a href="https://mochazz.github.io/img/DDOS1/image9.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image9.png" alt></a><br>
-防御方案：限制每秒钟接受到的流量(可能产生误判)；通过动态指纹学习(需要攻击发生一定时间)，将非法用户加入黑名单。</p>
-<h4 id="NTP放大攻击"><a href="#NTP%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB" title="NTP放大攻击"></a>NTP放大攻击</h4>
-<p>NTP(Network Time Protocol，网络时间协议)，是用来使计算机网络时间同步化的一种协议，它可以使计算机与时钟源进行同步化并提供高精度的时间校正，使用UDP123端口进行通信。通常在NTP服务器上会有一些调试接口，而利用这些接口中的monlist请求，就可触发放大攻击。当主机向NTP服务器发送monlist查询请求时，NTP服务器会将与之进行时间同步的最后600个IP地址返回。所以攻击者只需要将源地址伪造为受害主机的IP，向NTP服务器发送一个monlist查询请求包，受害主机就会收到大量的UDP响应包。这种攻击在放大攻击里，危害相对较大。下面是NTP放大攻击示意图<br>
-<a href="https://mochazz.github.io/img/DDOS1/image10.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image10.png" alt></a><br>
-总结一下这种攻击产生的原因，请求与响应数据包不等价；UDP协议的通信模糊性（无数据传输确认机制）；以及NTP服务器的无认证机制。<br>
-防御方案：</p>
-<ol>
-<li>使用防 DDoS 设备进行清洗；</li>
-<li>加固并升级NTP服务器；</li>
-<li>在网络出口封禁 UDP 123 端口；</li>
-<li>通过网络层或者借助运营商实施 ACL 来防御；</li>
-<li>关闭现在 NTP 服务的 monlist 功能，在ntp.conf配置文件中增加<code>disable monitor</code>选项。</li>
-</ol>
-<h4 id="DNS放大攻击"><a href="#DNS%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB" title="DNS放大攻击"></a>DNS放大攻击</h4>
-<p>DNS(Domain Name System，域名系统)，由于使用IP地址来记忆各个网站比较困难，所以就产生了使用主机名称来表示对应的服务器，主机名称通过域名解析的过程转换成IP地址。下面来看一下DNS报文格式，以便了解攻击发生在何处。<br>
-<a href="https://mochazz.github.io/img/DDOS1/image11.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image11.png" alt></a><br>
-报文首部格式<br>
-<a href="https://mochazz.github.io/img/DDOS1/image12.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image12.png" alt></a><br>
-报文首部各字段含义如下，其中绿色高亮是攻击点之一，之后会分析<br>
-<a href="https://mochazz.github.io/img/DDOS1/image13.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image13.png" alt></a><br>
-下面是问题记录中查询类型可设置的值，我们发现最后一个ANY类型会请求所有记录，这也是一个攻击点<br>
-<a href="https://mochazz.github.io/img/DDOS1/image14.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image14.png" alt></a><br>
-DNS查询可分为递归查询和迭代查询，下面是DNS迭代查询图<br>
-<a href="https://mochazz.github.io/img/DDOS1/image15.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image15.png" alt></a><br>
-再来看DNS递归查询图<br>
-<a href="https://mochazz.github.io/img/DDOS1/image16.jpeg" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image16.jpeg" alt></a><br>
-从DNS数据包结构以及DNS递归查询过程，我们就可以大致分析出攻击原理。首先，攻击者向僵尸网络发出指令，使僵尸网络中的每一台主机均发出一个伪造源地址的DNS查询请求包，这些请求包查询类型设置为ANY，因为这种类型会请求所有的记录，这些记录会在返回的响应包中，也就是说这种数据包的大小较其他类型是最大的。接着查询类型设为递归查询，为什么不是迭代查询呢，仔细看两种查询的过程图可发现，如果迭代查询第一个请求的DNS服务器没有查询到结果，那么第一个请求的服务器会返回另一个DNS服务器IP，让请求主机向这个IP去继续查询，然而攻击者的数据包源地址是伪造的，所以并不会发起第二次查询，因为第一次查询根本就不是它发起的；而递归查询却是在查询到结果之后，才返回给查询请求发起者。利用这两个特点，攻击者就可以成功发起DNS放大攻击。这种普通的查询请求可以将攻击流量放大2~10倍，如果想增大攻击倍数，可以使用RFC 2671中定义的DNS拓展机制EDNS0。未使用EDNS0时，若响应包大小小于512字节，就使用UDP封装数据；若响应包大小超过512字节，就使用TCP连接或者服务器截断响应报文，丢弃超过512字节的部分，并把TC位置1。这两种方式都不利于进行DNS放大攻击。然而在开启EDNS0机制后，增加了OPT RR字段，这两个字段包含了能够处理的最大UDP报文大小信息，所以攻击者将这个信息设置的很大，服务器就会根据这个信息生成响应报文。最后看一下DNS放大攻击演示图<br>
-<a href="https://mochazz.github.io/img/DDOS1/image17.jpeg" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image17.jpeg" alt></a><br>
-防御策略：</p>
-<ol>
-<li>联系ISP清洗上游流量；</li>
-<li>DNS服务器只对可信域内提供服务，限制对域外用户提供DNS解析服务；</li>
-<li>对单个IP的查询速率做限制；</li>
-<li>拥有足够的带宽承受小规模攻击；</li>
-<li>关闭DNS服务器的递归查询；</li>
-<li>利用防火墙等对ANY Request进行过滤。</li>
-</ol>
-<h4 id="SNMP放大攻击"><a href="#SNMP%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB" title="SNMP放大攻击"></a>SNMP放大攻击</h4>
-<p>SNMP(Simple Network Management Protocol，简单网络管理协议)，是目前网络中应用最为广泛的网络管理协议，它提供了一个管理框架来监控和维和互联网设备，它使用UDP161端口进行通信。攻击者向互联网上开启SNMP服务的设备发送GetBulk请求，并使用默认通信字符串作为认证凭据。常见的默认通信字符串如public、private以及一些厂商默认的通信字符串。GetBulk请求是在SNMPv2中添加的的，该请求会让SNMP设备尽可能多的返回数据，这也就是SNMP放大攻击的利用点。下面来看一下SNMP的PDU格式<br>
-<a href="https://mochazz.github.io/img/DDOS1/image18.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image18.png" alt></a><br>
-攻击者先将源地址改成要攻击的目标IP，再使用默认的通信字符串，向大量SNMP设备发出GetBulk请求，设备收到GetBulk请求数据包后，会将一大段的设备检索信息返回给目标主机，最终目标主机会被这些SNMP设备返回的数据包淹没，导致拒绝服务。看一下SNMP的攻击图<br>
-<a href="https://mochazz.github.io/img/DDOS1/image19.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image19.png" alt></a><br>
-防御策略：</p>
-<ol>
-<li>禁止已开启SNMP的设备响应GetBulk请求，避免自己的设备被黑客利用；</li>
-<li>更改默认的通信字符串；</li>
-<li>修改默认端口161；</li>
-<li>隐藏开启SNMP设备的公网IP。</li>
-</ol>
-<h4 id="TFTP放大攻击"><a href="#TFTP%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB" title="TFTP放大攻击"></a>TFTP放大攻击</h4>
-<p>TFTP（Trivial File Transfer Protocol，简单文件传输协议），使用UDP 69端口进行通信，由于TFTP使用的是不可靠的UDP协议，所以他不能确保发送的任何报文都能真正到达目的地，因此他必须使用定时器来检测并重传报文，以下是TFTP传输文件过程图<br>
-<a href="https://mochazz.github.io/img/DDOS1/image20.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image20.png" alt></a><br>
-超时重传机制<br>
-<a href="https://mochazz.github.io/img/DDOS1/image21.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image21.png" alt></a><br>
-可以看到，TFTP协议将数据分成好多个数据块进行传输，每个数据块最大为512字节，客户端在接受到数据块时，需要给服务器端返回一个ACK确认报文，然后才会继续传输下一个报文。若服务器没有收到客户端发来ACK报文，则在时间到达超时计数器时，便会开启重传机制，这也就是攻击利用点。攻击者利用TFTP协议上的缺陷，伪造源地址向服务器发起请求，服务器回复的第1个data数据包后无法收到客户端发送的ACK。此时TFTP就会利用他的重传机制，定时重传第1个data数据包，当攻击者发出大量的这种请求时，TFTP放大攻击也就发生了。来看一下TFTP放大攻击示意图<br>
-<a href="https://mochazz.github.io/img/DDOS1/image22.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image22.png" alt></a><br>
-防御方案:</p>
-<ol>
-<li>不要将TFTP服务器暴露在公网上；</li>
-<li>对流经TFTP服务的流量进行入侵检测；</li>
-<li>将重传（数据包）率设置为1；只为信任域内的主机提供服务。</li>
-</ol>
-<h4 id="CC攻击"><a href="#CC%E6%94%BB%E5%87%BB" title="CC攻击"></a>CC攻击</h4>
-<p>CC攻击（ChallengeCollapsar）又称作HTTP 泛洪攻击，其原理是攻击者控制肉鸡、僵尸网络或使用代理服务器，不停地向目标的web服务发送大量合法请求，使得正常用户的web请求处理缓慢甚至得不到处理，制造大量的后台数据库查询动作，消耗目标CPU资源，最终导致服务器宕机崩溃。这种攻击方式不需要很大的带宽，且无法使用伪造IP地址进行攻击，需要真实的机器与web服务器建立连接，因为HTTP协议是建立在TCP协议上，必须先进行TCP三次握手才能进行HTTP通信。如果目标web服务器支持HTTPS，那么发起的HTTPS泛洪攻击还能穿透一些防护设备。<br>
-<a href="https://mochazz.github.io/img/DDOS1/image23.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image23.png" alt></a><br>
-防御方案：</p>
-<ol>
-<li>必要时将网页做成静态，减少数据库的使用；</li>
-<li>限制连接数量；</li>
-<li>修改最大超时时间；</li>
-<li>让用户手动输入验证码；</li>
-<li>在response报文中添加特殊字段，验证IP合法性；</li>
-<li>屏蔽频繁访问服务器的主机IP。</li>
-</ol>
-<h4 id="HTTP慢速攻击"><a href="#HTTP%E6%85%A2%E9%80%9F%E6%94%BB%E5%87%BB" title="HTTP慢速攻击"></a>HTTP慢速攻击</h4>
-<p>Slow HTTP Dos AttACKs（慢速HTTP拒绝服务攻击），黑客模拟正常用户向web服务器发送慢速http请求，由于是慢速的，服务器端需要保持连接资源，直到数据传输结束或请求结束才可释放连接。当服务器端建立了大量这样的慢速连接，就会导致服务器拒绝服务。这种攻击可以分为两类，一类是客户端发数据，另一类是客户端读取服务器发来的数据。HTTP慢速攻击对基于线程处理的web服务器影响显著，如apache、dhttpd，而对基于事件处理的web服务器影响不大，如ngix、lighttpd。HTTP慢速攻击还可以细分成以下几种攻击方式.</p>
-<p>Slowloris攻击方式<br>
-HTTP协议规定请求头以一个空行结束，所以完整的http请求头结尾是\r\n\r\n。然而使用非正常的\r\n来结尾，就会导致服务端认为我们的请求头还没结束，等待我们继续发送数据直到超时时间。两种请求头区别如下，CRLF（Carriage Return Line Feed）表示回车换行<br>
-<a href="https://mochazz.github.io/img/DDOS1/image24.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image24.png" alt></a></p>
-<p>Slow post攻击方式<br>
-在http头部信息，可以使用content-length声明HTTP消息实体的传输长度，服务器端会content-length的值作为HTTP BODY的长度。利用这一特点，攻击者把content-length设置得很大的，然后缓慢发送数据部分，比如一次只发送一个字节，这样服务器端就要一直保持连接，直到客户端传完所有的数据。<br>
-<a href="https://mochazz.github.io/img/DDOS1/image25.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image25.png" alt></a></p>
-<p>Slow read攻击方式<br>
-攻击者发送一个完整的HTTP数据请求，之后服务器会给出响应，这时攻击者在将自己的TCP窗口大小设置的很小，服务器会根据客户的TCP窗口大小来传送数据。由于客户端的TCP窗口大小很小，服务器只能缓慢的传输数据给客户端。当建立大量的这种连接时，web应用的并发连接池将被耗尽，最终导致拒绝服务。<br>
-<a href="https://mochazz.github.io/img/DDOS1/image26.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image26.png" alt></a></p>
-<p>Apache range header攻击<br>
-这种攻击方式只针对apache，当客户端传输大文件时会有range字段，表示将大文件分段，分成几个小段进行传输。例如攻击者将一个文件按照一个字节一段，分成好多段，这样就会造成传输数据缓慢，长时间占用连接，消耗服务器CPU和内存资源。<br>
-上面这4种攻击方式，也可以参考这篇文章：CC攻击。了解了攻击原理，我们就可以有针对性地进行防御，这里说一下apache的防护策略：设置并使用以下模块<br>
-mod_reqtimeout模块，控制请求数据传输的超时时间及最小速率，防护配置如下<br>
-<a href="https://mochazz.github.io/img/DDOS1/image27.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image27.png" alt></a><br>
-mod_qos模块，Apache的一个服务质量控制模块，用户可配置各种不同阈值，防护配置如下<br>
-<a href="https://mochazz.github.io/img/DDOS1/image28.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image28.png" alt></a><br>
-mod_security模块，一个开源的WAF模块，有专门针对慢速攻击防护的规则，防护配置如下<br>
-<a href="https://mochazz.github.io/img/DDOS1/image29.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image29.png" alt></a><br>
-以上是针对Apache的一些防护策略，至于其他中间件的防护，可以参考这篇文章：<a href="https://blog.qualys.com/securitylabs/2011/11/02/how-to-protect-against-slow-http-attacks" target="_blank" rel="noopener">How to Protect Against Slow HTTP AttACKs</a></p>
-<h4 id="XSS-DOS"><a href="#XSS-DOS" title="XSS-DOS"></a>XSS-DOS</h4>
-<p>利用网站存在的存储型XXS漏洞，在网站中插入恶意的javascript代码。代码的功能是不断向web服务器发起大量请求，从而导致服务器宕机，无法响应正常用户的请求。客户端访问已插入恶意的javascript代码的页面后，抓包截图如下<br>
-<a href="https://mochazz.github.io/img/DDOS1/image30.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image30.png" alt></a><br>
-由于这种攻击的是由存储型XSS导致的，我们再防御方面就要考虑如何防御存储型XSS。<br>
-防御策略：</p>
-<ol>
-<li>对用户的输入以及url参数进行特殊字符过滤；</li>
-<li>对输出内容进行编码转换；</li>
-<li>结合黑白名单机制。</li>
-</ol>
-<h4 id="时间透镜攻击"><a href="#%E6%97%B6%E9%97%B4%E9%80%8F%E9%95%9C%E6%94%BB%E5%87%BB" title="时间透镜攻击"></a>时间透镜攻击</h4>
-<p>通过控制相同源和相同目的IP报文，使得走不同路径的数据包，在同一时刻到达目标服务器，从而达到流量集中攻击的目的。这种攻击其实我也还弄不太懂，详细信息可以阅读这篇paper：<a href="http://icir.org/vern/papers/lensing.oak15.pdf" target="_blank" rel="noopener">Temporal Lensing and its Application in Pulsing Denial-of-Service Attacks</a>，或者看这个<a href="https://www.youtube.com/watch?v=QwAHNnKDVxQ" target="_blank" rel="noopener">视频</a>，还有这份中文分析：<a href="https://mp.weixin.qq.com/s?__biz=MzI2NjUwNjU4OA==&amp;mid=2247483685&amp;idx=1&amp;sn=8ac38ff22d571bbbf7716cb9e83b9b35&amp;chksm=ea8c5916ddfbd00008d9b28e22fccba8c201ce78c70c2d78d10ee732f22a39ccf46d4b197634&amp;mpshare=1&amp;scene=23&amp;srcid=0831Wr5YJPYzSrQU6gnfGVd0" target="_blank" rel="noopener">时间透镜及其在脉冲拒绝服务攻击的应用</a>。看一下freebuf上的一个分析图<br>
-<a href="https://mochazz.github.io/img/DDOS1/image31.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image31.png" alt></a><br>
-<a href="https://mochazz.github.io/img/DDOS1/image32.png" target="_blank" rel="noopener"><img src="https://mochazz.github.io/img/DDOS1/image32.png" alt></a><br>
-防御方案：增加抖动，干扰攻击路径，使得数据包无法预期到达；由运营商禁止源路由。<br>
-其他防御措施：</p>
-<ol>
-<li>采用高性能的网络设备；</li>
-<li>充足的网络带宽保证；</li>
-<li>升级主机服务器硬件；</li>
-<li>避免将服务器的真实IP暴露在公网中；<br>
-使用CDN对流量进行稀释，当大流量稀释到各个CDN节点时，再对流量进行清洗，从而达到防护源站的目的。然而这种防御方式只能用在对域名发起的DDOS攻击，如果攻击者直接对IP进行攻击，则需要使用anycast技术来防御。</li>
-</ol>
-<h3 id="0X07总结"><a href="#0X07%E6%80%BB%E7%BB%93" title="0X07总结"></a>0X07总结</h3>
-<p>这篇文章是自己对DDOS学习的一个总结，当中参考了不少文章书籍，当然还有很多类型的DDOS文中未提及，需要再深入学习，文中若有原理性错误，还望大家指出修正。如果大家有什么好的书籍或关于这方面的资料，欢迎推荐、交流，文章仅用于研究，切勿用在非法用途。在下一篇文章中，我将还原大部分DDOS攻击的场景。</p>
-<p>参考：</p>
-<ol>
-<li><a href="http://www.jianshu.com/p/dff5a0d537d8" target="_blank" rel="noopener">CC攻击</a></li>
-<li><a href="https://www.incapsula.com/ddos/attack-glossary/http-flood.html" target="_blank" rel="noopener">HTTP FLOOD</a></li>
-<li><a href="https://www.incapsula.com/ddos/attack-glossary/udp-flood.html" target="_blank" rel="noopener">UDP FLOOD</a></li>
-<li><a href="https://www.webnms.com/snmp/help/snmpapi/snmpv3/snmp_operations/snmp_getbulk.html" target="_blank" rel="noopener">SNMP GETBULK</a></li>
-<li><a href="https://www.incapsula.com/ddos/attack-glossary/smurf-attack-ddos.html" target="_blank" rel="noopener">SMURF DDOS ATTACK</a></li>
-<li><a href="https://wenku.baidu.com/view/436588f4f61fb7360b4c65a1.html" target="_blank" rel="noopener">DNS Amplification AttACK</a></li>
-<li><a href="https://www.us-cert.gov/ncas/alerts/TA14-013A" target="_blank" rel="noopener">NTP Amplification AttACKs Using CVE-2013-5211</a></li>
-<li><a href="https://www.incapsula.com/ddos/attack-glossary/snmp-reflection.html" target="_blank" rel="noopener">SNMP REFLECTION/AMPLIFICATION</a></li>
-<li><a href="https://www.acunetix.com/blog/articles/slow-http-dos-attacks-mitigate-apache-http-server/" target="_blank" rel="noopener">How To Mitigate Slow HTTP DoS AttACKs in Apache HTTP Server</a></li>
-<li><a href="https://blog.qualys.com/securitylabs/2011/11/02/how-to-protect-against-slow-http-attacks" target="_blank" rel="noopener">How to Protect Against Slow HTTP AttACKs</a></li>
-<li><a href="http://icir.org/vern/papers/lensing.oak15.pdf" target="_blank" rel="noopener">Temporal Lensing and its Application in Pulsing Denial-of-Service Attacks</a></li>
-<li>《TCP-IP协议族(第4版)》</li>
-<li>《破坏之王-DDoS攻击与防范深度剖析》</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Web</category>
-        <category>DDoS</category>
-      </categories>
   </entry>
   <entry>
     <title>攻防世界新手区 writeup</title>
