@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zer0-nu1l.github.io/"/>
-  <updated>2020-06-28T15:32:30.829Z</updated>
+  <updated>2020-06-29T10:04:59.682Z</updated>
   <id>https://zer0-nu1l.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Wireshark 系列】中间人攻击分析</title>
+    <link href="https://zer0-nu1l.github.io/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/"/>
+    <id>https://zer0-nu1l.github.io/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</id>
+    <published>2020-06-29T10:01:53.000Z</published>
+    <updated>2020-06-29T10:04:59.682Z</updated>
+    
+    <content type="html"><![CDATA[<p>中间人攻击（Man-in-the-MiddleAttack，简称“MITM攻击”）是一种非常高效（基本没有失败的可能）的攻击。<br>中间人攻击的目标并不是交换机，而是终端设备（例如计算机、手机等）。<br>所以我没有在上一篇 <a href="https://www.zer0-nu1l.com/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/" target="_blank" rel="noopener">【Wireshark 系列】MAC 地址泛洪攻击分析</a> 里面讲这部分的内容 😃</p>  <a id="more"></a><h1>中间人攻击的相关理论</h1><h2 id="ARP-缓存表-与-ARP报文分析">ARP 缓存表 与 ARP报文分析</h2><p>在每一台终端设备中都有一个 ARP 缓存表，这个表中保存了一些 IP 地址和 MAC 地址之间的映射关系。<br>windows/Linunx 查看本台设备 ARP 表的命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp -a</span><br></pre></td></tr></table></figure><p>删除 ARP 表的命令（需要管理员权限）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp -d</span><br></pre></td></tr></table></figure><p>由于我们的电脑大部分时间都会和外进行通信，所以如果执行了删除 ARP 表的命令，它会很快进行ARP的请求，重新获得 Mac地址和 IP 的映射关系。</p><p>我们可以利用这个特性，监听网卡，执行删除 ARP 表的命令，即可获得 ARP 请求和 ARP 响应的报文：<a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/ARP.pcapng" target="_blank" rel="noopener">ARP.pcapng</a>。</p><h2 id="ARP-报文分析">ARP 报文分析</h2><p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175524589.png" alt="image-20200629175524589"></p><p>ARP 报文非常非常简单，只有两个类型：一个 ARP 请求，一个 ARP 响应。<br>我们详细看下它的内容：</p><p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175539195.png" alt="image-20200629175539195"></p><p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175553893.png" alt="image-20200629175553893"></p><p>Opcode 只有 1 和 2，1是请求，2是应答。<br>对应的，我们可以设置显示过滤器：arp.opcode == 2 或者 arp.opcode == 1<br>ARP 报文缺点：没有验证措施，所以容易伪造<br>由于 ARP 协议非常简单，所以在通信过程中 ARP 协议占比通常非常低，几乎可以忽略不计。如果占比高，很可能就是出现了异常情况。</p><h2 id="ARP-欺骗">ARP 欺骗</h2><p>ARP 欺骗是实现 MITM 攻击的一种常用手段。<br>可以网上似乎到处都是，而且计算机网络课程也应该提到过，这里就不再多少。</p><h1>发起中间人攻击</h1><h2 id="常见攻击方式">常见攻击方式</h2><p>以前我们提到，ARP 协议没有验证措施，所以黑客可以冒充设备，甚至可以冒充网关……<br>一旦冒充了网关，目标主机就会将所有对外通信的报文给中间人，中间人再发给网关，信息一览无余……</p><h2 id="情景介绍">情景介绍</h2><p>下面使用 kali 虚拟机作为中间人攻击的实施者，Metasploitable 虚拟机作为被攻击的目标（为什么选他？因为它没有 GUI 省内存 😭）<br>虚拟机的网关为 192.168.93.2, Metasploitable 的 IP 是 192.168.93.145</p><blockquote><p>我暂居的地方马上迁移了，不要来毒化我哈 😅</p></blockquote><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175611372.png" alt="image-20200629175611372" style="zoom:80%;"><h2 id="实施-ARP-攻击">实施 ARP 攻击</h2><p>下面使用一款非常简单好用的工具 ettercap（实现 ARP 欺骗的工具很多，这是一款有 GUI 的工具）。<br>选择通用的嗅探：<br><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175628221.png" alt="image-20200629175628221"></p><p>这时候多了很多选项：<br><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175723728.png" alt="image-20200629175723728"></p><p>先进行扫描主机：<br><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175727750.png" alt="image-20200629175727750"></p><p>然后查看 Hosts List<br><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175734405.png" alt="image-20200629175734405"></p><p>分别选择两个目标（网关和攻击目标）<br><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175740006.png" alt="image-20200629175740006"></p><p>然后执行 MITM<br><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175745093.png" alt="image-20200629175745093"></p><p>之后这台机器于外界通信的数据包都会被我看到：<a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/MITM.pcapng" target="_blank" rel="noopener">MITM.pcapng</a></p><p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175807246.png" alt="image-20200629175807246"></p><p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175810833.png" alt="image-20200629175810833"></p><p>我们再做一件有趣的事情：我用 scp 从 WSL 发一张照片给 msfadmin</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ./sydney.jpg msfadmin@192.168.93.145:~/</span><br></pre></td></tr></table></figure><p>然后在 kali 追踪 TCP 流，看看能否得到图片<br><a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/MITM_picture.pcapng" target="_blank" rel="noopener">MITM_picture.pcapng</a><br><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175834142.png" alt="image-20200629175834142"></p><p>SSH 经过了数据的加密，所以没有办法查看原来传输的数据。</p><h1>分析中间人攻击</h1><p>接下来我们将通过分析刚刚抓到的包，讲解 MITM 攻击的特点，以便我们自己在其他场景下判断、分辨 MAC 泛洪攻击。<br><a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/MITM.pcapng" target="_blank" rel="noopener">MITM.pcapng</a></p><h2 id="初看">初看</h2><p>频繁出现 ARP 是不正常的（一般一应一答就结束了）<br><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175858516.png" alt="image-20200629175858516"></p><p>协议分级看一下：<br><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175903200.png" alt="image-20200629175903200"></p><p>ARP 协议报文在这么大的数据包中，平常接近 0.0%，这里高达 8.6%！</p><p>遇到这样情况，通常有三种可能：</p><ol><li>攻击者用 ARP 协议对网络进行扫描</li><li>计算机感染了 ARP 病毒，破坏网络通信</li><li>用攻击者发动 ARP 欺骗，发动中间人攻击（e.g. 密码丢失，十有八九是 ARP 欺骗）</li></ol><h2 id="Wireshark-专家系统">Wireshark 专家系统</h2><blockquote><p>结束捕获状态的时候才可用。</p></blockquote><p>在状态栏的最左侧黄色的按钮：</p><p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629180002310.png" alt="image-20200629180002310"></p><p>Wireshark 专家系统分析出了几个疑点：<br><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175909336.png" alt="image-20200629175909336"></p><p>其中 Duplicate IP …… 对应了刚刚三个可能性中的：ARP 欺骗。</p><blockquote><p>实际工作不能过度依赖专家系统，它主要是针对 TCP 故障分析的。</p></blockquote><h2 id="深入分析">深入分析</h2><p>接下来根据之前摸索到的信息去追踪实施 ARP 欺骗的攻击者。<br>攻击者有这样几个特征：</p><ol><li>发送大量的 ARP reply<br>用大数量淹没正确单个的 ARP reply.</li><li>一个 MAC 对应两个 IP（中间人）</li></ol><p>应用显示过滤器之后，可见：<br><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175918531.png" alt="image-20200629175918531"></p><p>上面是两个正常的 ARP reply<br>下面同一个 MAC 重复地发送 ARP reply，且用两个 IP 回复。<br>APR 欺骗实施者，无疑。</p><h1>防御中间人攻击</h1><p>有四种常见的方法：</p><ol><li>将网关的ARP 映射关系进行静态绑定 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp -s ip_addr mac_addr</span><br></pre></td></tr></table></figure>不适合大型网络（且重启就没有了，可能要在注册表里面找）</li><li>使用 DHCP     Snooping 功能</li><li>划分 VLAN<br>但是不可能一个人一个 VLAN，所以在一个 VLAN 内还是有风险。</li><li>ARP防火墙<br>本身也很消耗资源</li></ol><blockquote><p>所以，目前没有完美的方案。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;中间人攻击（Man-in-the-MiddleAttack，简称“MITM攻击”）是一种非常高效（基本没有失败的可能）的攻击。&lt;br&gt;
+中间人攻击的目标并不是交换机，而是终端设备（例如计算机、手机等）。&lt;br&gt;
+所以我没有在上一篇 &lt;a href=&quot;https://www.zer0-nu1l.com/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;【Wireshark 系列】MAC 地址泛洪攻击分析&lt;/a&gt; 里面讲这部分的内容 😃&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Web" scheme="https://zer0-nu1l.github.io/categories/Web/"/>
+    
+      <category term="Wireshark" scheme="https://zer0-nu1l.github.io/categories/Web/Wireshark/"/>
+    
+    
+      <category term="kali" scheme="https://zer0-nu1l.github.io/tags/kali/"/>
+    
+      <category term="Wireshark" scheme="https://zer0-nu1l.github.io/tags/Wireshark/"/>
+    
+      <category term="eNSP" scheme="https://zer0-nu1l.github.io/tags/eNSP/"/>
+    
+  </entry>
   
   <entry>
     <title>【Wireshark 系列】MAC 地址泛洪攻击分析</title>
@@ -623,48 +654,6 @@
     
       <category term="Crypto" scheme="https://zer0-nu1l.github.io/categories/CTF/Crypto/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>招新：Crypto方向介绍</title>
-    <link href="https://zer0-nu1l.github.io/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/"/>
-    <id>https://zer0-nu1l.github.io/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</id>
-    <published>2019-10-10T08:53:23.000Z</published>
-    <updated>2019-11-01T10:22:26.251Z</updated>
-    
-    <content type="html"><![CDATA[<h1>Crypto 方向基础</h1><h2 id="入门基础">入门基础:</h2><ol><li>C语言<br>// 很多代码审计都是以 C语言形式呈现</li><li>Python3:<ol><li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li><li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li><li>gmpy2库、Crypto库的使用</li></ol></li><li><strong>数学基础</strong> (重中之重)<br>可以参考《信息安全数学基础》（初等数论、近世代数）</li><li>linux的常见使用<br>基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>其余的遇到问题看需要再去学。</li></ol><a id="more"></a><p>注意事项：</p><blockquote><ol><li>密码学的要求是两点：算法编程能力，数学推理能力。</li><li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li><li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>参见题目：<br>DEF CON CTF Qualifier 2018 SAG?<br>DEF CON CTF Qualifier 2018 smcauth<br>DEF CON CTF Qualifier 2018 Easy Pisy<br>codegate2018 miro</li></ol></blockquote><h2 id="涵盖基本知识">涵盖基本知识</h2><ol><li>常见编码方式<br>base家族、Uuencode、Xxencode 等等等等。</li><li>古典密码<br>凯撒密码、栅栏密码、维基利亚密码 等等等等。</li><li>分组密码<br>DES、AES 等。</li><li>非对称密码<br>RSA、Elgamal、ECC等。</li><li>哈希函数<br>经常出现在 Web 题目中</li></ol><h2 id="资源推荐">资源推荐</h2><ol><li>学习方式推荐：<br>看书+看ctfwiki或者自己找一些blog+做题</li><li>密码学书籍：<br>《信息安全数学基础》（各个学校都有自己的版本）<br><a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li><li>密码学学习网站推荐：<br><a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>（主要是面向ctf解题以及算法编程）</li><li>做题网站：<br><a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br><a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li></ol><h2 id="题目类型">题目类型</h2><table><thead><tr><th>攻击方式</th><th>说明</th></tr></thead><tbody><tr><td>唯密文攻击</td><td>只拥有密文</td></tr><tr><td>选择明文攻击</td><td>拥有加密权限，能够对明文加密后获得相应密文</td></tr><tr><td>已知明文攻击</td><td>拥有密文与对应的明文。</td></tr><tr><td>选择密文攻击</td><td>拥有解密权限，能够对密文解密后获得相应明文</td></tr></tbody></table><p>Crypto 方向负责人：ZER0-Nu1L</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1&gt;Crypto 方向基础&lt;/h1&gt;
-&lt;h2 id=&quot;入门基础&quot;&gt;入门基础:&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;C语言&lt;br&gt;
-// 很多代码审计都是以 C语言形式呈现&lt;/li&gt;
-&lt;li&gt;Python3:
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.runoob.com/python/python-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;菜鸟教程&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/1016959663602400&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;廖雪峰的博客&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;gmpy2库、Crypto库的使用&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;数学基础&lt;/strong&gt; (重中之重)&lt;br&gt;
-可以参考《信息安全数学基础》（初等数论、近世代数）&lt;/li&gt;
-&lt;li&gt;linux的常见使用&lt;br&gt;
-基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。&lt;br&gt;
-其余的遇到问题看需要再去学。&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-    
-      <category term="CTF" scheme="https://zer0-nu1l.github.io/categories/CTF/"/>
-    
-      <category term="Crypto" scheme="https://zer0-nu1l.github.io/categories/CTF/Crypto/"/>
-    
-    
-      <category term="Studio" scheme="https://zer0-nu1l.github.io/tags/Studio/"/>
     
   </entry>
   
