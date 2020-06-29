@@ -52,7 +52,7 @@
     <link href="https://zer0-nu1l.github.io/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/"/>
     <id>https://zer0-nu1l.github.io/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</id>
     <published>2020-06-28T15:04:51.000Z</published>
-    <updated>2020-06-28T15:32:30.829Z</updated>
+    <updated>2020-06-29T10:05:33.297Z</updated>
     
     <content type="html"><![CDATA[<p>接下来我会开一个 Wireshark 网络分析的博文系列，主要借助华为的网络模拟工具 eNSP ，它可以接入真实的主机，为我们进行网络攻击提供了非常友好、非常纯洁的环境。<br>具体怎么连接可以自行查阅，或者可以在评论区留言，我可以单独再写一篇~ 😁</p><hr><p>下面从数据链路层对交换机的攻击说起：</p><ol><li>目前网络安全的问题有     80%来自于“内部网络”</li><li>链路层是内部网络通信最为重要的协议，而交换机正是这一层的典型设备</li><li>但是相比起其他网络设备来说，交换机的防护措施往往也是最差的，因此也经常成为黑客攻击的目标。</li></ol> <a id="more"></a><h1>实验环境介绍</h1><h2 id="数据链路层的攻击">数据链路层的攻击</h2><ul><li>MAC 地址欺骗攻击（放到下期中间人攻击部分讲解）</li><li>MAC 地址泛洪攻击（本次讲解内容）⭐️</li><li>STP 操纵攻击</li><li>广播风暴攻击</li></ul><h2 id="MAC-地址泛洪可能导致的情景">MAC 地址泛洪可能导致的情景</h2><p>网络在之前一直可以正常运行，但是在前些天很多用户突然发现网络速度变得十分缓慢，经过我们的检查没有发现线路方面的问题。<br>但是我们发现每次重启交换机之后网络速度就会恢复。<br>而经过一段时间之后网络速度就会再次变得缓慢。</p><h2 id="eNSP-交换机介绍">eNSP 交换机介绍</h2><h3 id="命令：查看-MAC-表">命令：查看 MAC 表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display mac-address</span><br></pre></td></tr></table></figure><h3 id="交换机-UDP-伪造源-MAC">交换机 UDP 伪造源 MAC</h3><p>（交换机不认 ip:port，目的和源 IP, port 可以随便写）<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230527919.png" alt="image-20200628230527919"></p><p>eNSP 实现的功能比较简单，但是告诉了我们伪造不是一件难事；<br>而大批量地进行伪造是需要专门的工具的，所以我们后面会接入 kali，做攻击的模拟。</p><h2 id="网络拓扑">网络拓扑</h2><p>网络拓扑 <a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Topo/SwitchAttack/" target="_blank" rel="noopener">SwitchAttack</a>：</p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628231643896.png" alt="image-20200628231643896" style="zoom:67%;"><h1>MAC 地址泛洪攻击</h1><p>网络拓扑中，PC1, PC2 都用 DHCP 配置；ping 通之后，查看交换机的 mac table ：<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230733652.png" alt="image-20200628230733652"></p><p>Kali 执行 <code>macof</code> 进行 MAC 地址泛洪（可以多开几个终端执行泛洪），同时抓取交换机连接 kali 的端口的数据包。<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230750772.png" alt="image-20200628230750772"></p><p>获取到泛洪攻击的数据包：<a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/raw/master/Package/SwitchAttack_attacked.pcapng" target="_blank" rel="noopener">SwitchAttack_attack.pcapng</a></p><p>接下来再看下交换机的 mac-address 表：<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230803774.png" alt="image-20200628230803774"></p><p>可以看到交换机已经完全被 Eth0/0/3 的端口映射关系淹没，甚至已经没有 Eth0/0/1 和 Eth0/0/2 了，这将导致，PC1 和 PC2 基本不能进行正常的网络通信。</p><h1>攻击分析</h1><blockquote><p>现实场景下是不了解自己的网络问题是否由 MAC 泛洪导致的，接下来我们将通过分析刚刚抓到的包，讲解 MAC 泛洪攻击的特点，以便我们自己在其他场景下判断、分辨 MAC 泛洪攻击。</p></blockquote><h2 id="初看">初看</h2><p>选项 - 统计 - 捕捉文件属性</p><p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230822539.png" alt="image-20200628230822539"></p><p>这个数据包很大，但是乍一眼可以看出来源 IP 和目的 IP 意外地多，且不属于用户主机的数据包：</p><p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image006.png" alt></p><p>另外，数据包长度还一样——很可能是软件生成的。<br>很容易想到，这些数据包是大量伪造的。</p><blockquote><p>但是以上只是基本猜测，需要进一步分析。</p></blockquote><h2 id="Wireshark-统计分析">Wireshark 统计分析</h2><p>现在我们发现网络中出现了大量来历不明的数据包，可是到底出现了多少个数据包呢，这些数据包是否来自同一个源地址，或者发向同一个目的地址呢？如果手动地逐个计算的话，那么显然这是一个十分繁重的重复劳动。好在 Wireshark 中提供了极为强大的网络统计功能，利用这些功能我们可以对网络活动有一个宏观的了解。<br>选项 - 统计 - 会话：<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200628230934444.png" alt="image-20200628230934444"></p><p>可以看到这里有基本上所有 IP 之间的报文只发了一次，这个是非常不正常的！至少一个以上，比如TCP 三次握手都需要一次通信。所以基本可以咬定，源 IP 和目的 IP 都是伪造的。<br>选项 - 统计 - 协议分析：<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image008.png" alt></p><p>这个统计图是从 Frame 展开，到 Ethernet，再到 IP，再到传输层到应用层。<br>这里可以看出，大部分的集中在了 IPv4 协议。<br>但是正常情况下，TCP 和 UDP 应该是最多的，这里链路层协议占比很多，很可能是伪造的。<br>我们不妨看一下我随便捕捉的正常的数据包的情况：<br><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png" alt></p><p>UDP 报文和 TCP 报文占比比较重，这个是比较正常的情况。<br>现在，很肯定这是来自数据链路层的 MAC 泛洪。</p><h1>找到攻击的源头</h1><p>其实刚刚已经提到了，我们用 kali 进行 MAC 泛洪的时候，查看了交换机的 mac-address 表，发现 Eth0/0/3 对应了大量的 MAC 地址。也就是说如果我们有交换机控制权，就能查到 MAC 泛洪攻击的始作俑者。（连的接口是不能伪造的）</p><h1>如何防御 MAC 地址泛洪攻击</h1><p>非常简单，让一个端口只能对应特定个数 MAC，在华为交换机里的配置是这样的：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int eth0&#x2F;0&#x2F;3</span><br><span class="line">port-security enable</span><br><span class="line">port-security mac-address sticky</span><br><span class="line">port-security protect-action protect</span><br><span class="line">port-security mac-mac-num 8 </span><br><span class="line">disaplay mac-address</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -168,9 +168,9 @@
       <category term="Git" scheme="https://zer0-nu1l.github.io/categories/Development/Git/"/>
     
     
-      <category term="GitKraken" scheme="https://zer0-nu1l.github.io/tags/GitKraken/"/>
-    
       <category term="Error" scheme="https://zer0-nu1l.github.io/tags/Error/"/>
+    
+      <category term="GitKraken" scheme="https://zer0-nu1l.github.io/tags/GitKraken/"/>
     
   </entry>
   
@@ -264,9 +264,9 @@
       <category term="bug" scheme="https://zer0-nu1l.github.io/categories/Development/bug/"/>
     
     
-      <category term="Error" scheme="https://zer0-nu1l.github.io/tags/Error/"/>
-    
       <category term="VSCode" scheme="https://zer0-nu1l.github.io/tags/VSCode/"/>
+    
+      <category term="Error" scheme="https://zer0-nu1l.github.io/tags/Error/"/>
     
       <category term="IDE" scheme="https://zer0-nu1l.github.io/tags/IDE/"/>
     
@@ -338,9 +338,9 @@
       <category term="Crypto" scheme="https://zer0-nu1l.github.io/categories/CTF/Crypto/"/>
     
     
-      <category term="Error" scheme="https://zer0-nu1l.github.io/tags/Error/"/>
-    
       <category term="Crypto" scheme="https://zer0-nu1l.github.io/tags/Crypto/"/>
+    
+      <category term="Error" scheme="https://zer0-nu1l.github.io/tags/Error/"/>
     
   </entry>
   
