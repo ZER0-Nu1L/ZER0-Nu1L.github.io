@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="QvPZ3tgcDy_FQ1Ivu9CLCAEPdzhAyW8GzyQ1APQgiVg" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="ueLXt8dSC9" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-crypto.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-crypto.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="kali,Wireshark," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZER0-Nu1L" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="针对 IP 协议的攻击方法，主要有伪造 IP 地址和发送畸形数据包两种方式。 泪滴攻击就属于发送畸形数据包这种方式，它的设计思路巧妙地利用了 IP 协议里面的缺陷，因此成为了网络安全里面的一个经典案例。 这种攻击的实现原理是向目标主机发送异常的数据包碎片，使得 IP 数据包碎片在重组的过程中有重合的部分，从而导致目标系统无法对其进行重组，进一步导致系统崩溃而停止服务的恶性攻击。 这篇内容非常非常">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Wireshark 系列】泪滴攻击分析">
+<meta property="og:url" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="ZER0-Nu1L">
+<meta property="og:description" content="针对 IP 协议的攻击方法，主要有伪造 IP 地址和发送畸形数据包两种方式。 泪滴攻击就属于发送畸形数据包这种方式，它的设计思路巧妙地利用了 IP 协议里面的缺陷，因此成为了网络安全里面的一个经典案例。 这种攻击的实现原理是向目标主机发送异常的数据包碎片，使得 IP 数据包碎片在重组的过程中有重合的部分，从而导致目标系统无法对其进行重组，进一步导致系统崩溃而停止服务的恶性攻击。 这篇内容非常非常">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200702211114219.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image003.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image004.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image005.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200702211747039.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image001.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002-1593695935789.png">
+<meta property="article:published_time" content="2020-07-02T13:04:12.000Z">
+<meta property="article:modified_time" content="2020-07-02T13:49:22.839Z">
+<meta property="article:author" content="Andy Wu">
+<meta property="article:tag" content="kali">
+<meta property="article:tag" content="Wireshark">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zer0-nu1l.github.io/2020/07/02/【Wireshark 系列】泪滴攻击分析/"/>
+
+
+
+
+
+  <title>【Wireshark 系列】泪滴攻击分析 | ZER0-Nu1L</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZER0-Nu1L</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">In me the tiger sniffs the rose.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Andy Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/Profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZER0-Nu1L">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【Wireshark 系列】泪滴攻击分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-02T21:04:12+08:00">
+                2020-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/Wireshark/" itemprop="url" rel="index">
+                    <span itemprop="name">Wireshark</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg" alt="Wireshark"></p>
+<p>针对 IP 协议的攻击方法，主要有<u>伪造 IP 地址</u>和发送<u>畸形数据包</u>两种方式。<br>
+泪滴攻击就属于发送畸形数据包这种方式，它的设计思路巧妙地利用了 IP 协议里面的缺陷，因此成为了网络安全里面的一个经典案例。<br>
+这种攻击的实现原理是向目标主机发送异常的数据包碎片，使得 IP 数据包碎片在重组的过程中有重合的部分，从而导致目标系统无法对其进行重组，进一步导致系统崩溃而停止服务的恶性攻击。</p>
+<p>这篇内容非常非常简单 😅</p>
+  <a id="more"></a>
+<h1>IPv4 报文分析</h1>
+<blockquote>
+<p>考虑到这种攻击是建立在 IP 协议上，我们先来简单地了解一下 IP 协议的几个重要内容，包括 IP 协议数据包的格式、分片方式以及存活时间（TTL）。</p>
+</blockquote>
+<h2 id="IP-协议格式">IP 协议格式</h2>
+<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200702211114219.png" alt="image-20200702211114219" style="zoom:67%;">
+<p>在数据包信息面板中查看它的详细信息，这个数据包各部分如下。<br>
+（1）版本——占 4 位，指 IP 协议的版本目前的 IP 协议版本号为 4（即 IPv4）。<br>
+（2）首部长度——占 4 位，这里的值为 20Bytes。<br>
+（3）总长度的是 56 字节。<br>
+<u><strong>（4）标识（identification）——占 16 位，它是一个计数器，用来产生数据包的标识。</strong></u><br>
+<u><strong>（5）片偏移（Flags, 16 位）——较长的分组在分片后某片在原分组中的相对位置，片偏移以8 个字节为偏移单位。</strong></u><br>
+<u><strong>（6）生存时间（8 位）——记为 TTL（Time To Live），表示数据包在网络中可通过的路由器数的最大值。</strong></u><br>
+（7）协议（8 位）字段——指出此数据包携带的数据使用何种协议以便目的主机的 IP 层将数据部分上交给哪个处理进程。<br>
+（8）源 IP 地址，表示数据包从哪里发出。<br>
+（9）目的 IP 地址，表示数据包将要发向哪里。</p>
+<blockquote>
+<p>其中我们比较关心的是 Flags、TTL、Src、Dst</p>
+</blockquote>
+<h2 id="IP-分片">IP 分片</h2>
+<p>我们知道之所以要对 IP 数据包进行分片，是因为存在 MTU（最大传输单元）<br>
+由于以太网传输电气方面的限制，以太网帧的大小都有限制每个以太网帧最小也要 64 Bytes，最大不能超过 1518 Bytes。<br>
+刨去以太网帧的帧头（DMAC 6 Bytes + SMAC 6 Bytes+Type 2 bytes）14 Bytes 和帧尾 CRC 校验部分 4 Bytes（这个部分有时候也被称作 FCS），那么剩下承载上层协议的地方也就是 Data 域最大就只能有 1500 Bytes，这个值我们就把它称之为 MTU。这也就是我们几乎所有设备的 MTU 值都为 1500 字节的原因。<br>
+所以当我们要传输的信息大小超过 1500 字节的时候，就需要分片。</p>
+<h2 id="IP-包的-Flags">IP 包的 Flags</h2>
+<p>由同一个信息拆开的报文，他们的标识 identification 是一样的。<br>
+比如这里的第 8、9 报文的标志是一样的<br>
+<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002.png" alt></p>
+<p>Flags 前两位好像没什么用，第三位 More fragment，如果是1，表示后面还有，如果为0，表示为最后一个数据包。后面 13 位 Fragment offset 表示偏移量。<br>
+以 <a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/ping.pcapng" target="_blank" rel="noopener">ping.pcapng</a> 为例：<br>
+第二个数据包的偏移量为第一个数据包的数据长度<br>
+（数据长度=整个包的长度-以太网帧头-IP帧头）<br>
+<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image003.png" alt></p>
+<p>1514 - 14 - 20 = 1480 bytes</p>
+<blockquote>
+<p>如果忘记帧头大小，可以点击帧，然后在状态栏查看：</p>
+</blockquote>
+<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image004.png" style="zoom: 67%;">
+<p>第二个包的偏移量：<br>
+<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image005.png" style="zoom:67%;"></p>
+<p>后面几个包也是类似的。</p>
+<h1>泪滴攻击</h1>
+<h2 id="泪滴攻击原理">泪滴攻击原理</h2>
+<p>泪滴攻击是基于数据分片传送进行的攻击手段。<br>
+在 IP 报头中有一个偏移字段和一个分片标志（MF, More fragments），如果 MF 标志设置为 1，则表明这个 IP 包是一个大 IP 包的片断，其中偏移字段指出了这个片断在整个 IP 包中的位置。例如，对一个 4200Bytes 的 IP包进行分片（MTU 为 1480），则 3 个片断中偏移字段的值依次为：0、1480、2960。这样接收端就可以根据这些信息成功的组装该 IP 包。而如果一个攻击者打破这种正常情况，把偏移字段设置成不正确的值，即可能出现重合或断开的情况，就可能导致目标操作系统崩溃。比如，把上述偏移设置为 0、1000、2000。<br>
+图中阴影部分的就是两个数据包有重合的地方，目标设备在接收到这种分片之后就无法重新组合成一个数据包，这就是所谓的泪滴攻击。<br>
+<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200702211747039.png" alt="image-20200702211747039"></p>
+<p>这种攻击方式在以前曾经给计算机用户带来了很大的困扰，但是对如今的操作系统基本无效，只是有时攻击者会将其与泛洪相结合来作为一种攻击手段。</p>
+<h1>分析泪滴攻击</h1>
+<p><a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/Teardrop.pcapng" target="_blank" rel="noopener">teardrop.pcap</a></p>
+<h2 id="概览">概览</h2>
+<p>这个数据包看起来没有特别明显问题，但是点到第9个包的时候，就能看到很明显的问题：<br>
+<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image001.png" alt></p>
+<p>它伪造了 Length，和长度相关的，会想到是泪滴攻击。</p>
+<h2 id="分析">分析</h2>
+<p>查看到它的 Fragment offset: 24<br>
+而我们查看 8 的数据包的数据长度：36<br>
+<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002-1593695935789.png" style="zoom:50%;"></p>
+<p>确定是泪滴攻击。<br>
+结束。</p>
+<blockquote>
+<p>是不是有点意犹未尽 😅</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ The end ------</div>
+    
+</div>
+      
+    </div>
+    <div>
+          
+            
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/">【Wireshark 系列】泪滴攻击分析</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Andy Wu 的个人博客">Andy Wu</a></p>
+  <p><span>发布时间:</span>2020年07月02日 - 21:07</p>
+  <p><span>最后更新:</span>2020年07月02日 - 21:07</p>
+  <p><span>原始链接:</span><a href="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/" title="【Wireshark 系列】泪滴攻击分析">https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+          
+    </div>
+    
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/kali/" rel="tag"><i class="fa fa-tag"></i> kali</a>
+          
+            <a href="/tags/Wireshark/" rel="tag"><i class="fa fa-tag"></i> Wireshark</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/" rel="next" title="【Wireshark 系列】中间人攻击分析">
+                <i class="fa fa-chevron-left"></i> 【Wireshark 系列】中间人攻击分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+  <div id="gitalk-container"></div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/Profile.jpg"
+                alt="Andy Wu" />
+            
+              <p class="site-author-name" itemprop="name">Andy Wu</p>
+              <p class="site-description motion-element" itemprop="description">Cover the face and straight ahead.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          <!-- 2020年6月26日11:07:23 -->
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+              <img src="/uploads/by-nc-nd.svg" alt="Creative Commons"/>
+            </a>
+          </div>
+
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ZER0-Nu1L" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wcb534813346@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Blogroll
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://acherstyx.github.io/" title="AcherStyx" target="_blank">AcherStyx</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://fitz.hasentu.com/" title="五维生物" target="_blank">五维生物</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ff-0xff.github.io/" title="ff-0xff" target="_blank">ff-0xff</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://el-z10.github.io/" title="EL" target="_blank">EL</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gemini-lin.github.io/" title="Gemini-Lin" target="_blank">Gemini-Lin</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">IPv4 报文分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-协议格式"><span class="nav-number">1.1.</span> <span class="nav-text">IP 协议格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-分片"><span class="nav-number">1.2.</span> <span class="nav-text">IP 分片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-包的-Flags"><span class="nav-number">1.3.</span> <span class="nav-text">IP 包的 Flags</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">泪滴攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#泪滴攻击原理"><span class="nav-number">2.1.</span> <span class="nav-text">泪滴攻击原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text">分析泪滴攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">3.1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">3.2.</span> <span class="nav-text">分析</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+ 
+ <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"> Andy Wu &nbsp | &nbsp </span>
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+    Number of visitors:<span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">68.1k</span>
+  
+</div>
+
+
+</div>
+
+<!--
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+-->
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count"></span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <div id="gitalk-container"></div>
+  <script src="/js/src/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: 'b559026a8469cfafb7e3',
+      clientSecret: '68757dba62da9ddd3078e0b24c9c146b555deecc',
+      repo: 'ZER0-Nu1L.github.io',
+      owner: 'ZER0-Nu1L',
+      admin: ['ZER0-Nu1L'],
+      id: md5(location.pathname),
+      distractionFreeMode: 'true'
+    })
+    gitalk.render('gitalk-container')
+  </script>
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+  <script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

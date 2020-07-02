@@ -309,6 +309,207 @@
   
 
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Andy Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/Profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZER0-Nu1L">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/" itemprop="url">【Wireshark 系列】泪滴攻击分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-02T21:04:12+08:00">
+                2020-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/Wireshark/" itemprop="url" rel="index">
+                    <span itemprop="name">Wireshark</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg" alt="Wireshark"></p>
+<p>针对 IP 协议的攻击方法，主要有<u>伪造 IP 地址</u>和发送<u>畸形数据包</u>两种方式。<br>
+泪滴攻击就属于发送畸形数据包这种方式，它的设计思路巧妙地利用了 IP 协议里面的缺陷，因此成为了网络安全里面的一个经典案例。<br>
+这种攻击的实现原理是向目标主机发送异常的数据包碎片，使得 IP 数据包碎片在重组的过程中有重合的部分，从而导致目标系统无法对其进行重组，进一步导致系统崩溃而停止服务的恶性攻击。</p>
+<p>这篇内容非常非常简单 😅</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    <div>
+      
+    </div>
+    <div>
+          
+    </div>
+    
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zer0-nu1l.github.io/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -443,7 +644,8 @@
 
       
         
-          <p>中间人攻击（Man-in-the-MiddleAttack，简称“MITM攻击”）是一种非常高效（基本没有失败的可能）的攻击。<br>
+          <p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg" alt="Wireshark"></p>
+<p>中间人攻击（Man-in-the-MiddleAttack，简称“MITM攻击”）是一种非常高效（基本没有失败的可能）的攻击。<br>
 中间人攻击的目标并不是交换机，而是终端设备（例如计算机、手机等）。<br>
 所以我没有在上一篇 <a href="https://www.zer0-nu1l.com/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/" target="_blank" rel="noopener">【Wireshark 系列】MAC 地址泛洪攻击分析</a> 里面讲这部分的内容 😃</p>
           <!--noindex-->
@@ -645,6 +847,7 @@
           <p>接下来我会开一个 Wireshark 网络分析的博文系列，主要借助华为的网络模拟工具 eNSP ，它可以接入真实的主机，为我们进行网络攻击提供了非常友好、非常纯洁的环境。<br>
 具体怎么连接可以自行查阅，或者可以在评论区留言，我可以单独再写一篇~ 😁</p>
 <hr>
+<p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg" alt="Wireshark"></p>
 <p>下面从数据链路层对交换机的攻击说起：</p>
 <ol>
 <li>目前网络安全的问题有     80%来自于“内部网络”</li>
@@ -2112,205 +2315,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zer0-nu1l.github.io/2020/02/05/libnum-error/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Andy Wu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/Profile.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZER0-Nu1L">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/05/libnum-error/" itemprop="url">libnum-error</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-05T17:16:38+08:00">
-                2020-02-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index">
-                    <span itemprop="name">CTF</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/Crypto/" itemprop="url" rel="index">
-                    <span itemprop="name">Crypto</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  687
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>由于之前清理空间的时候不慎将 WSL 的配置文件也误删掉了，所以慌忙还原 WSL 当初的配置，对于一些 Python 库的安装大多用 <code>pip</code> 的命令，直接安装，通过 <code>import ...</code> 的方式做一个简单的检查。但是前段时间在使用 <code>libnum</code> 的时候遇到了 <code>AttributeError: 'str' object has no attribute 'hex'</code> 的报错。</p>
-<p>网络上并没有这么针对性的博客来排除这个 <code>AttributeError</code>，也几乎没有讲过用 <code>pip</code> 命令其实也可以安装 <code>libnum</code>。</p>
-<p>所以这篇文章就讲解 <code>libnum</code> 两种不同的安装方法，以及为什么会出现和如何解决 <code>libnum</code> 下的 <code>AttributeError</code></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/02/05/libnum-error/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    
-    
-    
-
-    
-
-    
-
-    <div>
-      
-    </div>
-    <div>
-          
-    </div>
-    
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2365,7 +2369,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2514,7 +2518,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">66.7k</span>
+    <span title="Site words total count">68.1k</span>
   
 </div>
 
