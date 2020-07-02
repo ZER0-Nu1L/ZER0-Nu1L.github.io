@@ -1,160 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>招新：Crypto方向介绍</title>
-    <url>/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h1>Crypto 方向基础</h1>
-<h2 id="入门基础">入门基础:</h2>
-<ol>
-<li>C语言<br>
-// 很多代码审计都是以 C语言形式呈现</li>
-<li>Python3:
-<ol>
-<li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li>
-<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li>
-<li>gmpy2库、Crypto库的使用</li>
-</ol>
-</li>
-<li><strong>数学基础</strong> (重中之重)<br>
-可以参考《信息安全数学基础》（初等数论、近世代数）</li>
-<li>linux的常见使用<br>
-基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>
-其余的遇到问题看需要再去学。</li>
-</ol>
-<a id="more"></a>
-<p>注意事项：</p>
-<blockquote>
-<ol>
-<li>密码学的要求是两点：算法编程能力，数学推理能力。</li>
-<li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li>
-<li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>
-参见题目：<br>
-DEF CON CTF Qualifier 2018 SAG?<br>
-DEF CON CTF Qualifier 2018 smcauth<br>
-DEF CON CTF Qualifier 2018 Easy Pisy<br>
-codegate2018 miro</li>
-</ol>
-</blockquote>
-<h2 id="涵盖基本知识">涵盖基本知识</h2>
-<ol>
-<li>常见编码方式<br>
-base家族、Uuencode、Xxencode 等等等等。</li>
-<li>古典密码<br>
-凯撒密码、栅栏密码、维基利亚密码 等等等等。</li>
-<li>分组密码<br>
-DES、AES 等。</li>
-<li>非对称密码<br>
-RSA、Elgamal、ECC等。</li>
-<li>哈希函数<br>
-经常出现在 Web 题目中</li>
-</ol>
-<h2 id="资源推荐">资源推荐</h2>
-<ol>
-<li>学习方式推荐：<br>
-看书+看ctfwiki或者自己找一些blog+做题</li>
-<li>密码学书籍：<br>
-《信息安全数学基础》（各个学校都有自己的版本）<br>
-<a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li>
-<li>密码学学习网站推荐：<br>
-<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>
-（主要是面向ctf解题以及算法编程）</li>
-<li>做题网站：<br>
-<a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br>
-<a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li>
-</ol>
-<h2 id="题目类型">题目类型</h2>
-<table>
-<thead>
-<tr>
-<th>攻击方式</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>唯密文攻击</td>
-<td>只拥有密文</td>
-</tr>
-<tr>
-<td>选择明文攻击</td>
-<td>拥有加密权限，能够对明文加密后获得相应密文</td>
-</tr>
-<tr>
-<td>已知明文攻击</td>
-<td>拥有密文与对应的明文。</td>
-</tr>
-<tr>
-<td>选择密文攻击</td>
-<td>拥有解密权限，能够对密文解密后获得相应明文</td>
-</tr>
-</tbody>
-</table>
-<p>Crypto 方向负责人：ZER0-Nu1L</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
-      <tags>
-        <tag>Studio</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【GitKraken】 Could not find a compatible repository</title>
-    <url>/2020/05/01/GitKraken%20Error/</url>
-    <content><![CDATA[<h1>情况说明</h1>
-<p>有一天我用 GitKragen 打开我常用的仓库 Note，但发现有这样的报错：</p>
-<img src="/2020/05/01/GitKraken%20Error/image-20200501230732304.png" alt="image-20200501230732304" style="zoom:67%;">
-<p>之后用 GitKragen 始终打不开仓库 Notes 仓库。</p>
-<blockquote>
-<p>本文分析了可能出现此情况的所有可能，提出解决这个问题的方法，以及使用 GitKragen 的经验教训。</p>
-</blockquote>
-<a id="more"></a>
-<h1>原因分析</h1>
-<p>在 <a href="https://support.gitkraken.com/faq/" target="_blank" rel="noopener">https://support.gitkraken.com/faq/</a> 有专门这样一条：</p>
-<p><img src="/2020/05/01/GitKraken%20Error/clip_image001-1588345641404.png" alt></p>
-<p>翻译解释如下:</p>
-<ol>
-<li>当前的仓库被其他工具占用了，先把这些工具解除对仓库的占用，再尝试用 GitKragen 打开。</li>
-<li>尝试将仓库未解决的更改 stash ，或者提交，或者切换分支，再尝试用     GitKragen 打开。</li>
-<li>坑你是某个文件的完整路径过长，GitKragen 支持的最大的文件路径是 260 个字符。</li>
-</ol>
-<h1>尝试与解决</h1>
-<p>根据我当前的情况，第一个情况不可能，开始尝试第二个，同时在处理第二个的过程中注意第三个。<br>
-因为很可能是最近添加了路径过长的文件导致，在解决新的更改的时候可能发现那个文件。</p>
-<p>最开始并没有发现可特别疑的文件，顺利地把所有的文件提交了上去。之后发现 GitKragen 还是打不开仓库（排除了第二种情况）。</p>
-<p>尝试对最近看起来文件路径还是蛮长的文件进行了路径长度统计，但基本都不超过 150。<br>
-所以实在太奇怪了……（第三种情况也要排除了？）😵</p>
-<p>然而，在观察 Git History 的时候发现了神奇的事情：⭐️<img src="/2020/05/01/GitKraken%20Error/clip_image002.png" alt>发现之前提交了这个文件名巨长无比的文件？？<br>
-赶紧测试了一下：<br>
-<img src="/2020/05/01/GitKraken%20Error/clip_image003.png" alt></p>
-<p>逼近 260，有很大可能，然后发现这个文件原来的名称是“常用的输入字符的上标、下标、脚标.txt”<br>
-顿时懂了，这个含中文字符的文件名在 git 里面中文字符被 <code>\xxx</code> 来编码代替，而所谓的“文件路径是 260 个字符”是没有对 <code>\xxx</code> 解码的情况下测定的长度。<br>
-更改文件名，之后，GitKragen 果然恢复正常了…… ​😄​</p>
-<h1>经验教训</h1>
-<ol>
-<li>了解可能导致 GitKragen 打不开仓库的情况。</li>
-<li>在 Git 仓库里面
-<ol>
-<li>尽量不要让文件的层次太深（本案例没有太大这样的问题）</li>
-<li>文件命名在没有特殊需求的情况下使用英文字符（中文字符对 GitKragen 的字符长度规则里是 ×4 的，容易超过它的上限 260）</li>
-</ol>
-</li>
-</ol>
-<blockquote>
-<p>希望本文对也喜爱 GitKraken 的同仁能有点启示。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Development</category>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>GitKraken</tag>
-        <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ARP 欺骗的实现和防御</title>
     <url>/2019/10/26/ARP/</url>
     <content><![CDATA[<h1>VMWare 网络基础知识</h1>
@@ -251,6 +97,105 @@ fping指令来扫描当前网段内的所有IP</p>
       </categories>
       <tags>
         <tag>kali</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>招新：Crypto方向介绍</title>
+    <url>/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h1>Crypto 方向基础</h1>
+<h2 id="入门基础">入门基础:</h2>
+<ol>
+<li>C语言<br>
+// 很多代码审计都是以 C语言形式呈现</li>
+<li>Python3:
+<ol>
+<li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li>
+<li>gmpy2库、Crypto库的使用</li>
+</ol>
+</li>
+<li><strong>数学基础</strong> (重中之重)<br>
+可以参考《信息安全数学基础》（初等数论、近世代数）</li>
+<li>linux的常见使用<br>
+基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>
+其余的遇到问题看需要再去学。</li>
+</ol>
+<a id="more"></a>
+<p>注意事项：</p>
+<blockquote>
+<ol>
+<li>密码学的要求是两点：算法编程能力，数学推理能力。</li>
+<li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li>
+<li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>
+参见题目：<br>
+DEF CON CTF Qualifier 2018 SAG?<br>
+DEF CON CTF Qualifier 2018 smcauth<br>
+DEF CON CTF Qualifier 2018 Easy Pisy<br>
+codegate2018 miro</li>
+</ol>
+</blockquote>
+<h2 id="涵盖基本知识">涵盖基本知识</h2>
+<ol>
+<li>常见编码方式<br>
+base家族、Uuencode、Xxencode 等等等等。</li>
+<li>古典密码<br>
+凯撒密码、栅栏密码、维基利亚密码 等等等等。</li>
+<li>分组密码<br>
+DES、AES 等。</li>
+<li>非对称密码<br>
+RSA、Elgamal、ECC等。</li>
+<li>哈希函数<br>
+经常出现在 Web 题目中</li>
+</ol>
+<h2 id="资源推荐">资源推荐</h2>
+<ol>
+<li>学习方式推荐：<br>
+看书+看ctfwiki或者自己找一些blog+做题</li>
+<li>密码学书籍：<br>
+《信息安全数学基础》（各个学校都有自己的版本）<br>
+<a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li>
+<li>密码学学习网站推荐：<br>
+<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>
+（主要是面向ctf解题以及算法编程）</li>
+<li>做题网站：<br>
+<a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br>
+<a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li>
+</ol>
+<h2 id="题目类型">题目类型</h2>
+<table>
+<thead>
+<tr>
+<th>攻击方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>唯密文攻击</td>
+<td>只拥有密文</td>
+</tr>
+<tr>
+<td>选择明文攻击</td>
+<td>拥有加密权限，能够对明文加密后获得相应密文</td>
+</tr>
+<tr>
+<td>已知明文攻击</td>
+<td>拥有密文与对应的明文。</td>
+</tr>
+<tr>
+<td>选择密文攻击</td>
+<td>拥有解密权限，能够对密文解密后获得相应明文</td>
+</tr>
+</tbody>
+</table>
+<p>Crypto 方向负责人：ZER0-Nu1L</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
+      <tags>
+        <tag>Studio</tag>
       </tags>
   </entry>
   <entry>
@@ -450,6 +395,61 @@ openssl还包含了公钥私钥的生成、摘要生成等各种工具。</p>
       </tags>
   </entry>
   <entry>
+    <title>【GitKraken】 Could not find a compatible repository</title>
+    <url>/2020/05/01/GitKraken%20Error/</url>
+    <content><![CDATA[<h1>情况说明</h1>
+<p>有一天我用 GitKragen 打开我常用的仓库 Note，但发现有这样的报错：</p>
+<img src="/2020/05/01/GitKraken%20Error/image-20200501230732304.png" alt="image-20200501230732304" style="zoom:67%;">
+<p>之后用 GitKragen 始终打不开仓库 Notes 仓库。</p>
+<blockquote>
+<p>本文分析了可能出现此情况的所有可能，提出解决这个问题的方法，以及使用 GitKragen 的经验教训。</p>
+</blockquote>
+<a id="more"></a>
+<h1>原因分析</h1>
+<p>在 <a href="https://support.gitkraken.com/faq/" target="_blank" rel="noopener">https://support.gitkraken.com/faq/</a> 有专门这样一条：</p>
+<p><img src="/2020/05/01/GitKraken%20Error/clip_image001-1588345641404.png" alt></p>
+<p>翻译解释如下:</p>
+<ol>
+<li>当前的仓库被其他工具占用了，先把这些工具解除对仓库的占用，再尝试用 GitKragen 打开。</li>
+<li>尝试将仓库未解决的更改 stash ，或者提交，或者切换分支，再尝试用     GitKragen 打开。</li>
+<li>坑你是某个文件的完整路径过长，GitKragen 支持的最大的文件路径是 260 个字符。</li>
+</ol>
+<h1>尝试与解决</h1>
+<p>根据我当前的情况，第一个情况不可能，开始尝试第二个，同时在处理第二个的过程中注意第三个。<br>
+因为很可能是最近添加了路径过长的文件导致，在解决新的更改的时候可能发现那个文件。</p>
+<p>最开始并没有发现可特别疑的文件，顺利地把所有的文件提交了上去。之后发现 GitKragen 还是打不开仓库（排除了第二种情况）。</p>
+<p>尝试对最近看起来文件路径还是蛮长的文件进行了路径长度统计，但基本都不超过 150。<br>
+所以实在太奇怪了……（第三种情况也要排除了？）😵</p>
+<p>然而，在观察 Git History 的时候发现了神奇的事情：⭐️<img src="/2020/05/01/GitKraken%20Error/clip_image002.png" alt>发现之前提交了这个文件名巨长无比的文件？？<br>
+赶紧测试了一下：<br>
+<img src="/2020/05/01/GitKraken%20Error/clip_image003.png" alt></p>
+<p>逼近 260，有很大可能，然后发现这个文件原来的名称是“常用的输入字符的上标、下标、脚标.txt”<br>
+顿时懂了，这个含中文字符的文件名在 git 里面中文字符被 <code>\xxx</code> 来编码代替，而所谓的“文件路径是 260 个字符”是没有对 <code>\xxx</code> 解码的情况下测定的长度。<br>
+更改文件名，之后，GitKragen 果然恢复正常了…… ​😄​</p>
+<h1>经验教训</h1>
+<ol>
+<li>了解可能导致 GitKragen 打不开仓库的情况。</li>
+<li>在 Git 仓库里面
+<ol>
+<li>尽量不要让文件的层次太深（本案例没有太大这样的问题）</li>
+<li>文件命名在没有特殊需求的情况下使用英文字符（中文字符对 GitKragen 的字符长度规则里是 ×4 的，容易超过它的上限 260）</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>希望本文对也喜爱 GitKraken 的同仁能有点启示。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Development</category>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>GitKraken</tag>
+        <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jupyter server crashed | VSCode + WLS</title>
     <url>/2020/03/12/VSCode_Jupyter_bug/</url>
     <content><![CDATA[<h1>情况分析</h1>
@@ -524,11 +524,61 @@ ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展
         <category>bug</category>
       </categories>
       <tags>
-        <tag>Error</tag>
         <tag>VSCode</tag>
+        <tag>Error</tag>
         <tag>IDE</tag>
         <tag>WSL</tag>
         <tag>Jupyter notebook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>libnum-error</title>
+    <url>/2020/02/05/libnum-error/</url>
+    <content><![CDATA[<p>由于之前清理空间的时候不慎将 WSL 的配置文件也误删掉了，所以慌忙还原 WSL 当初的配置，对于一些 Python 库的安装大多用 <code>pip</code> 的命令，直接安装，通过 <code>import ...</code> 的方式做一个简单的检查。但是前段时间在使用 <code>libnum</code> 的时候遇到了 <code>AttributeError: 'str' object has no attribute 'hex'</code> 的报错。</p>
+<p>网络上并没有这么针对性的博客来排除这个 <code>AttributeError</code>，也几乎没有讲过用 <code>pip</code> 命令其实也可以安装 <code>libnum</code>。</p>
+<p>所以这篇文章就讲解 <code>libnum</code> 两种不同的安装方法，以及为什么会出现和如何解决 <code>libnum</code> 下的 <code>AttributeError</code></p>
+<a id="more"></a>
+<h1>python libnum库安装使用方法</h1>
+<p>方法1：<br>
+在 Python 2.7 的环境下安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hellman/libnum</span><br><span class="line"><span class="built_in">cd</span> libnum</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+<p>方法2：<br>
+在 Python 3 环境下安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install libnum</span><br></pre></td></tr></table></figure>
+<h1>Python2 for libnum</h1>
+<p>这里做下解释，如果搜索 “ python libnum 库安装 ”的文章，一般都只会告诉你第一种方法。</p>
+<p>这是因为在很长一段时间，<code>libnum</code> 都只支持 Python2，在它的开源库中我们也可以看到：“Requirements: python2.7”</p>
+<img src="/2020/02/05/libnum-error/libnum-error.png" width="500">
+<p>甚至在 2018 年 12 月还有人 issue 是否支持 Python3：</p>
+<img src="/2020/02/05/libnum-error/libum2-3.png" width="500">
+<p>很多写 <code>libnum</code> 安装教程的博客也多半是在 2018 年12月前写的。</p>
+<h1>Python3 for libnum</h1>
+<p>然而！！！在 2019 年 3 月的时候有人回复了这个 issue，已经实现支持 Python3 的libnum。</p>
+<img src="/2020/02/05/libnum-error/libnum3.png" width="500">
+<p>其地址是：<a href="https://github.com/JafarAkhondali/python3-libnum" target="_blank" rel="noopener">https://github.com/JafarAkhondali/python3-libnum</a></p>
+<p>同时我们可以查到在 <code>https://pypi.org/</code> 中查到 <a href="http://project/libnum/" target="_blank" rel="noopener"><code>libnum 1.6.0</code></a></p>
+<img src="/2020/02/05/libnum-error/PyPI.png" width="500">
+<p>此时可以用 <code>pip install libnum</code> 的方式安装 <code>libnum</code>，但需要注意的是，这里的 <code>pip install libnum</code> 对应的是 只支持 Python3 的 <code>libnum</code>。</p>
+<h1>AttributeError: ‘str’ object has no attribute ‘hex’</h1>
+<h2 id="报错原因分析">报错原因分析</h2>
+<p>出现这个错误的原因是 python3 中只有 unicode str，所以把 decode 方法去掉了，所以 “str’ object has no attribute 'hex”。</p>
+<blockquote>
+<p>比较抱歉，没有截图，只是文字描述。</p>
+</blockquote>
+<p>我们仔细看报错的信息，稍作分析就发现，运行过程中是遇到 <code>encode('hex')</code> 之类的方法的时候报错的。说明错误是用 Python3 的解释器去解释 Python2 的代码 或者其他等价的情况发生的。</p>
+<p>很可能是因为我 当初+后来 同时使用 <code>pip install libnum</code> 和 <code>python setup.py install</code> 的方法安装库，所以导致解释器解释代码的时候产生冲突。</p>
+<h2 id="问题解决">问题解决</h2>
+<p>笔者并不精通 Python2 和 Python3 的兼容问题。<br>
+只是单纯在 Python2 下使用这些库（毕竟 Python3 的环境是部署在 Windows下的，WSL 只是由于特殊情况也安装了Python3），所以采用 <code>pip uninstall libnum</code> 的方法卸载了支持 Python3 的<code>libnum</code>库。</p>
+<p>之后代码解释正常，也得到了 flag, hhh。</p>
+<img src="/2020/02/05/libnum-error/flag.png" width="300">]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
+      <tags>
+        <tag>Crypto</tag>
+        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -537,7 +587,7 @@ ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展
     <content><![CDATA[<p>接下来我会开一个 Wireshark 网络分析的博文系列，主要借助华为的网络模拟工具 eNSP ，它可以接入真实的主机，为我们进行网络攻击提供了非常友好、非常纯洁的环境。<br>
 具体怎么连接可以自行查阅，或者可以在评论区留言，我可以单独再写一篇~ 😁</p>
 <hr>
-<p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg" alt="Wireshark"></p>
+<p><img src="https://www.zer0-nu1l.com/uploads/Wireshark.jpg" alt="Wireshark"></p>
 <p>下面从数据链路层对交换机的攻击说起：</p>
 <ol>
 <li>目前网络安全的问题有     80%来自于“内部网络”</li>
@@ -621,59 +671,9 @@ ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展
       </tags>
   </entry>
   <entry>
-    <title>libnum-error</title>
-    <url>/2020/02/05/libnum-error/</url>
-    <content><![CDATA[<p>由于之前清理空间的时候不慎将 WSL 的配置文件也误删掉了，所以慌忙还原 WSL 当初的配置，对于一些 Python 库的安装大多用 <code>pip</code> 的命令，直接安装，通过 <code>import ...</code> 的方式做一个简单的检查。但是前段时间在使用 <code>libnum</code> 的时候遇到了 <code>AttributeError: 'str' object has no attribute 'hex'</code> 的报错。</p>
-<p>网络上并没有这么针对性的博客来排除这个 <code>AttributeError</code>，也几乎没有讲过用 <code>pip</code> 命令其实也可以安装 <code>libnum</code>。</p>
-<p>所以这篇文章就讲解 <code>libnum</code> 两种不同的安装方法，以及为什么会出现和如何解决 <code>libnum</code> 下的 <code>AttributeError</code></p>
-<a id="more"></a>
-<h1>python libnum库安装使用方法</h1>
-<p>方法1：<br>
-在 Python 2.7 的环境下安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hellman/libnum</span><br><span class="line"><span class="built_in">cd</span> libnum</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
-<p>方法2：<br>
-在 Python 3 环境下安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install libnum</span><br></pre></td></tr></table></figure>
-<h1>Python2 for libnum</h1>
-<p>这里做下解释，如果搜索 “ python libnum 库安装 ”的文章，一般都只会告诉你第一种方法。</p>
-<p>这是因为在很长一段时间，<code>libnum</code> 都只支持 Python2，在它的开源库中我们也可以看到：“Requirements: python2.7”</p>
-<img src="/2020/02/05/libnum-error/libnum-error.png" width="500">
-<p>甚至在 2018 年 12 月还有人 issue 是否支持 Python3：</p>
-<img src="/2020/02/05/libnum-error/libum2-3.png" width="500">
-<p>很多写 <code>libnum</code> 安装教程的博客也多半是在 2018 年12月前写的。</p>
-<h1>Python3 for libnum</h1>
-<p>然而！！！在 2019 年 3 月的时候有人回复了这个 issue，已经实现支持 Python3 的libnum。</p>
-<img src="/2020/02/05/libnum-error/libnum3.png" width="500">
-<p>其地址是：<a href="https://github.com/JafarAkhondali/python3-libnum" target="_blank" rel="noopener">https://github.com/JafarAkhondali/python3-libnum</a></p>
-<p>同时我们可以查到在 <code>https://pypi.org/</code> 中查到 <a href="http://project/libnum/" target="_blank" rel="noopener"><code>libnum 1.6.0</code></a></p>
-<img src="/2020/02/05/libnum-error/PyPI.png" width="500">
-<p>此时可以用 <code>pip install libnum</code> 的方式安装 <code>libnum</code>，但需要注意的是，这里的 <code>pip install libnum</code> 对应的是 只支持 Python3 的 <code>libnum</code>。</p>
-<h1>AttributeError: ‘str’ object has no attribute ‘hex’</h1>
-<h2 id="报错原因分析">报错原因分析</h2>
-<p>出现这个错误的原因是 python3 中只有 unicode str，所以把 decode 方法去掉了，所以 “str’ object has no attribute 'hex”。</p>
-<blockquote>
-<p>比较抱歉，没有截图，只是文字描述。</p>
-</blockquote>
-<p>我们仔细看报错的信息，稍作分析就发现，运行过程中是遇到 <code>encode('hex')</code> 之类的方法的时候报错的。说明错误是用 Python3 的解释器去解释 Python2 的代码 或者其他等价的情况发生的。</p>
-<p>很可能是因为我 当初+后来 同时使用 <code>pip install libnum</code> 和 <code>python setup.py install</code> 的方法安装库，所以导致解释器解释代码的时候产生冲突。</p>
-<h2 id="问题解决">问题解决</h2>
-<p>笔者并不精通 Python2 和 Python3 的兼容问题。<br>
-只是单纯在 Python2 下使用这些库（毕竟 Python3 的环境是部署在 Windows下的，WSL 只是由于特殊情况也安装了Python3），所以采用 <code>pip uninstall libnum</code> 的方法卸载了支持 Python3 的<code>libnum</code>库。</p>
-<p>之后代码解释正常，也得到了 flag, hhh。</p>
-<img src="/2020/02/05/libnum-error/flag.png" width="300">]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
-      <tags>
-        <tag>Error</tag>
-        <tag>Crypto</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【Wireshark 系列】泪滴攻击分析</title>
     <url>/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p><img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg" alt="Wireshark"></p>
+    <content><![CDATA[<p><img src="https://www.zer0-nu1l.com/uploads/Wireshark.jpg" alt="Wireshark"></p>
 <p>针对 IP 协议的攻击方法，主要有<u>伪造 IP 地址</u>和发送<u>畸形数据包</u>两种方式。<br>
 泪滴攻击就属于发送畸形数据包这种方式，它的设计思路巧妙地利用了 IP 协议里面的缺陷，因此成为了网络安全里面的一个经典案例。<br>
 这种攻击的实现原理是向目标主机发送异常的数据包碎片，使得 IP 数据包碎片在重组的过程中有重合的部分，从而导致目标系统无法对其进行重组，进一步导致系统崩溃而停止服务的恶性攻击。</p>
@@ -1130,7 +1130,7 @@ use more than 20~30% time to try;</p>
   <entry>
     <title>【Wireshark 系列】中间人攻击分析</title>
     <url>/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg" alt="Wireshark"></p>
+    <content><![CDATA[<p><img src="https://www.zer0-nu1l.com/uploads/Wireshark.jpg" alt="Wireshark"></p>
 <p>中间人攻击（Man-in-the-MiddleAttack，简称“MITM攻击”）是一种非常高效（基本没有失败的可能）的攻击。<br>
 中间人攻击的目标并不是交换机，而是终端设备（例如计算机、手机等）。<br>
 所以我没有在上一篇 <a href="https://www.zer0-nu1l.com/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/" target="_blank" rel="noopener">【Wireshark 系列】MAC 地址泛洪攻击分析</a> 里面讲这部分的内容 😃</p>
