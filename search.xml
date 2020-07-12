@@ -1,105 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>招新：Crypto方向介绍</title>
-    <url>/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h1>Crypto 方向基础</h1>
-<h2 id="入门基础">入门基础:</h2>
-<ol>
-<li>C语言<br>
-// 很多代码审计都是以 C语言形式呈现</li>
-<li>Python3:
-<ol>
-<li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li>
-<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li>
-<li>gmpy2库、Crypto库的使用</li>
-</ol>
-</li>
-<li><strong>数学基础</strong> (重中之重)<br>
-可以参考《信息安全数学基础》（初等数论、近世代数）</li>
-<li>linux的常见使用<br>
-基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>
-其余的遇到问题看需要再去学。</li>
-</ol>
-<a id="more"></a>
-<p>注意事项：</p>
-<blockquote>
-<ol>
-<li>密码学的要求是两点：算法编程能力，数学推理能力。</li>
-<li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li>
-<li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>
-参见题目：<br>
-DEF CON CTF Qualifier 2018 SAG?<br>
-DEF CON CTF Qualifier 2018 smcauth<br>
-DEF CON CTF Qualifier 2018 Easy Pisy<br>
-codegate2018 miro</li>
-</ol>
-</blockquote>
-<h2 id="涵盖基本知识">涵盖基本知识</h2>
-<ol>
-<li>常见编码方式<br>
-base家族、Uuencode、Xxencode 等等等等。</li>
-<li>古典密码<br>
-凯撒密码、栅栏密码、维基利亚密码 等等等等。</li>
-<li>分组密码<br>
-DES、AES 等。</li>
-<li>非对称密码<br>
-RSA、Elgamal、ECC等。</li>
-<li>哈希函数<br>
-经常出现在 Web 题目中</li>
-</ol>
-<h2 id="资源推荐">资源推荐</h2>
-<ol>
-<li>学习方式推荐：<br>
-看书+看ctfwiki或者自己找一些blog+做题</li>
-<li>密码学书籍：<br>
-《信息安全数学基础》（各个学校都有自己的版本）<br>
-<a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li>
-<li>密码学学习网站推荐：<br>
-<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>
-（主要是面向ctf解题以及算法编程）</li>
-<li>做题网站：<br>
-<a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br>
-<a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li>
-</ol>
-<h2 id="题目类型">题目类型</h2>
-<table>
-<thead>
-<tr>
-<th>攻击方式</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>唯密文攻击</td>
-<td>只拥有密文</td>
-</tr>
-<tr>
-<td>选择明文攻击</td>
-<td>拥有加密权限，能够对明文加密后获得相应密文</td>
-</tr>
-<tr>
-<td>已知明文攻击</td>
-<td>拥有密文与对应的明文。</td>
-</tr>
-<tr>
-<td>选择密文攻击</td>
-<td>拥有解密权限，能够对密文解密后获得相应明文</td>
-</tr>
-</tbody>
-</table>
-<p>Crypto 方向负责人：ZER0-Nu1L</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
-      <tags>
-        <tag>Studio</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ARP 欺骗的实现和防御</title>
     <url>/2019/10/26/ARP/</url>
     <content><![CDATA[<h1>VMWare 网络基础知识</h1>
@@ -196,6 +97,105 @@ fping指令来扫描当前网段内的所有IP</p>
       </categories>
       <tags>
         <tag>kali</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>招新：Crypto方向介绍</title>
+    <url>/2019/10/10/CTF-Crypto%20%E6%96%B9%E5%90%91%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h1>Crypto 方向基础</h1>
+<h2 id="入门基础">入门基础:</h2>
+<ol>
+<li>C语言<br>
+// 很多代码审计都是以 C语言形式呈现</li>
+<li>Python3:
+<ol>
+<li><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">廖雪峰的博客</a></li>
+<li>gmpy2库、Crypto库的使用</li>
+</ol>
+</li>
+<li><strong>数学基础</strong> (重中之重)<br>
+可以参考《信息安全数学基础》（初等数论、近世代数）</li>
+<li>linux的常见使用<br>
+基础密码学最重要的是要能在 Linux 系统下运行脚本、使用工具。<br>
+其余的遇到问题看需要再去学。</li>
+</ol>
+<a id="more"></a>
+<p>注意事项：</p>
+<blockquote>
+<ol>
+<li>密码学的要求是两点：算法编程能力，数学推理能力。</li>
+<li>在很多人看来，没有 pwn、Web 这些能做大量攻击的方向有趣，因人而异吧。</li>
+<li>密码学基础学完之后会有很多和其他方向（Web, misc, pwn, re）交汇的地方。<br>
+参见题目：<br>
+DEF CON CTF Qualifier 2018 SAG?<br>
+DEF CON CTF Qualifier 2018 smcauth<br>
+DEF CON CTF Qualifier 2018 Easy Pisy<br>
+codegate2018 miro</li>
+</ol>
+</blockquote>
+<h2 id="涵盖基本知识">涵盖基本知识</h2>
+<ol>
+<li>常见编码方式<br>
+base家族、Uuencode、Xxencode 等等等等。</li>
+<li>古典密码<br>
+凯撒密码、栅栏密码、维基利亚密码 等等等等。</li>
+<li>分组密码<br>
+DES、AES 等。</li>
+<li>非对称密码<br>
+RSA、Elgamal、ECC等。</li>
+<li>哈希函数<br>
+经常出现在 Web 题目中</li>
+</ol>
+<h2 id="资源推荐">资源推荐</h2>
+<ol>
+<li>学习方式推荐：<br>
+看书+看ctfwiki或者自己找一些blog+做题</li>
+<li>密码学书籍：<br>
+《信息安全数学基础》（各个学校都有自己的版本）<br>
+<a href="https://item.jd.com/11103297.html" target="_blank" rel="noopener">《深入浅出密码学：常用加密技术原理与应用》</a></li>
+<li>密码学学习网站推荐：<br>
+<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/introduction/" target="_blank" rel="noopener">Wiki-CTF-Crypto</a><br>
+（主要是面向ctf解题以及算法编程）</li>
+<li>做题网站：<br>
+<a href="https://adworld.xctf.org.cn/" target="_blank" rel="noopener">https://adworld.xctf.org.cn/</a><br>
+<a href="https://github.com/ctfs/write-ups-2017" target="_blank" rel="noopener">https://github.com/ctfs/write-ups-2017</a></li>
+</ol>
+<h2 id="题目类型">题目类型</h2>
+<table>
+<thead>
+<tr>
+<th>攻击方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>唯密文攻击</td>
+<td>只拥有密文</td>
+</tr>
+<tr>
+<td>选择明文攻击</td>
+<td>拥有加密权限，能够对明文加密后获得相应密文</td>
+</tr>
+<tr>
+<td>已知明文攻击</td>
+<td>拥有密文与对应的明文。</td>
+</tr>
+<tr>
+<td>选择密文攻击</td>
+<td>拥有解密权限，能够对密文解密后获得相应明文</td>
+</tr>
+</tbody>
+</table>
+<p>Crypto 方向负责人：ZER0-Nu1L</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
+      <tags>
+        <tag>Studio</tag>
       </tags>
   </entry>
   <entry>
@@ -332,6 +332,27 @@ fping指令来扫描当前网段内的所有IP</p>
       </tags>
   </entry>
   <entry>
+    <title>SDN-DDoS Question &amp; Consult</title>
+    <url>/2019/12/08/SDN-DDoS/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">输入密码，查看文章</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="b30ac1cb228034968461e17cabfeb285dc6c695eb6cc7adcc0d7260fcfb95030">c54ef91cce081c6f61e5353cd8bb7033a3a4a4b1fe8abe1b1454f387adbd37348102c6722f4de38abc5e5e7d11e33fb607922e0136851a98202d2c2b9a9b8a4ae5c7908e0d2ec37060e38f7f1217d5781d9f66f930a254506f89c0f90a17be7355fcf26b1e8c3609d466f7df9a2969c9d58a0c3380e6d3e8f87b9ab586c999d4880bd42265233c6cd8b2a026ab3781e30f807c895d127e9b393a71022ac14285953ef63e9348dd40f36d88037e6c2c1b4862924b06f35195f1b51a3333d6e1c318404e0f6a5cd03135e6670161381323c586d2bc95f98afab5350fcaac50ba1d28016418ec73854a93c9a7b43efad3fa49f27aef618045463187c6cfa6e5fbd216b104cccfbc70be79d441c6a30b686c77d4acc3277520686733121015b7a7d429c55004a668dde07877d6676594439fc0feaa056b824d3e9df8708d9e598c8171b72a7d583731487787f192d3e2813be84291edee4e40b939a3deca89df3e6c43e43467d11750e6be778426bd899efce463b6660acba0f23f4567ef5640f3e41acdf17b11fdd72690a36153955ddc7369dc9b119186315ade21e07c9a63dc905e02247821f94e7d394460c3ec13ccfe1a191d13bc72925bc810dccbe3ee6da4a47616127a1b76d0b9ac9893203a47262424cc8a505a796edf640611141d82f22208e6533c28b7bef743ab0b33d93ed6f1b250189961623f73b1658c267c945bf516c339d4fb6576e6da22bf5a66cf4f1b2d11def69cd85376ccef41b6c34b2a27f493f4ad96a3c181c2fb214def70847082241e7b29dd146b88a262388ffa8199092053ecabab51abe6a2d2cfdc893e6221970f4bad1717d1dae9350ea8f001ee90196264136e76dcbe5213d0d0727ddf47407381f0a4f2c1b52650802db59ad035cb3e9648f8350ff4a87bb797f7909ef4a272fcdd243e35f331a0850764ae63352a2be25143468e15781804f84895824bb37858f4a5d14dc8a98fbb3b2687389e64d8ccefc53d2f84e840392c317bee20f4a5a8f5aac2ed65f0d7acf9ffce370ed55c45739de2e608ef72fbbf64d0a7048fabb59b52441c5d2383e8caf60d18b1134a54657c6592f681743f71d0115e6e00c620358065f59e3b61ebcd5823922239522ac56793eb15fa38c35c5fded0eef718a786372636fd57dbe20f6ae88696da0d8f49dc91cbfe65f98c367ede1d5b3c3e6b5b9253a39666c2aa1a141fd286e73760157eb2342ed82833732266de9d25410a6ee48f62ba4306793a5e350cc01a90b11ea7a4e40674d836380cdb4d9a10d455950610f814c77d92d3a03119ca2a249f42b2d47f2fc6d429865477061e0818a19322dfff648f5ed3b0cb33d34439e8302112a2e2e1ca129288ac9b145f79c4259e8fdb80d992f4df477629d21d5812b63969ad8bab195ebb976c3e56cb1ae3c7d398e134c93d327554ac4a9628290ea233b2f905b9c9f4aa2885ac0dee51100074bcc316e796729bf6beece69430b1e6160f6aa145d7f5f110960bb34648f96574161ad5af5ed5aa4bf8cc6fa8fc2980ed6d1dc6aaaf79d2295c80b0bc82dab1bff490026bf57467fafa314b378195ad3b9647793f2208fd1cdf4dcd51d7bde2e6e66cd27b0ff1af3c8536fecf6c97478e1c6d9dfb91f57d70cad375cbe9e62014dba0c77ddfde51a50192f6d9960dc929cbb9b72898a6a03af5039648f5b2d634e38be750f73e9e874cc99025961b0aa2e01f803beecfbb99139f2e154af46f55f6d55d56ccb22a02790ba1f38afb3e5e449dac9217c069bb5976bda7f4eb01ed7374cf079f20b0f712fdd02c71d5d277015a4edbfbc35a254ab18eaf28e11e04f6f22919df14c72d7f0922ad9c32adbb0a74774fca62758f34938a3789e9b50d5e1c49b3d5c45d8c1bba059ddf49965184a19e0fd2ade1887b185ab106fb704c2eef66551d5c31a54af2a8053f60c7a8f43b9c075e3ad5f4b49a54163b3648a509c56a23307a31b5825a8f53beca1a802edff82f6bf5db5600a55183852b2e902ef8176088e0e4bf6c350d5d6b665b6b6132bcacbaeb5ea73179e8d617982a61f950b2f111213965ea7f0c9a371896bd910b9ca69e38582fc2f4d97daab86a82c3da43e46810a38ee846e0f93194d1cef88bca748c44dcc05c2882ef643012a4fffac2c1c87e5a084a7abd90235ef204f612eb7058eb531d4e8485302e3d8c545c5f8d382194d32d999f85c5943a310efedcf24450f9a6276cfac111eaadd496411115e51278518b1cc8d756354074b16547c2fee612e45d5446a2ce89d1a963d2018df3996a3eb2831a6a3d20bd727ac5a7eac9453781d3084f7639ebe6bd6cfe0682d65283d49e5972350178c6c370ec9819d222c62e1bcf0e0c2e57c48052f9a34a0dad4d6c11d2ce4b8db32276503455c60dec21ca51ec59cc67c07b08ec90d016b4687b20575f1141521dbfb15a703caaacf26d911b07961440cc59463b734246dc1b3940c992d5031817c8cba48430392b817600e3f49d6187e1e02aa9daec1290059b2c6a1dbfa077b5054433e2e84a516f86cab562de6b810a5a48a264e1237f5658ca620f72d951f9571c51f0eab6e9154eaf4473554b5dd603342c5c709da69bacda7ae49403913824633ce1fd830a4990006a1e921d1d26f1e5cf47a03efa61bf640bbf8bd71b72f0e50512ce6264b07b7326d3df09b028759d9826fabb35222800dd0d478446ce4a8fd105f2606056aeca7c32a8dcd4d9b2ae1fe436c7e65227f0ab27ad0df4d5722e9a0a997ca248092d5442921f1f79e32dd0540e75331736624cf691c394ee37244c1c51defecfd64614b6d88ab15a585dc56f9877fe9452afe3561810a25aa20faf154c730077f32b3bdbebf1295a3a8e7e1dfd11c88dd048bc832e26fcf883bdc24034f3c1104032c84d77e4631b7ccb84a446bba8d828e9e44cd759740a098965022ed82bf73caf4a3c4d9de551036ad829e425349543294990a21b538608abde83fe1f8151a9200dc7aa1cbf2bbd4206d911b2e65f5b5df092a858f9c2388df2a786db08e7416ab13cd10432b9704de4cc3d2d183f593c470c57e4e23d260dc2f35194e4279537d1ce22666e7f717d85563c2cca19e0b089058c301367b01bd7ed688ca03d8c8956856b9545e1dc02f1c785b3651f3daddf10d1e0ba9641480b15622bde939be92780629836fce24e788204ef15c128fc30940b66e515ca0bc2f8727d14abb69623f7c2d7100374d8505239a98561eabf3c4b7e2dc3245d28ac32494e1dbae83a8be749a75af43d2c8945e1372ef00a183f521ea85405d69be49d1bd280e658912c61455535bc0381d849ebf6ad90907c0bb4bb10816a5177c49bf42baa7a11ed76745e5139575c76b2ff77c82c11f9fac429d5ff1c18fc3281cb2c085172b24d7395cbe420db8ee00768af06f45347f06b5e4295a2afd6659fcae2bc6ec80ab16c22448c8b4b93a8019326843267aac4488c2ada5b9fdab517bfe3d0f915370f41e4400733d6672a27b2f9185efd5bc779fddd4699d4b11d05f774b5c3b9a172cc9d7f718fe03ea9fd455503302b39ce3a5869f9e5bce7085614c9eea21ceeffd0f05f120f05b069dc5bf983e9f77b11ecb6d687dd9aebe9cd9f8bc52c3e5e8f988ab2c24afbf76997cf9167fb6aeddced428d1bf66ebdccc6f79d2a022e9228d7a79885712ef6785a5ef7556527a3be95abf1a99e8d5142c0736d9ca16996896797aaf8d10198527e12fb35608d5e4c747bbd3352e38179960f7b28a5c45f3b539633e76173f69fc0389853f883ec32243a1cf3af8164db63e37761ade068ebe604fe7e49663dd21340f0eeafecfe420727b819211cb8697f4922f99a3db4a348ef7335cea29f13f37cbe334613c84b521420ea2cff12050747cf2a433bb2fbe03c1a22674450689ff4855cbda0e2dd3a435c03dd92cba1b1bf7d09c6bce503ed3ffce6e9ec69ff1bb92e5bedd6c3c3cd41b17e17962a32d52edc9afa817b2042c08c13632433046ea620984e65ea6b4aa2f4fac5d220438600601bfcf2146c1bd941966030267eede66a3ed3d292038c11f6d55c01a8fd38392c3a0fb829df06cc036d6362137671e3be7d2010f720dda9a7f61cd3d4555cb57a3d42d44db6031f847577f9f00e460ee1a74e3f03b15910caa96d8bbbefea71f5656712bbef5a3494717391dcd53dfff3e79e42cac639671b36b13a7178d00fa0c7aabb97631edc63b5383ddb643bdf662363e1e3b3b34d0ae7518582e19824a29a2abbf01b6ae8709e662879a662f3915cd2bd33080d85cdb4514eb3fca8ade71c36341e1704851a2d4d16f6d617b414b5215eed94d40040e0ed89ae7ce8ae59a75ea6706bb095f886ca57a52a9378f0a95d315c08f05072757ec73035f1e3e0ce50153f283aef637fa7a4bea40ddc7f9de2f487136b96a4325252eacea0b58fd9840e77a940145492514c8b5a8247cec716a4503286efbdac7c96a5e1eb2fad07a81b97add0e3bff3f95ba572961978a29362526cc0bc3fd714211503f700fc6d540ae856b13c4c039e2f5e0bc56df067985c0ea4c91a09645433ccfd55d1415bd56bc0ea928b36976d47a0ef0f9ab033fedfe732559f4eb47daf5b269a50d75f7d038371379da0743427f20a3ba519fabf6351f4cf5c0a6b83e077372c1d06e282ad801e2e76cf7130f0eb6ff6a0e12bf9f9d6ddbc2037b815d4aadc0789d30600077090e4f3bc400fafa00d86915e5f98a707504e19bee0c30676f90c5c2c40e2df6ab443f8e3cc0d604eba58da9b0cd3b01fd5e7b1966a8c5b2ecbbbba75eb37cf87743f3a0c268a7340dd7794db21347b2a6e6a96297da261624b24aec1ec38eecb2d233b26fc84b96ce0b3b4f403c6770007af51c0d5517ae602aa27e289bea4f0f592bf6a9587ccd1678623efe4284c1ac1e53f7a3487f3a89196f4466ad206c00ff4f389ad5e690cda1426f9e9035abad284fdc09c351fe61060adf0d4964c33d98f0db4e2466daaf88889b40d3597a5e1a146c2ea8661e1b1289a97766691152e4386a11e4d33e08174a3783b36b11712ed90532de6811ba8610942e184d28cbbdf83a9b15193d6f62ab20147b70cd48e4cf536be08d0ec1e353194b36a198ef3a0d2c2dd96be49140a7cbf4579717674ecf2f58c5fbd3db29a71c54b24ef135760ebf29937353846102d72de55e1c1d3b547c423f36429d1853e288ce99b8491c6d84720e44a7743f09efd5ec84bfe39c00cbfa319804da6b33ae00ec67e8b308b153a4cb996d85f9a523e7b5d2572c3cb180bbd16ebd60cca2991934b008a139228510da564064c7d41522677e660a0e138f01734bcebacbe6cbda89cd443a72c9778ce57d70817a3fc0049451cb3f1d48b2bd0ae175c2cf2e5bb49151a2d5a85f477bad67acd05e27cfc81c125287e0f551b42a3d4c236f200ccaa7b0f76854f0dc0b24536c013f3dc54e2913b8aab875392ad195f26a71fc8007be5b1a7bc9793f286d0e1a53f02dfdb6565245027898dd1e48c67042aabd2f437de5892a739b5c3759f797609589972d12db9f04ba926ed1a1906f88c79382db3696f37e6b7255aa59bdfde5948c1998d6a2c5936198fba77093a6d84cea5cf847474c490f1ed007c706b8bdb803690046086e5e432bb47be122e5395a921d678558e3a40333613964b4ce9884da06cd43e9f7e6ae9eaa3617728a332a5aa4392ca0c02e1691c74</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>Web</category>
+        <category>SDN</category>
+        <category>DDoS</category>
+      </categories>
+      <tags>
+        <tag>DDoS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>OpenSSL</title>
     <url>/2019/09/29/OpenSSL/</url>
     <content><![CDATA[<h1>openssl 简介</h1>
@@ -429,27 +450,6 @@ openssl还包含了公钥私钥的生成、摘要生成等各种工具。</p>
       </tags>
   </entry>
   <entry>
-    <title>SDN-DDoS Question &amp; Consult</title>
-    <url>/2019/12/08/SDN-DDoS/</url>
-    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder="" />
-    <label for="hbePass">输入密码，查看文章</label>
-    <div class="bottom-line"></div>
-  </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="b30ac1cb228034968461e17cabfeb285dc6c695eb6cc7adcc0d7260fcfb95030">c54ef91cce081c6f61e5353cd8bb7033a3a4a4b1fe8abe1b1454f387adbd37348102c6722f4de38abc5e5e7d11e33fb607922e0136851a98202d2c2b9a9b8a4ae5c7908e0d2ec37060e38f7f1217d5781d9f66f930a254506f89c0f90a17be7355fcf26b1e8c3609d466f7df9a2969c9d58a0c3380e6d3e8f87b9ab586c999d4880bd42265233c6cd8b2a026ab3781e30f807c895d127e9b393a71022ac14285953ef63e9348dd40f36d88037e6c2c1b4862924b06f35195f1b51a3333d6e1c318404e0f6a5cd03135e6670161381323c586d2bc95f98afab5350fcaac50ba1d28016418ec73854a93c9a7b43efad3fa49f27aef618045463187c6cfa6e5fbd216b104cccfbc70be79d441c6a30b686c77d4acc3277520686733121015b7a7d429c55004a668dde07877d6676594439fc0feaa056b824d3e9df8708d9e598c8171b72a7d583731487787f192d3e2813be84291edee4e40b939a3deca89df3e6c43e43467d11750e6be778426bd899efce463b6660acba0f23f4567ef5640f3e41acdf17b11fdd72690a36153955ddc7369dc9b119186315ade21e07c9a63dc905e02247821f94e7d394460c3ec13ccfe1a191d13bc72925bc810dccbe3ee6da4a47616127a1b76d0b9ac9893203a47262424cc8a505a796edf640611141d82f22208e6533c28b7bef743ab0b33d93ed6f1b250189961623f73b1658c267c945bf516c339d4fb6576e6da22bf5a66cf4f1b2d11def69cd85376ccef41b6c34b2a27f493f4ad96a3c181c2fb214def70847082241e7b29dd146b88a262388ffa8199092053ecabab51abe6a2d2cfdc893e6221970f4bad1717d1dae9350ea8f001ee90196264136e76dcbe5213d0d0727ddf47407381f0a4f2c1b52650802db59ad035cb3e9648f8350ff4a87bb797f7909ef4a272fcdd243e35f331a0850764ae63352a2be25143468e15781804f84895824bb37858f4a5d14dc8a98fbb3b2687389e64d8ccefc53d2f84e840392c317bee20f4a5a8f5aac2ed65f0d7acf9ffce370ed55c45739de2e608ef72fbbf64d0a7048fabb59b52441c5d2383e8caf60d18b1134a54657c6592f681743f71d0115e6e00c620358065f59e3b61ebcd5823922239522ac56793eb15fa38c35c5fded0eef718a786372636fd57dbe20f6ae88696da0d8f49dc91cbfe65f98c367ede1d5b3c3e6b5b9253a39666c2aa1a141fd286e73760157eb2342ed82833732266de9d25410a6ee48f62ba4306793a5e350cc01a90b11ea7a4e40674d836380cdb4d9a10d455950610f814c77d92d3a03119ca2a249f42b2d47f2fc6d429865477061e0818a19322dfff648f5ed3b0cb33d34439e8302112a2e2e1ca129288ac9b145f79c4259e8fdb80d992f4df477629d21d5812b63969ad8bab195ebb976c3e56cb1ae3c7d398e134c93d327554ac4a9628290ea233b2f905b9c9f4aa2885ac0dee51100074bcc316e796729bf6beece69430b1e6160f6aa145d7f5f110960bb34648f96574161ad5af5ed5aa4bf8cc6fa8fc2980ed6d1dc6aaaf79d2295c80b0bc82dab1bff490026bf57467fafa314b378195ad3b9647793f2208fd1cdf4dcd51d7bde2e6e66cd27b0ff1af3c8536fecf6c97478e1c6d9dfb91f57d70cad375cbe9e62014dba0c77ddfde51a50192f6d9960dc929cbb9b72898a6a03af5039648f5b2d634e38be750f73e9e874cc99025961b0aa2e01f803beecfbb99139f2e154af46f55f6d55d56ccb22a02790ba1f38afb3e5e449dac9217c069bb5976bda7f4eb01ed7374cf079f20b0f712fdd02c71d5d277015a4edbfbc35a254ab18eaf28e11e04f6f22919df14c72d7f0922ad9c32adbb0a74774fca62758f34938a3789e9b50d5e1c49b3d5c45d8c1bba059ddf49965184a19e0fd2ade1887b185ab106fb704c2eef66551d5c31a54af2a8053f60c7a8f43b9c075e3ad5f4b49a54163b3648a509c56a23307a31b5825a8f53beca1a802edff82f6bf5db5600a55183852b2e902ef8176088e0e4bf6c350d5d6b665b6b6132bcacbaeb5ea73179e8d617982a61f950b2f111213965ea7f0c9a371896bd910b9ca69e38582fc2f4d97daab86a82c3da43e46810a38ee846e0f93194d1cef88bca748c44dcc05c2882ef643012a4fffac2c1c87e5a084a7abd90235ef204f612eb7058eb531d4e8485302e3d8c545c5f8d382194d32d999f85c5943a310efedcf24450f9a6276cfac111eaadd496411115e51278518b1cc8d756354074b16547c2fee612e45d5446a2ce89d1a963d2018df3996a3eb2831a6a3d20bd727ac5a7eac9453781d3084f7639ebe6bd6cfe0682d65283d49e5972350178c6c370ec9819d222c62e1bcf0e0c2e57c48052f9a34a0dad4d6c11d2ce4b8db32276503455c60dec21ca51ec59cc67c07b08ec90d016b4687b20575f1141521dbfb15a703caaacf26d911b07961440cc59463b734246dc1b3940c992d5031817c8cba48430392b817600e3f49d6187e1e02aa9daec1290059b2c6a1dbfa077b5054433e2e84a516f86cab562de6b810a5a48a264e1237f5658ca620f72d951f9571c51f0eab6e9154eaf4473554b5dd603342c5c709da69bacda7ae49403913824633ce1fd830a4990006a1e921d1d26f1e5cf47a03efa61bf640bbf8bd71b72f0e50512ce6264b07b7326d3df09b028759d9826fabb35222800dd0d478446ce4a8fd105f2606056aeca7c32a8dcd4d9b2ae1fe436c7e65227f0ab27ad0df4d5722e9a0a997ca248092d5442921f1f79e32dd0540e75331736624cf691c394ee37244c1c51defecfd64614b6d88ab15a585dc56f9877fe9452afe3561810a25aa20faf154c730077f32b3bdbebf1295a3a8e7e1dfd11c88dd048bc832e26fcf883bdc24034f3c1104032c84d77e4631b7ccb84a446bba8d828e9e44cd759740a098965022ed82bf73caf4a3c4d9de551036ad829e425349543294990a21b538608abde83fe1f8151a9200dc7aa1cbf2bbd4206d911b2e65f5b5df092a858f9c2388df2a786db08e7416ab13cd10432b9704de4cc3d2d183f593c470c57e4e23d260dc2f35194e4279537d1ce22666e7f717d85563c2cca19e0b089058c301367b01bd7ed688ca03d8c8956856b9545e1dc02f1c785b3651f3daddf10d1e0ba9641480b15622bde939be92780629836fce24e788204ef15c128fc30940b66e515ca0bc2f8727d14abb69623f7c2d7100374d8505239a98561eabf3c4b7e2dc3245d28ac32494e1dbae83a8be749a75af43d2c8945e1372ef00a183f521ea85405d69be49d1bd280e658912c61455535bc0381d849ebf6ad90907c0bb4bb10816a5177c49bf42baa7a11ed76745e5139575c76b2ff77c82c11f9fac429d5ff1c18fc3281cb2c085172b24d7395cbe420db8ee00768af06f45347f06b5e4295a2afd6659fcae2bc6ec80ab16c22448c8b4b93a8019326843267aac4488c2ada5b9fdab517bfe3d0f915370f41e4400733d6672a27b2f9185efd5bc779fddd4699d4b11d05f774b5c3b9a172cc9d7f718fe03ea9fd455503302b39ce3a5869f9e5bce7085614c9eea21ceeffd0f05f120f05b069dc5bf983e9f77b11ecb6d687dd9aebe9cd9f8bc52c3e5e8f988ab2c24afbf76997cf9167fb6aeddced428d1bf66ebdccc6f79d2a022e9228d7a79885712ef6785a5ef7556527a3be95abf1a99e8d5142c0736d9ca16996896797aaf8d10198527e12fb35608d5e4c747bbd3352e38179960f7b28a5c45f3b539633e76173f69fc0389853f883ec32243a1cf3af8164db63e37761ade068ebe604fe7e49663dd21340f0eeafecfe420727b819211cb8697f4922f99a3db4a348ef7335cea29f13f37cbe334613c84b521420ea2cff12050747cf2a433bb2fbe03c1a22674450689ff4855cbda0e2dd3a435c03dd92cba1b1bf7d09c6bce503ed3ffce6e9ec69ff1bb92e5bedd6c3c3cd41b17e17962a32d52edc9afa817b2042c08c13632433046ea620984e65ea6b4aa2f4fac5d220438600601bfcf2146c1bd941966030267eede66a3ed3d292038c11f6d55c01a8fd38392c3a0fb829df06cc036d6362137671e3be7d2010f720dda9a7f61cd3d4555cb57a3d42d44db6031f847577f9f00e460ee1a74e3f03b15910caa96d8bbbefea71f5656712bbef5a3494717391dcd53dfff3e79e42cac639671b36b13a7178d00fa0c7aabb97631edc63b5383ddb643bdf662363e1e3b3b34d0ae7518582e19824a29a2abbf01b6ae8709e662879a662f3915cd2bd33080d85cdb4514eb3fca8ade71c36341e1704851a2d4d16f6d617b414b5215eed94d40040e0ed89ae7ce8ae59a75ea6706bb095f886ca57a52a9378f0a95d315c08f05072757ec73035f1e3e0ce50153f283aef637fa7a4bea40ddc7f9de2f487136b96a4325252eacea0b58fd9840e77a940145492514c8b5a8247cec716a4503286efbdac7c96a5e1eb2fad07a81b97add0e3bff3f95ba572961978a29362526cc0bc3fd714211503f700fc6d540ae856b13c4c039e2f5e0bc56df067985c0ea4c91a09645433ccfd55d1415bd56bc0ea928b36976d47a0ef0f9ab033fedfe732559f4eb47daf5b269a50d75f7d038371379da0743427f20a3ba519fabf6351f4cf5c0a6b83e077372c1d06e282ad801e2e76cf7130f0eb6ff6a0e12bf9f9d6ddbc2037b815d4aadc0789d30600077090e4f3bc400fafa00d86915e5f98a707504e19bee0c30676f90c5c2c40e2df6ab443f8e3cc0d604eba58da9b0cd3b01fd5e7b1966a8c5b2ecbbbba75eb37cf87743f3a0c268a7340dd7794db21347b2a6e6a96297da261624b24aec1ec38eecb2d233b26fc84b96ce0b3b4f403c6770007af51c0d5517ae602aa27e289bea4f0f592bf6a9587ccd1678623efe4284c1ac1e53f7a3487f3a89196f4466ad206c00ff4f389ad5e690cda1426f9e9035abad284fdc09c351fe61060adf0d4964c33d98f0db4e2466daaf88889b40d3597a5e1a146c2ea8661e1b1289a97766691152e4386a11e4d33e08174a3783b36b11712ed90532de6811ba8610942e184d28cbbdf83a9b15193d6f62ab20147b70cd48e4cf536be08d0ec1e353194b36a198ef3a0d2c2dd96be49140a7cbf4579717674ecf2f58c5fbd3db29a71c54b24ef135760ebf29937353846102d72de55e1c1d3b547c423f36429d1853e288ce99b8491c6d84720e44a7743f09efd5ec84bfe39c00cbfa319804da6b33ae00ec67e8b308b153a4cb996d85f9a523e7b5d2572c3cb180bbd16ebd60cca2991934b008a139228510da564064c7d41522677e660a0e138f01734bcebacbe6cbda89cd443a72c9778ce57d70817a3fc0049451cb3f1d48b2bd0ae175c2cf2e5bb49151a2d5a85f477bad67acd05e27cfc81c125287e0f551b42a3d4c236f200ccaa7b0f76854f0dc0b24536c013f3dc54e2913b8aab875392ad195f26a71fc8007be5b1a7bc9793f286d0e1a53f02dfdb6565245027898dd1e48c67042aabd2f437de5892a739b5c3759f797609589972d12db9f04ba926ed1a1906f88c79382db3696f37e6b7255aa59bdfde5948c1998d6a2c5936198fba77093a6d84cea5cf847474c490f1ed007c706b8bdb803690046086e5e432bb47be122e5395a921d678558e3a40333613964b4ce9884da06cd43e9f7e6ae9eaa3617728a332a5aa4392ca0c02e1691c74</script>
-</div>
-<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>Web</category>
-        <category>SDN</category>
-        <category>DDoS</category>
-      </categories>
-      <tags>
-        <tag>DDoS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Jupyter server crashed | VSCode + WLS</title>
     <url>/2020/03/12/VSCode_Jupyter_bug/</url>
     <content><![CDATA[<h1>情况分析</h1>
@@ -529,56 +529,6 @@ ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展
         <tag>IDE</tag>
         <tag>WSL</tag>
         <tag>Jupyter notebook</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>libnum-error</title>
-    <url>/2020/02/05/libnum-error/</url>
-    <content><![CDATA[<p>由于之前清理空间的时候不慎将 WSL 的配置文件也误删掉了，所以慌忙还原 WSL 当初的配置，对于一些 Python 库的安装大多用 <code>pip</code> 的命令，直接安装，通过 <code>import ...</code> 的方式做一个简单的检查。但是前段时间在使用 <code>libnum</code> 的时候遇到了 <code>AttributeError: 'str' object has no attribute 'hex'</code> 的报错。</p>
-<p>网络上并没有这么针对性的博客来排除这个 <code>AttributeError</code>，也几乎没有讲过用 <code>pip</code> 命令其实也可以安装 <code>libnum</code>。</p>
-<p>所以这篇文章就讲解 <code>libnum</code> 两种不同的安装方法，以及为什么会出现和如何解决 <code>libnum</code> 下的 <code>AttributeError</code></p>
-<a id="more"></a>
-<h1>python libnum库安装使用方法</h1>
-<p>方法1：<br>
-在 Python 2.7 的环境下安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hellman/libnum</span><br><span class="line"><span class="built_in">cd</span> libnum</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
-<p>方法2：<br>
-在 Python 3 环境下安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install libnum</span><br></pre></td></tr></table></figure>
-<h1>Python2 for libnum</h1>
-<p>这里做下解释，如果搜索 “ python libnum 库安装 ”的文章，一般都只会告诉你第一种方法。</p>
-<p>这是因为在很长一段时间，<code>libnum</code> 都只支持 Python2，在它的开源库中我们也可以看到：“Requirements: python2.7”</p>
-<img src="/2020/02/05/libnum-error/libnum-error.png" width="500">
-<p>甚至在 2018 年 12 月还有人 issue 是否支持 Python3：</p>
-<img src="/2020/02/05/libnum-error/libum2-3.png" width="500">
-<p>很多写 <code>libnum</code> 安装教程的博客也多半是在 2018 年12月前写的。</p>
-<h1>Python3 for libnum</h1>
-<p>然而！！！在 2019 年 3 月的时候有人回复了这个 issue，已经实现支持 Python3 的libnum。</p>
-<img src="/2020/02/05/libnum-error/libnum3.png" width="500">
-<p>其地址是：<a href="https://github.com/JafarAkhondali/python3-libnum" target="_blank" rel="noopener">https://github.com/JafarAkhondali/python3-libnum</a></p>
-<p>同时我们可以查到在 <code>https://pypi.org/</code> 中查到 <a href="http://project/libnum/" target="_blank" rel="noopener"><code>libnum 1.6.0</code></a></p>
-<img src="/2020/02/05/libnum-error/PyPI.png" width="500">
-<p>此时可以用 <code>pip install libnum</code> 的方式安装 <code>libnum</code>，但需要注意的是，这里的 <code>pip install libnum</code> 对应的是 只支持 Python3 的 <code>libnum</code>。</p>
-<h1>AttributeError: ‘str’ object has no attribute ‘hex’</h1>
-<h2 id="报错原因分析">报错原因分析</h2>
-<p>出现这个错误的原因是 python3 中只有 unicode str，所以把 decode 方法去掉了，所以 “str’ object has no attribute 'hex”。</p>
-<blockquote>
-<p>比较抱歉，没有截图，只是文字描述。</p>
-</blockquote>
-<p>我们仔细看报错的信息，稍作分析就发现，运行过程中是遇到 <code>encode('hex')</code> 之类的方法的时候报错的。说明错误是用 Python3 的解释器去解释 Python2 的代码 或者其他等价的情况发生的。</p>
-<p>很可能是因为我 当初+后来 同时使用 <code>pip install libnum</code> 和 <code>python setup.py install</code> 的方法安装库，所以导致解释器解释代码的时候产生冲突。</p>
-<h2 id="问题解决">问题解决</h2>
-<p>笔者并不精通 Python2 和 Python3 的兼容问题。<br>
-只是单纯在 Python2 下使用这些库（毕竟 Python3 的环境是部署在 Windows下的，WSL 只是由于特殊情况也安装了Python3），所以采用 <code>pip uninstall libnum</code> 的方法卸载了支持 Python3 的<code>libnum</code>库。</p>
-<p>之后代码解释正常，也得到了 flag, hhh。</p>
-<img src="/2020/02/05/libnum-error/flag.png" width="300">]]></content>
-      <categories>
-        <category>CTF</category>
-        <category>Crypto</category>
-      </categories>
-      <tags>
-        <tag>Error</tag>
-        <tag>Crypto</tag>
       </tags>
   </entry>
   <entry>
@@ -668,6 +618,56 @@ ms 很可能表示 Microsoft，所以这个扩展可能就是 Python，在扩展
         <tag>kali</tag>
         <tag>Wireshark</tag>
         <tag>eNSP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>libnum-error</title>
+    <url>/2020/02/05/libnum-error/</url>
+    <content><![CDATA[<p>由于之前清理空间的时候不慎将 WSL 的配置文件也误删掉了，所以慌忙还原 WSL 当初的配置，对于一些 Python 库的安装大多用 <code>pip</code> 的命令，直接安装，通过 <code>import ...</code> 的方式做一个简单的检查。但是前段时间在使用 <code>libnum</code> 的时候遇到了 <code>AttributeError: 'str' object has no attribute 'hex'</code> 的报错。</p>
+<p>网络上并没有这么针对性的博客来排除这个 <code>AttributeError</code>，也几乎没有讲过用 <code>pip</code> 命令其实也可以安装 <code>libnum</code>。</p>
+<p>所以这篇文章就讲解 <code>libnum</code> 两种不同的安装方法，以及为什么会出现和如何解决 <code>libnum</code> 下的 <code>AttributeError</code></p>
+<a id="more"></a>
+<h1>python libnum库安装使用方法</h1>
+<p>方法1：<br>
+在 Python 2.7 的环境下安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hellman/libnum</span><br><span class="line"><span class="built_in">cd</span> libnum</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+<p>方法2：<br>
+在 Python 3 环境下安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install libnum</span><br></pre></td></tr></table></figure>
+<h1>Python2 for libnum</h1>
+<p>这里做下解释，如果搜索 “ python libnum 库安装 ”的文章，一般都只会告诉你第一种方法。</p>
+<p>这是因为在很长一段时间，<code>libnum</code> 都只支持 Python2，在它的开源库中我们也可以看到：“Requirements: python2.7”</p>
+<img src="/2020/02/05/libnum-error/libnum-error.png" width="500">
+<p>甚至在 2018 年 12 月还有人 issue 是否支持 Python3：</p>
+<img src="/2020/02/05/libnum-error/libum2-3.png" width="500">
+<p>很多写 <code>libnum</code> 安装教程的博客也多半是在 2018 年12月前写的。</p>
+<h1>Python3 for libnum</h1>
+<p>然而！！！在 2019 年 3 月的时候有人回复了这个 issue，已经实现支持 Python3 的libnum。</p>
+<img src="/2020/02/05/libnum-error/libnum3.png" width="500">
+<p>其地址是：<a href="https://github.com/JafarAkhondali/python3-libnum" target="_blank" rel="noopener">https://github.com/JafarAkhondali/python3-libnum</a></p>
+<p>同时我们可以查到在 <code>https://pypi.org/</code> 中查到 <a href="http://project/libnum/" target="_blank" rel="noopener"><code>libnum 1.6.0</code></a></p>
+<img src="/2020/02/05/libnum-error/PyPI.png" width="500">
+<p>此时可以用 <code>pip install libnum</code> 的方式安装 <code>libnum</code>，但需要注意的是，这里的 <code>pip install libnum</code> 对应的是 只支持 Python3 的 <code>libnum</code>。</p>
+<h1>AttributeError: ‘str’ object has no attribute ‘hex’</h1>
+<h2 id="报错原因分析">报错原因分析</h2>
+<p>出现这个错误的原因是 python3 中只有 unicode str，所以把 decode 方法去掉了，所以 “str’ object has no attribute 'hex”。</p>
+<blockquote>
+<p>比较抱歉，没有截图，只是文字描述。</p>
+</blockquote>
+<p>我们仔细看报错的信息，稍作分析就发现，运行过程中是遇到 <code>encode('hex')</code> 之类的方法的时候报错的。说明错误是用 Python3 的解释器去解释 Python2 的代码 或者其他等价的情况发生的。</p>
+<p>很可能是因为我 当初+后来 同时使用 <code>pip install libnum</code> 和 <code>python setup.py install</code> 的方法安装库，所以导致解释器解释代码的时候产生冲突。</p>
+<h2 id="问题解决">问题解决</h2>
+<p>笔者并不精通 Python2 和 Python3 的兼容问题。<br>
+只是单纯在 Python2 下使用这些库（毕竟 Python3 的环境是部署在 Windows下的，WSL 只是由于特殊情况也安装了Python3），所以采用 <code>pip uninstall libnum</code> 的方法卸载了支持 Python3 的<code>libnum</code>库。</p>
+<p>之后代码解释正常，也得到了 flag, hhh。</p>
+<img src="/2020/02/05/libnum-error/flag.png" width="300">]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Crypto</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
+        <tag>Crypto</tag>
       </tags>
   </entry>
   <entry>
@@ -1128,8 +1128,8 @@ use more than 20~30% time to try;</p>
       </tags>
   </entry>
   <entry>
-    <title>【Wireshark 系列】Puzzle</title>
-    <url>/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/</url>
+    <title>【Wireshark 系列】Puzzle-1 Ann’s Bad AIM</title>
+    <url>/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/</url>
     <content><![CDATA[<p><img src="https://www.zer0-nu1l.com/uploads/Wireshark.jpg" alt="Wireshark"></p>
 <p>发现后续分析的各种攻击没什么意思😅，所以接下来直接开始网络流量分析与取证的实战环节。<br>
 开刀对象是 <a href="http://forensicscontest.com/2009/10/10/puzzle-2-ann-skips-bail" target="_blank" rel="noopener">http://forensicscontest.com</a> 的系列题目 🛠</p>
@@ -1168,18 +1168,18 @@ MD5 (evidence.pcap) = d187d77e18c84f6d72f5845edca833f5</p>
 题目 3、4、5、6 其实重要我们获取到文件，就一锅端了。</p>
 <h1>解题过程</h1>
 <h2 id="通信加密？">通信加密？</h2>
-<p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/clip_image001.png" alt></p>
+<p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/clip_image001.png" alt></p>
 <p>乍一眼看过去，很不妙地看到了SSL（Secure Sockets Layer） 安全套接字协议，这很大程度上意味着通信进行了加密。<br>
 一般，只有 Wireshark 导入私钥才能解析其中的消息。</p>
 <h2 id="继续探索">继续探索</h2>
 <p>应用层数据可能进行了加密，但不妨碍我们对传输层/网络层的报文字段进行分析。<br>
 我们知道 Ann 的 IP 是 192.168.1.158，所以先用显示过滤器：ip.addr == 192.168.1.158：<br>
 发现他正在和一个 well-kown IP 进行通信：<br>
-<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/clip_image002.png" alt></p>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/clip_image002.png" alt></p>
 <p>可以看出，这是来自美国的一个 IP。作为一个 well-kown IP，它很有可能是服务器。<br>
-<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/clip_image003.png" alt></p>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/clip_image003.png" alt></p>
 <p>我们进一步查询 IP：<br>
-<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/image-20200713022522482.png" alt="image-20200713022522482" style="zoom: 50%;"></p>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/image-20200713022522482.png" alt="image-20200713022522482" style="zoom: 50%;"></p>
 <p>果不其然，它是来自 AOL 美国在线公司的服务器。<br>
 可以查到 AOL 是一个提供电子邮件、新闻组、教育和娱乐服务，并支持对因特网访问的公司。所以 Ann 是通过这个和和外界通信的。<br>
 查一下 AOL 通信：AOL即时通讯（AOL Instant Messenger）简称AIM<br>
@@ -1188,7 +1188,7 @@ AOL 作为通信的一种服务，应该有它自己的通信协议（比如 QQ 
 <p>虽然，看到 SSL 或者 SSLv3之后SSL重命名为的TLS，我们会以为的确是加密了。<br>
 但实际上，Wireshark 解析协议是根据端口的。<br>
 这里通信的端口是 443，所以自然而然会被解析成 SSL：</p>
-<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/clip_image005.png">
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/clip_image005.png">
 <p>但是现实情况下往往存在端口映射等其他情况，以及特定协议带来的干扰导致 Wireshark 解析错误。（这里可能没有解释太清楚）所以，看到 SSL 或者 TLS 除了可能是通信加密，也有可能是解析错误！！！<br>
 这也是本题的解密关键。</p>
 <h2 id="解码">解码</h2>
@@ -1196,29 +1196,29 @@ AOL 作为通信的一种服务，应该有它自己的通信协议（比如 QQ 
 <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChCustProtocolDissectionSection.html" target="_blank" rel="noopener">Wireshark 的官方文档</a>是这样介绍的：</p>
 <p>The “Decode As” functionality lets you temporarily divert specific protocol dissections. This might be useful for example, if you do some uncommon experiments on your network.<br>
 点击数据包右键- Decode As …：<br>
-<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/clip_image005.png" style="zoom:67%;"></p>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/clip_image005.png" style="zoom:67%;"></p>
 <p>这是它原来的解析方式：<br>
-<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/clip_image007.png" alt="计算机生成了可选文字: ，WiresharkDecodeAs. 字段值类型 默认当前 TLSPort443整数基数10HTTPHTTP 0《er到裙方刀．“汾a二coasentries Cancel Help" style="zoom:50%;"></p>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/clip_image007.png" alt="计算机生成了可选文字: ，WiresharkDecodeAs. 字段值类型 默认当前 TLSPort443整数基数10HTTPHTTP 0《er到裙方刀．“汾a二coasentries Cancel Help" style="zoom:50%;"></p>
 <p>当前的 (none) 代表不进行解析<br>
 这几个项都可以进行更改（下拉菜单）-把能够解析的都列出来了，我们尝试将它当做 AIM 协议解析：</p>
-<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/clip_image008.png" alt="计算机生成了可选文字: ，WiresharkDecodeAs. 字段值类型 默认当前 TLSPort443整数基数10HTTPHTTP (none) AlM AMQP 00CoAP Couchbase DNS EN甲 HTTP ℃AP" style="zoom:50%;">
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/clip_image008.png" alt="计算机生成了可选文字: ，WiresharkDecodeAs. 字段值类型 默认当前 TLSPort443整数基数10HTTPHTTP (none) AlM AMQP 00CoAP Couchbase DNS EN甲 HTTP ℃AP" style="zoom:50%;">
 <p>解析成功！激动的心！！<br>
-<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/image-20200713022606397.png" alt="image-20200713022606397"></p>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/image-20200713022606397.png" alt="image-20200713022606397"></p>
 <h2 id="解读信息">解读信息</h2>
 <p>难点解决了，接下来都是小问题了（坐好了，要加速了🚗 ）：</p>
 <h3 id="Question-1">Question 1</h3>
-<p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/image-20200713022621885.png" alt="image-20200713022621885"></p>
+<p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/image-20200713022621885.png" alt="image-20200713022621885"></p>
 <h3 id="Question-2">Question 2</h3>
-<p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/clip_image011.png" alt></p>
+<p><img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/clip_image011.png" alt></p>
 <p>ValueMessage: Here’s the secret recipe… I just downloaded it from the file server. Just copy to a thumb drive and you’re good to go &gt;:-)</p>
 <h3 id="Question3：">Question3：</h3>
 <p><strong>TCP</strong> <strong>追踪流：</strong><br>
 tcp.stream eq 2 &amp;&amp; ip.addr == 192.168.1.158<br>
-<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/clip_image012.png" alt></p>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/clip_image012.png" alt></p>
 <p>看到提到 recipe.docx<br>
 再追踪下一个 TCP 流：<br>
 tcp.stream eq 5 &amp;&amp; ip.addr == 192.168.1.158<br>
-<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/clip_image013.png" alt></p>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/clip_image013.png" alt></p>
 <p>这个流就有点意思了（它没有经过服务器）<br>
 选择为单向对话。原始数据，保存为 recipe.bin，后面还原文件用。</p>
 <h3 id="Question-4">Question 4</h3>
@@ -1228,12 +1228,12 @@ Magic number，即幻数，它可以用来标记文件或者协议的格式，�
 <p>| DOCX  (Office 2010) | .docx | 50 4B 03  04 [PK] |</p>
 <ol>
 <li>把文件头去掉，保存文件为 recipe.docx<br>
-<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/clip_image014.png" style="zoom:80%;"></li>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/clip_image014.png" style="zoom:80%;"></li>
 </ol>
 <p>成功！</p>
 <h3 id="Question-5：">Question 5：</h3>
 <p>计算 MD5<br>
-<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle#1%20Ann%E2%80%99s%20Bad%20AIM/image-20200713022717043.png" alt="image-20200713022717043"></p>
+<img src="/2020/06/28/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91Puzzle-1%20Ann%E2%80%99s%20Bad%20AIM/image-20200713022717043.png" alt="image-20200713022717043"></p>
 <h3 id="Question-6：">Question 6：</h3>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Recipe for Disaster:</span><br><span class="line">1 serving</span><br><span class="line">Ingredients:</span><br><span class="line">4 cups sugar</span><br><span class="line">2 cups water</span><br><span class="line">In a medium saucepan, bring the water to a boil. Add sugar. Stir gently over low heat until sugar is fully dissolved. Remove the saucepan from heat. Allow to cool completely. Pour into gas tank. Repeat as necessary.</span><br></pre></td></tr></table></figure>
 <p>Done. 🌞</p>
@@ -1246,6 +1246,136 @@ Magic number，即幻数，它可以用来标记文件或者协议的格式，�
         <tag>kali</tag>
         <tag>Wireshark</tag>
         <tag>eNSP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【飞蛾扑火】PowerShell 终端美化踩坑</title>
+    <url>/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/</url>
+    <content><![CDATA[<blockquote>
+<p>美，是一种感知。<br>
+潜藏在每个人生命中，<br>
+当它被挖掘，被激发，<br>
+便会变成一种使人安定的力量。<br>
+它不仅能带来感官上的触动，<br>
+也是历练生命、丰沛情感、释放思想的源泉。<br>
+—— 蒋勋</p>
+</blockquote>
+<p>对于 PowerShell 美化的折腾，其实在两三个月前我曾经做过一次，那个时候还是在期末考试期间。因为过度沉迷，以及涌现出了的意料之外的终端乱码，花费了不少时间，最后为了赶复习进度而不了了之。</p>
+<p>这次又一次在 <code>zn</code> 的安利下，开始飞蛾扑火。</p>
+<p>在这里分享 PowerShell 美化的思路，希望帮助大家避过坑，以及记录一些自己的感悟。</p>
+<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308121225697.png" alt="image-20200308121225697"></p>
+<a id="more"></a>
+<h1>PowerShell 终端美化思路</h1>
+<blockquote>
+<p>PowerShell 默认的终端是很简单的，并没有考虑美化。从实用角度基本是够用的，但在实用的基础上，很多人希望能有更好的使用体验，所以一大堆应用涌现。</p>
+</blockquote>
+<p>终端美化的基本思路有：</p>
+<ol>
+<li>对 PowerShell 的字体等进行修改；</li>
+<li>在 PowerShell 上安装并使用 oh-my-posh；</li>
+<li>改用第三方终端，如 Fluent Terminal、Hyper、Terminus 等。</li>
+</ol>
+<p>⭐️ ​其中值得注意的是，PowerShell 安装 oh-my-posh 后很可能出现“乱码”的现象，这是字体缺位导致的，建议改用支持大量其他字体的第三方终端，一劳永逸。</p>
+<h2 id="结论置顶">结论置顶</h2>
+<blockquote>
+<p>这里先呈现结论，结论的依据会在后面详细解释。</p>
+</blockquote>
+<h3 id="效果图">效果图</h3>
+<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308103044933.png" alt="image-20200308103044933"></p>
+<h3 id="思路">思路</h3>
+<p>PowerShell 自身不支持 oh-my-zsh 的一些字体，会导致乱码，故使用 Powershell 第三方终端（如 Fluent Terminal）+oh-my-zsh 的方案。</p>
+<ol>
+<li>下载安装 Fluent Terminal；</li>
+<li>在 PowerShell 下安装 oh-my-zsh，选择自己喜欢的主题，通过更改 <code>$proflie</code> 指定的文件，将 oh-my-zsh 的设置在每次启动 PowerShell 的时候自动加载。</li>
+<li>下载 oh-my-zsh 需要的字体，将 Fluent Terminal 的字体修改；</li>
+<li>更改 VSCode 的终端字体设置，使之同等美化。</li>
+</ol>
+<h2 id="修改-PowerShell-的终端">修改 PowerShell 的终端</h2>
+<p>这是 PowerShell 和 cmd 自身提供的属性设置。（标题栏右键）</p>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308101500526.png" alt="image-20200308101500526" style="zoom:80%;">
+<p>但是局限性非常大，可用的字体非常少。cmd 和 PowerShell 对字体的要求很严苛，即使你安装了一大堆的字体，在 <code>&quot;Windows PowerShell&quot; 属性 </code> 中的 <code>字体</code> 选项卡下，能看到的字体也就几个。</p>
+<p>也有博客对自定义字体有“研究成果”，详见：<a href="https://walterlv.github.io/post/customize-fonts-of-command-window.html#%E6%8E%A8%E8%8D%90%E5%8F%AF%E7%94%A8%E7%9A%84%E5%AD%97%E4%BD%93" target="_blank" rel="noopener">自定义 Windows PowerShell 和 cmd 的字体</a>。</p>
+<h2 id="安装使用-oh-my-zsh">安装使用 oh-my-zsh</h2>
+<p>安装步骤和使用的教程非常多，笔者也是直接参照网络上的教程安装的，这里不再赘述。<br>
+但使用的时候会发现，没有 Linux 下 zsh 的效果，甚至出现如下近乎“乱码”的现象：</p>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308104054220.png" alt="image-20200308104054220" style="zoom: 67%;">
+<p>看看其他主题的情况？</p>
+<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308110644627.png" alt="image-20200308110644627"></p>
+<p>发现“乱码”其实只有一两种字符。<br>
+⭐️ 其实是因为对应的字符在当前字体下是不存在的，而支持这些字符的字体在 cmd 和 PowerShell 严苛要求下的字体几乎是不存在的。<br>
+✔️ 所以需要使用第三方Powershell 终端，才能还原 zsh 在 Linux 下的风采。</p>
+<h2 id="使用第三方-PowerShell-终端">使用第三方 PowerShell 终端</h2>
+<h3 id="下载安装-Fluent-Terminal">下载安装 Fluent Terminal</h3>
+<p>PowerShell 终端非常多，如 Fluent Terminal、Hyper、Terminus 等。</p>
+<p>其中很受推荐的其中一个是 Fluent Terminal，是利用 UWP 技术打造的颜值超高的终端模拟器。不过在 UWP 应用市场并找不到，要去 <a href="https://github.com/felixse/FluentTerminal/releases" target="_blank" rel="noopener">GitHub Release</a> 下载。</p>
+<p>下载完毕后，用 PowerShell 运行文件夹下的 <code>Install.ps1</code> 按照提示操作即可安装成功。<br>
+建议设置在中把默认 shell 改成 PowerShell：</p>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308105324042.png" alt="image-20200308105324042" style="zoom:67%;">
+<h3 id="修改字体">修改字体</h3>
+<p>如果前面已经在 Powershell 安装了 oh-my-zsh，此时的 Fluent Terminal 下的Powershell 依然是存在“乱码”的现象。<br>
+这时候需要下载并安装支持 oh-my-zsh 对应主题的字体，比如 powerline 的字体库： <a href="https://github.com/powerline%E3%80%82%EF%BC%88%E5%85%B6%E5%AE%9E%E6%88%91%E7%94%A8%E7%9A%84%E4%B8%8D%E6%98%AF" target="_blank" rel="noopener">https://github.com/powerline。（其实我用的不是</a> powerline, hhh）<br>
+安装后再在 Fluent Terminal 的设置中更改字体就大工告成了！</p>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308105823820.png" alt="image-20200308105823820" style="zoom:50%;">
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308110523327.png" alt="image-20200308110523327" style="zoom:80%;">
+<h3 id="VSCode-终端美化">VSCode 终端美化</h3>
+<p>在之前的基础上，只需要修改 VSCode 的终端字体即可；<br>
+可以编辑 <code>setting.json</code> ，也可以在设置中查找。</p>
+<img src="file:///C:/Users/wcb53/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png" style="zoom:80%;">
+<p>效果图：<br>
+<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308111027390.png" alt="image-20200308111027390"></p>
+<hr>
+<h1>美学感悟</h1>
+<blockquote>
+<p>挂了美学的旗子，估计是膨胀了。 😢</p>
+</blockquote>
+<p>折腾一番还是蛮消耗时间的，但是克服不了变美的诱惑 😄。</p>
+<blockquote>
+<p>有时候会问，人的品味高是不是有时候会降低人的生活质量？</p>
+</blockquote>
+<p>百姓的音乐在高雅之士的耳朵里变成了“呕哑嘲哳”；<br>
+普通餐馆的食物在美食家面前变成“糟蹋食物”，<br>
+专业设计师会感觉市面上的东西各种变扭等等。</p>
+<blockquote>
+<p>扰乱人们的不是客观事物，而是人们对客观事物的见解。<br>
+​	—— 爱比克泰德<br>
+“超常的感觉能力会引致情绪失衡、周期性的超乎寻常的愉快或者挥之不去的忧愁。”<br>
+—— 叔本华</p>
+</blockquote>
+<p>笔者感觉，叔本华描述了那些艺术天才的忧郁气质，像极了《名人传》里对米开朗基罗的描述：“他被他这个天才左右了一生，他一生根本就没法从他这个天才里头自拔出来，所以他的生活某种程度像个苦行僧一样的，又是个工作狂。可是他的一切，他活着就是为了这个优势，为了他的天才而生的，他这一辈子就只能在这个范畴里头这么去干。”</p>
+<p>但是除去那些被自己的天才左右了一生的天才，现实生活不是也有很多很多很释然的杰出艺术家吗？就像《名人传》的米开朗琪罗传的那句名言：“世界上只有一种英雄主义,就是看清生活的真相之后依然热爱生活。”</p>
+<p>一个思考角度，我们完全可以驾驭我们的感觉能力，获得释然，开放“对客观事物的间接”，能够同等欣赏“阳春白雪”和“下里巴人”，获得生命的快感。</p>
+<p>另一种思考的角度，艺术家的忧郁气质，对于细节的感知、把控与纠结的完美主义，恰恰成就了艺术家，成为无可争辩的竞争力。</p>
+<blockquote>
+<p>美，是一种感知。<br>
+潜藏在每个人生命中，<br>
+当它被挖掘，被激发，<br>
+便会变成一种使人安定的力量。<br>
+它不仅能带来感官上的触动，<br>
+也是历练生命、丰沛情感、释放思想的源泉。<br>
+—— 蒋勋</p>
+</blockquote>
+<p>在物质匮乏的年代，对食物挑剔的人甚至没办法生存。但是现代社会已经逐步脱离物质的快发，转向追求生命的更高体验。<br>
+就像蒋勋先生所言，美是历练生命、丰沛情感、释放思想的源泉。我想，不去审美而去猎奇，真是辜负了造化的恩宠。</p>
+<hr>
+<h1>参考文章</h1>
+<ol>
+<li><a href="https://walterlv.github.io/post/customize-fonts-of-command-window.html#%E6%8E%A8%E8%8D%90%E5%8F%AF%E7%94%A8%E7%9A%84%E5%AD%97%E4%BD%93" target="_blank" rel="noopener">自定义 Windows PowerShell 和 cmd 的字体</a></li>
+<li><a href="https://blog.csdn.net/WPwalter/article/details/78937346" target="_blank" rel="noopener">将美化进行到底，把 PowerShell 做成 oh-my-zsh 的样子</a></li>
+<li><a href="http://tieba.baidu.com/p/6133164423?red_tag=o2118687620" target="_blank" rel="noopener">oh-my-zsh的图标无法正常显示</a></li>
+<li><a href="https://sspai.com/post/52868" target="_blank" rel="noopener">告别 Windows 终端的难看难用，从改造 PowerShell 的外观开始</a></li>
+<li><a href="https://www.jianshu.com/p/ae7f7b4d7a0e" target="_blank" rel="noopener">解决vscode terminal powerline字体乱码</a></li>
+</ol>
+<blockquote>
+<p>此外，还有感谢 <code>wj</code> 小姐姐 👸 提供给庸人笔者的一些灵感~</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Life</category>
+        <category>Beauty</category>
+      </categories>
+      <tags>
+        <tag>Powershell</tag>
+        <tag>life</tag>
       </tags>
   </entry>
   <entry>
@@ -1489,136 +1619,6 @@ APR 欺骗实施者，无疑。</p>
         <tag>kali</tag>
         <tag>Wireshark</tag>
         <tag>eNSP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【飞蛾扑火】PowerShell 终端美化踩坑</title>
-    <url>/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/</url>
-    <content><![CDATA[<blockquote>
-<p>美，是一种感知。<br>
-潜藏在每个人生命中，<br>
-当它被挖掘，被激发，<br>
-便会变成一种使人安定的力量。<br>
-它不仅能带来感官上的触动，<br>
-也是历练生命、丰沛情感、释放思想的源泉。<br>
-—— 蒋勋</p>
-</blockquote>
-<p>对于 PowerShell 美化的折腾，其实在两三个月前我曾经做过一次，那个时候还是在期末考试期间。因为过度沉迷，以及涌现出了的意料之外的终端乱码，花费了不少时间，最后为了赶复习进度而不了了之。</p>
-<p>这次又一次在 <code>zn</code> 的安利下，开始飞蛾扑火。</p>
-<p>在这里分享 PowerShell 美化的思路，希望帮助大家避过坑，以及记录一些自己的感悟。</p>
-<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308121225697.png" alt="image-20200308121225697"></p>
-<a id="more"></a>
-<h1>PowerShell 终端美化思路</h1>
-<blockquote>
-<p>PowerShell 默认的终端是很简单的，并没有考虑美化。从实用角度基本是够用的，但在实用的基础上，很多人希望能有更好的使用体验，所以一大堆应用涌现。</p>
-</blockquote>
-<p>终端美化的基本思路有：</p>
-<ol>
-<li>对 PowerShell 的字体等进行修改；</li>
-<li>在 PowerShell 上安装并使用 oh-my-posh；</li>
-<li>改用第三方终端，如 Fluent Terminal、Hyper、Terminus 等。</li>
-</ol>
-<p>⭐️ ​其中值得注意的是，PowerShell 安装 oh-my-posh 后很可能出现“乱码”的现象，这是字体缺位导致的，建议改用支持大量其他字体的第三方终端，一劳永逸。</p>
-<h2 id="结论置顶">结论置顶</h2>
-<blockquote>
-<p>这里先呈现结论，结论的依据会在后面详细解释。</p>
-</blockquote>
-<h3 id="效果图">效果图</h3>
-<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308103044933.png" alt="image-20200308103044933"></p>
-<h3 id="思路">思路</h3>
-<p>PowerShell 自身不支持 oh-my-zsh 的一些字体，会导致乱码，故使用 Powershell 第三方终端（如 Fluent Terminal）+oh-my-zsh 的方案。</p>
-<ol>
-<li>下载安装 Fluent Terminal；</li>
-<li>在 PowerShell 下安装 oh-my-zsh，选择自己喜欢的主题，通过更改 <code>$proflie</code> 指定的文件，将 oh-my-zsh 的设置在每次启动 PowerShell 的时候自动加载。</li>
-<li>下载 oh-my-zsh 需要的字体，将 Fluent Terminal 的字体修改；</li>
-<li>更改 VSCode 的终端字体设置，使之同等美化。</li>
-</ol>
-<h2 id="修改-PowerShell-的终端">修改 PowerShell 的终端</h2>
-<p>这是 PowerShell 和 cmd 自身提供的属性设置。（标题栏右键）</p>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308101500526.png" alt="image-20200308101500526" style="zoom:80%;">
-<p>但是局限性非常大，可用的字体非常少。cmd 和 PowerShell 对字体的要求很严苛，即使你安装了一大堆的字体，在 <code>&quot;Windows PowerShell&quot; 属性 </code> 中的 <code>字体</code> 选项卡下，能看到的字体也就几个。</p>
-<p>也有博客对自定义字体有“研究成果”，详见：<a href="https://walterlv.github.io/post/customize-fonts-of-command-window.html#%E6%8E%A8%E8%8D%90%E5%8F%AF%E7%94%A8%E7%9A%84%E5%AD%97%E4%BD%93" target="_blank" rel="noopener">自定义 Windows PowerShell 和 cmd 的字体</a>。</p>
-<h2 id="安装使用-oh-my-zsh">安装使用 oh-my-zsh</h2>
-<p>安装步骤和使用的教程非常多，笔者也是直接参照网络上的教程安装的，这里不再赘述。<br>
-但使用的时候会发现，没有 Linux 下 zsh 的效果，甚至出现如下近乎“乱码”的现象：</p>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308104054220.png" alt="image-20200308104054220" style="zoom: 67%;">
-<p>看看其他主题的情况？</p>
-<p><img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308110644627.png" alt="image-20200308110644627"></p>
-<p>发现“乱码”其实只有一两种字符。<br>
-⭐️ 其实是因为对应的字符在当前字体下是不存在的，而支持这些字符的字体在 cmd 和 PowerShell 严苛要求下的字体几乎是不存在的。<br>
-✔️ 所以需要使用第三方Powershell 终端，才能还原 zsh 在 Linux 下的风采。</p>
-<h2 id="使用第三方-PowerShell-终端">使用第三方 PowerShell 终端</h2>
-<h3 id="下载安装-Fluent-Terminal">下载安装 Fluent Terminal</h3>
-<p>PowerShell 终端非常多，如 Fluent Terminal、Hyper、Terminus 等。</p>
-<p>其中很受推荐的其中一个是 Fluent Terminal，是利用 UWP 技术打造的颜值超高的终端模拟器。不过在 UWP 应用市场并找不到，要去 <a href="https://github.com/felixse/FluentTerminal/releases" target="_blank" rel="noopener">GitHub Release</a> 下载。</p>
-<p>下载完毕后，用 PowerShell 运行文件夹下的 <code>Install.ps1</code> 按照提示操作即可安装成功。<br>
-建议设置在中把默认 shell 改成 PowerShell：</p>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308105324042.png" alt="image-20200308105324042" style="zoom:67%;">
-<h3 id="修改字体">修改字体</h3>
-<p>如果前面已经在 Powershell 安装了 oh-my-zsh，此时的 Fluent Terminal 下的Powershell 依然是存在“乱码”的现象。<br>
-这时候需要下载并安装支持 oh-my-zsh 对应主题的字体，比如 powerline 的字体库： <a href="https://github.com/powerline%E3%80%82%EF%BC%88%E5%85%B6%E5%AE%9E%E6%88%91%E7%94%A8%E7%9A%84%E4%B8%8D%E6%98%AF" target="_blank" rel="noopener">https://github.com/powerline。（其实我用的不是</a> powerline, hhh）<br>
-安装后再在 Fluent Terminal 的设置中更改字体就大工告成了！</p>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308105823820.png" alt="image-20200308105823820" style="zoom:50%;">
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308110523327.png" alt="image-20200308110523327" style="zoom:80%;">
-<h3 id="VSCode-终端美化">VSCode 终端美化</h3>
-<p>在之前的基础上，只需要修改 VSCode 的终端字体即可；<br>
-可以编辑 <code>setting.json</code> ，也可以在设置中查找。</p>
-<img src="file:///C:/Users/wcb53/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png" style="zoom:80%;">
-<p>效果图：<br>
-<img src="/2020/03/08/%E3%80%90%E9%A3%9E%E8%9B%BE%E6%89%91%E7%81%AB%E3%80%91%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E8%B8%A9%E5%9D%91/image-20200308111027390.png" alt="image-20200308111027390"></p>
-<hr>
-<h1>美学感悟</h1>
-<blockquote>
-<p>挂了美学的旗子，估计是膨胀了。 😢</p>
-</blockquote>
-<p>折腾一番还是蛮消耗时间的，但是克服不了变美的诱惑 😄。</p>
-<blockquote>
-<p>有时候会问，人的品味高是不是有时候会降低人的生活质量？</p>
-</blockquote>
-<p>百姓的音乐在高雅之士的耳朵里变成了“呕哑嘲哳”；<br>
-普通餐馆的食物在美食家面前变成“糟蹋食物”，<br>
-专业设计师会感觉市面上的东西各种变扭等等。</p>
-<blockquote>
-<p>扰乱人们的不是客观事物，而是人们对客观事物的见解。<br>
-​	—— 爱比克泰德<br>
-“超常的感觉能力会引致情绪失衡、周期性的超乎寻常的愉快或者挥之不去的忧愁。”<br>
-—— 叔本华</p>
-</blockquote>
-<p>笔者感觉，叔本华描述了那些艺术天才的忧郁气质，像极了《名人传》里对米开朗基罗的描述：“他被他这个天才左右了一生，他一生根本就没法从他这个天才里头自拔出来，所以他的生活某种程度像个苦行僧一样的，又是个工作狂。可是他的一切，他活着就是为了这个优势，为了他的天才而生的，他这一辈子就只能在这个范畴里头这么去干。”</p>
-<p>但是除去那些被自己的天才左右了一生的天才，现实生活不是也有很多很多很释然的杰出艺术家吗？就像《名人传》的米开朗琪罗传的那句名言：“世界上只有一种英雄主义,就是看清生活的真相之后依然热爱生活。”</p>
-<p>一个思考角度，我们完全可以驾驭我们的感觉能力，获得释然，开放“对客观事物的间接”，能够同等欣赏“阳春白雪”和“下里巴人”，获得生命的快感。</p>
-<p>另一种思考的角度，艺术家的忧郁气质，对于细节的感知、把控与纠结的完美主义，恰恰成就了艺术家，成为无可争辩的竞争力。</p>
-<blockquote>
-<p>美，是一种感知。<br>
-潜藏在每个人生命中，<br>
-当它被挖掘，被激发，<br>
-便会变成一种使人安定的力量。<br>
-它不仅能带来感官上的触动，<br>
-也是历练生命、丰沛情感、释放思想的源泉。<br>
-—— 蒋勋</p>
-</blockquote>
-<p>在物质匮乏的年代，对食物挑剔的人甚至没办法生存。但是现代社会已经逐步脱离物质的快发，转向追求生命的更高体验。<br>
-就像蒋勋先生所言，美是历练生命、丰沛情感、释放思想的源泉。我想，不去审美而去猎奇，真是辜负了造化的恩宠。</p>
-<hr>
-<h1>参考文章</h1>
-<ol>
-<li><a href="https://walterlv.github.io/post/customize-fonts-of-command-window.html#%E6%8E%A8%E8%8D%90%E5%8F%AF%E7%94%A8%E7%9A%84%E5%AD%97%E4%BD%93" target="_blank" rel="noopener">自定义 Windows PowerShell 和 cmd 的字体</a></li>
-<li><a href="https://blog.csdn.net/WPwalter/article/details/78937346" target="_blank" rel="noopener">将美化进行到底，把 PowerShell 做成 oh-my-zsh 的样子</a></li>
-<li><a href="http://tieba.baidu.com/p/6133164423?red_tag=o2118687620" target="_blank" rel="noopener">oh-my-zsh的图标无法正常显示</a></li>
-<li><a href="https://sspai.com/post/52868" target="_blank" rel="noopener">告别 Windows 终端的难看难用，从改造 PowerShell 的外观开始</a></li>
-<li><a href="https://www.jianshu.com/p/ae7f7b4d7a0e" target="_blank" rel="noopener">解决vscode terminal powerline字体乱码</a></li>
-</ol>
-<blockquote>
-<p>此外，还有感谢 <code>wj</code> 小姐姐 👸 提供给庸人笔者的一些灵感~</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Life</category>
-        <category>Beauty</category>
-      </categories>
-      <tags>
-        <tag>Powershell</tag>
-        <tag>life</tag>
       </tags>
   </entry>
   <entry>
