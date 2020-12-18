@@ -99,18 +99,18 @@
 <meta property="og:site_name" content="ZER0-Nu1L">
 <meta property="og:description" content="由于之前清理空间的时候不慎将 WSL 的配置文件也误删掉了，所以慌忙还原 WSL 当初的配置，对于一些 Python 库的安装大多用 pip 的命令，直接安装，通过 import ... 的方式做一个简单的检查。但是前段时间在使用 libnum 的时候遇到了 AttributeError: &#39;str&#39; object has no attribute &#39;hex&#39; 的报错。 网络上并没有这么针对性的博">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/02/05/libnum-error/libnum-error.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/02/05/libnum-error/libum2-3.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/02/05/libnum-error/libnum3.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/02/05/libnum-error/PyPI.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/02/05/libnum-error/flag.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/libnum-error.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/libum2-3.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/libnum3.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/PyPI.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/flag.png">
 <meta property="article:published_time" content="2020-02-05T09:16:38.000Z">
-<meta property="article:modified_time" content="2020-02-05T09:22:16.619Z">
+<meta property="article:modified_time" content="2020-12-18T14:14:06.958Z">
 <meta property="article:author" content="Andy Wu">
 <meta property="article:tag" content="Error">
 <meta property="article:tag" content="Crypto">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zer0-nu1l.github.io/2020/02/05/libnum-error/libnum-error.png">
+<meta name="twitter:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/libnum-error.png">
 
 
 
@@ -463,16 +463,16 @@
 <h1>Python2 for libnum</h1>
 <p>这里做下解释，如果搜索 “ python libnum 库安装 ”的文章，一般都只会告诉你第一种方法。</p>
 <p>这是因为在很长一段时间，<code>libnum</code> 都只支持 Python2，在它的开源库中我们也可以看到：“Requirements: python2.7”</p>
-<img src="/2020/02/05/libnum-error/libnum-error.png" width="500">
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/libnum-error.png" width="500">
 <p>甚至在 2018 年 12 月还有人 issue 是否支持 Python3：</p>
-<img src="/2020/02/05/libnum-error/libum2-3.png" width="500">
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/libum2-3.png" width="500">
 <p>很多写 <code>libnum</code> 安装教程的博客也多半是在 2018 年12月前写的。</p>
 <h1>Python3 for libnum</h1>
 <p>然而！！！在 2019 年 3 月的时候有人回复了这个 issue，已经实现支持 Python3 的libnum。</p>
-<img src="/2020/02/05/libnum-error/libnum3.png" width="500">
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/libnum3.png" width="500">
 <p>其地址是：<a href="https://github.com/JafarAkhondali/python3-libnum" target="_blank" rel="noopener">https://github.com/JafarAkhondali/python3-libnum</a></p>
 <p>同时我们可以查到在 <code>https://pypi.org/</code> 中查到 <a href="http://project/libnum/" target="_blank" rel="noopener"><code>libnum 1.6.0</code></a></p>
-<img src="/2020/02/05/libnum-error/PyPI.png" width="500">
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/PyPI.png" width="500">
 <p>此时可以用 <code>pip install libnum</code> 的方式安装 <code>libnum</code>，但需要注意的是，这里的 <code>pip install libnum</code> 对应的是 只支持 Python3 的 <code>libnum</code>。</p>
 <h1>AttributeError: ‘str’ object has no attribute ‘hex’</h1>
 <h2 id="报错原因分析">报错原因分析</h2>
@@ -486,7 +486,7 @@
 <p>笔者并不精通 Python2 和 Python3 的兼容问题。<br>
 只是单纯在 Python2 下使用这些库（毕竟 Python3 的环境是部署在 Windows下的，WSL 只是由于特殊情况也安装了Python3），所以采用 <code>pip uninstall libnum</code> 的方法卸载了支持 Python3 的<code>libnum</code>库。</p>
 <p>之后代码解释正常，也得到了 flag, hhh。</p>
-<img src="/2020/02/05/libnum-error/flag.png" width="300">
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/flag.png" width="300">
       
     </div>
     
@@ -521,7 +521,7 @@
   <p><span>本文标题:</span><a href="/2020/02/05/libnum-error/">libnum-error</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Andy Wu 的个人博客">Andy Wu</a></p>
   <p><span>发布时间:</span>2020年02月05日 - 17:02</p>
-  <p><span>最后更新:</span>2020年02月05日 - 17:02</p>
+  <p><span>最后更新:</span>2020年12月18日 - 22:12</p>
   <p><span>原始链接:</span><a href="/2020/02/05/libnum-error/" title="libnum-error">https://zer0-nu1l.github.io/2020/02/05/libnum-error/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://zer0-nu1l.github.io/2020/02/05/libnum-error/"  aria-label="复制成功！"></i></span>
   </p>

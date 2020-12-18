@@ -99,17 +99,17 @@
 <meta property="og:site_name" content="ZER0-Nu1L">
 <meta property="og:description" content="情况说明 有一天我用 GitKragen 打开我常用的仓库 Note，但发现有这样的报错：  之后用 GitKragen 始终打不开仓库 Notes 仓库。  本文分析了可能出现此情况的所有可能，提出解决这个问题的方法，以及使用 GitKragen 的经验教训。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/05/01/GitKraken%20Error/image-20200501230732304.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/05/01/GitKraken%20Error/clip_image001-1588345641404.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/05/01/GitKraken%20Error/clip_image002.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/05/01/GitKraken%20Error/clip_image003.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200501230732304.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image001-1588345641404.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image002.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image003.png">
 <meta property="article:published_time" content="2020-04-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-01T15:28:35.945Z">
+<meta property="article:modified_time" content="2020-12-18T13:50:33.146Z">
 <meta property="article:author" content="Andy Wu">
 <meta property="article:tag" content="GitKraken">
 <meta property="article:tag" content="Error">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zer0-nu1l.github.io/2020/05/01/GitKraken%20Error/image-20200501230732304.png">
+<meta name="twitter:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200501230732304.png">
 
 
 
@@ -450,7 +450,7 @@
       
         <h1>情况说明</h1>
 <p>有一天我用 GitKragen 打开我常用的仓库 Note，但发现有这样的报错：</p>
-<img src="/2020/05/01/GitKraken%20Error/image-20200501230732304.png" alt="image-20200501230732304" style="zoom:67%;">
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200501230732304.png" alt="image-20200501230732304" style="zoom:67%;">
 <p>之后用 GitKragen 始终打不开仓库 Notes 仓库。</p>
 <blockquote>
 <p>本文分析了可能出现此情况的所有可能，提出解决这个问题的方法，以及使用 GitKragen 的经验教训。</p>
@@ -458,7 +458,7 @@
 <a id="more"></a>
 <h1>原因分析</h1>
 <p>在 <a href="https://support.gitkraken.com/faq/" target="_blank" rel="noopener">https://support.gitkraken.com/faq/</a> 有专门这样一条：</p>
-<p><img src="/2020/05/01/GitKraken%20Error/clip_image001-1588345641404.png" alt></p>
+<p><img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image001-1588345641404.png" alt></p>
 <p>翻译解释如下:</p>
 <ol>
 <li>当前的仓库被其他工具占用了，先把这些工具解除对仓库的占用，再尝试用 GitKragen 打开。</li>
@@ -471,12 +471,12 @@
 <p>最开始并没有发现可特别疑的文件，顺利地把所有的文件提交了上去。之后发现 GitKragen 还是打不开仓库（排除了第二种情况）。</p>
 <p>尝试对最近看起来文件路径还是蛮长的文件进行了路径长度统计，但基本都不超过 150。<br>
 所以实在太奇怪了……（第三种情况也要排除了？）😵</p>
-<p>然而，在观察 Git History 的时候发现了神奇的事情：⭐️<img src="/2020/05/01/GitKraken%20Error/clip_image002.png" alt>发现之前提交了这个文件名巨长无比的文件？？<br>
+<p>然而，在观察 Git History 的时候发现了神奇的事情：⭐️<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image002.png" alt>发现之前提交了这个文件名巨长无比的文件？？<br>
 赶紧测试了一下：<br>
-<img src="/2020/05/01/GitKraken%20Error/clip_image003.png" alt></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image003.png" alt></p>
 <p>逼近 260，有很大可能，然后发现这个文件原来的名称是“常用的输入字符的上标、下标、脚标.txt”<br>
 顿时懂了，这个含中文字符的文件名在 git 里面中文字符被 <code>\xxx</code> 来编码代替，而所谓的“文件路径是 260 个字符”是没有对 <code>\xxx</code> 解码的情况下测定的长度。<br>
-更改文件名，之后，GitKragen 果然恢复正常了…… ​😄​</p>
+更改文件名，之后，GitKragen 果然恢复正常了…… 😄</p>
 <h1>经验教训</h1>
 <ol>
 <li>了解可能导致 GitKragen 打不开仓库的情况。</li>
@@ -525,7 +525,7 @@
   <p><span>本文标题:</span><a href="/2020/05/01/GitKraken%20Error/">【GitKraken】 Could not find a compatible repository</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Andy Wu 的个人博客">Andy Wu</a></p>
   <p><span>发布时间:</span>2020年05月01日 - 00:05</p>
-  <p><span>最后更新:</span>2020年05月01日 - 23:05</p>
+  <p><span>最后更新:</span>2020年12月18日 - 21:12</p>
   <p><span>原始链接:</span><a href="/2020/05/01/GitKraken%20Error/" title="【GitKraken】 Could not find a compatible repository">https://zer0-nu1l.github.io/2020/05/01/GitKraken%20Error/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://zer0-nu1l.github.io/2020/05/01/GitKraken%20Error/"  aria-label="复制成功！"></i></span>
   </p>

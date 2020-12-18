@@ -99,28 +99,28 @@
 <meta property="og:site_name" content="ZER0-Nu1L">
 <meta property="og:description" content="前面介绍了很多种攻击方式，但是它们都是基于网络协议的缺陷。而在实际情况中，除了这些内容之外，操作系统和应用程序的漏洞也是网络安全研究的重点。 缓冲区溢出是现在很典型的一种远程攻击方式，它利用了程序员在编写程序时的疏忽，从而实现了在远程设备上执行代码。这些攻击方式大都要通过应用层的协议实现，所以本次课也会介绍应用层最为典型的协议 HTTP 。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image001.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image003.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image004.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203002353.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image006.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/Wireshark.jpg">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image001.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image002.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image003.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image004.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200705203002353.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image006.png">
 <meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image007.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203021763.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image010.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image011.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203053290.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image013.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200705203021763.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image009.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image010.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image009.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image011.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200705203053290.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image013.png">
 <meta property="article:published_time" content="2020-07-05T12:25:09.000Z">
-<meta property="article:modified_time" content="2020-07-05T13:51:35.561Z">
+<meta property="article:modified_time" content="2020-12-18T13:37:36.693Z">
 <meta property="article:author" content="Andy Wu">
 <meta property="article:tag" content="kali">
 <meta property="article:tag" content="Wireshark">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg">
+<meta name="twitter:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/Wireshark.jpg">
 
 
 
@@ -459,7 +459,7 @@
       
 
       
-        <p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/Wireshark.jpg" alt="Wireshark"></p>
+        <p><img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/Wireshark.jpg" alt="Wireshark"></p>
 <p>前面介绍了很多种攻击方式，但是它们都是基于网络协议的缺陷。而在实际情况中，除了这些内容之外，操作系统和应用程序的漏洞也是网络安全研究的重点。<br>
 缓冲区溢出是现在很典型的一种远程攻击方式，它利用了程序员在编写程序时的疏忽，从而实现了在远程设备上执行代码。这些攻击方式大都要通过应用层的协议实现，所以本次课也会介绍应用层最为典型的协议 HTTP 。</p>
 <a id="more"></a>
@@ -483,14 +483,14 @@ Wireshark 监听端口 VNet8<br>
 <h2 id="实验步骤">实验步骤</h2>
 <h3 id="开启服务">开启服务</h3>
 <p>在 Win 7 下运行 文件共享软件 Easy File Sharing Web Server7.2：<br>
-<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image001.png" alt></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image001.png" alt></p>
 <p>开启服务之后，另一台主机 kali 是可以访问的：<br>
-<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002.png" alt></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image002.png" alt></p>
 <h3 id="缓冲区溢出攻击">缓冲区溢出攻击</h3>
-<p>在 kali 中执行 msfconsole 命令打开 Metasploit：<br>
-<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image003.png" style="zoom:80%;"></p>
-<p>Metasploit 是各种渗透模块的集成，先搜索一下没有没目标软件的渗透模块：<br>
-<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image004.png" alt></p>
+<p>在 kali 中执行 msfconsole 命令打开 Metasploit：</p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image003.png" style="zoom:80%;">
+<p>Metasploit 是各种渗透模块的集成，先搜索一下没有没目标软件的渗透模块：</p>
+<p><img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image004.png" alt></p>
 <p>我们不妨使用 2015 版的：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use exploit/windows/http/easyfilesharing_seh</span><br></pre></td></tr></table></figure>
 <p>然后进行攻击</p>
@@ -503,27 +503,27 @@ Wireshark 监听端口 VNet8<br>
 </li>
 <li>攻击<br>
 发送大量数据，包括木马等，实现缓冲区溢出<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exploit</span><br></pre></td></tr></table></figure>
-<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203002353.png" alt="image-20200705203002353"></li>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200705203002353.png" alt="image-20200705203002353"></li>
 </ol>
 <p>这个时候已经实现了对 Win7 的控制。</p>
 <h3 id="控制">控制</h3>
-<p>接下来可以把 Win7 当做自己的主机进行控制：<br>
-<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image006.png" alt></p>
+<p>接下来可以把 Win7 当做自己的主机进行控制：</p>
+<p><img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image006.png" alt></p>
 <p><img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image007.png" alt></p>
 <h1>使用 Wireshark 分析缓冲区溢出攻击</h1>
 <h2 id="判定攻击">判定攻击</h2>
 <p>如果我们怀疑自己中了缓冲区溢出攻击，可以进行如下分析：<br>
 分析 <a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/tree/master/Package/Buffer_Overflow.pcapng" target="_blank" rel="noopener">Buffer_Overflow.pcapng</a>：</p>
 <p>先用显示过滤器过滤一下，只显示 http 相关的报文（客户端进行缓冲区溢出攻击的应用层协议）<br>
-<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203021763.png" alt></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200705203021763.png" alt></p>
 <p>首先 Wireshark 已经看出来这里是一个畸形的数据包。并且，HTTP 数据包进行了分片，这往往是字段内容过大导致的，也是实现缓冲区溢出攻击的必要条件之一。</p>
 <p>我们可以用 TCP 在追踪流查看一下：<br>
-<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png" alt></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image009.png" alt></p>
 <p>可以很明显地看出 GET 后面的内容是混乱的， 没有没有实际意义可言，并且有很长很长一大段全是字符。<br>
 这很显然是为了将软件的缓冲区填满。</p>
 <h2 id="一个疑点的分析">一个疑点的分析</h2>
 <p>值得一提的是，如果你尝试在 Easy File Sharing Web Server 页面填写内容的时候，会发现自己输出长度是有限的，那怎么会导致溢出呢？<br>
-<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image010.png" alt><br>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image010.png" alt><br>
 这一点其实并不难理解，这个功能实现往往是前端页面对用户输入的限制。但是传输的时候没有限制，比如通过 Socket 编程传递这样过长的参数。<br>
 再补充一下，我们这里是用 Metasploit 中的模块实现对软件的攻击，也就意味着这个漏洞是公开知晓的。但是自己去挖漏洞的时候，就需要自己用诸如 Socket 编程的方式进行攻击。</p>
 <p>所以这里的软件是有问题的，漏洞在于不检查接收的数据有多长，只是在前端做了输入限制。<br>
@@ -533,8 +533,8 @@ Wireshark 监听端口 VNet8<br>
 黑客知晓之后，就可以进行攻击了，在缓冲区之外的加上木马文件，构造缓冲区溢出攻击；<br>
 安全工作者知晓之后，可以进行木马识别和网络取证等。</p>
 <p>而我们这里其实也可以看到：<br>
-<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image009.png" alt><br>
-<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image011.png" style="zoom:50%;"></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image009.png" alt></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image011.png" style="zoom:50%;">
 <p>这个程序的缓冲区大小为：4061 bytes.</p>
 <h2 id="反向木马">反向木马</h2>
 <p>按照木马客户端和服务端之间建立连接的方式的不同，可以将木马分为正向连接木马和反向连接木马。</p>
@@ -547,9 +547,9 @@ Wireshark 监听端口 VNet8<br>
 这里的服务器 IP 是 192.168.93.155，所以先用一次显示过滤器：<br>
 ip.src == 192.168.93.155<br>
 看到有一个它主动发出的 SYN 请求：<br>
-<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200705203053290.png" alt="image-20200705203053290"></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200705203053290.png" alt="image-20200705203053290"></p>
 <p>去掉显示过滤器，可以看到服务器主动和另一台主机进行 TCP 三次握手：<br>
-<img src="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image013.png" alt></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image013.png" alt></p>
 <p>所以这里攻击者使用的是反向木马。</p>
 <h2 id="应对措施">应对措施</h2>
 <p>如果你使用的软件存在这样的漏洞，但你又不得不使用这个软件，可以这样应对：<br>
@@ -595,7 +595,7 @@ ip.src == 192.168.93.155<br>
   <p><span>本文标题:</span><a href="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/">【Wireshark 系列】缓冲区溢出攻击分析</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Andy Wu 的个人博客">Andy Wu</a></p>
   <p><span>发布时间:</span>2020年07月05日 - 20:07</p>
-  <p><span>最后更新:</span>2020年07月05日 - 21:07</p>
+  <p><span>最后更新:</span>2020年12月18日 - 21:12</p>
   <p><span>原始链接:</span><a href="/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/" title="【Wireshark 系列】缓冲区溢出攻击分析">https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://zer0-nu1l.github.io/2020/07/05/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/"  aria-label="复制成功！"></i></span>
   </p>

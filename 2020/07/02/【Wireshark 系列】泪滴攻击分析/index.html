@@ -100,16 +100,16 @@
 <meta property="og:description" content="针对 IP 协议的攻击方法，主要有伪造 IP 地址和发送畸形数据包两种方式。 泪滴攻击就属于发送畸形数据包这种方式，它的设计思路巧妙地利用了 IP 协议里面的缺陷，因此成为了网络安全里面的一个经典案例。 这种攻击的实现原理是向目标主机发送异常的数据包碎片，使得 IP 数据包碎片在重组的过程中有重合的部分，从而导致目标系统无法对其进行重组，进一步导致系统崩溃而停止服务的恶性攻击。 这篇内容非常非常">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.zer0-nu1l.com/uploads/Wireshark.jpg">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200702211114219.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image003.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image004.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image005.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200702211747039.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image001.png">
-<meta property="og:image" content="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002-1593695935789.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200702211114219.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image002.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image003.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image004.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image005.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200702211747039.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image001.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image002-1593695935789.png">
 <meta property="article:published_time" content="2020-07-02T13:04:12.000Z">
-<meta property="article:modified_time" content="2020-07-05T12:34:33.884Z">
+<meta property="article:modified_time" content="2020-12-18T13:38:29.967Z">
 <meta property="article:author" content="Andy Wu">
 <meta property="article:tag" content="kali">
 <meta property="article:tag" content="Wireshark">
@@ -464,7 +464,7 @@
 <p>考虑到这种攻击是建立在 IP 协议上，我们先来简单地了解一下 IP 协议的几个重要内容，包括 IP 协议数据包的格式、分片方式以及存活时间（TTL）。</p>
 </blockquote>
 <h2 id="IP-协议格式">IP 协议格式</h2>
-<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200702211114219.png" alt="image-20200702211114219" style="zoom:67%;">
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200702211114219.png" alt="image-20200702211114219" style="zoom:67%;">
 <p>在数据包信息面板中查看它的详细信息，这个数据包各部分如下。<br>
 （1）版本——占 4 位，指 IP 协议的版本目前的 IP 协议版本号为 4（即 IPv4）。<br>
 （2）首部长度——占 4 位，这里的值为 20Bytes。<br>
@@ -485,38 +485,38 @@
 所以当我们要传输的信息大小超过 1500 字节的时候，就需要分片。</p>
 <h2 id="IP-包的-Flags">IP 包的 Flags</h2>
 <p>由同一个信息拆开的报文，他们的标识 identification 是一样的。<br>
-比如这里的第 8、9 报文的标志是一样的<br>
-<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002.png" alt></p>
+比如这里的第 8、9 报文的标志是一样的</p>
+<p><img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image002.png" alt></p>
 <p>Flags 前两位好像没什么用，第三位 More fragment，如果是1，表示后面还有，如果为0，表示为最后一个数据包。后面 13 位 Fragment offset 表示偏移量。<br>
 以 <a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/ping.pcapng" target="_blank" rel="noopener">ping.pcapng</a> 为例：<br>
 第二个数据包的偏移量为第一个数据包的数据长度<br>
 （数据长度=整个包的长度-以太网帧头-IP帧头）<br>
-<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image003.png" alt></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image003.png" alt></p>
 <p>1514 - 14 - 20 = 1480 bytes</p>
 <blockquote>
 <p>如果忘记帧头大小，可以点击帧，然后在状态栏查看：</p>
 </blockquote>
-<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image004.png" style="zoom: 67%;">
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image004.png" style="zoom: 67%;">
 <p>第二个包的偏移量：<br>
-<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image005.png" style="zoom:67%;"></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image005.png" style="zoom:67%;"></p>
 <p>后面几个包也是类似的。</p>
 <h1>泪滴攻击</h1>
 <h2 id="泪滴攻击原理">泪滴攻击原理</h2>
 <p>泪滴攻击是基于数据分片传送进行的攻击手段。<br>
 在 IP 报头中有一个偏移字段和一个分片标志（MF, More fragments），如果 MF 标志设置为 1，则表明这个 IP 包是一个大 IP 包的片断，其中偏移字段指出了这个片断在整个 IP 包中的位置。例如，对一个 4200Bytes 的 IP包进行分片（MTU 为 1480），则 3 个片断中偏移字段的值依次为：0、1480、2960。这样接收端就可以根据这些信息成功的组装该 IP 包。而如果一个攻击者打破这种正常情况，把偏移字段设置成不正确的值，即可能出现重合或断开的情况，就可能导致目标操作系统崩溃。比如，把上述偏移设置为 0、1000、2000。<br>
-图中阴影部分的就是两个数据包有重合的地方，目标设备在接收到这种分片之后就无法重新组合成一个数据包，这就是所谓的泪滴攻击。<br>
-<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/image-20200702211747039.png" alt="image-20200702211747039"></p>
+图中阴影部分的就是两个数据包有重合的地方，目标设备在接收到这种分片之后就无法重新组合成一个数据包，这就是所谓的泪滴攻击。</p>
+<p><img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200702211747039.png" alt="image-20200702211747039"></p>
 <p>这种攻击方式在以前曾经给计算机用户带来了很大的困扰，但是对如今的操作系统基本无效，只是有时攻击者会将其与泛洪相结合来作为一种攻击手段。</p>
 <h1>分析泪滴攻击</h1>
 <p><a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/Teardrop.pcapng" target="_blank" rel="noopener">teardrop.pcap</a></p>
 <h2 id="概览">概览</h2>
 <p>这个数据包看起来没有特别明显问题，但是点到第9个包的时候，就能看到很明显的问题：<br>
-<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image001.png" alt></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image001.png" alt></p>
 <p>它伪造了 Length，和长度相关的，会想到是泪滴攻击。</p>
 <h2 id="分析">分析</h2>
 <p>查看到它的 Fragment offset: 24<br>
 而我们查看 8 的数据包的数据长度：36<br>
-<img src="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/clip_image002-1593695935789.png" style="zoom:50%;"></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image002-1593695935789.png" style="zoom:50%;"></p>
 <p>确定是泪滴攻击。<br>
 结束。</p>
 <blockquote>
@@ -557,7 +557,7 @@
   <p><span>本文标题:</span><a href="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/">【Wireshark 系列】泪滴攻击分析</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Andy Wu 的个人博客">Andy Wu</a></p>
   <p><span>发布时间:</span>2020年07月02日 - 21:07</p>
-  <p><span>最后更新:</span>2020年07月05日 - 20:07</p>
+  <p><span>最后更新:</span>2020年12月18日 - 21:12</p>
   <p><span>原始链接:</span><a href="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/" title="【Wireshark 系列】泪滴攻击分析">https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/"  aria-label="复制成功！"></i></span>
   </p>
