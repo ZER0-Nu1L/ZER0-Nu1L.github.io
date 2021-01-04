@@ -101,15 +101,15 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.zer0-nu1l.com/uploads/Wireshark.jpg">
 <meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200702211114219.png">
-<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image002.png">
-<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image003.png">
-<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image004.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/drop002.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/drop004.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/drop005.png">
 <meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image005.png">
 <meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/image-20200702211747039.png">
-<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image001.png">
+<meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/drop001.png">
 <meta property="og:image" content="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image002-1593695935789.png">
 <meta property="article:published_time" content="2020-07-02T13:04:12.000Z">
-<meta property="article:modified_time" content="2020-12-18T13:38:29.967Z">
+<meta property="article:modified_time" content="2021-01-04T02:16:20.479Z">
 <meta property="article:author" content="Andy Wu">
 <meta property="article:tag" content="kali">
 <meta property="article:tag" content="Wireshark">
@@ -486,17 +486,17 @@
 <h2 id="IP-包的-Flags">IP 包的 Flags</h2>
 <p>由同一个信息拆开的报文，他们的标识 identification 是一样的。<br>
 比如这里的第 8、9 报文的标志是一样的</p>
-<p><img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image002.png" alt></p>
+<p><img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/drop002.png" alt="drop002"></p>
 <p>Flags 前两位好像没什么用，第三位 More fragment，如果是1，表示后面还有，如果为0，表示为最后一个数据包。后面 13 位 Fragment offset 表示偏移量。<br>
 以 <a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/ping.pcapng" target="_blank" rel="noopener">ping.pcapng</a> 为例：<br>
 第二个数据包的偏移量为第一个数据包的数据长度<br>
 （数据长度=整个包的长度-以太网帧头-IP帧头）<br>
-<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image003.png" alt></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/drop004.png" alt="drop004"></p>
 <p>1514 - 14 - 20 = 1480 bytes</p>
 <blockquote>
 <p>如果忘记帧头大小，可以点击帧，然后在状态栏查看：</p>
 </blockquote>
-<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image004.png" style="zoom: 67%;">
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/drop005.png" alt="drop005" style="zoom:67%;">
 <p>第二个包的偏移量：<br>
 <img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image005.png" style="zoom:67%;"></p>
 <p>后面几个包也是类似的。</p>
@@ -511,7 +511,7 @@
 <p><a href="https://github.com/ZER0-Nu1L/Wireshark-Analysis/blob/master/Package/Teardrop.pcapng" target="_blank" rel="noopener">teardrop.pcap</a></p>
 <h2 id="概览">概览</h2>
 <p>这个数据包看起来没有特别明显问题，但是点到第9个包的时候，就能看到很明显的问题：<br>
-<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/clip_image001.png" alt></p>
+<img src="https://markdown-img-zer0nu1l.oss-cn-beijing.aliyuncs.com/img/drop001.png" alt="drop001"></p>
 <p>它伪造了 Length，和长度相关的，会想到是泪滴攻击。</p>
 <h2 id="分析">分析</h2>
 <p>查看到它的 Fragment offset: 24<br>
@@ -557,7 +557,7 @@
   <p><span>本文标题:</span><a href="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/">【Wireshark 系列】泪滴攻击分析</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Andy Wu 的个人博客">Andy Wu</a></p>
   <p><span>发布时间:</span>2020年07月02日 - 21:07</p>
-  <p><span>最后更新:</span>2020年12月18日 - 21:12</p>
+  <p><span>最后更新:</span>2021年01月04日 - 10:01</p>
   <p><span>原始链接:</span><a href="/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/" title="【Wireshark 系列】泪滴攻击分析">https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://zer0-nu1l.github.io/2020/07/02/%E3%80%90Wireshark%20%E7%B3%BB%E5%88%97%E3%80%91%E6%B3%AA%E6%BB%B4%E6%94%BB%E5%87%BB%E5%88%86%E6%9E%90/"  aria-label="复制成功！"></i></span>
   </p>
@@ -837,7 +837,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
  
  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
     </script>
